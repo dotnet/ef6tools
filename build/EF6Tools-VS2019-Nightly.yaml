@@ -1,0 +1,410 @@
+pool:
+
+  name: VSEng-MicroBuildVS2019
+
+  demands:
+
+  - Cmd
+
+  - msbuild
+
+
+
+#Your build pipeline references an undefined variable named ‘comspec’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+
+#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+
+#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+
+#Your build pipeline references the ‘SigningType’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+
+#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+
+#Your build pipeline references an undefined variable named ‘comspec’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+
+#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+
+#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+
+#Your build pipeline references an undefined variable named ‘comspec’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+
+#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+
+#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+
+#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+
+#Your build pipeline references the ‘BuildConfiguration’ variable, which you’ve selected to be settable at queue time. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab, and then select the option to make it settable at queue time. See https://go.microsoft.com/fwlink/?linkid=865971
+
+variables:
+
+  SingletonMsiName: 'EF6Tools'
+
+
+
+steps:
+
+- powershell: |
+   # Write your powershell commands here.
+   
+   $path = & “${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe” -prerelease -all -latest -property installationPath
+   Write-Output $path
+   
+   # Use the environment variables input below to pass secret variables to this script.
+
+  displayName: 'Run vswhere'
+
+  enabled: false
+
+
+
+- task: NuGetAuthenticate@0
+
+  displayName: 'NuGet Authenticate'
+
+
+
+- task: NuGetToolInstaller@1
+
+  displayName: 'Use NuGet'
+
+
+
+- task: BatchScript@1
+
+  displayName: 'Run EFBuild'
+
+  inputs:
+
+    filename: '$(comspec)'
+
+    arguments: '/c "call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" & msbuild $(Build.Repository.LocalPath)\EFTools.msbuild /p:RunCodeAnalysis=false /p:Configuration=$(BuildConfiguration) /t:EnableSkipStrongNames;Clean;BuildDesigner -flp3:verbosity=diagnostic;logfile=$(Build.SourcesDirectory)\bin\$(BuildConfiguration)\BuildDesigner.log -binaryLogger:logfile=$(Build.SourcesDirectory)\bin\$(BuildConfiguration)\BuildDesigner.binlog"'
+
+
+
+- task: ms-vseng.MicroBuildTasks.a0262b21-fb8f-46f8-bb9a-60ed560d4a87.MicroBuildLocalizationPlugin@2
+
+  displayName: 'Install Localization Plugin'
+
+
+
+- task: MSBuild@1
+
+  displayName: 'Localize Assemblies'
+
+  inputs:
+
+    solution: 'build\loc.proj'
+
+    configuration: '$(BuildConfiguration)'
+
+    msbuildArguments: '/t:AfterBuild'
+
+
+
+- task: ms-vseng.MicroBuildTasks.30666190-6959-11e5-9f96-f56098202fef.MicroBuildSigningPlugin@2
+
+  displayName: 'Install Signing Plugin'
+
+  inputs:
+
+    signType: '$(SigningType)'
+
+
+
+- task: MSBuild@1
+
+  displayName: 'Sign Unlocalized and Localized Assemblies'
+
+  inputs:
+
+    solution: 'build\sign.proj'
+
+    configuration: '$(BuildConfiguration)'
+
+    msbuildArguments: '/t:AfterBuild'
+
+
+
+- task: NuGetCommand@2
+
+  displayName: 'NuGet Restore Setup Inputs Packages'
+
+  inputs:
+
+    command: custom
+
+    feedsToUse: config
+
+    externalFeedCredentials: 'OSSCG Feed - Microsoft approved OSS packages'
+
+    arguments: 'restore $(Build.Repository.LocalPath)\src\EFTools\setup\GenerateMsiInputs\packages.config -SolutionDirectory $(MsiRuntimeInputsPath) -Verbosity Detailed -NonInteractive'
+
+
+
+- task: BatchScript@1
+
+  displayName: 'Extract Setup Inputs Nuspecs'
+
+  inputs:
+
+    filename: '$(comspec)'
+
+    arguments: '/c "call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" & msbuild $(Build.Repository.LocalPath)\src\EFTools\setup\GenerateMsiInputs\GenerateMsiInputs.msbuild /p:Configuration=$(BuildConfiguration) /t:ExtractNuspecs"'
+
+
+
+- task: ms-vseng.MicroBuildTasks.32f78468-e895-4f47-962c-58a699361df8.MicroBuildSwixPlugin@2
+
+  displayName: 'Install Swix Plugin'
+
+
+
+- task: MSBuild@1
+
+  displayName: 'Build VSIX'
+
+  inputs:
+
+    solution: 'setup\swix\vs_eftools.swixproj'
+
+    configuration: '$(BuildConfiguration)'
+
+    msbuildArguments: '/t:Build'
+
+
+
+- task: NuGetCommand@2
+
+  displayName: 'NuGet Restore WixProj Using CredentialManager'
+
+  inputs:
+
+    command: custom
+
+    feedsToUse: config
+
+    nugetConfigPath: '.nuget\NuGet.config'
+
+    externalFeedCredentials: 'OSSCG Feed - Microsoft approved OSS packages'
+
+    arguments: 'restore $(Build.Repository.LocalPath)\setup\wix\packages.config -SolutionDirectory $(Build.Repository.LocalPath)\setup\wix -Verbosity Detailed -NonInteractive -ConfigFile $(Build.Repository.LocalPath)\.nuget\NuGet.config'
+
+
+
+- task: BatchScript@1
+
+  displayName: 'Run Script to Build Singleton MSI'
+
+  inputs:
+
+    filename: '$(comspec)'
+
+    arguments: '/c "call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" & msbuild $(Build.Repository.LocalPath)\setup\wix\EFToolsWillowMsi.wixproj /t:Build /v:d /p:MSBuildToolsVersion=16.0"'
+
+  enabled: false
+
+
+
+- task: MSBuild@1
+
+  displayName: 'Build Singleton MSI'
+
+  inputs:
+
+    solution: '$(Build.Repository.LocalPath)\setup\wix\EFToolsWillowMsi.wixproj'
+
+    msbuildArchitecture: x64
+
+    configuration: '$(BuildConfiguration)'
+
+    msbuildArguments: '/t:Build /v:d /bl:$(Build.SourcesDirectory)\bin\$(BuildConfiguration)\BuildSingletonMSI.binlog'
+
+  timeoutInMinutes: 30
+
+
+
+- task: CopyFiles@2
+
+  displayName: 'Copy VSIX, MSI and CAB'
+
+  inputs:
+
+    SourceFolder: 'bin\$(BuildConfiguration)'
+
+    Contents: |
+     vs_eftools.vsix
+     vs_eftools.json
+     $(SingletonMsiName).msi
+     $(SingletonMsiName).cab
+     $(SingletonMsiName).wixpdb
+     BuildDesigner.log
+     BuildDesigner.binlog
+     BuildSingletonMSI.binlog
+     
+
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\SetupResults'
+
+
+
+- task: PublishBuildArtifacts@1
+
+  displayName: 'Publish VSIX, MSI and CAB to Drop'
+
+  inputs:
+
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)\SetupResults'
+
+    ArtifactName: SetupResults
+
+    publishLocation: FilePath
+
+    TargetPath: '$(DropFileShare)\$(Build.SourceBranchName)\$(Build.BuildId)\VS2019'
+
+
+
+- task: CopyFiles@2
+
+  displayName: 'Copy PDB and XML Files'
+
+  inputs:
+
+    SourceFolder: 'bin\$(BuildConfiguration)'
+
+    Contents: |
+     Microsoft.Data.*.pdb
+     Microsoft.VisualStudio.Data.*.pdb
+     Microsoft.Data.*.xml
+     Microsoft.VisualStudio.Data.*.xml
+     
+
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\PdbsAndXmls'
+
+
+
+- task: PublishBuildArtifacts@1
+
+  displayName: 'Publish PDB and XML Files To Drop'
+
+  inputs:
+
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)\PdbsAndXmls'
+
+    ArtifactName: PdbsAndXmls
+
+    publishLocation: FilePath
+
+    TargetPath: '$(DropFileShare)\$(Build.SourceBranchName)\$(Build.BuildId)\VS2019'
+
+
+
+- task: PublishSymbols@2
+
+  displayName: 'Enable Source Server'
+
+  inputs:
+
+    SymbolsFolder: '$(Build.ArtifactStagingDirectory)\PdbsAndXmls'
+
+    SearchPattern: '*.pdb'
+
+    SymbolServerType: TeamServices
+
+    SymbolsProduct: 'Entity_Framework_Tools'
+
+
+
+- task: CopyFiles@2
+
+  displayName: 'On Error Copy BinDirContents'
+
+  inputs:
+
+    Contents: '$(Build.SourcesDirectory)\bin\**'
+
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\BinDirContents'
+
+  condition: failed()
+
+
+
+- task: PublishBuildArtifacts@1
+
+  displayName: 'On Error Publish BinDirContents'
+
+  inputs:
+
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)\BinDirContents'
+
+    ArtifactName: BinDirContents
+
+  condition: failed()
+
+
+
+- task: CopyFiles@2
+
+  displayName: 'Copy Obj Files'
+
+  inputs:
+
+    Contents: '$(Build.SourcesDirectory)\**\obj\**'
+
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\ObjDirsContents'
+
+  enabled: false
+
+  condition: succeededOrFailed()
+
+
+
+- task: PublishBuildArtifacts@1
+
+  displayName: 'Publish ObjDirsContents'
+
+  inputs:
+
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)\ObjDirsContents'
+
+    ArtifactName: ObjDirsContents
+
+  enabled: false
+
+  condition: succeededOrFailed()
+
+
+
+- task: CopyFiles@2
+
+  displayName: 'Copy Files to PackagesContents'
+
+  inputs:
+
+    SourceFolder: '$(Build.Repository.LocalPath)\setup\wix'
+
+    Contents: 'packages\**'
+
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\PackagesContents'
+
+  enabled: false
+
+  condition: succeededOrFailed()
+
+
+
+- task: PublishBuildArtifacts@1
+
+  displayName: 'Publish Packages Contents'
+
+  inputs:
+
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)\PackagesContents'
+
+    ArtifactName: PackagesContents
+
+  enabled: false
+
+  condition: succeededOrFailed()
+
+
+
