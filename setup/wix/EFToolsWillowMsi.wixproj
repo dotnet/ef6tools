@@ -23,7 +23,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">anycpu</Platform>
     <ProductVersion>3.7</ProductVersion>
     <ProjectGuid>09B112B7-5836-465B-9551-F923A0ABB3E7</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
