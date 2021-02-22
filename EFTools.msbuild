@@ -34,7 +34,6 @@
     
     <ItemGroup Condition="'$(BuildCoreOnly)' != 'true'">
         <Projects Include="$(SolutionDir)test\EFTools\InProcTests\InProcTests.csproj" />
-        <Projects Include="$(SolutionDir)test\EFTools\E2ETests\E2ETests.csproj" />
         <Projects Include="$(SolutionDir)test\EFTools\FunctionalTests\FunctionalTests.csproj" />
         <Projects Include="$(SolutionDir)test\EFTools\TestInfrastructure\TestInfrastructure.csproj" />
         <Projects Include="$(SolutionDir)test\EFTools\UnitTests\UnitTests.csproj" />

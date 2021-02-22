@@ -94,16 +94,6 @@ Project global pre-settings.
   </PropertyGroup>
 
   <PropertyGroup>
-    <StyleCopEnabled Condition="'$(StyleCopEnabled)' == '' AND '$(Configuration45)' == 'Debug'">false</StyleCopEnabled>
-    <StyleCopEnabled Condition="'$(MSBuildProjectExtension)' == '.nuproj'">false</StyleCopEnabled>
-  </PropertyGroup>
-
-  <PropertyGroup>
-    <StyleCopTreatErrorsAsWarnings>false</StyleCopTreatErrorsAsWarnings>
-    <StyleCopOverrideSettingsFile>$(RepositoryRoot)Settings.StyleCop</StyleCopOverrideSettingsFile>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <!-- Use CustomAfterMicrosoftCommonTargets property (Microsoft.Common.targets) to inject project post-targets  -->
     <!-- Note: this is how common properties are defined that must be set _after_ the properties in the .csproj files e.g. VS11 -->
     <CustomAfterMicrosoftCommonTargets>$(MSBuildThisFileDirectory)EntityFramework.targets</CustomAfterMicrosoftCommonTargets>
