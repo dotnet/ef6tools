@@ -70,7 +70,6 @@ Project global post-settings and targets.
 
   <!-- Post-targets imports -->
 
-  <Import Project="EF.stylecop.targets" Condition="Exists('..\packages\StyleCop.4.7.10.0\lib\StyleCop.dll')" />
   <Import Project="EFTools.common.tasks" Condition="'$(BuildingToolingProject)' == 'true'" />
   <Import Project="$(CustomAfterEntityFrameworkTargets)" Condition="Exists('$(CustomAfterEntityFrameworkTargets)')" Label="Post-targets Build Extensibility Point." />
 

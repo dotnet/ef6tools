@@ -7,7 +7,6 @@
     <BuildProperties>Platform=$(Platform);SolutionDir=$(SolutionDir)</BuildProperties>
     <BuildProperties Condition="'$(InternalsInvisible)' != ''">$(BuildProperties);InternalsInvisible=$(InternalsInvisible)</BuildProperties>
     <BuildProperties Condition="'$(RunCodeAnalysis)' != ''">$(BuildProperties);RunCodeAnalysis=$(RunCodeAnalysis)</BuildProperties>
-    <BuildProperties Condition="'$(StyleCopEnabled)' != ''">$(BuildProperties);StyleCopEnabled=$(StyleCopEnabled)</BuildProperties>
     <SkipStrongNamesXml>tools\SkipStrongNames.xml</SkipStrongNamesXml>
   </PropertyGroup>
 
@@ -81,7 +80,7 @@
   <Target Name="RebuildLean">
     <MSBuild Targets="Rebuild"
              Projects="$(MSBuildThisFileFullPath)"
-      	     Properties="Configuration=$(Configuration);$(BuildProperties);BuildCoreOnly=true;InternalsInvisible=true;RunCodeAnalysis=false;StyleCopEnabled=false" />
+      	     Properties="Configuration=$(Configuration);$(BuildProperties);BuildCoreOnly=true;InternalsInvisible=true;RunCodeAnalysis=false" />
   </Target>
 
   <Import Project="tools\SkipStrongNames.targets" />
@@ -102,7 +101,7 @@
   <Target Name="BuildPackages">
     <MSBuild Targets="Build"
              Projects="$(RepositoryRoot)src\NuGet\NuGet.proj"
-             Properties="Configuration=$(Configuration);RunCodeAnalysis=false;StyleCopEnabled=false"
+             Properties="Configuration=$(Configuration);RunCodeAnalysis=false"
              Condition="'$(Configuration)' == '$(Configuration45)'" />
     <CallTarget Targets="MoveNuGetSymbols" />
   </Target>
@@ -110,7 +109,7 @@
   <Target Name="CleanPackages" DependsOnTargets="RemoveNuGetSymbols">
     <MSBuild Targets="Clean"
              Projects="$(RepositoryRoot)src\NuGet\NuGet.proj"
-             Properties="Configuration=$(Configuration);RunCodeAnalysis=false;StyleCopEnabled=false"
+             Properties="Configuration=$(Configuration);RunCodeAnalysis=false"
              Condition="'$(Configuration)' == '$(Configuration45)'" />
   </Target>
 
