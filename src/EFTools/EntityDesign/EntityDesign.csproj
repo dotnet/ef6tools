@@ -2,6 +2,7 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), BuildEFTools.cmd))\tools\EntityFramework.settings.targets" />
   <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F904B4BE-C7CF-4E4F-85B7-B006A2D1C561}</ProjectGuid>
@@ -14,6 +15,7 @@
     <TargetFrameworkVersion>$(ToolingDotNetFrameworkVersion)</TargetFrameworkVersion>
     <AssemblyAttributeClsCompliant>false</AssemblyAttributeClsCompliant>
     <FileAlignment>512</FileAlignment>
+    <NoWarn>$(NoWarn);VSTHRD010;VSSDK006;VSTHRD001</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,9 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <NoWarn>1591;1573;1572;1570;1711;1712;1587;1584;1571;1589</NoWarn>
-    <RunCodeAnalysis Condition=" '$(RunCodeAnalysisForEFTools)' != '' And '$(RunCodeAnalysis)' == '' ">$(RunCodeAnalysisForEFTools)</RunCodeAnalysis>
-    <CodeAnalysisRuleSet>$(RepositoryRoot)src\Strict.ruleset</CodeAnalysisRuleSet>
+    <NoWarn>$(NoWarn);1591;1573;1572;1570;1711;1712;1587;1584;1571;1589</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,9 +32,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <NoWarn>1573;1572;1570;1711;1712;1587;1584;1571;1589</NoWarn>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
-    <CodeAnalysisRuleSet>$(RepositoryRoot)src\Strict.ruleset</CodeAnalysisRuleSet>
+    <NoWarn>$(NoWarn);1573;1572;1570;1711;1712;1587;1584;1571;1589</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
     <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
@@ -48,33 +46,43 @@
   <PropertyGroup>
     <DelaySign>true</DelaySign>
   </PropertyGroup>
-  <Import Project="$(RepositoryRoot)tools\EFToolsVsReferences.settings.targets" />
   <ItemGroup>
-    <Reference Condition="'$(VisualStudioVersion)' == '16.0'" Include="Microsoft.VisualStudio.Imaging.Interop.14.0.DesignTime, Version=14.0.0.0">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Microsoft.VisualStudio.TextTemplating.$(VisualStudioVersion15)" />
-    <Reference Include="Microsoft.VisualStudio.Shell.Interop.11.0" />
-    <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.11.0" />
-    <Reference Include="Microsoft.VisualStudio.Shell.Immutable.11.0" />
-    <Reference Include="Microsoft.VisualStudio.Shell.$(VisualStudioVersion15)" />
-    <Reference Condition="'$(VisualStudioVersion)' == '16.0'" Include="Microsoft.VisualStudio.Shell.Framework" />
-    <Reference Include="Microsoft.VisualStudio.Package.LanguageService.$(VisualStudioVersion15)" />
-    <Reference Include="Microsoft.VisualStudio.Modeling.Sdk.$(VisualStudioVersion15)" />
-    <Reference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.$(VisualStudioVersion15)" />
-    <Reference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell.$(VisualStudioVersion15)" />
-    <Reference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.GraphObject.$(VisualStudioVersion15)" />
-    <Reference Include="Microsoft.VisualStudio.TextTemplating.VSHost.$(VisualStudioVersion15)" />
-    <Reference Include="Microsoft.VisualStudio.Utilities" Condition="$(VisualStudioVersion)!='11.0' AND $(VisualStudioVersion)!='12.0'" />
-    <Reference Include="Microsoft.VisualStudio.DataTools.Interop" />
-    <Reference Include="Microsoft.WizardFramework" />
+    <PackageReference Include="Microsoft.VisualStudio.DataDesign.Common" Version="$(MicrosoftVisualStudioDataDesignCommonPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.ComponentModelHost" Version="17.0.30-g62d2639511" />
+    <PackageReference Include="Microsoft.VisualStudio.Imaging" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.Interop" Version="$(MicrosoftVisualStudioInteropPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.Package.LanguageService.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.Internal.VisualStudio.Interop" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.Design" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.XmlEditor" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VSDesigner" Version="$(MicrosoftVSDesignerPackageVersion)" />
+    <PackageReference Include="VsWebSite.Interop" Version="$(VsWebSiteInteropPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.GraphObject.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.DataTools.Interop" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.11.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.VSHost.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.Utilities" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.WizardFramework" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.Data.Core" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.Data.Framework" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.Data.Services" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="VsWebSite.Interop90" Version="$(VsWebSiteInteropPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" Version="$(MicrosoftVisualStudioTemplateWizardInterfacePackageVersion)" />
+    <PackageReference Include="Microsoft.Data.ConnectionUI" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.ProjectAggregator" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.Validation" Version="$(MicrosoftVisualStudioValidationPackageVersion)" />
+
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.VisualStudio.DataDesign.Common" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.VisualStudio.ComponentModelHost" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Runtime.DurableInstancing" />
     <Reference Include="System.Activities" />
@@ -96,36 +104,6 @@
     <Reference Include="UIAutomationTypes" />
     <Reference Include="ReachFramework" />
     <Reference Include="WindowsFormsIntegration" />
-    <Reference Include="EnvDte" />
-    <Reference Include="EnvDte80" />
-    <Reference Include="Microsoft.VisualStudio.Imaging" />
-    <Reference Include="Microsoft.VisualStudio.OLE.Interop" />
-    <Reference Include="Microsoft.VisualStudio.Shell.Interop" />
-    <Reference Include="Microsoft.VisualStudio.Shell.Interop.10.0" />
-    <Reference Include="Microsoft.VisualStudio.Shell.Interop.9.0" />
-    <Reference Include="Microsoft.VisualStudio.Shell.Interop.8.0" />
-    <Reference Condition="'$(VisualStudioVersion)' == '16.0'" Include="Microsoft.VisualStudio.Shell.Interop.14.0.DesignTime, Version=14.0.0.0">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Microsoft.VisualStudio.Shell.Design" />
-    <Reference Include="Microsoft.VisualStudio.TextManager.Interop" />
-    <Reference Include="Microsoft.VisualStudio.TextManager.Interop.8.0" />
-    <Reference Include="Microsoft.VisualStudio.XmlEditor" />
-    <Reference Include="Microsoft.Data.ConnectionUI" />
-    <Reference Include="Microsoft.VisualStudio.Data.Core" />
-    <Reference Include="Microsoft.VisualStudio.Data.Framework" />
-    <Reference Include="Microsoft.VisualStudio.Data.Services" />
-    <Reference Include="Microsoft.VIsualStudio.Designer.Interfaces" />
-    <Reference Include="Microsoft.VisualStudio.TemplateWizardInterface" />
-    <Reference Include="Microsoft.VSDesigner" />
-    <Reference Include="Microsoft.VisualStudio.VSHelp" />
-    <Reference Include="Microsoft.VisualStudio.VSHelp80" />
-    <Reference Include="vslangproj" />
-    <Reference Include="vslangproj2" />
-    <Reference Include="vslangproj80" />
-    <Reference Include="vswebsite.interop" />
-    <Reference Include="VsWebSite.Interop90" />
-    <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(RepositoryRoot)src\EntityFramework\Infrastructure\Design\HandlerBase.cs">

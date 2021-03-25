@@ -29,7 +29,6 @@
     <StartAction>Program</StartAction>
     <StartProgram>$(registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\VisualStudio\12.0@InstallDir)devenv.exe</StartProgram>
     <StartArguments>/rootsuffix Exp</StartArguments>
-    <CodeAnalysisRuleSet>..\Strict.ruleset</CodeAnalysisRuleSet>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
@@ -53,8 +52,15 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EnvDTE, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <Reference Include="EnvDTE80, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <PackageReference Include="Microsoft.Internal.VisualStudio.Interop" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.Interop" Version="$(MicrosoftVisualStudioInteropPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.Design" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.Data.Services" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.ComponentModelHost" Version="17.0.30-g62d2639511" />
+    <PackageReference Include="Microsoft.VisualStudio.Data.Core" Version="$(MicrosoftVisualStudioDataCorePackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0" Version="$(MicrosoftVisualStudioTextTemplatingInterfaces100PackageVersion)" />
+
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -66,23 +72,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Microsoft.VisualStudio.ComponentModelHost, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.VisualStudio.Data.Core, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.VisualStudio.Data.Services, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.VisualStudio.OLE.Interop" />
-    <Reference Include="Microsoft.VisualStudio.Shell.11.0, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <Private>false</Private>
-    </Reference>
-    <Reference Include="Microsoft.VisualStudio.Shell.Design, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.VisualStudio.Shell.Immutable.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <Reference Include="Microsoft.VisualStudio.Shell.Interop" />
-    <Reference Include="Microsoft.VisualStudio.Shell.Interop.8.0" />
-    <Reference Include="Microsoft.VisualStudio.Shell.Interop.9.0" />
-    <Reference Include="Microsoft.VisualStudio.Shell.Interop.10.0" />
-    <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
-    <Reference Include="VSLangProj, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\EdmSchemaErrorException.cs" />

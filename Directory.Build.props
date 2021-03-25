@@ -1,0 +1,15 @@
+<Project>
+  <PropertyGroup>
+    <MicrosoftVisualStudioPackageCurrent>17.0.0-preview-1-31216-036</MicrosoftVisualStudioPackageCurrent>
+    <MicrosoftVisualStudioDataCorePackageVersion>17.0.0-preview-1-31216-036</MicrosoftVisualStudioDataCorePackageVersion>
+    <MicrosoftVisualStudioDataDesignCommonPackageVersion>17.0.0-preview-1-31209-1111</MicrosoftVisualStudioDataDesignCommonPackageVersion>
+    <MicrosoftVisualStudioModelingPackageVersion>17.0.0-preview-1-31216-036</MicrosoftVisualStudioModelingPackageVersion>
+    <MicrosoftVisualStudioInteropPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioInteropPackageVersion>
+    <MicrosoftVisualStudioTemplateWizardInterfacePackageVersion>17.0.0-preview-1-31216-036</MicrosoftVisualStudioTemplateWizardInterfacePackageVersion>
+    <MicrosoftVisualStudioTextTemplatingInterfaces100PackageVersion>17.0.0-preview-1-31216-036</MicrosoftVisualStudioTextTemplatingInterfaces100PackageVersion>
+    <MicrosoftVisualStudioValidationPackageVersion>16.10.25-alpha</MicrosoftVisualStudioValidationPackageVersion>
+    <MicrosoftVSDesignerPackageVersion>17.0.0-preview-1-31209-1111</MicrosoftVSDesignerPackageVersion>
+    <MicrosoftXmlEditorPackageVersion>17.0.0-preview-1-31216-036</MicrosoftXmlEditorPackageVersion>
+    <VsWebSiteInteropPackageVersion>17.0.0-preview-1-31216-1112</VsWebSiteInteropPackageVersion>
+  </PropertyGroup>
+</Project>

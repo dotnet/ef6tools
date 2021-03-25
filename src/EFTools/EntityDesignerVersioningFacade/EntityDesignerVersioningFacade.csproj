@@ -22,8 +22,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>1591;1573;1572;1570;1711;1712;1587;1584;1571;1589</NoWarn>
-    <RunCodeAnalysis Condition=" '$(RunCodeAnalysisForEFTools)' != '' And '$(RunCodeAnalysis)' == '' ">$(RunCodeAnalysisForEFTools)</RunCodeAnalysis>
-    <CodeAnalysisRuleSet>$(RepositoryRoot)src\Strict.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -32,8 +30,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>1573;1572;1570;1711;1712;1587;1584;1571;1589</NoWarn>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
-    <CodeAnalysisRuleSet>$(RepositoryRoot)src\Strict.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>

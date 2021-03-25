@@ -3,6 +3,7 @@
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), build.cmd))\tools\EntityFramework.settings.targets"/>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{614AC98E-A68E-4EB4-AF27-1CEDBA7CA3B4}</ProjectGuid>
@@ -38,9 +39,10 @@
     <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Interop" Version="$(MicrosoftVisualStudioInteropPackageVersion)" />
+    
     <Reference Include="System" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="EnvDTE" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(RepositoryRoot)src\EFTools\SharedAssemblyInfo.cs">

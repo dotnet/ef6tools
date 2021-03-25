@@ -599,7 +599,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Engine
                 databaseSchemaName, databaseName, templatePath, artifactPath);
 
             // Deserialize the XAML file into a Activity
-            Activity modelFirstWorkflowElement;
+            System.Activities.Activity modelFirstWorkflowElement;
             using (var stream = workflowFileInfo.OpenRead())
             {
                 using (

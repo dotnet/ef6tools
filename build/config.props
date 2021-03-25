@@ -5,7 +5,7 @@
   <PropertyGroup>
     <RuntimeVersionMajor>6</RuntimeVersionMajor>
     <RuntimeVersionMinor>2</RuntimeVersionMinor>
-    <ToolingVersionMajor>16</ToolingVersionMajor>
+    <ToolingVersionMajor>17</ToolingVersionMajor>
     <ToolingVersionMinor>0</ToolingVersionMinor>
     <VisualStudioVersion>$(ToolingVersionMajor).$(ToolingVersionMinor)</VisualStudioVersion>
     <VersionBuild>0</VersionBuild>
@@ -21,5 +21,4 @@
     <EF5NuGetPackageVersion>5.0.0</EF5NuGetPackageVersion>
     <EF6NuGetPackageVersion>$(RuntimeVersionMajor).$(RuntimeVersionMinor).$(VersionBuild)</EF6NuGetPackageVersion>
   </PropertyGroup>
-
 </Project>
