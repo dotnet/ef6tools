@@ -47,9 +47,9 @@
     <Reference Include="Microsoft.CSharp" />
     
     <PackageReference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0" Version="$(MicrosoftVisualStudioTextTemplatingInterfaces100PackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.ComponentModelHost" Version="17.0.30-g62d2639511" />
-    <PackageReference Include="Moq" Version="4.0.10827" />
-    <PackageReference Include="xunit" Version="1.9.2" />
+    <PackageReference Include="Microsoft.VisualStudio.ComponentModelHost" Version="$(MicrosoftVisualStudioComponentModelHostPackageVersion)" />
+    <PackageReference Include="Moq" Version="$(MoqPackageVersion)" />
+    <PackageReference Include="xunit" Version="$(XunitPackageVersion)" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\PowerTools\PowerTools.csproj">

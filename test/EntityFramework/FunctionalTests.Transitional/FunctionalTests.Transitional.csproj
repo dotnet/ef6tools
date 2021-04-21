@@ -75,10 +75,10 @@
     <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Moq" Version="4.0.10827" />
-    <PackageReference Include="System.Data.SqlServerCe" Version="4.0.8876.1" />
-    <PackageReference Include="xunit" Version="1.9.2" />
-    <PackageReference Include="xunit.extensions" Version="1.9.2" />
+    <PackageReference Include="Moq" Version="$(MoqPackageVersion)" />
+    <PackageReference Include="System.Data.SqlServerCe" Version="$(SystemDataSqlServerCePackageVersion)" />
+    <PackageReference Include="xunit" Version="$(XunitPackageVersion)" />
+    <PackageReference Include="xunit.extensions" Version="$(XunitPackageVersion)" />
 
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PresentationCore" />
