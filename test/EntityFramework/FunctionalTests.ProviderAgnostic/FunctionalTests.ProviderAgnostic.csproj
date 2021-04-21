@@ -66,8 +66,8 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="xunit" Version="1.9.2" />
-    <PackageReference Include="MySql.Data.Entity" Version="6.7.2-beta-ef6" />
+    <PackageReference Include="xunit" Version="$(XunitPackageVersion)" />
+    <PackageReference Include="MySql.Data.Entity" Version="$(MySqlDataEntityPackageVersion)" />
 
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
