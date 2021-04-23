@@ -245,7 +245,7 @@ steps:
 
   displayName: 'Publish VSIX, MSI and CAB to Drop'
   # Don't publish PR builds
-  condition: eq($(Build.SourceBranchName), 'main')
+  condition: eq(variables['Build.SourceBranchName'], 'main')
   inputs:
 
     PathtoPublish: '$(Build.ArtifactStagingDirectory)\SetupResults'
@@ -281,7 +281,7 @@ steps:
 
   displayName: 'Publish PDB and XML Files To Drop'
   # Don't publish PR builds
-  condition: eq($(Build.SourceBranchName), 'main')
+  condition: eq(variables['Build.SourceBranchName'], 'main')
   inputs:
 
     PathtoPublish: '$(Build.ArtifactStagingDirectory)\PdbsAndXmls'
@@ -298,7 +298,7 @@ steps:
 
   displayName: 'Enable Source Server'
   # Don't publish PR builds
-  condition: eq($(Build.SourceBranchName), 'main')
+  condition: eq(variables['Build.SourceBranchName'], 'main')
   inputs:
 
     SymbolsFolder: '$(Build.ArtifactStagingDirectory)\PdbsAndXmls'
