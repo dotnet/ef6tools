@@ -3,7 +3,7 @@
 <#@ assembly name="System.Data" #>
 <#@ assembly name="System.Xml" #>
 <#@ assembly name="System.Xml.Linq"#>
-<#@ assembly name="EnvDTE"#>
+<#@ assembly name="Microsoft.VisualStudio.Interop.dll" #>
 <#@ assembly name="%VSAPPIDDIR%EntityFramework.dll" #>
 <#@ assembly name="%VSAPPIDDIR%Microsoft.Data.Entity.Design.dll" #>
 <#@ import namespace="System" #>
