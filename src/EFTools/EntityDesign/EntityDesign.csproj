@@ -1032,7 +1032,7 @@
       <InTheBoxItemTemplateFiles Include="VisualStudio\InTheBoxItemTemplates\*.vstman" />
     </ItemGroup>
     <MakeDir Directories="@(InTheBoxItemTemplateFiles->'$(TargetItemTemplateFilesDir)\%(RecursiveDir)')" />
-    <RegexReplaceInFile Condition="'%(Extension)' == '.vstemplate'" InputFileName="%(InTheBoxItemTemplateFiles.Identity)" OutputFileName="@(InTheBoxItemTemplateFiles->'$(TargetItemTemplateFilesDir)\%(RecursiveDir)%(Filename)%(Extension)')" Patterns="NUGETEFTOOLSPACKAGESREGKEYNAMETOKEN;EFPACKAGEVERSION;EFDESIGNERVERSIONTOKEN" Replacements="EntityFrameworkVisualStudio$(VisualStudioVersion.Substring(0,2))Tools;$(EF6NuGetPackageVersion);$(AssemblyVersion)" />
+    <RegexReplaceInFile Condition="'%(Extension)' == '.vstemplate'" InputFileName="%(InTheBoxItemTemplateFiles.Identity)" OutputFileName="@(InTheBoxItemTemplateFiles->'$(TargetItemTemplateFilesDir)\%(RecursiveDir)%(Filename)%(Extension)')" Patterns="NUGETEFTOOLSPACKAGESREGKEYNAMETOKEN;EFPACKAGEVERSION;EFDESIGNERVERSIONTOKEN" Replacements="EntityFrameworkVisualStudio17Tools;$(EF6NuGetPackageVersion);$(AssemblyVersion)" />
     <Copy Condition="'%(Extension)' != '.vstemplate'" SourceFiles="@(InTheBoxItemTemplateFiles)" DestinationFiles="@(InTheBoxItemTemplateFiles->'$(TargetItemTemplateFilesDir)\%(RecursiveDir)%(Filename)%(Extension)')" />
   </Target>
   <Target Name="CreateTemplatesAndPackages" DependsOnTargets="UpdateTemplateVersion;PrepareTemplatesForSetup">
