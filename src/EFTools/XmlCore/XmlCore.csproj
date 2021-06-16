@@ -60,6 +60,7 @@
     <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
 
+    <PackageReference Include="Microsoft.VisualStudio.Validation" Version="$(MicrosoftVisualStudioValidationPackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
   </ItemGroup>
   <ItemGroup>
