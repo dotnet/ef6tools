@@ -236,6 +236,14 @@ namespace Microsoft.Data.Entity.Design.Package
                     return false;
                 }
 
+                if (Diagram is EntityDesignerDiagram entityDiagram && entityDiagram.ModelElement.EditingContext is null)
+                {
+                    // The editing context is null. This will cause downstream calls to throw exceptions.
+                    // It is unknown why this happens sometimes, but seems to have something to do with designers being open on project load.
+                    // Solution: Close the frame.
+                    return false;
+                }
+
                 ApplyLayoutInformationFromModelDiagram();
 
                 Debug.Assert(DocData.Store.RuleManager.IsRuleSuspended == false, "The rule notification should not be suspended.");
