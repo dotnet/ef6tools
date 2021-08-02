@@ -18,7 +18,7 @@ namespace Microsoft.Data.Entity.Design.CodeGeneration
                 return null;
             }
 
-            if (// Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. See License.txt in the project root for license information.
+            if (// Copyright (c) Microsoft.  All Rights Reserved.  Licensed under the MIT license.  See License.txt in the project root for license information.
 
 property.IsFixedLength != true)
             {

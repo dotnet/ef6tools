@@ -1,4 +1,4 @@
-# Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. See License.txt in the project root for license information.
+# Copyright (c) Microsoft.  All Rights Reserved.  Licensed under the MIT license.  See License.txt in the project root for license information.
 
 # this script configures ProviderAgnostic tests to run againts a particular provider and targetting a particular database
 # replaces the default App.config file with a provider specific template (e.g. App.config.mysql) 

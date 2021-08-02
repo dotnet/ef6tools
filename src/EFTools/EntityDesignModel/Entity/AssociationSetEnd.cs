@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft.  All Rights Reserved.  Licensed under the MIT license.  See License.txt in the project root for license information.
 
 namespace Microsoft.Data.Entity.Design.Model.Entity
 {
@@ -18,7 +18,7 @@ namespace Microsoft.Data.Entity.Design.Model.Entity
         // also do this for all the other classes that have DefaultTableValues or ItemBindings.
         // An interesting test would be if a traversal of the XLinq tree from the root, produced the 
         // same output as a traversal of the EDM tree from the root (ie, do they both generate the same 
-        // xml document).  This would be a great unit test we’ll have to add.  
+        // xml document).  This would be a great unit test weï¿½ll have to add.  
 
         private SingleItemBinding<AssociationEnd> _roleBinding;
         private SingleItemBinding<EntitySet> _entitySetBinding;

@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft.  All Rights Reserved.  Licensed under the MIT license.  See License.txt in the project root for license information.
 
 namespace Microsoft.Data.Entity.Design.UI.ViewModels.MappingDetails.Functions
 {
@@ -276,8 +276,8 @@ namespace Microsoft.Data.Entity.Design.UI.ViewModels.MappingDetails.Functions
 
                     // fix up our view model
                     ModelItem = mf;
-                    // The parent item for the function mapping view model always has 3 children; insert, update and delete items.  If there isn’t 
-                    // a function mapped for any of these, then there is still a view model item since we want to display the ‘creator node’ text.
+                    // The parent item for the function mapping view model always has 3 children; insert, update and delete items.  If there isnï¿½t 
+                    // a function mapped for any of these, then there is still a view model item since we want to display the ï¿½creator nodeï¿½ text.
                     // Calling this.Parent.AddChild(this) here would make the parent think it had a new child instead of updating the existing one - 
                     // so it is correct to _not_ call it here.
                 };
