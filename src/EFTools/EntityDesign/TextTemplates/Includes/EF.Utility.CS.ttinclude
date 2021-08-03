@@ -24,7 +24,7 @@
 <#@ import namespace="Microsoft.CSharp"#>
 <#@ import namespace="System.Text"#>
 <#+
-// Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft.  All Rights Reserved.  Licensed under the MIT license.  See License.txt in the project root for license information.
 
 public static Dictionary<string, string> TemplateMetadata = new Dictionary<string, string>();
 

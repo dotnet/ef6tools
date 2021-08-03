@@ -1,5 +1,5 @@
 <#
-// Copyright (c) Microsoft Open Technologies, Inc. All rights reserved. See License.txt in the project root for license information.
+// Copyright (c) Microsoft.  All Rights Reserved.  Licensed under the MIT license.  See License.txt in the project root for license information.
 // ++++++++++++++++++++++++++++++++++++++++++++++++++
 // NOTE: This include template also requires an assembly
 // reference to %VSnnnCOMNTOOLS% or $(DevEnvDir)\Microsoft.Data.Entity.Design.DatabaseGeneration.dll
