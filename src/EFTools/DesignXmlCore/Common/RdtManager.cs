@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Microsoft.  All Rights Reserved.  Licensed under the MIT license.  See License.txt in the project root for license information.
 
-using VsErrorHandler = Microsoft.VisualStudio.ErrorHandler;
 using VsShell = Microsoft.VisualStudio.Shell.Interop;
 using VsTextMgr = Microsoft.VisualStudio.TextManager.Interop;
 
@@ -29,7 +28,7 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.Common
     internal sealed class RdtManager : IDisposable
     {
         private static volatile RdtManager _instance;
-        private static readonly object _lock = new Object();
+        private static readonly object _lock = new object();
 
         private readonly VsShell.IVsInvisibleEditorManager _invisibleEditorManager;
         private readonly VsShell.IVsRunningDocumentTable _runningDocumentTable;
@@ -403,8 +402,7 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.Common
             string content = null;
             if (textLines != null)
             {
-                int line, column;
-                var result = textLines.GetLastLineIndex(out line, out column);
+                var result = textLines.GetLastLineIndex(out int line, out int column);
                 if (result == VSConstants.S_OK)
                 {
                     result = textLines.GetLineText(0, 0, line, column, out content);
@@ -438,20 +436,19 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.Common
         {
             ArgumentValidation.CheckForNullReference(dirtyFiles, "dirtyFiles");
 
+            ActivityLog.LogInformation("EF6Designer", "Info:SavingEDMXFile");
+
             var rdt = _runningDocumentTable;
 
             var fileCount = dirtyFiles.Count;
             for (var fileIndex = 0; fileIndex < fileCount; fileIndex++)
             {
                 var filePath = dirtyFiles[fileIndex];
-                var docData = GetDocData(filePath) as VsShell.IVsPersistDocData;
-                if (docData != null)
+                if (GetDocData(filePath) is VsShell.IVsPersistDocData docData)
                 {
                     var cookie = GetRdtCookie(filePath);
-                    string newdoc;
-                    int cancelled;
-                    NativeMethods.ThrowOnFailure(rdt.NotifyOnBeforeSave(cookie));
-                    var result = docData.SaveDocData(VsShell.VSSAVEFLAGS.VSSAVE_Save, out newdoc, out cancelled);
+                    _ = NativeMethods.ThrowOnFailure(rdt.NotifyOnBeforeSave(cookie));
+                    var result = docData.SaveDocData(VsShell.VSSAVEFLAGS.VSSAVE_Save, out _, out int cancelled);
                     if (result != VSConstants.S_OK
                         || cancelled != 0)
                     {
@@ -460,7 +457,7 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.Common
                                 CultureInfo.CurrentCulture,
                                 Resources.Exception_FailedToSaveFile, filePath));
                     }
-                    NativeMethods.ThrowOnFailure(rdt.NotifyOnAfterSave(cookie));
+                    _ = NativeMethods.ThrowOnFailure(rdt.NotifyOnAfterSave(cookie));
                 }
             }
         }
@@ -488,36 +485,28 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.Common
                 var uiShell = _uiShell;
 
                 // Go through the open documents and find it
-                VsShell.IEnumWindowFrames windowFramesEnum;
-                ErrorHandler.ThrowOnFailure(uiShell.GetDocumentWindowEnum(out windowFramesEnum));
+                _ = ErrorHandler.ThrowOnFailure(uiShell.GetDocumentWindowEnum(out VsShell.IEnumWindowFrames windowFramesEnum));
                 var windowFrames = new VsShell.IVsWindowFrame[1];
-                uint fetched;
-                while (windowFramesEnum.Next(1, windowFrames, out fetched) == VSConstants.S_OK
+                while (windowFramesEnum.Next(1, windowFrames, out uint fetched) == VSConstants.S_OK
                        && fetched == 1)
                 {
                     var windowFrame = windowFrames[0];
-                    object data;
-                    ErrorHandler.ThrowOnFailure(windowFrame.GetProperty((int)VsShell.__VSFPROPID.VSFPROPID_DocData, out data));
+                    _ = ErrorHandler.ThrowOnFailure(windowFrame.GetProperty((int)VsShell.__VSFPROPID.VSFPROPID_DocData, out object data));
 
-                    var fileFormat = data as VsShell.IPersistFileFormat;
-                    if (fileFormat != null)
+                    if (data is VsShell.IPersistFileFormat fileFormat)
                     {
-                        string candidateFilename;
-                        uint formatIndex;
-                        int dirty;
-
                         // The binary editor returns notimpl for IsDirty so just continue if
                         // the interface returns E_NOTIMPL
-                        var hr = fileFormat.IsDirty(out dirty);
+                        var hr = fileFormat.IsDirty(out int dirty);
                         if (hr == VSConstants.E_NOTIMPL)
                         {
                             continue;
                         }
 
-                        ErrorHandler.ThrowOnFailure(hr);
+                        _ = ErrorHandler.ThrowOnFailure(hr);
                         if (dirty == 1)
                         {
-                            NativeMethods.ThrowOnFailure(fileFormat.GetCurFile(out candidateFilename, out formatIndex));
+                            _ = NativeMethods.ThrowOnFailure(fileFormat.GetCurFile(out string candidateFilename, out uint _));
                             if (string.IsNullOrEmpty(candidateFilename) == false
                                 &&
                                 shouldHandle(candidateFilename))
