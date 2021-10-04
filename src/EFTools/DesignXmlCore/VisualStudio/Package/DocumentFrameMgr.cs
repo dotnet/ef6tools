@@ -12,6 +12,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Package
     using Microsoft.Data.Tools.VSXmlDesignerBase.Model.VisualStudio;
     using Microsoft.VisualStudio;
     using Microsoft.VisualStudio.Shell.Interop;
+    using Microsoft.VisualStudio.Telemetry;
 
     /// <summary>
     ///     The DocumentFrameMgr class manages all document window frames that
@@ -118,7 +119,8 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Package
 
         protected virtual void OnAfterSave()
         {
-            // Do nothing by default
+            var eventName = "vs/ef6designer/document/save";
+            _ = Internal.VisualStudio.Shell.TelemetryHelper.DataModelTelemetrySession?.PostOperation(eventName, TelemetryResult.Success);
         }
 
         protected abstract void OnBeforeLastDesignerDocumentUnlock(Uri docUri);

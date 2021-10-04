@@ -436,8 +436,6 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.Common
         {
             ArgumentValidation.CheckForNullReference(dirtyFiles, "dirtyFiles");
 
-            ActivityLog.LogInformation("EF6Designer", "Info:SavingEDMXFile");
-
             var rdt = _runningDocumentTable;
 
             var fileCount = dirtyFiles.Count;
