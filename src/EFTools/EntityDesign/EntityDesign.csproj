@@ -1,51 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
+
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), BuildEFTools.cmd))\tools\EntityFramework.settings.targets" />
+
   <PropertyGroup>
-    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F904B4BE-C7CF-4E4F-85B7-B006A2D1C561}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworks>$(ToolingDotNetFrameworkSdkVersion)</TargetFrameworks>
     <AssemblyName>Microsoft.Data.Entity.Design</AssemblyName>
-    <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
     <RootNamespace>Microsoft.Data.Entity.Design</RootNamespace>
     <AssemblyAttributeClsCompliant>false</AssemblyAttributeClsCompliant>
-    <TargetFrameworkVersion>$(ToolingDotNetFrameworkVersion)</TargetFrameworkVersion>
-    <AssemblyAttributeClsCompliant>false</AssemblyAttributeClsCompliant>
-    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);1591;1573;1572;1570;1711;1712;1587;1584;1571;1589</NoWarn>
     <NoWarn>$(NoWarn);VSTHRD010;VSSDK006;VSTHRD001</NoWarn>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoWarn>$(NoWarn);1591;1573;1572;1570;1711;1712;1587;1584;1571;1589</NoWarn>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoWarn>$(NoWarn);1573;1572;1570;1711;1712;1587;1584;1571;1589</NoWarn>
-  </PropertyGroup>
+
   <PropertyGroup>
     <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
   </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>$(RepositoryRoot)src\EFTools\EFToolsPublicKey.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <DelaySign>true</DelaySign>
-  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Runtime.DurableInstancing" />
+    <Reference Include="System.Activities" />
+    <Reference Include="Accessibility" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Printing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.DataDesign.Common" Version="$(MicrosoftVisualStudioDataDesignCommonPackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.ComponentModelHost" Version="$(MicrosoftVisualStudioComponentModelHostPackageVersion)" />
@@ -77,34 +79,19 @@
     <PackageReference Include="Microsoft.Data.ConnectionUI" Version="$(MicrosoftVisualStudioPackageCurrent)" />
     <PackageReference Include="Microsoft.VisualStudio.ProjectAggregator" Version="$(MicrosoftVisualStudioPackageCurrent)" />
     <PackageReference Include="Microsoft.VisualStudio.Validation" Version="$(MicrosoftVisualStudioValidationPackageVersion)" />
-
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="System.Runtime.DurableInstancing" />
-    <Reference Include="System.Activities" />
-    <Reference Include="Accessibility" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Design" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Drawing.Design" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Printing" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="UIAutomationProvider" />
-    <Reference Include="UIAutomationTypes" />
-    <Reference Include="ReachFramework" />
-    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(RepositoryRoot)src\EntityFramework.SqlServer\EntityFramework.SqlServer.csproj" />
+    <ProjectReference Include="$(RepositoryRoot)src\EntityFramework\EntityFramework.csproj" />
+    <ProjectReference Include="..\DesignXmlCore\DesignXmlCore.csproj" />
+    <ProjectReference Include="..\EntityDesignerVersioningFacade\EntityDesignerVersioningFacade.csproj" />
+    <ProjectReference Include="..\XmlCore\XmlCore.csproj" />
+    <ProjectReference Include="..\EntityDesignDatabaseGeneration\EntityDesignDatabaseGeneration.csproj" />
+    <ProjectReference Include="..\EntityDesignExtensibility\EntityDesignExtensibility.csproj" />
+    <ProjectReference Include="..\EntityDesignModel\EntityDesignModel.csproj" />
+  </ItemGroup>
+
   <ItemGroup>
     <Compile Include="$(RepositoryRoot)src\EntityFramework\Infrastructure\Design\HandlerBase.cs">
       <Link>VisualStudio\HandlerBase.cs</Link>
@@ -325,77 +312,10 @@
     <Compile Include="VisualStudio\TextTemplating\TemplateActivity.cs" />
     <Compile Include="VisualStudio\TextTemplating\TemplateCallback.cs" />
     <Compile Include="VisualStudio\VsUtilsWrapper.cs" />
-    <None Include="CodeGeneration\Generators\GeneratedCode\DefaultCSharpContextGenerator.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DefaultCSharpContextGenerator.cs</LastGenOutput>
-      <CustomToolNamespace>Microsoft.Data.Entity.Design.CodeGeneration</CustomToolNamespace>
-    </None>
-    <None Include="CodeGeneration\Generators\GeneratedCode\DefaultCSharpEntityTypeGenerator.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DefaultCSharpEntityTypeGenerator.cs</LastGenOutput>
-      <CustomToolNamespace>Microsoft.Data.Entity.Design.CodeGeneration</CustomToolNamespace>
-    </None>
-    <None Include="CodeGeneration\Generators\GeneratedCode\DefaultVBContextGenerator.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DefaultVBContextGenerator.cs</LastGenOutput>
-      <CustomToolNamespace>Microsoft.Data.Entity.Design.CodeGeneration</CustomToolNamespace>
-    </None>
-    <None Include="CodeGeneration\Generators\GeneratedCode\DefaultVBEntityTypeGenerator.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DefaultVBEntityTypeGenerator.cs</LastGenOutput>
-      <CustomToolNamespace>Microsoft.Data.Entity.Design.CodeGeneration</CustomToolNamespace>
-    </None>
-    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DbContext.txt</LastGenOutput>
-    </None>
-    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF5\CSharpDbContext.Context.tt" />
-    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF5\CSharpDbContext.Types.tt" />
-    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF5\VBDbContext.Context.tt" />
-    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF5\VBDbContext.Types.tt" />
-    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF6\CSharpDbContext.Context.tt" />
-    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF6\CSharpDbContext.Types.tt" />
-    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF6\VBDbContext.Context.tt" />
-    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF6\VBDbContext.Types.tt" />
-    <None Include="VisualStudio\InTheBoxItemTemplates\CodeFirst.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CodeFirst.txt</LastGenOutput>
-    </None>
-    <None Include="VisualStudio\InTheBoxItemTemplates\VSTemplateGeneratorUtils.ttinclude" />
-    <None Include="workflows\TablePerTypeStrategy.xaml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <Page Include="Resources\EscherIcons.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Styles.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="VisualStudio\AssemblyResources.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Compile Include="VisualStudio\AssemblyResources.xaml.cs">
       <DependentUpon>AssemblyResources.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Resources\ExplorerContent_$(VisualStudioVersion15).xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\Views\Dialogs\EnumTypeDialog_$(VisualStudioVersion15).xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UI\Views\Dialogs\RefactorRenameDialog_$(VisualStudioVersion15).xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Extensibility\IEntityDesignerConversionData.cs" />
     <Compile Include="Extensibility\ModelConversionContextImpl.cs" />
     <Compile Include="Extensibility\ModelGenerationExtensionContextImpl.cs" />
@@ -722,10 +642,92 @@
       <DependentUpon>Strings.resx</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="UI\ViewModels\PropertyWindow\Editors\DebugViewerEditor.cs" />
+    <Compile Include="UI\Views\Dialogs\DebugViewerDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Views\Dialogs\DebugViewerDialog.Designer.cs">
+      <DependentUpon>DebugViewerDialog.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
+
   <ItemGroup>
-    <AppDesigner Include="Properties\" />
+    <None Include="CodeGeneration\Generators\GeneratedCode\DefaultCSharpContextGenerator.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DefaultCSharpContextGenerator.cs</LastGenOutput>
+      <CustomToolNamespace>Microsoft.Data.Entity.Design.CodeGeneration</CustomToolNamespace>
+    </None>
+    <None Include="CodeGeneration\Generators\GeneratedCode\DefaultCSharpEntityTypeGenerator.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DefaultCSharpEntityTypeGenerator.cs</LastGenOutput>
+      <CustomToolNamespace>Microsoft.Data.Entity.Design.CodeGeneration</CustomToolNamespace>
+    </None>
+    <None Include="CodeGeneration\Generators\GeneratedCode\DefaultVBContextGenerator.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DefaultVBContextGenerator.cs</LastGenOutput>
+      <CustomToolNamespace>Microsoft.Data.Entity.Design.CodeGeneration</CustomToolNamespace>
+    </None>
+    <None Include="CodeGeneration\Generators\GeneratedCode\DefaultVBEntityTypeGenerator.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DefaultVBEntityTypeGenerator.cs</LastGenOutput>
+      <CustomToolNamespace>Microsoft.Data.Entity.Design.CodeGeneration</CustomToolNamespace>
+    </None>
+    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DbContext.txt</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF5\CSharpDbContext.Context.tt" />
+    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF5\CSharpDbContext.Types.tt" />
+    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF5\VBDbContext.Context.tt" />
+    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF5\VBDbContext.Types.tt" />
+    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF6\CSharpDbContext.Context.tt" />
+    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF6\CSharpDbContext.Types.tt" />
+    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF6\VBDbContext.Context.tt" />
+    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF6\VBDbContext.Types.tt" />
+    <None Include="VisualStudio\InTheBoxItemTemplates\CodeFirst.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CodeFirst.txt</LastGenOutput>
+    </None>
+    <None Include="VisualStudio\InTheBoxItemTemplates\VSTemplateGeneratorUtils.ttinclude" />
+    <None Include="workflows\TablePerTypeStrategy.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TextTemplates\Includes\GenerateTSQL.Utility.ttinclude">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="TextTemplates\SsdlToSql10.tt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="VisualStudio\ModelWizard\bitmaps\Error.bmp" />
+    <None Include="VisualStudio\ModelWizard\bitmaps\Information.bmp" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="Resources\EscherIcons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\Styles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VisualStudio\AssemblyResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ExplorerContent_$(VisualStudioVersion15).xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\Views\Dialogs\EnumTypeDialog_$(VisualStudioVersion15).xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\Views\Dialogs\RefactorRenameDialog_$(VisualStudioVersion15).xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
   <ItemGroup>
     <Resource Include="Resources\Icons\complextype_16x16.png" />
     <Resource Include="Resources\Icons\complexproperty_16x16.png" />
@@ -734,6 +736,9 @@
     <Resource Include="Resources\Icons\warning_16x16.png" />
     <Resource Include="Resources\mappingdetailsarrowsimagelist.bmp" />
     <Resource Include="Resources\mappingdetailsiconsimagelist.bmp" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="VisualStudio\InTheBoxItemTemplates\DbContext.txt">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -764,20 +769,12 @@
     <Content Include="VisualStudio\ItemTemplate\ModelObjectItemVB.vstemplate" />
     <Content Include="VisualStudio\ItemTemplate\ModelObjectItemVB_ASPNET.vstemplate" />
   </ItemGroup>
+
   <ItemGroup>
     <EmbeddedResource Include="UI\Views\Dialogs\DeleteStorageEntitySetsDialog.resx">
       <DependentUpon>DeleteStorageEntitySetsDialog.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <None Include="TextTemplates\Includes\GenerateTSQL.Utility.ttinclude">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="TextTemplates\SsdlToSql10.tt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <Resource Include="Resources\Images\Search.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -869,8 +866,14 @@
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\Views\Dialogs\DebugViewerDialog.resx">
+      <DependentUpon>DebugViewerDialog.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
+
   <ItemGroup>
+    <Resource Include="Resources\Images\Search.ico" />
     <Resource Include="Resources\Edmx.png" />
     <Resource Include="Resources\MappingDetailsCommandStrip.bmp" />
     <Resource Include="Resources\Icons\association_16x16.png" />
@@ -898,8 +901,6 @@
     <Resource Include="VisualStudio\ModelWizard\bitmaps\DbUpdatedItems.bmp" />
     <Resource Include="VisualStudio\ModelWizard\bitmaps\DbViews.bmp" />
     <Resource Include="VisualStudio\ModelWizard\bitmaps\DeletedItem.bmp" />
-    <None Include="VisualStudio\ModelWizard\bitmaps\Error.bmp" />
-    <None Include="VisualStudio\ModelWizard\bitmaps\Information.bmp" />
     <Resource Include="VisualStudio\ModelWizard\bitmaps\StoredProc.bmp" />
     <Resource Include="VisualStudio\ModelWizard\bitmaps\View.bmp" />
     <Resource Include="VisualStudio\ModelWizard\bitmaps\database.png" />
@@ -911,6 +912,7 @@
     <Resource Include="VisualStudio\ModelWizard\bitmaps\Table.bmp" />
     <Resource Include="VisualStudio\ModelWizard\native.rc" />
   </ItemGroup>
+
   <!-- Start T4 Templates region-->
   <ItemGroup>
     <None Include="TextTemplates\Includes\EF.Utility.CS.ttinclude">
@@ -927,72 +929,26 @@
     </None>
   </ItemGroup>
   <!-- End T4 Templates region -->
-  <ItemGroup>
-    <Compile Include="UI\ViewModels\PropertyWindow\Editors\DebugViewerEditor.cs" />
-    <Compile Include="UI\Views\Dialogs\DebugViewerDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\Views\Dialogs\DebugViewerDialog.Designer.cs">
-      <DependentUpon>DebugViewerDialog.cs</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="UI\Views\Dialogs\DebugViewerDialog.resx">
-      <DependentUpon>DebugViewerDialog.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
+
   <ItemGroup>
     <CodeAnalysisDictionary Include="..\..\CodeAnalysisDictionary.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="$(RepositoryRoot)src\EntityFramework.SqlServer\EntityFramework.SqlServer.csproj">
-      <Project>{6f4bb80b-5f74-44d3-a77f-0025dfa48c1a}</Project>
-      <Name>EntityFramework.SqlServer</Name>
-    </ProjectReference>
-    <ProjectReference Include="$(RepositoryRoot)src\EntityFramework\EntityFramework.csproj">
-      <Project>{e06d1c12-efe8-4413-a15c-ae01fc158f2f}</Project>
-      <Name>EntityFramework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DesignXmlCore\DesignXmlCore.csproj">
-      <Project>{6c80dbca-16c8-48c9-9019-ab6fded788de}</Project>
-      <Name>DesignXmlCore</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EntityDesignerVersioningFacade\EntityDesignerVersioningFacade.csproj">
-      <Project>{0518e682-510d-48f8-bb14-7151c50a1850}</Project>
-      <Name>EntityDesignerVersioningFacade</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XmlCore\XmlCore.csproj">
-      <Project>{79b40a85-cdcc-4ac3-a583-77ca43cb5136}</Project>
-      <Name>XmlCore</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EntityDesignDatabaseGeneration\EntityDesignDatabaseGeneration.csproj">
-      <Project>{15000b5c-c005-473a-ba65-eaf37e660b2c}</Project>
-      <Name>EntityDesignDatabaseGeneration</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EntityDesignExtensibility\EntityDesignExtensibility.csproj">
-      <Project>{092010ff-c0c3-4564-b8f0-7758e630de00}</Project>
-      <Name>EntityDesignExtensibility</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EntityDesignModel\EntityDesignModel.csproj">
-      <Project>{b44e942f-0ad1-4fb4-9146-dd1f8e17d4d8}</Project>
-      <Name>EntityDesignModel</Name>
-    </ProjectReference>
-  </ItemGroup>
+
   <ItemGroup>
     <IntellisenseFiles Include="IntellisenseFiles\**\*.xml" />
   </ItemGroup>
+
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
   <PropertyGroup>
     <BuildDependsOn>
       $(BuildDependsOn);
       CreateTemplatesAndPackages;
     </BuildDependsOn>
   </PropertyGroup>
+
   <Target Name="PrepareForPackaging">
     <PropertyGroup>
       <TargetTemplateDir>$(TargetDir)EntityDesigner\Templates</TargetTemplateDir>
@@ -1015,6 +971,7 @@
     <MakeDir Directories="$(TargetItemTemplateFilesDir)" />
     <MakeDir Directories="$(TargetDBContextNuGetPackagesDir)" />
   </Target>
+
   <Target Name="UpdateTemplateVersion" DependsOnTargets="PrepareForPackaging">
     <ItemGroup>
       <Template Include="VisualStudio\ItemTemplate\ModelObjectItemCS.vstemplate" />
@@ -1024,6 +981,7 @@
     </ItemGroup>
     <RegexReplaceInFile InputFileName="%(Template.Identity)" OutputFileName="$(VersionedItemTemplateDir)$([System.IO.Path]::GetFileName(%(Template.Identity)))" Patterns="EFDESIGNERVERSIONTOKEN" Replacements="$(AssemblyVersion)" />
   </Target>
+
   <Target Name="PrepareTemplatesForSetup" DependsOnTargets="PrepareForPackaging">
     <!-- Updates the NuGet registry key name and copies templates to the bin dir to prepare for setup -->
     <ItemGroup>
@@ -1035,6 +993,7 @@
     <RegexReplaceInFile Condition="'%(Extension)' == '.vstemplate'" InputFileName="%(InTheBoxItemTemplateFiles.Identity)" OutputFileName="@(InTheBoxItemTemplateFiles->'$(TargetItemTemplateFilesDir)\%(RecursiveDir)%(Filename)%(Extension)')" Patterns="NUGETEFTOOLSPACKAGESREGKEYNAMETOKEN;EFPACKAGEVERSION;EFDESIGNERVERSIONTOKEN" Replacements="EntityFrameworkVisualStudio17Tools;$(EF6NuGetPackageVersion);$(AssemblyVersion)" />
     <Copy Condition="'%(Extension)' != '.vstemplate'" SourceFiles="@(InTheBoxItemTemplateFiles)" DestinationFiles="@(InTheBoxItemTemplateFiles->'$(TargetItemTemplateFilesDir)\%(RecursiveDir)%(Filename)%(Extension)')" />
   </Target>
+
   <Target Name="CreateTemplatesAndPackages" DependsOnTargets="UpdateTemplateVersion;PrepareTemplatesForSetup">
     <ItemGroup>
       <CommonTemplateFile Include="$(ItemTemplateDir)ProjectItem.edmx" />
@@ -1056,4 +1015,5 @@
     <Copy Condition="'$(VisualStudioVersion)' != '11.0' AND '$(VisualStudioVersion)' != '12.0' AND '$(VisualStudioVersion)' != '14.0'" SourceFiles="@(ADONETCS_ASPNET)" DestinationFiles="@(ADONETCS_ASPNET->'$(CSASPDir)\%(Filename)%(Extension)')" />
     <Copy Condition="'$(VisualStudioVersion)' != '11.0' AND '$(VisualStudioVersion)' != '12.0' AND '$(VisualStudioVersion)' != '14.0'" SourceFiles="@(ADONETVB_ASPNET)" DestinationFiles="@(ADONETVB_ASPNET->'$(VBASPDir)\%(Filename)%(Extension)')" />
   </Target>
+
 </Project>
