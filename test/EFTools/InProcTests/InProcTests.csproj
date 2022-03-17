@@ -1,67 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
+
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), BuildEFTools.cmd))\tools\EntityFramework.settings.targets" />
+
   <PropertyGroup>
-    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{85A3A202-1727-4AC9-88CD-0531F9855895}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworks>$(ToolingDotNetFrameworkSdkVersion)</TargetFrameworks>
     <RootNamespace>EFDesigner.InProcTests</RootNamespace>
     <AssemblyName>EFDesigner.InProcTests</AssemblyName>
-    <TargetFrameworkVersion>$(ToolingDotNetFrameworkVersion)</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
-    <RestorePackages>true</RestorePackages>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..</SolutionDir>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <NoWarn>$(NoWarn);VSTHRD010</NoWarn>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <PropertyGroup>
     <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
   </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>$(RepositoryRoot)src\EFTools\EFToolsPublicKey.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <DelaySign>true</DelaySign>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Interop" Version="$(MicrosoftVisualStudioInteropPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.XmlEditor" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.GraphObject.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" Version="$(MicrosoftVisualStudioTemplateWizardInterfacePackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" Version="$(MicrosoftVisualStudioPackageCurrent)" />
 
+  <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Activities" />
     <Reference Include="System.Data" />
@@ -74,6 +35,33 @@
     <Reference Include="UIAutomationTypes" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.Interop" Version="$(MicrosoftVisualStudioInteropPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.XmlEditor" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.GraphObject.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" Version="$(MicrosoftVisualStudioTemplateWizardInterfacePackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(RepositoryRoot)src\EntityFramework\EntityFramework.csproj" />
+    <ProjectReference Include="$(RepositoryRoot)src\EFTools\DesignXmlCore\DesignXmlCore.csproj" />
+    <ProjectReference Include="$(RepositoryRoot)src\EFTools\EntityDesignerVersioningFacade\EntityDesignerVersioningFacade.csproj" />
+    <ProjectReference Include="$(RepositoryRoot)src\EFTools\XmlCore\XmlCore.csproj" />
+    <ProjectReference Include="$(RepositoryRoot)src\EFTools\EntityDesignDatabaseGeneration\EntityDesignDatabaseGeneration.csproj" />
+    <ProjectReference Include="$(RepositoryRoot)src\EFTools\EntityDesignEntityDesigner\EntityDesigner.csproj" />
+    <ProjectReference Include="$(RepositoryRoot)src\EFTools\EntityDesignModel\EntityDesignModel.csproj" />
+    <ProjectReference Include="$(RepositoryRoot)src\EFTools\EntityDesignPackage\EntityDesignPackage.csproj" />
+    <ProjectReference Include="$(RepositoryRoot)src\EFTools\EntityDesign\EntityDesign.csproj" />
+    <ProjectReference Include="$(RepositoryRoot)tools\VsIdeHostAdapter\Framework\VsIdeTestHostFramework.csproj" />
+    <ProjectReference Include="..\TestInfrastructure\TestInfrastructure.csproj" />
+  </ItemGroup>
+
   <ItemGroup>
     <Compile Include="AutomaticDbContextTests.cs" />
     <Compile Include="EntityTypeShapeColorTest.cs" />
@@ -88,52 +76,7 @@
     <Compile Include="UndoRedoTestsRemote.cs" />
     <Compile Include="WorkflowActivityTestsRemote.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="$(RepositoryRoot)src\EntityFramework\EntityFramework.csproj">
-      <Project>{e06d1c12-efe8-4413-a15c-ae01fc158f2f}</Project>
-      <Name>EntityFramework</Name>
-    </ProjectReference>
-    <ProjectReference Include="$(RepositoryRoot)src\EFTools\DesignXmlCore\DesignXmlCore.csproj">
-      <Project>{6c80dbca-16c8-48c9-9019-ab6fded788de}</Project>
-      <Name>DesignXmlCore</Name>
-    </ProjectReference>
-    <ProjectReference Include="$(RepositoryRoot)src\EFTools\EntityDesignerVersioningFacade\EntityDesignerVersioningFacade.csproj">
-      <Project>{0518e682-510d-48f8-bb14-7151c50a1850}</Project>
-      <Name>EntityDesignerVersioningFacade</Name>
-    </ProjectReference>
-    <ProjectReference Include="$(RepositoryRoot)src\EFTools\XmlCore\XmlCore.csproj">
-      <Project>{79b40a85-cdcc-4ac3-a583-77ca43cb5136}</Project>
-      <Name>XmlCore</Name>
-    </ProjectReference>
-    <ProjectReference Include="$(RepositoryRoot)src\EFTools\EntityDesignDatabaseGeneration\EntityDesignDatabaseGeneration.csproj">
-      <Project>{15000b5c-c005-473a-ba65-eaf37e660b2c}</Project>
-      <Name>EntityDesignDatabaseGeneration</Name>
-    </ProjectReference>
-    <ProjectReference Include="$(RepositoryRoot)src\EFTools\EntityDesignEntityDesigner\EntityDesigner.csproj">
-      <Project>{488b84c2-9358-4b90-bc2d-ed688939e6bb}</Project>
-      <Name>EntityDesigner</Name>
-    </ProjectReference>
-    <ProjectReference Include="$(RepositoryRoot)src\EFTools\EntityDesignModel\EntityDesignModel.csproj">
-      <Project>{b44e942f-0ad1-4fb4-9146-dd1f8e17d4d8}</Project>
-      <Name>EntityDesignModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="$(RepositoryRoot)src\EFTools\EntityDesignPackage\EntityDesignPackage.csproj">
-      <Project>{c7198bdf-eb70-44d3-ba61-45cc552248e4}</Project>
-      <Name>EntityDesignPackage</Name>
-    </ProjectReference>
-    <ProjectReference Include="$(RepositoryRoot)src\EFTools\EntityDesign\EntityDesign.csproj">
-      <Project>{f904b4be-c7cf-4e4f-85b7-b006a2d1c561}</Project>
-      <Name>EntityDesign</Name>
-    </ProjectReference>
-    <ProjectReference Include="$(RepositoryRoot)tools\VsIdeHostAdapter\Framework\VsIdeTestHostFramework.csproj">
-      <Project>{614ac98e-a68e-4eb4-af27-1cedba7ca3b4}</Project>
-      <Name>VsIdeTestHostFramework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TestInfrastructure\TestInfrastructure.csproj">
-      <Project>{59a6ab41-2aca-4949-8fc8-dff1229d5a81}</Project>
-      <Name>TestInfrastructure</Name>
-    </ProjectReference>
-  </ItemGroup>
+
   <ItemGroup>
     <EmbeddedResource Include="Baselines\ModelFirstVerifier_AssociationBetweenSubtypes.bsl" />
     <EmbeddedResource Include="Baselines\ModelFirstVerifier_AssociationBetweenSubtypes_NoNavProps.bsl" />
@@ -189,16 +132,7 @@
     <EmbeddedResource Include="TestData\SimpleInheritance.csdl" />
     <EmbeddedResource Include="TestData\StoreGeneratedPattern.csdl" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
+
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>
