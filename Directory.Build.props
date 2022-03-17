@@ -20,4 +20,20 @@
     <VsWebSiteInteropPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</VsWebSiteInteropPackageVersion>
     <XunitPackageVersion>1.9.2</XunitPackageVersion>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- During the conversion to SDK projects, continue to list all project items explicitly -->
+    <EnableDefaultItems>false</EnableDefaultItems>
+
+    <!-- Assembly info is included explicitly -->
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+    <DelaySign>true</DelaySign>
+    <!-- AssemblyOriginatorKeyFile is defined in Directory.Build.targets since it depends on properties defined in EntityFramework.settings.targets. -->
+  </PropertyGroup>
 </Project>

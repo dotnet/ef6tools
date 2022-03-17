@@ -29,6 +29,7 @@ Project global pre-settings.
     <VersionRelease>$(VersionReleasePrefix)</VersionRelease>
     <VersionReleaseName></VersionReleaseName>
     <ToolingDotNetFrameworkVersion>v4.7.2</ToolingDotNetFrameworkVersion>
+    <ToolingDotNetFrameworkSdkVersion>net472</ToolingDotNetFrameworkSdkVersion>
   </PropertyGroup>
 
   <PropertyGroup>
