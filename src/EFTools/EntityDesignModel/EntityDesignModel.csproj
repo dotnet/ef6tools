@@ -11,6 +11,7 @@
     <AssemblyAttributeClsCompliant>false</AssemblyAttributeClsCompliant>
     <AssemblyAttributeComVisible>false</AssemblyAttributeComVisible>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -19,7 +20,6 @@
 
   <ItemGroup>
     <Reference Include="System.Design" />
-    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
 
   <ItemGroup>

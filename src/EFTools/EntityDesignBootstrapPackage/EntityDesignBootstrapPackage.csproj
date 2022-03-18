@@ -14,6 +14,7 @@
     <!-- do we need this ?-->
     <AssemblyAttributeClsCompliant>false</AssemblyAttributeClsCompliant>
     <AssemblyAttributeComVisible>false</AssemblyAttributeComVisible>
+    <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -26,7 +27,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="System.Windows.Forms" />
     <Reference Condition="'$(VisualStudioVersion)' == '16.0' OR '$(VisualStudioVersion)' == '17.0'" Include="System.Threading" />
   </ItemGroup>
 

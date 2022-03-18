@@ -12,6 +12,7 @@
     <ApplicationIcon>Resources\File.ico</ApplicationIcon>
     <DeployExtension>false</DeployExtension>
     <CreateVsixContainer>false</CreateVsixContainer>
+    <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -29,7 +30,6 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing.Design" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Printing" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
