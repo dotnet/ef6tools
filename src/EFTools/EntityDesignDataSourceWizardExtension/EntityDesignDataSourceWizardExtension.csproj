@@ -13,7 +13,16 @@
     <NoWarn>$(NoWarn);1591;1573;1572;1570;1711;1712;1587;1584;1571;1589</NoWarn>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <!-- Microsoft.VisualStudio.WizardFramework is not available in a package -->
+    <IdeDirectory Condition="'$(DevEnvDir)' != ''">$(DevEnvDir)</IdeDirectory>
+    <IdeDirectory Condition="'$(IdeDirectory)' == ''">$(VS170COMNTOOLS)..\IDE\</IdeDirectory>
+  </PropertyGroup>
+
   <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.WizardFramework">
+      <HintPath>$(IdeDirectory)Microsoft.VisualStudio.WizardFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Drawing" />
