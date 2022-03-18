@@ -23,9 +23,7 @@
     <Reference Include="Microsoft.VisualStudio.WizardFramework">
       <HintPath>$(IdeDirectory)Microsoft.VisualStudio.WizardFramework.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
 

@@ -15,13 +15,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="System" />
     <Reference Include="System.Activities" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Runtime.DurableInstancing" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
 
