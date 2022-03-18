@@ -9,6 +9,7 @@
     <AssemblyAttributeClsCompliant>false</AssemblyAttributeClsCompliant>
     <TargetFrameworks>$(ToolingDotNetFrameworkSdkVersion)</TargetFrameworks>
     <AssemblyAttributeClsCompliant>false</AssemblyAttributeClsCompliant>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -17,7 +18,6 @@
 
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="PresentationCore" />
   </ItemGroup>
 
   <ItemGroup>

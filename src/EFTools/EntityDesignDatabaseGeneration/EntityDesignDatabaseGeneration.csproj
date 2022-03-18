@@ -8,6 +8,7 @@
     <AssemblyName>Microsoft.Data.Entity.Design.DatabaseGeneration</AssemblyName>
     <RootNamespace>Microsoft.Data.Entity.Design.DatabaseGeneration</RootNamespace>
     <AssemblyAttributeClsCompliant>false</AssemblyAttributeClsCompliant>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -18,7 +19,6 @@
     <Reference Include="System.Activities" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Runtime.DurableInstancing" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
 
   <ItemGroup>

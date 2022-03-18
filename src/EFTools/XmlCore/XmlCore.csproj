@@ -10,6 +10,7 @@
     <!-- do we need this ?-->
     <AssemblyAttributeClsCompliant>false</AssemblyAttributeClsCompliant>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
@@ -20,11 +21,6 @@
 
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="UIAutomationProvider" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
 
   <ItemGroup>

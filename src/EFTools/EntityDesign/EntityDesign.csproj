@@ -8,6 +8,7 @@
     <AssemblyName>Microsoft.Data.Entity.Design</AssemblyName>
     <RootNamespace>Microsoft.Data.Entity.Design</RootNamespace>
     <AssemblyAttributeClsCompliant>false</AssemblyAttributeClsCompliant>
+    <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
@@ -24,7 +25,6 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Xaml" />
     <Reference Include="System.Runtime.DurableInstancing" />
     <Reference Include="System.Activities" />
     <Reference Include="Accessibility" />
@@ -34,13 +34,7 @@
     <Reference Include="System.Printing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="UIAutomationProvider" />
-    <Reference Include="UIAutomationTypes" />
     <Reference Include="ReachFramework" />
-    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
 
   <ItemGroup>

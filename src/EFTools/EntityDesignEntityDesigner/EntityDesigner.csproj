@@ -11,6 +11,7 @@
     <!-- needed ? can it be public?
     <DslTemplatesSrc>$(ExtPath)\DslToolkit\vs10rtm\DSLTemplates</DslTemplatesSrc>
     -->
+    <UseWPF>true</UseWPF>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
@@ -26,7 +27,6 @@
   <ItemGroup>
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Drawing.Design" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
 
   <ItemGroup>
