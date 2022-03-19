@@ -56,12 +56,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="$(RepositoryRoot)src\EFTools\setup\EFToolsMsi\XmlSchemas\EntityFrameworkConfig_6_1_4.xsd">
+    <None Update="$(RepositoryRoot)src\EFTools\setup\EFToolsMsi\XmlSchemas\EntityFrameworkConfig_6_1_4.xsd">
       <Link>EntityFrameworkConfig_6_1_4.xsd</Link>
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="packages.config" />
   </ItemGroup>
 
   <ItemGroup>

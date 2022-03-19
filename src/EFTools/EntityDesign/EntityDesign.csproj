@@ -283,54 +283,43 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="CodeGeneration\Generators\GeneratedCode\DefaultCSharpContextGenerator.tt">
+    <None Update="CodeGeneration\Generators\GeneratedCode\DefaultCSharpContextGenerator.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DefaultCSharpContextGenerator.cs</LastGenOutput>
       <CustomToolNamespace>Microsoft.Data.Entity.Design.CodeGeneration</CustomToolNamespace>
     </None>
-    <None Include="CodeGeneration\Generators\GeneratedCode\DefaultCSharpEntityTypeGenerator.tt">
+    <None Update="CodeGeneration\Generators\GeneratedCode\DefaultCSharpEntityTypeGenerator.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DefaultCSharpEntityTypeGenerator.cs</LastGenOutput>
       <CustomToolNamespace>Microsoft.Data.Entity.Design.CodeGeneration</CustomToolNamespace>
     </None>
-    <None Include="CodeGeneration\Generators\GeneratedCode\DefaultVBContextGenerator.tt">
+    <None Update="CodeGeneration\Generators\GeneratedCode\DefaultVBContextGenerator.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DefaultVBContextGenerator.cs</LastGenOutput>
       <CustomToolNamespace>Microsoft.Data.Entity.Design.CodeGeneration</CustomToolNamespace>
     </None>
-    <None Include="CodeGeneration\Generators\GeneratedCode\DefaultVBEntityTypeGenerator.tt">
+    <None Update="CodeGeneration\Generators\GeneratedCode\DefaultVBEntityTypeGenerator.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DefaultVBEntityTypeGenerator.cs</LastGenOutput>
       <CustomToolNamespace>Microsoft.Data.Entity.Design.CodeGeneration</CustomToolNamespace>
     </None>
-    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext.tt">
+    <None Update="VisualStudio\InTheBoxItemTemplates\DbContext.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DbContext.txt</LastGenOutput>
     </None>
-    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF5\CSharpDbContext.Context.tt" />
-    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF5\CSharpDbContext.Types.tt" />
-    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF5\VBDbContext.Context.tt" />
-    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF5\VBDbContext.Types.tt" />
-    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF6\CSharpDbContext.Context.tt" />
-    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF6\CSharpDbContext.Types.tt" />
-    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF6\VBDbContext.Context.tt" />
-    <None Include="VisualStudio\InTheBoxItemTemplates\DbContext\EF6\VBDbContext.Types.tt" />
-    <None Include="VisualStudio\InTheBoxItemTemplates\CodeFirst.tt">
+    <None Update="VisualStudio\InTheBoxItemTemplates\CodeFirst.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>CodeFirst.txt</LastGenOutput>
     </None>
-    <None Include="VisualStudio\InTheBoxItemTemplates\VSTemplateGeneratorUtils.ttinclude" />
-    <None Include="workflows\TablePerTypeStrategy.xaml">
+    <None Update="workflows\TablePerTypeStrategy.xaml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TextTemplates\Includes\GenerateTSQL.Utility.ttinclude">
+    <None Update="TextTemplates\Includes\GenerateTSQL.Utility.ttinclude">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TextTemplates\SsdlToSql10.tt">
+    <None Update="TextTemplates\SsdlToSql10.tt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="VisualStudio\ModelWizard\bitmaps\Error.bmp" />
-    <None Include="VisualStudio\ModelWizard\bitmaps\Information.bmp" />
   </ItemGroup>
 
   <ItemGroup>
@@ -546,16 +535,16 @@
 
   <!-- Start T4 Templates region-->
   <ItemGroup>
-    <None Include="TextTemplates\Includes\EF.Utility.CS.ttinclude">
+    <None Update="TextTemplates\Includes\EF.Utility.CS.ttinclude">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TextTemplates\Includes\EF.Utility.VB.ttinclude">
+    <None Update="TextTemplates\Includes\EF.Utility.VB.ttinclude">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TextTemplates\Includes\EF6.Utility.CS.ttinclude">
+    <None Update="TextTemplates\Includes\EF6.Utility.CS.ttinclude">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TextTemplates\Includes\EF6.Utility.VB.ttinclude">
+    <None Update="TextTemplates\Includes\EF6.Utility.VB.ttinclude">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

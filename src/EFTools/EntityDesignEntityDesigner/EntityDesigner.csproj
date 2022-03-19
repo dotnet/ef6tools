@@ -154,69 +154,69 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="DslDefinition.dsl.diagram">
+    <None Update="DslDefinition.dsl.diagram">
       <DependentUpon>DslDefinition.dsl</DependentUpon>
     </None>
-    <None Include="GeneratedCode\ConnectionBuilders.tt">
+    <None Update="GeneratedCode\ConnectionBuilders.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ConnectionBuilders.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\Diagram.tt">
+    <None Update="GeneratedCode\Diagram.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Diagram.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\DomainRelationships.tt">
+    <None Update="GeneratedCode\DomainRelationships.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DomainRelationships.cs</LastGenOutput>
     </None>
-    <None Include="DslDefinition.dsl">
+    <None Update="DslDefinition.dsl">
       <SubType>Designer</SubType>
     </None>
-    <None Include="GeneratedCode\Connectors.tt">
+    <None Update="GeneratedCode\Connectors.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Connectors.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\DomainClasses.tt">
+    <None Update="GeneratedCode\DomainClasses.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DomainClasses.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\DomainModelResx.tt">
+    <None Update="GeneratedCode\DomainModelResx.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DomainModelResx.resx</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\HelpKeywordHelper.tt">
+    <None Update="GeneratedCode\HelpKeywordHelper.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>HelpKeywordHelper.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\MultiplicityValidation.tt">
+    <None Update="GeneratedCode\MultiplicityValidation.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>MultiplicityValidation.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\PropertiesGrid.tt">
+    <None Update="GeneratedCode\PropertiesGrid.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>PropertiesGrid.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\EntityFrameworkSchema.tt">
+    <None Update="GeneratedCode\EntityFrameworkSchema.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EntityFrameworkSchema.xsd</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\DomainModel.tt">
+    <None Update="GeneratedCode\DomainModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DomainModel.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\SerializationHelper.tt">
+    <None Update="GeneratedCode\SerializationHelper.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SerializationHelper.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\Serializer.tt">
+    <None Update="GeneratedCode\Serializer.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Serializer.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\Shapes.tt">
+    <None Update="GeneratedCode\Shapes.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Shapes.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\ToolboxHelper.tt">
+    <None Update="GeneratedCode\ToolboxHelper.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ToolboxHelper.cs</LastGenOutput>
     </None>

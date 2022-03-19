@@ -115,45 +115,43 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="GeneratedCode\Constants.tt">
+    <None Update="GeneratedCode\Constants.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Constants.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\DocData.tt">
+    <None Update="GeneratedCode\DocData.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DocData.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\DocView.tt">
+    <None Update="GeneratedCode\DocView.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DocView.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\ModelExplorer.tt">
+    <None Update="GeneratedCode\ModelExplorer.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ModelExplorer.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\EditorFactory.tt">
+    <None Update="GeneratedCode\EditorFactory.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EditorFactory.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\ModelExplorerToolWindow.tt">
+    <None Update="GeneratedCode\ModelExplorerToolWindow.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ModelExplorerToolWindow.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\Package.tt">
+    <None Update="GeneratedCode\Package.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Package.cs</LastGenOutput>
     </None>
-    <None Include="Resources\File.ico" />
-    <None Include="GeneratedCode\CommandSet.tt">
+    <None Update="GeneratedCode\CommandSet.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>CommandSet.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\GeneratedVSCT.tt">
+    <None Update="GeneratedCode\GeneratedVSCT.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GeneratedVSCT.vsct</LastGenOutput>
     </None>
-    <None Include="PkgDefData\Microsoft.Data.Entity.Design.Package.pkgdef" />
-    <None Include="source.extension.vsixmanifest">
+    <None Update="source.extension.vsixmanifest">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

@@ -74,8 +74,7 @@
     <None Include="..\EcmaPublicKey.snk">
       <Link>Properties\EcmaPublicKey.snk</Link>
     </None>
-    <None Include="packages.config" />
-    <None Include="Properties\Resources.SqlServerCompact.tt">
+    <None Update="Properties\Resources.SqlServerCompact.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Resources.SqlServerCompact.cs</LastGenOutput>
       <CustomToolNamespace>System.Data.Entity.SqlServerCompact</CustomToolNamespace>

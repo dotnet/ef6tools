@@ -59,10 +59,6 @@
     </Compile>
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="PkgDefData\Microsoft.Data.Entity.Design.BootstrapPackage_Dev15.pkgdef" />
-  </ItemGroup>
-
   <Target Name="AfterBuild">
     <MakeDir Directories="$(OutputPath)PkgDefData" />
     <RegexReplaceInFile InputFileName="PkgDefData\Microsoft.Data.Entity.Design.BootstrapPackage_Dev15.pkgdef" OutputFileName="$(OutputPath)PkgDefData\Microsoft.Data.Entity.Design.BootstrapPackage.pkgdef" Patterns="EFDESIGNERVERSIONTOKEN" Replacements="$(AssemblyVersion)" />

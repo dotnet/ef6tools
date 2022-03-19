@@ -62,11 +62,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Designer\EntityDesignerDiagramConstant.tt">
+    <None Update="Designer\EntityDesignerDiagramConstant.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EntityDesignerDiagramConstant.cs</LastGenOutput>
     </None>
-    <None Include="Model.cd" />
   </ItemGroup>
 
   <Target Name="AfterBuild">

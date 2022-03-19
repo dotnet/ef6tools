@@ -116,21 +116,17 @@
     <None Include="..\EcmaPublicKey.snk">
       <Link>Properties\EcmaPublicKey.snk</Link>
     </None>
-    <None Include="Core\Common\EntitySql\CqlGrammar.y" />
-    <None Include="Core\Common\EntitySql\CqlLexer.l" />
-    <None Include="Core\Common\EntitySql\GenerateParser.cmd" />
-    <None Include="Core\Common\EntitySql\y" />
-    <None Include="Properties\Resources.Migrate.tt">
+    <None Update="Properties\Resources.Migrate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Resources.Migrate.cs</LastGenOutput>
       <CustomToolNamespace>System.Data.Entity.Migrations.Console</CustomToolNamespace>
     </None>
-    <None Include="Properties\Resources.PowerShell.tt">
+    <None Update="Properties\Resources.PowerShell.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Resources.PowerShell.cs</LastGenOutput>
       <CustomToolNamespace>System.Data.Entity.Migrations</CustomToolNamespace>
     </None>
-    <None Include="Properties\Resources.tt">
+    <None Update="Properties\Resources.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Resources.cs</LastGenOutput>
       <CustomToolNamespace>System.Data.Entity</CustomToolNamespace>
