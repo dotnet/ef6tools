@@ -25,7 +25,11 @@
 
   <PropertyGroup>
     <!-- During the conversion to SDK projects, continue to list all project items explicitly -->
-    <EnableDefaultItems>false</EnableDefaultItems>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
+    <EnableDefaultNoneItems>false</EnableDefaultNoneItems>
+    <EnableDefaultPageItems>false</EnableDefaultPageItems>
+    <EnableDefaultApplicationDefinition>false</EnableDefaultApplicationDefinition>
 
     <!-- Assembly info is included explicitly -->
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
