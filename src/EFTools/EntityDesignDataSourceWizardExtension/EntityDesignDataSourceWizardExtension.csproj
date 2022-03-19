@@ -48,20 +48,16 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="EdmDataSourceWizardData.cs" />
-    <Compile Include="EdmDataSourceWizardEngine.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="LaunchModelGenWizardPage.cs">
+    <Compile Update="LaunchModelGenWizardPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="LaunchUpdateModelWizardPage.cs">
+    <Compile Update="LaunchUpdateModelWizardPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="LaunchWizardPageBase.cs">
+    <Compile Update="LaunchWizardPageBase.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources.Designer.cs">
+    <Compile Update="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>

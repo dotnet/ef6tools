@@ -70,166 +70,68 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Properties\InternalsVisibleTo.cs" />
-    <Compile Include="Base\Shell\AggregateBranch.cs" />
-    <Compile Include="Base\Shell\ChildBranchInfo.cs" />
-    <Compile Include="Base\Shell\DeferredRequest.cs" />
-    <Compile Include="Base\Shell\HeaderBranch.cs" />
-    <Compile Include="Base\Shell\ITreeGridDesignerBranch.cs" />
-    <Compile Include="Base\Shell\ITreeGridDesignerColumnHost.cs" />
-    <Compile Include="Base\Shell\ITreeGridDesignerInitializeBranch.cs" />
-    <Compile Include="Base\Shell\ITreeGridDesignerToolWindowContainer.cs" />
-    <Compile Include="Base\Shell\ProcessKeyResult.cs" />
-    <Compile Include="Base\Shell\TreeGridDesignerAttributes.cs" />
-    <Compile Include="Base\Shell\TreeGridDesignerBranch.cs" />
-    <Compile Include="Base\Shell\TreeGridDesignerBranchChangedArgs.cs" />
-    <Compile Include="Base\Shell\TreeGridDesignerColumnDescriptor.cs" />
-    <Compile Include="Base\Shell\TreeGridDesignerInPlaceEdit.cs">
+    <Compile Update="Base\Shell\TreeGridDesignerInPlaceEdit.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Base\Shell\TreeGridDesignerInPlaceEditCombo.cs">
+    <Compile Update="Base\Shell\TreeGridDesignerInPlaceEditCombo.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Base\Shell\TreeGridDesignerInPlaceEditDropDown.cs">
+    <Compile Update="Base\Shell\TreeGridDesignerInPlaceEditDropDown.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Base\Shell\TreeGridDesignerSite.cs" />
-    <Compile Include="Base\Shell\TreeGridDesignerToolWindow.cs" />
-    <Compile Include="Base\Shell\TreeGridDesignerToolWindowContainer.cs">
+    <Compile Update="Base\Shell\TreeGridDesignerToolWindowContainer.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Base\Shell\TreeGridDesignerTreeControl.cs">
+    <Compile Update="Base\Shell\TreeGridDesignerTreeControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Base\Shell\TreeGridDesignerValueSupportedStates.cs" />
-    <Compile Include="Base\Shell\TreeGridDesignerWatermarkInfo.cs" />
-    <Compile Include="Base\Shell\VariableColumnTree.cs" />
-    <Compile Include="Common\CommonVsUtilities.cs" />
-    <Compile Include="Common\CriticalException.cs" />
-    <Compile Include="Common\SafeWindowTarget.cs" />
-    <Compile Include="Common\RdtManager.cs" />
-    <Compile Include="Common\ServiceProviderHelper.cs" />
-    <Compile Include="Common\VsTextBufferFactory.cs" />
-    <Compile Include="Common\VsTextLinesFromFile.cs" />
-    <Compile Include="Common\WaitCursorHelper.cs" />
-    <Compile Include="Common\WaitDialog.cs" />
-    <Compile Include="Model\VisualStudio\ParentUndoManager.cs" />
-    <Compile Include="Model\VisualStudio\ParentUndoUnit.cs" />
-    <Compile Include="Refactoring\ApplyChangesEventArgs.cs" />
-    <Compile Include="Refactoring\ChangeProposal.cs" />
-    <Compile Include="Refactoring\ContributorInput.cs" />
-    <Compile Include="Refactoring\FileChange.cs" />
-    <Compile Include="Refactoring\PreviewBuffer.cs" />
-    <Compile Include="Refactoring\PreviewChangesEngine.cs" />
-    <Compile Include="Refactoring\PreviewChangesList.cs" />
-    <Compile Include="Refactoring\PreviewChangesNode.cs" />
-    <Compile Include="Refactoring\PreviewChangesNodeBuilder.cs" />
-    <Compile Include="Refactoring\PreviewData.cs" />
-    <Compile Include="Refactoring\PreviewWindowInfo.cs" />
-    <Compile Include="Refactoring\RefactoringGuids.cs" />
-    <Compile Include="Refactoring\RefactoringOperationBase.cs" />
-    <Compile Include="Refactoring\RefactoringPreviewGroup.cs" />
-    <Compile Include="Refactoring\TextChangeProposal.cs" />
-    <Compile Include="Refactoring\VsLangTextChangeProposal.cs" />
-    <Compile Include="Resources.Designer.cs">
+    <Compile Update="Resources.Designer.cs">
       <DependentUpon>Resources.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Model\VisualStudio\IXmlDesignePackage.cs" />
-    <Compile Include="Model\VisualStudio\VSXmlModel.cs" />
-    <Compile Include="Model\VisualStudio\VSXmlModelProvider.cs" />
-    <Compile Include="Model\VisualStudio\VSXmlTransactionProvider.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="VirtualTreeGrid\DropDownControl.cs">
+    <Compile Update="VirtualTreeGrid\DropDownControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="VirtualTreeGrid\Provider\ColumnItemEnumerator.cs" />
-    <Compile Include="VirtualTreeGrid\Provider\ColumnPermutation.cs" />
-    <Compile Include="VirtualTreeGrid\Provider\DisplayDataChangedData.cs" />
-    <Compile Include="VirtualTreeGrid\Provider\ExpansionToggle.cs" />
-    <Compile Include="VirtualTreeGrid\Provider\IBranch.cs" />
-    <Compile Include="VirtualTreeGrid\Provider\IIdentifyPrimaryBranch.cs" />
-    <Compile Include="VirtualTreeGrid\Provider\ILevelShiftAdjuster.cs" />
-    <Compile Include="VirtualTreeGrid\Provider\IMultiColumnBranch.cs" />
-    <Compile Include="VirtualTreeGrid\Provider\ITree.cs" />
-    <Compile Include="VirtualTreeGrid\Provider\LocateObjectData.cs" />
-    <Compile Include="VirtualTreeGrid\Provider\MultiColumnTree.cs" />
-    <Compile Include="VirtualTreeGrid\Provider\PositionTracker.cs" />
-    <Compile Include="VirtualTreeGrid\Provider\ProviderEvents.cs" />
-    <Compile Include="VirtualTreeGrid\Provider\ShiftBranchLevelData.cs" />
-    <Compile Include="VirtualTreeGrid\Provider\SubItemColumnAdjustment.cs" />
-    <Compile Include="VirtualTreeGrid\Provider\VirtualTree.cs" />
-    <Compile Include="VirtualTreeGrid\Provider\VirtualTreeAccessibilityData.cs" />
-    <Compile Include="VirtualTreeGrid\Provider\VirtualTreeDisplayData.cs" />
-    <Compile Include="VirtualTreeGrid\Provider\VirtualTreeFlags.cs" />
-    <Compile Include="VirtualTreeGrid\Provider\VirtualTreeItemInfo.cs" />
-    <Compile Include="VirtualTreeGrid\Provider\VirtualTreeLabelEditData.cs" />
-    <Compile Include="VirtualTreeGrid\Provider\VirtualTreeStartDragData.cs" />
-    <Compile Include="VirtualTreeGrid\UI\CheckBoxImages.cs">
+    <Compile Update="VirtualTreeGrid\UI\CheckBoxImages.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="VirtualTreeGrid\UI\ColumnHeader.cs">
+    <Compile Update="VirtualTreeGrid\UI\ColumnHeader.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="VirtualTreeGrid\UI\ColumnSelection.cs">
+    <Compile Update="VirtualTreeGrid\UI\ColumnSelection.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="VirtualTreeGrid\UI\HeaderControl.cs">
+    <Compile Update="VirtualTreeGrid\UI\HeaderControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="VirtualTreeGrid\UI\HitTestTypes.cs" />
-    <Compile Include="VirtualTreeGrid\UI\IndentBitmap.cs">
+    <Compile Update="VirtualTreeGrid\UI\IndentBitmap.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="VirtualTreeGrid\UI\InPlaceEditControl.cs">
+    <Compile Update="VirtualTreeGrid\UI\InPlaceEditControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="VirtualTreeGrid\UI\StringRenderer.cs" />
-    <Compile Include="VirtualTreeGrid\UI\VirtualTreeAccEvents.cs">
+    <Compile Update="VirtualTreeGrid\UI\VirtualTreeAccEvents.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="VirtualTreeGrid\UI\VirtualTreeControl.cs">
+    <Compile Update="VirtualTreeGrid\UI\VirtualTreeControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="VirtualTreeGrid\UI\VirtualTreeEvents.cs" />
-    <Compile Include="VirtualTreeGrid\UI\VirtualTreeSelection.cs">
+    <Compile Update="VirtualTreeGrid\UI\VirtualTreeSelection.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="VirtualTreeGrid\UI\VirtualTreeStrings.cs" />
-    <Compile Include="VisualStudio\IVsHelpers.cs" />
-    <Compile Include="VisualStudio\IXmlModelErrorTask.cs" />
-    <Compile Include="VisualStudio\Modeling\ModelChanges.cs" />
-    <Compile Include="VisualStudio\NativeMethods.cs" />
-    <Compile Include="VisualStudio\Package\CommonPackageConstants.cs" />
-    <Compile Include="VisualStudio\Package\DocumentFrameMgr.cs" />
-    <Compile Include="VisualStudio\Package\EditingContextManager.cs" />
-    <Compile Include="VisualStudio\Package\ExplorerWindow.cs" />
-    <Compile Include="VisualStudio\Package\FrameWrapper.cs" />
-    <Compile Include="VisualStudio\Package\HierarchyVisitor.cs" />
-    <Compile Include="VisualStudio\Package\ModelChangeEventArgs.cs" />
-    <Compile Include="VisualStudio\Package\SelectionContainer.cs" />
-    <Compile Include="VisualStudio\Package\UriComparer.cs" />
-    <Compile Include="VisualStudio\Providers\ParentServiceProvider.cs" />
-    <Compile Include="VisualStudio\UI\PanZoomPanel.cs">
+    <Compile Update="VisualStudio\UI\PanZoomPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="VisualStudio\UI\ProgressDialog.cs">
+    <Compile Update="VisualStudio\UI\ProgressDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VisualStudio\UI\ProgressDialog.Designer.cs">
+    <Compile Update="VisualStudio\UI\ProgressDialog.Designer.cs">
       <DependentUpon>ProgressDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="VisualStudio\UI\ThumbnailViewForm.cs">
+    <Compile Update="VisualStudio\UI\ThumbnailViewForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="VisualStudio\VSEventBroadcaster.cs" />
-    <Compile Include="VisualStudio\VSFileFinder.cs" />
-    <Compile Include="VisualStudio\VSHelpers.cs" />
-    <Compile Include="VisualStudio\VsHelpersWrapper.cs" />
-    <Compile Include="VisualStudio\XmlModelDocumentTask.cs" />
-    <Compile Include="VisualStudio\XmlModelErrorTask.cs" />
   </ItemGroup>
 
 </Project>

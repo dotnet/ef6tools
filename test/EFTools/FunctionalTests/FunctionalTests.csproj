@@ -42,15 +42,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="GenerateFromDatabaseWizardTest.cs" />
-    <Compile Include="MiscellaneousTests.cs" />
-    <Compile Include="TestHelpers\EdmPackageFixture.cs" />
-    <Compile Include="TestHelpers\MockEFArtifactHelper.cs" />
-    <Compile Include="TestHelpers\MockPackage.cs" />
-    <Compile Include="UpdateModelFromDatabaseTests.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
 

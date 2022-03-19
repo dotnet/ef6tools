@@ -36,69 +36,17 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Properties\InternalsVisibleTo.cs" />
-    <Compile Include="LegacyCodegen\EntityClassGenerator.cs" />
-    <Compile Include="LegacyCodegen\EntityCodeGenerator.cs" />
-    <Compile Include="LegacyCodegen\LanguageOption.cs" />
-    <Compile Include="LegacyCodegen\CodeGeneratorBase.cs" />
-    <Compile Include="DbProviderServicesResolver.cs" />
-    <Compile Include="LegacyDbProviderServicesUtils.cs" />
-    <Compile Include="LegacyProviderWrapper\LegacyDbCommandDefinitionWrapper.cs" />
-    <Compile Include="LegacyProviderWrapper\LegacyDbExpressionConverter.cs" />
-    <Compile Include="LegacyProviderWrapper\LegacyMetadataExtensions\StoreItemCollectionExtensions.cs" />
-    <Compile Include="LegacyProviderWrapper\LegacyMetadataExtensions\TypeUsageExtensions.cs" />
-    <Compile Include="LegacyProviderWrapper\TypeUsageHelper.cs" />
-    <Compile Include="Metadata\CsdlVersion.cs" />
-    <Compile Include="DependencyResolver.cs" />
-    <Compile Include="Metadata\EdmItemCollectionExtensions.cs" />
-    <Compile Include="EntityFrameworkVersion.cs" />
-    <Compile Include="LegacyDbProviderServicesResolver.cs" />
-    <Compile Include="LegacyProviderWrapper\LegacyDbProviderManifestWrapper.cs" />
-    <Compile Include="LegacyProviderWrapper\LegacyDbProviderServicesWrapper.cs" />
-    <Compile Include="LegacyProviderWrapper\LegacyMetadataExtensions\MetadataWorkspaceExtensions.cs" />
-    <Compile Include="Metadata\EdmTypeExtensions.cs" />
-    <Compile Include="Metadata\StoreItemCollectionExtensions.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resources.VersioningFacade.Designer.cs">
+    <Compile Update="Resources.VersioningFacade.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.VersioningFacade.resx</DependentUpon>
     </Compile>
-    <Compile Include="ReverseEngineerDb\AssociationSetEndDetails.cs" />
-    <Compile Include="ReverseEngineerDb\DbObjectType.cs" />
-    <Compile Include="ReverseEngineerDb\OneToOneMappingBuilder.cs" />
-    <Compile Include="ReverseEngineerDb\EntityStoreSchemaFilterEffect.cs" />
-    <Compile Include="ReverseEngineerDb\EntityStoreSchemaFilterEntry.cs" />
-    <Compile Include="ReverseEngineerDb\EntityStoreSchemaFilterObjectTypes.cs" />
-    <Compile Include="ReverseEngineerDb\SchemaDiscovery\ParameterCollectionBuilder.cs" />
-    <Compile Include="ReverseEngineerDb\StoreSchemaConnectionFactory.cs" />
-    <Compile Include="ReverseEngineerDb\ModelBuilderErrorCode.cs" />
-    <Compile Include="ReverseEngineerDb\DbDatabaseMappingBuilder.cs" />
-    <Compile Include="ReverseEngineerDb\CollapsibleEntityAssociationSets.cs" />
-    <Compile Include="ReverseEngineerDb\SimpleMappingContext.cs" />
-    <Compile Include="ReverseEngineerDb\SchemaDiscovery\EntityStoreSchemaGeneratorDatabaseSchemaLoader.cs" />
-    <Compile Include="ReverseEngineerDb\SchemaDiscovery\EntityStoreSchemaQueryGenerator.cs" />
-    <Compile Include="ReverseEngineerDb\SchemaDiscovery\FunctionDetailsReader.cs" />
-    <Compile Include="ReverseEngineerDb\SchemaDiscovery\FunctionDetailsRowView.cs" />
-    <Compile Include="ReverseEngineerDb\SchemaDiscovery\FunctionDetailsV1RowView.cs" />
-    <Compile Include="ReverseEngineerDb\SchemaDiscovery\FunctionDetailsV3RowView.cs" />
-    <Compile Include="ReverseEngineerDb\SchemaDiscovery\RelationshipDetailsCollection.cs">
+    <Compile Update="ReverseEngineerDb\SchemaDiscovery\RelationshipDetailsCollection.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ReverseEngineerDb\SchemaDiscovery\RelationshipDetailsRow.cs" />
-    <Compile Include="ReverseEngineerDb\EntitySetDefiningQueryConverter.cs" />
-    <Compile Include="ReverseEngineerDb\SchemaDiscovery\StoreSchemaDetails.cs" />
-    <Compile Include="ReverseEngineerDb\StoreModelBuilder.cs" />
-    <Compile Include="ReverseEngineerDb\SchemaDiscovery\StringBuilderExtensions.cs" />
-    <Compile Include="ReverseEngineerDb\SchemaDiscovery\TableDetailsCollection.cs">
+    <Compile Update="ReverseEngineerDb\SchemaDiscovery\TableDetailsCollection.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ReverseEngineerDb\SchemaDiscovery\TableDetailsRow.cs" />
-    <Compile Include="ReverseEngineerDb\ModelGeneratorUtils.cs" />
-    <Compile Include="ReverseEngineerDb\UniqueIdentifierService.cs" />
-    <Compile Include="SchemaManager.cs" />
-    <Compile Include="Serialization\MslSerializerWrapper.cs" />
   </ItemGroup>
 
 </Project>

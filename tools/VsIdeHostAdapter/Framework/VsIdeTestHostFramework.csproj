@@ -18,11 +18,6 @@
     <Compile Include="$(RepositoryRoot)src\EFTools\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Attributes.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UIThreadInvoker.cs" />
-    <Compile Include="VsIdeTestHostContext.cs" />
   </ItemGroup>
 
 </Project>

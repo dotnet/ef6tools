@@ -25,7 +25,6 @@
 
   <PropertyGroup>
     <!-- During the conversion to SDK projects, continue to list all project items explicitly -->
-    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
     <EnableDefaultNoneItems>false</EnableDefaultNoneItems>
     <EnableDefaultPageItems>false</EnableDefaultPageItems>

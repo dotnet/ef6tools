@@ -33,18 +33,4 @@
     <ProjectReference Include="$(RepositoryRoot)tools\VsIdeHostAdapter\Framework\VsIdeTestHostFramework.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Include="EFDesigner\EFArtifactExtensions.cs" />
-    <Compile Include="EFDesigner\EFArtifactHelper.cs" />
-    <Compile Include="EFDesigner\EntityTypeExtensions.cs" />
-    <Compile Include="Properties\InternalsVisibleTo.cs" />
-    <Compile Include="AssemblyResourceLookup.cs" />
-    <Compile Include="ResourcesHelper.cs" />
-    <Compile Include="TestHelpers.cs" />
-    <Compile Include="VS\DesignerUtilities.cs" />
-    <Compile Include="VS\ProjectExtensions.cs" />
-    <Compile Include="VS\UITestRunner.cs" />
-    <Compile Include="VS\DteExtensions.cs" />
-  </ItemGroup>
-
 </Project>

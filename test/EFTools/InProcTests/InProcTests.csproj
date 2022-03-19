@@ -56,18 +56,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="AutomaticDbContextTests.cs" />
-    <Compile Include="EntityTypeShapeColorTest.cs" />
-    <Compile Include="Extensions\DiagramExtensions.cs" />
-    <Compile Include="Extensions\EFArtifactExtensions.cs" />
-    <Compile Include="Extensions\MicrosoftDataEntityDesignDocDataExtensions.cs" />
-    <Compile Include="MigrateDiagramNodesTest.cs" />
-    <Compile Include="ModelFirstTestsRemote.cs" />
-    <Compile Include="MultiTargetingTestsInProcRemote.cs" />
-    <Compile Include="RefactorRenameTests.cs" />
-    <Compile Include="SafeModeTestsRemote.cs" />
-    <Compile Include="UndoRedoTestsRemote.cs" />
-    <Compile Include="WorkflowActivityTestsRemote.cs" />
+    <Compile Remove="TestData\**\*.cs" />
   </ItemGroup>
 
   <ItemGroup>

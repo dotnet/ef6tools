@@ -52,10 +52,7 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MicrosoftDataEntityDesignBootstrapPackage.cs" />
-    <Compile Include="Resources.Designer.cs">
+    <Compile Update="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
