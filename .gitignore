@@ -4,7 +4,6 @@ _ReSharper*/
 App_Data
 [Tt]est[Rr]esult*/
 *.user
-*.patch
 *.sln.cache
 *.orig
 *.suo
