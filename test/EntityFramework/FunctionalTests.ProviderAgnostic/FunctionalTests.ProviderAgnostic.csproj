@@ -65,6 +65,10 @@
     <Prefer32Bit>false</Prefer32Bit>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
+  <PropertyGroup>
+    <!-- CS8002: Referenced assembly 'assembly' does not have a strong name. -->
+    <NoWarn>$(NoWarn);CS8002</NoWarn>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="xunit" Version="$(XunitPackageVersion)" />
     <PackageReference Include="MySql.Data.Entity" Version="$(MySqlDataEntityPackageVersion)" />
@@ -168,7 +172,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
