@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="GenerateMsiInputs" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), BuildEFTools.cmd))\tools\EntityFramework.settings.targets" />
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), Build.cmd))\tools\EntityFramework.settings.targets" />
 
   <PropertyGroup>
     <PackagesInputDir Condition="'$(PackagesInputDir)' == ''">$(NuGetOutputPath)</PackagesInputDir>
@@ -9,7 +9,7 @@
     <PackageRestoreOutputDir>$(MsiRuntimeInputsPath)</PackageRestoreOutputDir>
 
     <!-- Set SolutionDir so that RestorePackages knows where to find NuGet.exe -->
-    <SolutionDir>$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), BuildEFTools.cmd))</SolutionDir>
+    <SolutionDir>$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), Build.cmd))</SolutionDir>
     
   </PropertyGroup>
 
