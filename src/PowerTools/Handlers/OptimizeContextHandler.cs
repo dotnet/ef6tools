@@ -168,7 +168,7 @@ namespace Microsoft.DbContextPackage.Handlers
 
                 progressTimer.Start();
 
-                Task.Factory.StartNew(
+                Task.Run(
                         () =>
                         {
                             generateAction(viewsPath);
