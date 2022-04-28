@@ -11,11 +11,22 @@
     <DebugType>embedded</DebugType>
     <DebugSymbols>true</DebugSymbols>
     <LangVersion>Latest</LangVersion>
+    <StrongNameKeyId>Microsoft</StrongNameKeyId>
 
     <!--
       Tools and packages produced by this repository support infrastructure and are not shipping on NuGet or via any other official channel.
     -->
     <IsShipping>false</IsShipping>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- During the conversion to SDK projects, continue to list all project items explicitly -->
+    <EnableDefaultItems>false</EnableDefaultItems>
+
+    <!-- Assembly info is included explicitly -->
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(DotNetBuildOffline)' == 'true'">
@@ -28,7 +39,7 @@
   </PropertyGroup>
 
   <!-- Don't let it restore lower versions of this package, which can come transitively from NetStandard package restores (CSProj only) -->
-  <ItemGroup Condition="'$(MSBuildProjectExtension)' == '.csproj' AND '$(TargetFrameworkVersion)' != 'v4.5'" >
+  <ItemGroup Condition="'$(MSBuildProjectExtension)' == '.csproj' AND '$(TargetFramework)' != 'net40' AND '$(TargetFramework)' != 'net45'" >
     <PackageReference Include="System.Security.Cryptography.X509Certificates" Version="$(SystemSecurityCryptographyX509CertificatesVersion)" />
   </ItemGroup>
 

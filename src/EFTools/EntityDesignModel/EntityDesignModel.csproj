@@ -1,41 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.NET.Sdk">
+
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), Build.cmd))\tools\EntityFramework.settings.targets" />
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworks>$(ToolingDotNetFrameworkSdkVersion)</TargetFrameworks>
     <RootNamespace>Microsoft.Data.Entity.Design.Model</RootNamespace>
     <AssemblyName>Microsoft.Data.Entity.Design.Model</AssemblyName>
-    <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
-    <TargetFrameworkVersion>$(ToolingDotNetFrameworkVersion)</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
     <!-- do we need this ?-->
     <AssemblyAttributeClsCompliant>false</AssemblyAttributeClsCompliant>
     <AssemblyAttributeComVisible>false</AssemblyAttributeComVisible>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <ProjectGuid>{B44E942F-0AD1-4FB4-9146-DD1F8E17D4D8}</ProjectGuid>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoWarn>1591;1573;1572;1570;1711;1712;1587;1584;1571;1589</NoWarn>
+
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);1591;1573;1572;1570;1711;1712;1587;1584;1571;1589</NoWarn>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoWarn>1573;1572;1570;1711;1712;1587;1584;1571;1589</NoWarn>
-  </PropertyGroup>
+
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -46,6 +27,24 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\EntityFramework\EntityFramework.csproj" />
+    <ProjectReference Include="..\EntityDesignerVersioningFacade\EntityDesignerVersioningFacade.csproj" />
+    <ProjectReference Include="..\XmlCore\XmlCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Microsoft.Data.Entity.Design.Edmx_1.xsd" />
+    <EmbeddedResource Include="Microsoft.Data.Entity.Design.Edmx_2.xsd" />
+    <EmbeddedResource Include="Microsoft.Data.Entity.Design.Edmx_3.xsd" />
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+
   <ItemGroup>
     <Compile Include="$(RepositoryRoot)src\EntityFramework\Core\Mapping\MappingErrorCode.cs">
       <Link>Validation\RuntimeErrorCodes\MappingErrorCode.cs</Link>
@@ -408,6 +407,7 @@
     <Compile Include="Commands\ChangeNavigationPropertyCommand.cs" />
     <Compile Include="EDMXModelChangeEventArgs.cs" />
   </ItemGroup>
+
   <ItemGroup>
     <None Include="Designer\EntityDesignerDiagramConstant.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -415,37 +415,11 @@
     </None>
     <None Include="Model.cd" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Microsoft.Data.Entity.Design.Edmx_1.xsd" />
-    <EmbeddedResource Include="Microsoft.Data.Entity.Design.Edmx_2.xsd" />
-    <EmbeddedResource Include="Microsoft.Data.Entity.Design.Edmx_3.xsd" />
-    <EmbeddedResource Include="Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\EntityFramework\EntityFramework.csproj">
-      <Project>{e06d1c12-efe8-4413-a15c-ae01fc158f2f}</Project>
-      <Name>EntityFramework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EntityDesignerVersioningFacade\EntityDesignerVersioningFacade.csproj">
-      <Project>{0518e682-510d-48f8-bb14-7151c50a1850}</Project>
-      <Name>EntityDesignerVersioningFacade</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XmlCore\XmlCore.csproj">
-      <Project>{79b40a85-cdcc-4ac3-a583-77ca43cb5136}</Project>
-      <Name>XmlCore</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <StrongNameKeyId>Microsoft</StrongNameKeyId>
-  </PropertyGroup>
+
   <Target Name="AfterBuild">
     <Copy SourceFiles="Microsoft.Data.Entity.Design.Edmx_1.xsd" DestinationFolder="$(OutputPath)EntityDesigner\Schemas" />
     <Copy SourceFiles="Microsoft.Data.Entity.Design.Edmx_2.xsd" DestinationFolder="$(OutputPath)EntityDesigner\Schemas" />
     <Copy SourceFiles="Microsoft.Data.Entity.Design.Edmx_3.xsd" DestinationFolder="$(OutputPath)EntityDesigner\Schemas" />
   </Target>
+
 </Project>

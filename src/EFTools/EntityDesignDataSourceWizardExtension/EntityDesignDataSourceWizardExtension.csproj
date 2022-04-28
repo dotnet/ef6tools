@@ -1,35 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), Build.cmd))\tools\EntityFramework.settings.targets"/>
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), Build.cmd))\tools\EntityFramework.settings.targets" />
+
   <PropertyGroup>
-    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D3E74B27-C87A-4E1C-B885-16760AD7119C}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFrameworks>$(ToolingDotNetFrameworkSdkVersion)</TargetFrameworks>
     <AssemblyName>Microsoft.Data.Entity.Design.DataSourceWizardExtension</AssemblyName>
-    <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
     <RootNamespace>Microsoft.Data.Entity.Design.DataSourceWizardExtension</RootNamespace>
-    <TargetFrameworkVersion>$(ToolingDotNetFrameworkVersion)</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoWarn>1591;1573;1572;1570;1711;1712;1587;1584;1571;1589</NoWarn>
+
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);1591;1573;1572;1570;1711;1712;1587;1584;1571;1589</NoWarn>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoWarn>1573;1572;1570;1711;1712;1587;1584;1571;1589</NoWarn>
+
+  <PropertyGroup>
+    <!-- Microsoft.VisualStudio.WizardFramework is not available in a package -->
+    <IdeDirectory Condition="'$(DevEnvDir)' != ''">$(DevEnvDir)</IdeDirectory>
+    <IdeDirectory Condition="'$(IdeDirectory)' == ''">$(VS170COMNTOOLS)..\IDE\</IdeDirectory>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.WizardFramework">
+      <HintPath>$(IdeDirectory)Microsoft.VisualStudio.WizardFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
     <PackageReference Include="Microsoft.VisualStudio.Interop" Version="$(MicrosoftVisualStudioInteropPackageVersion)" />
@@ -37,12 +36,16 @@
     <PackageReference Include="Microsoft.VisualStudio.DataDesign.Interfaces" Version="$(MicrosoftVisualStudioPackageCurrent)" />
     <PackageReference Include="Microsoft.VisualStudio.ExtensibilityHosting" Version="$(MicrosoftVisualStudioExtensibilityHostingPackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" Version="$(MicrosoftVisualStudioTemplateWizardInterfacePackageVersion)" />
-
-    <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
+    <PackageReference Include="Microsoft.WizardFramework" Version="$(MicrosoftVisualStudioPackageCurrent)" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DesignXmlCore\DesignXmlCore.csproj" />
+    <ProjectReference Include="..\XmlCore\XmlCore.csproj" />
+    <ProjectReference Include="..\EntityDesignModel\EntityDesignModel.csproj" />
+    <ProjectReference Include="..\EntityDesign\EntityDesign.csproj" />
+  </ItemGroup>
+
   <ItemGroup>
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
@@ -66,6 +69,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
+
   <ItemGroup>
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -73,29 +77,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
+
   <ItemGroup>
     <None Include="Resources\EdmWizardIcon.png" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DesignXmlCore\DesignXmlCore.csproj">
-      <Project>{6c80dbca-16c8-48c9-9019-ab6fded788de}</Project>
-      <Name>DesignXmlCore</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XmlCore\XmlCore.csproj">
-      <Project>{79b40a85-cdcc-4ac3-a583-77ca43cb5136}</Project>
-      <Name>XmlCore</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EntityDesignModel\EntityDesignModel.csproj">
-      <Project>{b44e942f-0ad1-4fb4-9146-dd1f8e17d4d8}</Project>
-      <Name>EntityDesignModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EntityDesign\EntityDesign.csproj">
-      <Project>{f904b4be-c7cf-4e4f-85b7-b006a2d1c561}</Project>
-      <Name>EntityDesign</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <StrongNameKeyId>Microsoft</StrongNameKeyId>
-  </PropertyGroup>
+
 </Project>
