@@ -19,7 +19,6 @@
 
   <PropertyGroup>
     <NoWarn>$(NoWarn);1591;1573;1572;1570;1711;1712;1587;1584;1571;1589</NoWarn>
-    <NoWarn>$(NoWarn);VSSDK006</NoWarn>
 
     <!-- IS_BOOTSTRAP_PACKAGE is defined here to fix up the namespace of any files required by MicrosoftDataEntityDesignBootstrapPackage.
          This is so that other assemblies, such as DataEntityDesign, that own these files do not get loaded when loading the Bootstrap package. -->

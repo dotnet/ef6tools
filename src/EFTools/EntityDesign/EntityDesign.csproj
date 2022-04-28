@@ -14,7 +14,6 @@
 
   <PropertyGroup>
     <NoWarn>$(NoWarn);1591;1573;1572;1570;1711;1712;1587;1584;1571;1589</NoWarn>
-    <NoWarn>$(NoWarn);VSTHRD010;VSSDK006;VSTHRD001</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup>

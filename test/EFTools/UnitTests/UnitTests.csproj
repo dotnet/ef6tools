@@ -10,8 +10,12 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <!-- See Issue 1132: removing the EmbedInteropTypes settings below results in test failures so suppressing warning 1762 instead -->
-    <NoWarn>$(NoWarn);1762;VSTHRD010</NoWarn>
+    <NoWarn>$(NoWarn);1762</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

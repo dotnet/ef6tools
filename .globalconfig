@@ -1,0 +1,7 @@
+is_global = true
+
+dotnet_diagnostic.VSSDK006.severity = none
+
+dotnet_diagnostic.VSTHRD001.severity = none
+dotnet_diagnostic.VSTHRD010.severity = none
+dotnet_diagnostic.VSTHRD110.severity = none
