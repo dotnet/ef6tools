@@ -76,7 +76,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Moq" Version="$(MoqPackageVersion)" />
-    <PackageReference Include="System.Data.SqlServerCe" Version="$(SystemDataSqlServerCePackageVersion)" />
+    <PackageReference Include="Microsoft.SqlServer.Compact" Version="$(MicrosoftSqlServerCompactVersion)" />
     <PackageReference Include="xunit" Version="$(XunitPackageVersion)" />
     <PackageReference Include="xunit.extensions" Version="$(XunitPackageVersion)" />
 

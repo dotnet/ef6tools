@@ -110,7 +110,21 @@
                         Patterns="WIX_FULL_PRODUCT_NAME_DEV11;WIX_FULL_PRODUCT_NAME_DEV12;WIX_FULL_PRODUCT_NAME_DEV14;WIX_FULL_PRODUCT_NAME_DEV15;WIX_PRODUCT_DESCRIPTION_DEV11;WIX_PRODUCT_DESCRIPTION_DEV12;WIX_PRODUCT_DESCRIPTION_DEV14;WIX_PRODUCT_DESCRIPTION_DEV15"
                         Replacements="$(WixFullProductName_Dev11);$(WixFullProductName_Dev12);$(WixFullProductName_Dev14);$(WixFullProductName_Dev15);$(WixProductDescription_Dev11);$(WixProductDescription_Dev12);$(WixProductDescription_Dev14);$(WixProductDescription_Dev15)" />
   </Target>
-  
+
+  <!--
+    ============================================================
+    _IsProjectRestoreSupported
+    Verify restore targets exist in the project.
+    ============================================================
+  -->
+  <Target Name="_IsProjectRestoreSupported"
+          Returns="@(_ValidProjectsForRestore)">
+
+    <ItemGroup>
+      <_ValidProjectsForRestore Include="$(MSBuildProjectFullPath)" />
+    </ItemGroup>
+  </Target>
+
   <!--
   To modify your build process, add your task inside one of the targets below and uncomment it.
   Other similar extension points exist, see Wix.targets.

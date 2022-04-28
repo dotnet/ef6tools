@@ -1,8 +1,47 @@
-_ReSharper*/
+syntax: glob
+
+### VisualStudio ###
+
+# Tools directory
+.dotnet/
+.packages/
+.tools/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+launchSettings.json
+
+# Build results
+
+artifacts/
+artifacts_stage_1/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/ !eng/common/cross/x86/
 [Bb]in/
 [Oo]bj/
-App_Data
+msbuild.log
+msbuild.err
+msbuild.wrn
+*.binlog
+
+# Visual Studio 2015
+.vs/
+
+# Visual Studio 2015 Pre-CTP6
+*.sln.ide
+*.ide/
+
+# MSTest test Results
 [Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+_ReSharper*/
+App_Data
 *.user
 *.sln.cache
 *.orig
@@ -11,7 +50,6 @@ App_Data
 *.exe
 *.dll
 *.resources
-packages/
 EntityFramework.xml
 EntityFramework.SqlServer.xml
 EntityFramework.SqlServerCompact.xml
@@ -25,5 +63,3 @@ EntityFramework.SqlServerCompact.xml
 /src/EFTools/setup/EFToolsMsi/Resources/EFToolsStrings.wxl
 Index.dat
 Storage.dat
-*.sln.ide
-.vs/

@@ -1,3 +1,2 @@
-@ECHO OFF
-
-%SystemRoot%\Microsoft.NET\Framework\v4.0.30319\msbuild "%~dp0\EF.msbuild" /v:minimal /maxcpucount /nodeReuse:false %*
+@echo off
+powershell -ExecutionPolicy ByPass -NoProfile -command "& """%~dp0eng\common\Build.ps1""" -restore -build %*"

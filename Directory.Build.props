@@ -28,7 +28,7 @@
   </PropertyGroup>
 
   <!-- Don't let it restore lower versions of this package, which can come transitively from NetStandard package restores (CSProj only) -->
-  <ItemGroup Condition="'$(MSBuildProjectExtension)' == '.csproj'" >
+  <ItemGroup Condition="'$(MSBuildProjectExtension)' == '.csproj' AND '$(TargetFrameworkVersion)' != 'v4.5'" >
     <PackageReference Include="System.Security.Cryptography.X509Certificates" Version="$(SystemSecurityCryptographyX509CertificatesVersion)" />
   </ItemGroup>
 
