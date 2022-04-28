@@ -14,9 +14,6 @@
     <AssemblyName>EntityFramework.SqlServerCompact</AssemblyName>
     <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
     <FileAlignment>512</FileAlignment>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\EcmaPublicKey.snk</AssemblyOriginatorKeyFile>
-    <DelaySign>true</DelaySign>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..</SolutionDir>
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
@@ -179,6 +176,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <PropertyGroup>
+    <StrongNameKeyId>ECMA</StrongNameKeyId>
+  </PropertyGroup>
   <PropertyGroup>
     <!-- NOTE: Remove anything that gets added to this element after updating
          the Microsoft.SqlServer.Compact package -->

@@ -38,13 +38,6 @@
   </PropertyGroup>
   <PropertyGroup>
     <NoWarn>$(NoWarn);VSTHRD001;VSSDK006</NoWarn>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>$(RepositoryRoot)src\EFTools\EFToolsPublicKey.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -290,4 +283,11 @@
     </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <!-- WPF does not support EmbedUntrackedSources on the old project system -->
+    <EmbedUntrackedSources>false</EmbedUntrackedSources>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StrongNameKeyId>Microsoft</StrongNameKeyId>
+  </PropertyGroup>
 </Project>

@@ -46,15 +46,6 @@
     <NoWarn>$(NoWarn);VSSDK006</NoWarn>
     <DefineConstants>$(DefineConstants);IS_BOOTSTRAP_PACKAGE</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>$(RepositoryRoot)src\EFTools\EFToolsPublicKey.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <DelaySign>true</DelaySign>
-  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
     <PackageReference Include="Microsoft.Internal.VisualStudio.Interop" Version="$(MicrosoftVisualStudioPackageCurrent)" />
@@ -91,6 +82,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <StrongNameKeyId>Microsoft</StrongNameKeyId>
+  </PropertyGroup>
   <Target Name="AfterBuild">
     <MakeDir Directories="$(OutputPath)PkgDefData" />
     <RegexReplaceInFile InputFileName="PkgDefData\Microsoft.Data.Entity.Design.BootstrapPackage_Dev15.pkgdef" OutputFileName="$(OutputPath)PkgDefData\Microsoft.Data.Entity.Design.BootstrapPackage.pkgdef" Patterns="EFDESIGNERVERSIONTOKEN" Replacements="$(AssemblyVersion)" />
