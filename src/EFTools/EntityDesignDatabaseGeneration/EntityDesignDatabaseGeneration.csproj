@@ -8,6 +8,7 @@
     <AssemblyName>Microsoft.Data.Entity.Design.DatabaseGeneration</AssemblyName>
     <RootNamespace>Microsoft.Data.Entity.Design.DatabaseGeneration</RootNamespace>
     <AssemblyAttributeClsCompliant>false</AssemblyAttributeClsCompliant>
+    <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -15,14 +16,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="System" />
     <Reference Include="System.Activities" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Runtime.DurableInstancing" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,21 +39,7 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Properties\InternalsVisibleTo.cs" />
-    <Compile Include="Activities\CsdlToSsdlAndMslActivity.cs" />
-    <Compile Include="EdmConstants.cs" />
-    <Compile Include="EdmExtensions.cs" />
-    <Compile Include="EdmParameterBag.cs" />
-    <Compile Include="IAssemblyLoader.cs" />
-    <Compile Include="MetadataWorkspaceExtensions.cs" />
-    <Compile Include="OutputGenerators\CsdlToMsl.cs" />
-    <Compile Include="OutputGenerators\CsdlToSsdl.cs" />
-    <Compile Include="OutputGenerators\IGenerateActivityOutput.cs" />
-    <Compile Include="OutputGenerators\OutputGeneratorActivity.cs" />
-    <Compile Include="OutputGenerators\OutputGeneratorHelpers.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
+    <Compile Update="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>

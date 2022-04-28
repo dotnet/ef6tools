@@ -12,6 +12,8 @@
     <ApplicationIcon>Resources\File.ico</ApplicationIcon>
     <DeployExtension>false</DeployExtension>
     <CreateVsixContainer>false</CreateVsixContainer>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -25,24 +27,11 @@
 
   <ItemGroup>
     <Reference Include="Accessibility" />
-    <Reference Include="System" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml" />
     <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Design" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Printing" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="UIAutomationProvider" />
-    <Reference Include="UIAutomationTypes" />
     <Reference Include="ReachFramework" />
-    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
 
   <ItemGroup>
@@ -77,116 +66,47 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Properties\InternalsVisibleTo.cs" />
-    <Compile Include="CustomCode\MicrosoftDataEntityDesignDocView_PanZoom.cs" />
-    <Compile Include="CustomCode\MicrosoftDataEntityDesignEditorFactory.cs" />
-    <Compile Include="CustomCode\MicrosoftDataEntityDesignCommands.cs" />
-    <Compile Include="CustomCode\MicrosoftDataEntityDesignCommandSet.cs" />
-    <Compile Include="CustomCode\MicrosoftDataEntityDesignDocData.cs" />
-    <Compile Include="CustomCode\MicrosoftDataEntityDesignDocView.cs" />
-    <Compile Include="CustomCode\MicrosoftDataEntityDesignPackage.cs" />
-    <Compile Include="CustomCode\MyProvideMenuResourceAttribute.cs" />
-    <Compile Include="GeneratedCode\CommandSet.cs">
+    <Compile Update="GeneratedCode\CommandSet.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CommandSet.tt</DependentUpon>
     </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="GeneratedCode\Constants.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Constants.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="GeneratedCode\Constants.cs">
+    <Compile Update="GeneratedCode\Constants.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Constants.tt</DependentUpon>
     </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="GeneratedCode\DocData.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DocData.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="GeneratedCode\DocData.cs">
+    <Compile Update="GeneratedCode\DocData.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DocData.tt</DependentUpon>
     </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="GeneratedCode\DocView.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DocView.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="GeneratedCode\DocView.cs">
+    <Compile Update="GeneratedCode\DocView.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DocView.tt</DependentUpon>
     </Compile>
-    <Compile Include="GeneratedCode\EditorFactory.cs">
+    <Compile Update="GeneratedCode\EditorFactory.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EditorFactory.tt</DependentUpon>
     </Compile>
-    <Compile Include="GeneratedCode\ModelExplorer.cs">
+    <Compile Update="GeneratedCode\ModelExplorer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelExplorer.tt</DependentUpon>
     </Compile>
-    <Compile Include="GeneratedCode\ModelExplorerToolWindow.cs">
+    <Compile Update="GeneratedCode\ModelExplorerToolWindow.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelExplorerToolWindow.tt</DependentUpon>
     </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="GeneratedCode\ModelExplorer.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelExplorer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="GeneratedCode\Package.cs">
+    <Compile Update="GeneratedCode\Package.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Package.tt</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="GeneratedCode\EditorFactory.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EditorFactory.cs</LastGenOutput>
-    </None>
-    <None Include="GeneratedCode\ModelExplorerToolWindow.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelExplorerToolWindow.cs</LastGenOutput>
-    </None>
-    <None Include="GeneratedCode\Package.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Package.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Resources.Designer.cs">
+    <Compile Update="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -194,7 +114,45 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Resources\File.ico" />
+    <None Update="GeneratedCode\Constants.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Constants.cs</LastGenOutput>
+    </None>
+    <None Update="GeneratedCode\DocData.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DocData.cs</LastGenOutput>
+    </None>
+    <None Update="GeneratedCode\DocView.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DocView.cs</LastGenOutput>
+    </None>
+    <None Update="GeneratedCode\ModelExplorer.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelExplorer.cs</LastGenOutput>
+    </None>
+    <None Update="GeneratedCode\EditorFactory.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EditorFactory.cs</LastGenOutput>
+    </None>
+    <None Update="GeneratedCode\ModelExplorerToolWindow.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelExplorerToolWindow.cs</LastGenOutput>
+    </None>
+    <None Update="GeneratedCode\Package.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Package.cs</LastGenOutput>
+    </None>
+    <None Update="GeneratedCode\CommandSet.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>CommandSet.cs</LastGenOutput>
+    </None>
+    <None Update="GeneratedCode\GeneratedVSCT.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GeneratedVSCT.vsct</LastGenOutput>
+    </None>
+    <None Update="source.extension.vsixmanifest">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -202,19 +160,6 @@
       <ResourceName>EntityDesigner.ctmenu</ResourceName>
       <SubType>Designer</SubType>
     </VSCTCompile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="GeneratedCode\CommandSet.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CommandSet.cs</LastGenOutput>
-    </None>
-    <None Include="GeneratedCode\GeneratedVSCT.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GeneratedVSCT.vsct</LastGenOutput>
-    </None>
-    <None Include="PkgDefData\Microsoft.Data.Entity.Design.Package.pkgdef">
-    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -228,12 +173,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="source.extension.vsixmanifest">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
 
   <ItemGroup>

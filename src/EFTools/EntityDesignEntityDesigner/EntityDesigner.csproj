@@ -11,6 +11,8 @@
     <!-- needed ? can it be public?
     <DslTemplatesSrc>$(ExtPath)\DslToolkit\vs10rtm\DSLTemplates</DslTemplatesSrc>
     -->
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -23,15 +25,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
 
   <ItemGroup>
@@ -62,173 +57,82 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Properties\InternalsVisibleTo.cs" />
-    <Compile Include="CustomCode\ConnectionBuilders\InheritanceToolConnectAction.cs" />
-    <Compile Include="CustomCode\Connectors\AssociationConnector.cs" />
-    <Compile Include="CustomCode\Connectors\InheritanceConnector.cs" />
-    <Compile Include="CustomCode\CustomSerializer\BaseTranslatorStrategy.cs" />
-    <Compile Include="CustomCode\CustomSerializer\EntityModelToDslModelTranslatorStrategy.cs" />
-    <Compile Include="CustomCode\CustomSerializer\ModelToDesignerModelXRef.cs" />
-    <Compile Include="CustomCode\CustomSerializer\ModelToDesignerModelXRefItem.cs" />
-    <Compile Include="CustomCode\CustomSerializer\ModelTranslator.cs" />
-    <Compile Include="CustomCode\CustomSerializer\ModelTranslatorContextItem.cs" />
-    <Compile Include="CustomCode\Diagram\AutoArrangeHelper.cs" />
-    <Compile Include="CustomCode\Diagram\DSLDesignerNavigationHelper.cs" />
-    <Compile Include="CustomCode\Diagram\EntityDesignerDiagram.cs" />
-    <Compile Include="CustomCode\Dialogs\CustomZoomDialog.cs">
+    <Compile Update="CustomCode\Dialogs\CustomZoomDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CustomCode\Dialogs\CustomZoomDialog.designer.cs">
+    <Compile Update="CustomCode\Dialogs\CustomZoomDialog.designer.cs">
       <DependentUpon>CustomZoomDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomCode\DomainClasses\Association.cs" />
-    <Compile Include="CustomCode\DomainClasses\DomainClassExtension.cs" />
-    <Compile Include="CustomCode\DomainClasses\ScalarProperty.cs" />
-    <Compile Include="CustomCode\DomainClasses\NavigationProperty.cs" />
-    <Compile Include="CustomCode\DomainClasses\EntityDesignerViewModel.cs" />
-    <Compile Include="CustomCode\DomainClasses\EntityTypeBase.cs" />
-    <Compile Include="CustomCode\DomainClasses\EntityType.cs" />
-    <Compile Include="CustomCode\DomainClasses\Property.cs" />
-    <Compile Include="CustomCode\DomainModel\MicrosoftDataEntityDesignDomainModel.cs" />
-    <Compile Include="CustomCode\ModelChanges\AssociationAdd.cs" />
-    <Compile Include="CustomCode\ModelChanges\AssociationConnectorAdd.cs" />
-    <Compile Include="CustomCode\ModelChanges\AssociationConnectorChange.cs" />
-    <Compile Include="CustomCode\ModelChanges\AssociationConnectorDelete.cs" />
-    <Compile Include="CustomCode\ModelChanges\AssociationDelete.cs" />
-    <Compile Include="CustomCode\ModelChanges\AssociationModelChange.cs" />
-    <Compile Include="CustomCode\ModelChanges\AssociationConnectorModelChange.cs" />
-    <Compile Include="CustomCode\ModelChanges\EntityDesignerDiagramAdd.cs" />
-    <Compile Include="CustomCode\ModelChanges\EntityTypeAdd.cs" />
-    <Compile Include="CustomCode\ModelChanges\EntityTypeChange.cs" />
-    <Compile Include="CustomCode\ModelChanges\EntityTypeDelete.cs" />
-    <Compile Include="CustomCode\ModelChanges\EntityTypeShapeAdd.cs" />
-    <Compile Include="CustomCode\ModelChanges\EntityTypeShapeChange.cs" />
-    <Compile Include="CustomCode\ModelChanges\EntityTypeShapeDelete.cs" />
-    <Compile Include="CustomCode\ModelChanges\EntityType_AddFromDialog.cs" />
-    <Compile Include="CustomCode\ModelChanges\InheritanceAdd.cs" />
-    <Compile Include="CustomCode\ModelChanges\InheritanceConnectorAdd.cs" />
-    <Compile Include="CustomCode\ModelChanges\InheritanceConnectorChange.cs" />
-    <Compile Include="CustomCode\ModelChanges\InheritanceConnectorDelete.cs" />
-    <Compile Include="CustomCode\ModelChanges\InheritanceDelete.cs" />
-    <Compile Include="CustomCode\ModelChanges\NavigationPropertyAdd.cs" />
-    <Compile Include="CustomCode\ModelChanges\NavigationPropertyChange.cs" />
-    <Compile Include="CustomCode\ModelChanges\NavigationPropertyDelete.cs" />
-    <Compile Include="CustomCode\ModelChanges\PropertyAdd.cs" />
-    <Compile Include="CustomCode\ModelChanges\PropertyChange.cs" />
-    <Compile Include="CustomCode\ModelChanges\PropertyDelete.cs" />
-    <Compile Include="CustomCode\ModelChanges\PropertyModelChange.cs" />
-    <Compile Include="CustomCode\ModelChanges\EntityDesignerDiagramModelChange.cs" />
-    <Compile Include="CustomCode\ModelChanges\EntityTypeShapeModelChange.cs" />
-    <Compile Include="CustomCode\ModelChanges\InheritanceConnectorModelChange.cs" />
-    <Compile Include="CustomCode\ModelChanges\InheritanceModelChange.cs" />
-    <Compile Include="CustomCode\ModelChanges\ScalarPropertyChange.cs" />
-    <Compile Include="CustomCode\NameProviders\NameableItemNameProvider.cs" />
-    <Compile Include="CustomCode\Rules\Association_AddRule.cs" />
-    <Compile Include="CustomCode\Rules\AssociationConnectorRules.cs" />
-    <Compile Include="CustomCode\Rules\NavigationProperty_AddRule.cs" />
-    <Compile Include="CustomCode\Rules\ScalarProperty_ChangeRule.cs" />
-    <Compile Include="CustomCode\Rules\Inheritance_DeleteRule.cs" />
-    <Compile Include="CustomCode\Rules\EntityTypeShapeRules.cs" />
-    <Compile Include="CustomCode\Rules\InheritanceConnectorRules.cs" />
-    <Compile Include="CustomCode\Rules\EntityDesignerViewModel_AddRule.cs" />
-    <Compile Include="CustomCode\Rules\EntityType_AddRule.cs" />
-    <Compile Include="CustomCode\Rules\EntityType_ChangeRule.cs" />
-    <Compile Include="CustomCode\Rules\EntityDesignerDiagram_AddRule.cs" />
-    <Compile Include="CustomCode\Rules\Inheritance_AddRule.cs" />
-    <Compile Include="CustomCode\Rules\ModelChanges.cs" />
-    <Compile Include="CustomCode\Rules\NavigationProperty_ChangeRule.cs" />
-    <Compile Include="CustomCode\Rules\Property_AddRule.cs" />
-    <Compile Include="CustomCode\Rules\Property_ChangeRule.cs" />
-    <Compile Include="CustomCode\SerializationHelper\MicrosoftDataEntityDesignSerializationHelper.cs" />
-    <Compile Include="CustomCode\Diagram\EmphasizedShapes.cs" />
-    <Compile Include="CustomCode\Diagram\EntityTypeElementListCompartment.cs" />
-    <Compile Include="CustomCode\Diagram\EntityTypeElementListCompartmentDescription.cs" />
-    <Compile Include="CustomCode\Shapes\EntityTypeShape.cs" />
-    <Compile Include="CustomCode\DescriptionProviders\AssociationDescriptionProvider.cs" />
-    <Compile Include="CustomCode\DescriptionProviders\NameableItemDescriptionProvider.cs" />
-    <Compile Include="CustomCode\DomainClasses\IContainRelatedElementsToEmphasizeWhenSelected.cs" />
-    <Compile Include="CustomCode\Shapes\EntityTypeShapeBase.cs" />
-    <Compile Include="CustomCode\Utils\StyleSetExtensions.cs" />
-    <Compile Include="CustomCode\Utils\Constants.cs" />
-    <Compile Include="CustomCode\Utils\FileUtils.cs" />
-    <Compile Include="CustomCode\Utils\ModelUtils.cs" />
-    <Compile Include="CustomCode\Utils\NodeShapeExtensions.cs" />
-    <Compile Include="CustomCode\Validation\Association.cs" />
-    <Compile Include="CustomCode\Validation\EntityDesignerViewModel.cs" />
-    <Compile Include="CustomCode\Validation\EntityType.cs" />
-    <Compile Include="CustomCode\Validation\Property.cs" />
-    <Compile Include="GeneratedCode\ConnectionBuilders.cs">
+    <Compile Update="GeneratedCode\ConnectionBuilders.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ConnectionBuilders.tt</DependentUpon>
     </Compile>
-    <Compile Include="GeneratedCode\Connectors.cs">
+    <Compile Update="GeneratedCode\Connectors.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Connectors.tt</DependentUpon>
     </Compile>
-    <Compile Include="GeneratedCode\Diagram.cs">
+    <Compile Update="GeneratedCode\Diagram.cs">
       <DependentUpon>Diagram.tt</DependentUpon>
       <SubType>Code</SubType>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="GeneratedCode\DomainClasses.cs">
+    <Compile Update="GeneratedCode\DomainClasses.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DomainClasses.tt</DependentUpon>
     </Compile>
-    <Compile Include="GeneratedCode\DomainRelationships.cs">
+    <Compile Update="GeneratedCode\DomainRelationships.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DomainRelationships.tt</DependentUpon>
     </Compile>
-    <Compile Include="GeneratedCode\HelpKeywordHelper.cs">
+    <Compile Update="GeneratedCode\HelpKeywordHelper.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HelpKeywordHelper.tt</DependentUpon>
     </Compile>
-    <Compile Include="GeneratedCode\MultiplicityValidation.cs">
+    <Compile Update="GeneratedCode\MultiplicityValidation.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MultiplicityValidation.tt</DependentUpon>
     </Compile>
-    <Compile Include="GeneratedCode\PropertiesGrid.cs">
+    <Compile Update="GeneratedCode\PropertiesGrid.cs">
       <DependentUpon>PropertiesGrid.tt</DependentUpon>
       <SubType>Code</SubType>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="GeneratedCode\SerializationHelper.cs">
+    <Compile Update="GeneratedCode\SerializationHelper.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SerializationHelper.tt</DependentUpon>
     </Compile>
-    <Compile Include="GeneratedCode\Shapes.cs">
+    <Compile Update="GeneratedCode\Shapes.cs">
       <DependentUpon>Shapes.tt</DependentUpon>
       <SubType>Code</SubType>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="GeneratedCode\ToolboxHelper.cs">
+    <Compile Update="GeneratedCode\ToolboxHelper.cs">
       <DependentUpon>ToolboxHelper.tt</DependentUpon>
       <SubType>Code</SubType>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GeneratedCode\DomainModel.cs">
+    <Compile Update="GeneratedCode\DomainModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DomainModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="GeneratedCode\Serializer.cs">
+    <Compile Update="GeneratedCode\Serializer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Serializer.tt</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
+    <Compile Update="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -250,69 +154,69 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="DslDefinition.dsl.diagram">
+    <None Update="DslDefinition.dsl.diagram">
       <DependentUpon>DslDefinition.dsl</DependentUpon>
     </None>
-    <None Include="GeneratedCode\ConnectionBuilders.tt">
+    <None Update="GeneratedCode\ConnectionBuilders.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ConnectionBuilders.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\Diagram.tt">
+    <None Update="GeneratedCode\Diagram.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Diagram.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\DomainRelationships.tt">
+    <None Update="GeneratedCode\DomainRelationships.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DomainRelationships.cs</LastGenOutput>
     </None>
-    <None Include="DslDefinition.dsl">
+    <None Update="DslDefinition.dsl">
       <SubType>Designer</SubType>
     </None>
-    <None Include="GeneratedCode\Connectors.tt">
+    <None Update="GeneratedCode\Connectors.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Connectors.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\DomainClasses.tt">
+    <None Update="GeneratedCode\DomainClasses.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DomainClasses.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\DomainModelResx.tt">
+    <None Update="GeneratedCode\DomainModelResx.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DomainModelResx.resx</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\HelpKeywordHelper.tt">
+    <None Update="GeneratedCode\HelpKeywordHelper.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>HelpKeywordHelper.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\MultiplicityValidation.tt">
+    <None Update="GeneratedCode\MultiplicityValidation.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>MultiplicityValidation.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\PropertiesGrid.tt">
+    <None Update="GeneratedCode\PropertiesGrid.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>PropertiesGrid.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\EntityFrameworkSchema.tt">
+    <None Update="GeneratedCode\EntityFrameworkSchema.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>EntityFrameworkSchema.xsd</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\DomainModel.tt">
+    <None Update="GeneratedCode\DomainModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DomainModel.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\SerializationHelper.tt">
+    <None Update="GeneratedCode\SerializationHelper.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>SerializationHelper.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\Serializer.tt">
+    <None Update="GeneratedCode\Serializer.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Serializer.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\Shapes.tt">
+    <None Update="GeneratedCode\Shapes.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Shapes.cs</LastGenOutput>
     </None>
-    <None Include="GeneratedCode\ToolboxHelper.tt">
+    <None Update="GeneratedCode\ToolboxHelper.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ToolboxHelper.cs</LastGenOutput>
     </None>

@@ -7,6 +7,7 @@
     <TargetFrameworks>$(ToolingDotNetFrameworkSdkVersion)</TargetFrameworks>
     <RootNamespace>EFDesigner.TestInfrastructure</RootNamespace>
     <AssemblyName>EFDesigner.TestInfrastructure</AssemblyName>
+    <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -14,15 +15,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,20 +31,6 @@
     <ProjectReference Include="$(RepositoryRoot)src\EFTools\EntityDesignModel\EntityDesignModel.csproj" />
     <ProjectReference Include="$(RepositoryRoot)src\EFTools\EntityDesign\EntityDesign.csproj" />
     <ProjectReference Include="$(RepositoryRoot)tools\VsIdeHostAdapter\Framework\VsIdeTestHostFramework.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="EFDesigner\EFArtifactExtensions.cs" />
-    <Compile Include="EFDesigner\EFArtifactHelper.cs" />
-    <Compile Include="EFDesigner\EntityTypeExtensions.cs" />
-    <Compile Include="Properties\InternalsVisibleTo.cs" />
-    <Compile Include="AssemblyResourceLookup.cs" />
-    <Compile Include="ResourcesHelper.cs" />
-    <Compile Include="TestHelpers.cs" />
-    <Compile Include="VS\DesignerUtilities.cs" />
-    <Compile Include="VS\ProjectExtensions.cs" />
-    <Compile Include="VS\UITestRunner.cs" />
-    <Compile Include="VS\DteExtensions.cs" />
   </ItemGroup>
 
 </Project>

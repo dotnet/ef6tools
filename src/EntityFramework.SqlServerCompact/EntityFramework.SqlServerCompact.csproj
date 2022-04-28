@@ -19,11 +19,7 @@
 
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Transactions" />
-    <Reference Include="System.XML" />
   </ItemGroup>
 
   <ItemGroup>
@@ -59,47 +55,15 @@
     <Compile Include="..\Common\StringExtensions.cs">
       <Link>Utilities\StringExtensions.cs</Link>
     </Compile>
-    <Compile Include="ADP1.cs" />
-    <Compile Include="AliasGenerator.cs" />
-    <Compile Include="CommandTreeUtils.cs" />
-    <Compile Include="CommonUtils.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Helper.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\InternalsVisibleTo.cs" />
-    <Compile Include="Properties\Resources.SqlServerCompact.cs">
+    <Compile Update="Properties\Resources.SqlServerCompact.cs">
       <DependentUpon>Resources.SqlServerCompact.tt</DependentUpon>
       <SubType>Code</SubType>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="ProviderManifest.cs" />
-    <Compile Include="RemoteProviderHelper.cs" />
-    <Compile Include="SqlCeMigrationSqlGenerator.cs" />
-    <Compile Include="SqlCeMultiCommand.cs">
+    <Compile Update="SqlCeMultiCommand.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SqlCeProviderManifest.cs" />
-    <Compile Include="SqlCeProviderServices.cs" />
-    <Compile Include="SqlCeTableExistenceChecker.cs" />
-    <Compile Include="SqlDdlBuilder.cs" />
-    <Compile Include="SqlCeFunctions.cs" />
-    <Compile Include="SqlGen\DmlSqlGenerator.cs" />
-    <Compile Include="SqlGen\ISqlFragment.cs" />
-    <Compile Include="SqlGen\JoinSymbol.cs" />
-    <Compile Include="SqlGen\SkipClause.cs" />
-    <Compile Include="SqlGen\SqlBuilder.cs" />
-    <Compile Include="SqlGen\SqlGenerator.cs" />
-    <Compile Include="SqlGen\SqlSelectStatement.cs" />
-    <Compile Include="SqlGen\SqlStringBuilder.cs" />
-    <Compile Include="SqlGen\SqlWriter.cs" />
-    <Compile Include="SqlGen\Symbol.cs" />
-    <Compile Include="SqlGen\SymbolPair.cs" />
-    <Compile Include="SqlGen\SymbolTable.cs" />
-    <Compile Include="SqlGen\TopClause.cs" />
-    <Compile Include="TypeHelpers.cs" />
-    <Compile Include="TypeSemantics.cs" />
-    <Compile Include="ParameterHelpers.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -110,8 +74,7 @@
     <None Include="..\EcmaPublicKey.snk">
       <Link>Properties\EcmaPublicKey.snk</Link>
     </None>
-    <None Include="packages.config" />
-    <None Include="Properties\Resources.SqlServerCompact.tt">
+    <None Update="Properties\Resources.SqlServerCompact.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Resources.SqlServerCompact.cs</LastGenOutput>
       <CustomToolNamespace>System.Data.Entity.SqlServerCompact</CustomToolNamespace>
