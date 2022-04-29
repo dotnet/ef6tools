@@ -31,6 +31,7 @@
     <MoqPackageVersion>4.0.10827</MoqPackageVersion>
     <MySqlDataEntityPackageVersion>6.7.2-beta-ef6</MySqlDataEntityPackageVersion>
     <VsWebSiteInteropPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</VsWebSiteInteropPackageVersion>
+    <wixVersion>3.11.2</wixVersion>
     <XunitPackageVersion>1.9.2</XunitPackageVersion>
 
     <!-- Libs -->

@@ -23,5 +23,15 @@
     <?define FullProductName = !(loc.FullProductName_Dev15)?>
     <?define ProductDescription = !(loc.ProductDescription_Dev15)?>
     <?define ProductVersion = $(var.AssemblyFileVersion)?>
+  <?elseif $(var.VisualStudioVersion) = 16.0?>
+    <?define UpgradeCode = {FE4D94C7-ADAB-45B4-8CC2-1D3EABBCC512}?>
+    <?define FullProductName = !(loc.FullProductName_Dev16)?>
+    <?define ProductDescription = !(loc.ProductDescription_Dev16)?>
+    <?define ProductVersion = $(var.AssemblyFileVersion)?>
+  <?elseif $(var.VisualStudioVersion) = 17.0?>
+    <?define UpgradeCode = {C248DD3F-AF20-41D6-AF0A-C7A0D1A2F3C2}?>
+    <?define FullProductName = !(loc.FullProductName_Dev17)?>
+    <?define ProductDescription = !(loc.ProductDescription_Dev17)?>
+    <?define ProductVersion = $(var.AssemblyFileVersion)?>
   <?endif?>
 </Include>

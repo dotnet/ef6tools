@@ -29,7 +29,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.SqlServer",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework.SqlServerCompact", "src\EntityFramework.SqlServerCompact\EntityFramework.SqlServerCompact.csproj", "{1EF9C524-7122-4677-B111-DD14BB2A9EA2}"
 EndProject
-Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "EFToolsMsi", "src\EFTools\setup\EFToolsMsi\EFToolsMsi.wixproj", "{69BA80F1-E0EB-4109-A91A-6059F2954B2D}"
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "EFToolsWillowMsi", "setup\wix\EFToolsWillowMsi.wixproj", "{69BA80F1-E0EB-4109-A91A-6059F2954B2D}"
 	ProjectSection(ProjectDependencies) = postProject
 		{6F4BB80B-5F74-44D3-A77F-0025DFA48C1A} = {6F4BB80B-5F74-44D3-A77F-0025DFA48C1A}
 		{E06D1C12-EFE8-4413-A15C-AE01FC158F2F} = {E06D1C12-EFE8-4413-A15C-AE01FC158F2F}

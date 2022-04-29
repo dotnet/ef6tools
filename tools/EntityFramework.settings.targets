@@ -99,7 +99,7 @@ Project global pre-settings.
     <!-- Note: this is how common properties are defined that must be set _after_ the properties in the .csproj files e.g. VS11 -->
     <CustomAfterMicrosoftCommonTargets>$(MSBuildThisFileDirectory)EntityFramework.targets</CustomAfterMicrosoftCommonTargets>
     <CustomAfterNuGetProjTargets>$(MSBuildThisFileDirectory)EntityFramework.targets</CustomAfterNuGetProjTargets>
-    <CustomAfterWixTargets>$(MSBuildThisFileDirectory)EntityFramework.targets</CustomAfterWixTargets>
+    <!--<CustomAfterWixTargets>$(MSBuildThisFileDirectory)EntityFramework.targets</CustomAfterWixTargets>-->
     <CustomAfterSwixTargets>$(MSBuildThisFileDirectory)EntityFramework.targets</CustomAfterSwixTargets>
   </PropertyGroup>
 

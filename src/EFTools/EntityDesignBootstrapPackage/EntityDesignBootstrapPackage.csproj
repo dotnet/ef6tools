@@ -40,6 +40,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!-- Download additional versions needed by the installer -->
+    <PackageDownload Include="EntityFramework" Version="[5.0.0];[6.2.0]" />
+    <PackageDownload Include="EntityFramework.de" Version="[5.0.0];[6.2.0]" />
+    <PackageDownload Include="EntityFramework.es" Version="[5.0.0];[6.2.0]" />
+    <PackageDownload Include="EntityFramework.fr" Version="[5.0.0];[6.2.0]" />
+    <PackageDownload Include="EntityFramework.it" Version="[5.0.0];[6.2.0]" />
+    <PackageDownload Include="EntityFramework.ja" Version="[5.0.0];[6.2.0]" />
+    <PackageDownload Include="EntityFramework.ko" Version="[5.0.0];[6.2.0]" />
+    <PackageDownload Include="EntityFramework.ru" Version="[5.0.0];[6.2.0]" />
+    <PackageDownload Include="EntityFramework.zh-Hans" Version="[5.0.0];[6.2.0]" />
+    <PackageDownload Include="EntityFramework.zh-Hant" Version="[5.0.0];[6.2.0]" />
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

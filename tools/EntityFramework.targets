@@ -66,10 +66,14 @@ Project global post-settings and targets.
     <WixFullProductName_Dev12>Entity Framework $(RuntimeVersionMajor).$(RuntimeVersionMinor).$(VersionReleasePrefix) Tools $(VersionReleaseName) for Visual Studio 2013</WixFullProductName_Dev12>
     <WixFullProductName_Dev14>Entity Framework $(RuntimeVersionMajor).$(RuntimeVersionMinor).$(VersionReleasePrefix) Tools $(VersionReleaseName) for Visual Studio 2015</WixFullProductName_Dev14>
     <WixFullProductName_Dev15>Entity Framework $(RuntimeVersionMajor).$(RuntimeVersionMinor).$(VersionReleasePrefix) Tools $(VersionReleaseName) for Visual Studio 2017</WixFullProductName_Dev15>
+    <WixFullProductName_Dev16>Entity Framework $(RuntimeVersionMajor).$(RuntimeVersionMinor).$(VersionReleasePrefix) Tools $(VersionReleaseName) for Visual Studio 2019</WixFullProductName_Dev16>
+    <WixFullProductName_Dev17>Entity Framework $(RuntimeVersionMajor).$(RuntimeVersionMinor).$(VersionReleasePrefix) Tools $(VersionReleaseName) for Visual Studio 2022</WixFullProductName_Dev17>
     <WixProductDescription_Dev11>$(WixFullProductName_Dev11)</WixProductDescription_Dev11>
     <WixProductDescription_Dev12>$(WixFullProductName_Dev12)</WixProductDescription_Dev12>
     <WixProductDescription_Dev14>$(WixFullProductName_Dev14)</WixProductDescription_Dev14>
     <WixProductDescription_Dev15>$(WixFullProductName_Dev15)</WixProductDescription_Dev15>
+    <WixProductDescription_Dev16>$(WixFullProductName_Dev16)</WixProductDescription_Dev16>
+    <WixProductDescription_Dev17>$(WixFullProductName_Dev17)</WixProductDescription_Dev17>
   </PropertyGroup>
 
   <!-- Target definitions -->

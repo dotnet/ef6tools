@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), Build.cmd))\tools\EntityFramework.settings.targets" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -11,7 +12,7 @@
     <OutputType>Package</OutputType>
     <Name>EFToolsMsi</Name>
     <SolutionDir Condition="$(SolutionDir) == ''">..\..\..\..\</SolutionDir>
-    <RestorePackages>false</RestorePackages>
+    <RestorePackages>true</RestorePackages>
     <EmbedCab Condition="$(EmbedCab) == ''">no</EmbedCab>
     <IncludeLocalizedArtifacts Condition="$(IncludeLocalizedArtifacts) == ''">false</IncludeLocalizedArtifacts>
     <SetMsiAssemblyNameFileVersion>true</SetMsiAssemblyNameFileVersion>
@@ -24,6 +25,9 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
   </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="wix" Version="$(wixVersion)" PrivateAssets="all" />
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="Core.wxs" />
     <Compile Include="DatabaseGeneration.wxs" />
@@ -88,41 +92,26 @@
   </Target>
   <Target Name="Rebuild" DependsOnTargets="Build">
   </Target>
-  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets"
-          Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x')" />
+
+  <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
+  <Import Project="$(WixTargetsPath)" Condition="Exists('$(WixTargetsPath)')" />
 
   <PropertyGroup>
     <BuildDependsOn>ExtractNuspecs;ReplaceEFToolsStrings;$(BuildDependsOn)</BuildDependsOn>
   </PropertyGroup>
-  
-  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
 
   <Target Name="ExtractNuspecs">
     <ItemGroup>
       <ExtractNuspecPackages Include="$(MsiRuntimeInputsPackagesDir)\**\EntityFramework*.nupkg" />
     </ItemGroup>
-    <ExtractNuspecFromPackage NuGetPackageFilePath="%(ExtractNuspecPackages.Identity)" />
+    <ExtractNuspecFromPackage Condition="'@(ExtractNuspecPackages)' != ''" NuGetPackageFilePath="%(ExtractNuspecPackages.Identity)" />
   </Target>
   
   <Target Name="ReplaceEFToolsStrings">
     <RegexReplaceInFile InputFileName="Resources\EFToolsStrings.wxl.tokenized"
                         OutputFileName="Resources\EFToolsStrings.wxl"
-                        Patterns="WIX_FULL_PRODUCT_NAME_DEV11;WIX_FULL_PRODUCT_NAME_DEV12;WIX_FULL_PRODUCT_NAME_DEV14;WIX_FULL_PRODUCT_NAME_DEV15;WIX_PRODUCT_DESCRIPTION_DEV11;WIX_PRODUCT_DESCRIPTION_DEV12;WIX_PRODUCT_DESCRIPTION_DEV14;WIX_PRODUCT_DESCRIPTION_DEV15"
-                        Replacements="$(WixFullProductName_Dev11);$(WixFullProductName_Dev12);$(WixFullProductName_Dev14);$(WixFullProductName_Dev15);$(WixProductDescription_Dev11);$(WixProductDescription_Dev12);$(WixProductDescription_Dev14);$(WixProductDescription_Dev15)" />
-  </Target>
-
-  <!--
-    ============================================================
-    _IsProjectRestoreSupported
-    Verify restore targets exist in the project.
-    ============================================================
-  -->
-  <Target Name="_IsProjectRestoreSupported"
-          Returns="@(_ValidProjectsForRestore)">
-
-    <ItemGroup>
-      <_ValidProjectsForRestore Include="$(MSBuildProjectFullPath)" />
-    </ItemGroup>
+                        Patterns="WIX_FULL_PRODUCT_NAME_DEV11;WIX_FULL_PRODUCT_NAME_DEV12;WIX_FULL_PRODUCT_NAME_DEV14;WIX_FULL_PRODUCT_NAME_DEV15;WIX_FULL_PRODUCT_NAME_DEV16;WIX_FULL_PRODUCT_NAME_DEV17;WIX_PRODUCT_DESCRIPTION_DEV11;WIX_PRODUCT_DESCRIPTION_DEV12;WIX_PRODUCT_DESCRIPTION_DEV14;WIX_PRODUCT_DESCRIPTION_DEV15;WIX_PRODUCT_DESCRIPTION_DEV16;WIX_PRODUCT_DESCRIPTION_DEV17"
+                        Replacements="$(WixFullProductName_Dev11);$(WixFullProductName_Dev12);$(WixFullProductName_Dev14);$(WixFullProductName_Dev15);$(WixFullProductName_Dev16);$(WixFullProductName_Dev17);$(WixProductDescription_Dev11);$(WixProductDescription_Dev12);$(WixProductDescription_Dev14);$(WixProductDescription_Dev15);$(WixProductDescription_Dev16);$(WixProductDescription_Dev17)" />
   </Target>
 
   <!--
@@ -140,6 +129,7 @@
       <DefineConstants>$(DefineConstants);EF6NuGetPackageVersion=$(EF6NuGetPackageVersion);EF6NuGetPackageWixId=$(EF6NuGetPackageWixId);EF5NuGetPackageVersion=$(EF5NuGetPackageVersion)</DefineConstants>
       <DefineConstants>$(DefineConstants);EmbedCab=$(EmbedCab);AssemblyPath45=$(AssemblyPath45)</DefineConstants>
       <DefineConstants>$(DefineConstants);MsiRuntimeInputsPackagesDir=$(MsiRuntimeInputsPackagesDir);MsiRuntimeInputsNet45DllsDir=$(MsiRuntimeInputsNet45DllsDir)</DefineConstants>
+      <DefineConstants>$(DefineConstants);NuGetPackageRoot=$(NuGetPackageRoot)</DefineConstants>
       <DefineConstants>$(DefineConstants);SatelliteAssemblyPath=$(SatelliteAssemblyPath);LocOutputPath=$(LocOutputPath)</DefineConstants>
       <DefineConstants>$(DefineConstants);IncludeLocalizedArtifacts=$(IncludeLocalizedArtifacts)</DefineConstants>
     </PropertyGroup>
