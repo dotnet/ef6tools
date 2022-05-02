@@ -40,11 +40,11 @@
     <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Interop" Version="$(MicrosoftVisualStudioInteropPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.QualityTools.Common" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.QualityTools.ExecutionCommon" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.QualityTools.Vsip" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.Interop" Version="$(MicrosoftVisualStudioInteropVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" Version="$(MicrosoftVisualStudioQualityToolsUnitTestFrameworkVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.QualityTools.Common" Version="$(MicrosoftVisualStudioQualityToolsCommonVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.QualityTools.ExecutionCommon" Version="$(MicrosoftVisualStudioQualityToolsExecutionCommonVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.QualityTools.Vsip" Version="$(MicrosoftVisualStudioQualityToolsVsipVersion)" />
 
     <Reference Include="System" />
     <Reference Include="System.Configuration" />

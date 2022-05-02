@@ -70,8 +70,8 @@
     <NoWarn>$(NoWarn);CS8002</NoWarn>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="xunit" Version="$(XunitPackageVersion)" />
-    <PackageReference Include="MySql.Data.Entity" Version="$(MySqlDataEntityPackageVersion)" />
+    <PackageReference Include="xunit" Version="$(xunitVersion)" />
+    <PackageReference Include="MySql.Data.Entity" Version="$(MySqlDataEntityVersion)" />
 
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
