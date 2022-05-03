@@ -211,7 +211,7 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.VirtualTreeGrid
                 }
 
                 // Add the accessibleObject to the circular array and generate an ID for it.
-                var accessibleObjectId = Instance.InternalAddObject(treeControl, row, column);
+                long accessibleObjectId = Instance.InternalAddObject(treeControl, row, column);
 
                 // Create a HandleRef object for the hwnd.
                 // (A HandleRef structure wraps a managed object holding a 
@@ -243,7 +243,7 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.VirtualTreeGrid
             ///     (Existence of the accessible object does not
             ///     reflect the existence of the object that it represents.
             /// </returns>
-            internal static AccessibleObject GetObject(int accessibleObjectId)
+            internal static AccessibleObject GetObject(long accessibleObjectId)
             {
                 if (accessibleObjectId >= 0)
                 {
@@ -255,11 +255,11 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.VirtualTreeGrid
                 }
             }
 
-            private int InternalAddObject(VirtualTreeControl treeControl, int row, int column)
+            private long InternalAddObject(VirtualTreeControl treeControl, int row, int column)
             {
                 array[nextIndex].SetObjectData(treeControl, row, column);
 
-                var id = array[nextIndex].Id;
+                long id = array[nextIndex].Id;
                 if (nextIndex >= array.GetUpperBound(0))
                 {
                     nextIndex = array.GetLowerBound(0);
@@ -271,10 +271,10 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.VirtualTreeGrid
                 return id;
             }
 
-            private AccessibleObject InternalGetObject(int accessibleObjectId)
+            private AccessibleObject InternalGetObject(long accessibleObjectId)
             {
                 // (The index is in the higher-order word (two bytes)).
-                var index = accessibleObjectId >> 16;
+                long index = accessibleObjectId >> 16;
                 if (index >= array.GetLowerBound(0)
                     && index <= array.GetUpperBound(0))
                 {
@@ -297,56 +297,68 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.VirtualTreeGrid
 
             private struct AccessibleObjectEntry
             {
-                private readonly int _index;
-                private int _entryReuseCounter;
-                private VirtualTreeControl _treeControl;
-                private int _row;
-                private int _column;
+                private readonly long index;
+                private int entryReuseCounter;
+                private VirtualTreeControl treeControl;
+                private int row;
+                private int column;
 
                 public AccessibleObjectEntry(int index)
                 {
                     // empty entry
-                    _index = index;
-                    _entryReuseCounter = 0;
-                    _treeControl = null;
-                    _row = 0;
-                    _column = 0;
+                    this.index = index;
+                    this.entryReuseCounter = 0;
+                    this.treeControl = null;
+                    this.row = 0;
+                    this.column = 0;
                 }
 
-                public int Id
+                public long Id
                 {
-                    get { return (_index << 16) + _entryReuseCounter; }
+                    get
+                    {
+                        return (this.index << 16) + this.entryReuseCounter;
+                    }
                 }
 
                 public void SetObjectData(VirtualTreeControl treeControl, int row, int column)
                 {
-                    _treeControl = treeControl;
-                    _row = row;
-                    _column = column;
+                    this.treeControl = treeControl;
+                    this.row = row;
+                    this.column = column;
 
-                    if (_entryReuseCounter >= Int16.MaxValue)
+                    if (this.entryReuseCounter >= Int16.MaxValue)
                     {
-                        _entryReuseCounter = 0;
+                        this.entryReuseCounter = 0;
                     }
                     else
                     {
-                        _entryReuseCounter++;
+                        this.entryReuseCounter++;
                     }
                 }
 
                 public int Row
                 {
-                    get { return _row; }
+                    get
+                    {
+                        return this.row;
+                    }
                 }
 
                 public int Column
                 {
-                    get { return _column; }
+                    get
+                    {
+                        return this.column;
+                    }
                 }
 
                 public VirtualTreeControl TreeControl
                 {
-                    get { return _treeControl; }
+                    get
+                    {
+                        return this.treeControl;
+                    }
                 }
             }
 

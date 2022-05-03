@@ -509,7 +509,7 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.VirtualTreeGrid
                         || m.Msg == NativeMethods.WM_PASTE)
                     {
                         // forward these to the underlying edit control
-                        m.Result = NativeMethods.SendMessage(_edit.Handle, m.Msg, (int)m.WParam, (int)m.LParam);
+                        m.Result = NativeMethods.SendMessage(_edit.Handle, m.Msg, m.WParam, m.LParam);
                         return;
                     }
                 }
@@ -2760,7 +2760,7 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.VirtualTreeGrid
                     break;
 
                 case Keys.Delete:
-                    NativeMethods.SendMessage(Handle, msg.Msg, msg.WParam.ToInt32(), msg.LParam.ToInt32());
+                    NativeMethods.SendMessage(Handle, msg.Msg, msg.WParam, msg.LParam);
                     return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
