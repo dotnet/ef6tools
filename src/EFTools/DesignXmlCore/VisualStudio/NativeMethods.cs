@@ -1036,11 +1036,12 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
             public int cy;
             public SetWindowPosFlags flags;
             public const int flagsOffset = 24;
+            public const int flagsOffset64Bit = 32;
 #if DEBUG
             [SuppressMessage("Microsoft.Usage", "CA2207:InitializeValueTypeStaticFieldsInline")]
             static WINDOWPOS()
             {
-                Debug.Assert((int)Marshal.OffsetOf(typeof(WINDOWPOS), "flags") == flagsOffset);
+                Debug.Assert((int)Marshal.OffsetOf(typeof(WINDOWPOS), "flags") == (Environment.Is64BitProcess ? flagsOffset64Bit : flagsOffset));
             }
 #endif
         }
@@ -1056,13 +1057,13 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
 
         // public constants for Accessibility readers through NotifyWinEvents.
 
-        public const int CHILDID_SELF = 0;
+        public const long CHILDID_SELF = 0;
         public const int WM_GETOBJECT = 0x003D;
 
         public const string uuid_IAccessible = "{618736E0-3C3D-11CF-810C-00AA00389B71}";
 
         [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Unicode)]
-        public static extern void NotifyWinEvent(int winEvent, HandleRef hwnd, int objType, int objId);
+        public static extern void NotifyWinEvent(int winEvent, HandleRef hwnd, long objType, long objId);
 
         [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Unicode)]
         public static extern int IsWinEventHookInstalled(int winEvent);
