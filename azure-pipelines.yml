@@ -1,0 +1,320 @@
+variables:
+  - name: _TeamName
+    value: DotNetCore
+  - name: _PublishUsingPipelines
+    value: true
+  - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+    - group: AzureDevOps-Artifact-Feeds-Pats
+    - group: SDL_Settings
+  - ${{ if eq(variables['System.TeamProject'], 'public') }}:
+    - name: PoolProvider
+      value: NetCore1ESPool-Public
+  - ${{ if ne(variables['System.TeamProject'], 'public') }}:
+    - name: PoolProvider
+      value: NetCore1ESPool-Internal
+  - ${{ if and(eq(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'Schedule')) }}:
+    - name: PoolProvider
+      value: NetCore1ESPool-Public-Int
+  - ${{ if and(ne(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'Schedule')) }}:
+    - name: PoolProvider
+      value: NetCore1ESPool-Internal-Int
+
+trigger:
+  batch: true
+  branches:
+    include:
+      - main
+      - release/3.x
+pr:
+  branches:
+    include:
+    - '*'
+
+schedules:
+- cron: "0 0 * * *"
+  displayName: Once a day build using Staging pools (at midnight)
+  branches:
+    include:
+    - main
+  always: true
+
+resources:
+  containers:
+  - container: LinuxContainer
+    image: mcr.microsoft.com/dotnet-buildtools/prereqs:centos-7-20210714125435-9b5bbc2
+
+stages:
+- stage: build
+  displayName: Build
+  jobs:
+  - template: /eng/common/templates/jobs/jobs.yml
+    parameters:
+      enableMicrobuild: true
+      enablePublishBuildArtifacts: true
+      enablePublishBuildAssets: true
+      enablePublishUsingPipelines: ${{ variables._PublishUsingPipelines }}
+      enableTelemetry: true
+      helixRepo: dotnet/arcade-validation
+      jobs:
+      - job: Windows_NT
+        pool:
+          name: $(PoolProvider) # This is a queue-time parameter; Public default is NetCore1ESPool-Public; Internal default is NetCore1ESPool-Internal
+          ${{ if or(eq(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'PullRequest')) }}:
+            demands: ImageOverride -equals Build.Server.Amd64.VS2019.Open
+          ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+            demands: ImageOverride -equals Build.Server.Amd64.VS2019
+        variables:
+        - _InternalBuildArgs: ''
+
+        # Only enable publishing in non-public, non PR scenarios.
+        - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+          - _InternalBuildArgs: /p:DotNetSignType=$(_SignType)
+              /p:TeamName=$(_TeamName)
+              /p:DotNetPublishUsingPipelines=$(_PublishUsingPipelines)
+              /p:OfficialBuildId=$(BUILD.BUILDNUMBER)
+
+        strategy:
+          matrix:
+            Build_Release:
+              _BuildConfig: Release
+              # PRs or external builds are not signed.
+              ${{ if or(eq(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'PullRequest')) }}:
+                _SignType: test
+              ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+                _SignType: real
+            ${{ if or(eq(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'PullRequest')) }}:
+              Build_Debug:
+                _BuildConfig: Debug
+                _SignType: test
+        steps:
+        - checkout: self
+          clean: true
+        - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+          - task: PowerShell@2
+            displayName: Setup Private Feeds Credentials
+            condition: eq(variables['Agent.OS'], 'Windows_NT')
+            inputs:
+              filePath: $(Build.SourcesDirectory)/eng/common/SetupNugetSources.ps1
+              arguments: -ConfigFile $(Build.SourcesDirectory)/NuGet.config -Password $Env:Token
+            env:
+              Token: $(dn-bot-dnceng-artifact-feeds-rw)
+        # Use utility script to run script command dependent on agent OS.
+        - script: eng\common\cibuild.cmd
+            -configuration $(_BuildConfig)
+            -prepareMachine
+            $(_InternalBuildArgs)
+          displayName: Windows Build / Publish
+        - task: ComponentGovernanceComponentDetection@0
+          displayName: Component Governance scan
+
+      - job: Linux
+        container: LinuxContainer
+        pool:
+          ${{ if or(eq(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'PullRequest')) }}:
+            name: $(PoolProvider)  # This is a queue-time parameter; Public default is NetCore1ESPool-Public; Internal default is NetCore1ESPool-Internal
+            demands: ImageOverride -equals Build.Ubuntu.1804.Amd64.Open
+          ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+            name: $(PoolProvider)
+            demands: ImageOverride -equals Build.Ubuntu.1804.Amd64
+
+        strategy:
+          matrix:
+            Build_Debug:
+              _BuildConfig: Debug
+              _SignType: none
+            Build_Release:
+              _BuildConfig: Release
+              _SignType: none
+        steps:
+        - checkout: self
+          clean: true
+        - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+          - task: Bash@3
+            displayName: Setup Private Feeds Credentials
+            inputs:
+              filePath: $(Build.SourcesDirectory)/eng/common/SetupNugetSources.sh
+              arguments: $(Build.SourcesDirectory)/NuGet.config $Token
+            condition: ne(variables['Agent.OS'], 'Windows_NT')
+            env:
+              Token: $(dn-bot-dnceng-artifact-feeds-rw)
+        - script: eng/common/cibuild.sh
+            --configuration $(_BuildConfig)
+            --prepareMachine
+          displayName: Unix Build / Publish
+        - task: ComponentGovernanceComponentDetection@0
+          displayName: Component Governance scan
+
+      - job: Validate_Helix
+        pool:
+          ${{ if or(eq(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'PullRequest')) }}:
+            name: $(PoolProvider) 
+            demands: ImageOverride -equals Build.Server.Amd64.VS2019.Open
+          ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+            name: $(PoolProvider)
+            demands: ImageOverride -equals Build.Server.Amd64.VS2019
+        variables:
+        - HelixApiAccessToken: ''
+        - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+          - group: DotNet-HelixApi-Access
+        - _BuildConfig: Release
+        - name: skipComponentGovernanceDetection
+          value: true
+        steps:
+        - template: /eng/common/templates/steps/send-to-helix.yml
+          parameters:
+            HelixType: test/product/
+            XUnitProjects: $(Build.SourcesDirectory)/src/Validation/tests/Validation.Tests.csproj
+            XUnitTargetFramework: netcoreapp2.0
+            XUnitRunnerVersion: 2.4.2-pre.9
+            XUnitPublishTargetFramework: net7.0
+            IncludeDotNetCli: true
+            DotNetCliPackageType: sdk
+            DotNetCliVersion: 7.0.100-preview.2.22153.17
+            EnableXUnitReporter: true
+            WaitForWorkItemCompletion: true
+            ${{ if or(eq(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'PullRequest')) }}:
+              HelixTargetQueues: Windows.10.Amd64.Open;Debian.9.Amd64.Open
+              HelixSource: pr/dotnet/arcade-validation/$(Build.SourceBranch)
+              IsExternal: true
+              Creator: arcade-validation
+            ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+              HelixTargetQueues: Windows.10.Amd64;Debian.9.Amd64
+              HelixSource: official/dotnet/arcade-validation/$(Build.SourceBranch)
+              HelixAccessToken: $(HelixApiAccessToken)
+        displayName: Validate Helix
+
+  # Jobs that should only run as part of internal builds.
+      - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+        - job: Validate_Signing
+          pool:
+            name: $(PoolProvider)  # This is a queue-time parameter; Public default is NetCore1ESPool-Public; Internal default is NetCore1ESPool-Internal
+            demands: ImageOverride -equals Build.Server.Amd64.VS2019
+          strategy:
+            matrix:
+              Test_Signing:
+                _BuildConfig: Debug
+                _SignType: test
+              Real_Signing:
+                _BuildConfig: Release
+                _SignType: real
+          steps:
+            - checkout: self
+              clean: true
+            - task: CopyFiles@2
+              displayName: Copy test packages to artifacts directory
+              inputs:
+                sourceFolder: $(Build.SourcesDirectory)\src\validation\resources
+                targetFolder: $(Build.SourcesDirectory)\artifacts\packages\$(_BuildConfig)\NonShipping
+            - powershell: eng\common\build.ps1
+                -configuration $(_BuildConfig)
+                -restore
+                -prepareMachine
+                -sign
+                -ci
+                /p:DotNetSignType=$(_SignType)
+                /p:TeamName=DotNetCore
+                /p:OfficialBuildId=$(BUILD.BUILDNUMBER)
+              displayName: Sign packages
+
+- ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+  - stage: Create_BAR_ID_Tag
+    displayName: Create BAR ID Tag
+    condition: succeededOrFailed()
+    jobs:
+    - template: /eng/common/templates/job/job.yml
+      parameters:
+        name: Create_BAR_ID_Tag
+        displayName: Create BAR ID Tag
+        pool: 
+          name: $(PoolProvider)
+          demands: ImageOverride -equals build.windows.10.amd64.vs2019
+        variables:
+          - group: Publish-Build-Assets
+          - group: DotNetBot-GitHub
+        steps:
+          - checkout: self
+            clean: true
+          - powershell: eng/create-baridtag.ps1
+              -azdoToken $(dn-bot-dotnet-build-rw-code-rw)
+              -barToken $(MaestroAccessToken)
+              -githubPAT $(BotAccount-dotnet-bot-repo-PAT)
+            displayName: Create BAR ID Tag
+            name: Create_BAR_ID_Tag
+  - template: eng\common\templates\post-build\post-build.yml
+    parameters:
+      publishingInfraVersion: 3
+      # Symbol validation isn't being very reliable lately. This should be enabled back
+      # once this issue is resolved: https://github.com/dotnet/arcade/issues/2871
+      enableSymbolValidation: false
+      enableSourceLinkValidation: true
+      # This is to enable SDL runs part of Post-Build Validation Stage
+      SDLValidationParameters:
+        enable: true
+        params: ' -SourceToolsList @("policheck","credscan")
+        -TsaInstanceURL $(_TsaInstanceURL)
+        -TsaProjectName $(_TsaProjectName)
+        -TsaNotificationEmail $(_TsaNotificationEmail)
+        -TsaCodebaseAdmin $(_TsaCodebaseAdmin)
+        -TsaBugAreaPath $(_TsaBugAreaPath)
+        -TsaIterationPath $(_TsaIterationPath)
+        -TsaRepositoryName "Arcade-Validation"
+        -TsaCodebaseName "Arcade-Validation"
+        -TsaPublish $True'
+  - ${{ if eq(variables['Build.SourceBranch'], 'refs/heads/main') }}:
+    - stage: Validate_Publishing
+      displayName: Validate Publishing
+      jobs:
+      - template: /eng/common/templates/job/job.yml
+        parameters:
+          name: Validate_Publishing
+          displayName: Validate Publishing
+          timeoutInMinutes: 240
+          pool:
+            name: $(PoolProvider)
+            demands: ImageOverride -equals build.windows.10.amd64.vs2019
+          variables:
+            - group: Publish-Build-Assets
+            - group: DotNetBot-GitHub
+            - name: BARBuildId
+              value: $[ dependencies.setupMaestroVars.outputs['setReleaseVars.BARBuildId'] ]
+            - name: skipComponentGovernanceDetection
+              value: true
+          steps:
+            - template: /eng/common/templates/post-build/setup-maestro-vars.yml
+            - checkout: self
+              clean: true
+            - powershell: eng\validation\test-publishing.ps1
+                -buildId $(BARBuildId)
+                -azdoToken $(dn-bot-dotnet-build-rw-code-rw)
+                -azdoUser "dotnet-bot"
+                -azdoOrg "dnceng"
+                -azdoProject "internal"
+                -barToken $(MaestroAccessToken)
+                -githubPAT $(BotAccount-dotnet-bot-repo-PAT)
+    - stage: Promote_Arcade_To_Latest
+      displayName: Promote Arcade to '.NET Eng - Latest' channel
+      dependsOn:
+        - Validate_Publishing
+      jobs:
+      - template: /eng/common/templates/job/job.yml
+        parameters:
+          name: Promote_Arcade_To_Latest
+          pool:
+            name: $(PoolProvider)
+            demands: ImageOverride -equals build.windows.10.amd64.vs2019
+          displayName: Promote Arcade to '.NET Eng - Latest' channel
+          timeoutInMinutes: 180
+          variables:
+            - group: Publish-Build-Assets
+            - group: DotNetBot-GitHub
+            - name: skipComponentGovernanceDetection
+              value: true
+          steps:
+            - checkout: self
+              clean: True
+            - powershell: eng/validation/update-channel.ps1
+                    -maestroEndpoint https://maestro-prod.westus2.cloudapp.azure.com
+                    -barToken $(MaestroAccessToken)
+                    -azdoToken $(dn-bot-dnceng-build-rw-code-rw)
+                    -githubToken $(BotAccount-dotnet-bot-repo-PAT)
+              displayName: Promote Arcade to 'Latest' channel
