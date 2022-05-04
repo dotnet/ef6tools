@@ -31,13 +31,13 @@ pr:
     include:
     - '*'
 
-schedules:
-- cron: "0 0 * * *"
-  displayName: Once a day build using Staging pools (at midnight)
-  branches:
-    include:
-    - main
-  always: true
+#schedules:
+#- cron: "0 0 * * *"
+#  displayName: Once a day build using Staging pools (at midnight)
+#  branches:
+#    include:
+#    - main
+#  always: true
 
 #resources:
 #  containers:
