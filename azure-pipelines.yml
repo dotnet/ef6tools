@@ -38,10 +38,10 @@ schedules:
     - main
   always: true
 
-resources:
-  containers:
-  - container: LinuxContainer
-    image: mcr.microsoft.com/dotnet-buildtools/prereqs:centos-7-20210714125435-9b5bbc2
+#resources:
+#  containers:
+#  - container: LinuxContainer
+#    image: mcr.microsoft.com/dotnet-buildtools/prereqs:centos-7-20210714125435-9b5bbc2
 
 stages:
 - stage: build
@@ -107,42 +107,42 @@ stages:
         - task: ComponentGovernanceComponentDetection@0
           displayName: Component Governance scan
 
-      - job: Linux
-        container: LinuxContainer
-        pool:
-          ${{ if or(eq(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'PullRequest')) }}:
-            name: $(PoolProvider)  # This is a queue-time parameter; Public default is NetCore1ESPool-Public; Internal default is NetCore1ESPool-Internal
-            demands: ImageOverride -equals Build.Ubuntu.1804.Amd64.Open
-          ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
-            name: $(PoolProvider)
-            demands: ImageOverride -equals Build.Ubuntu.1804.Amd64
-
-        strategy:
-          matrix:
-            Build_Debug:
-              _BuildConfig: Debug
-              _SignType: none
-            Build_Release:
-              _BuildConfig: Release
-              _SignType: none
-        steps:
-        - checkout: self
-          clean: true
-        - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
-          - task: Bash@3
-            displayName: Setup Private Feeds Credentials
-            inputs:
-              filePath: $(Build.SourcesDirectory)/eng/common/SetupNugetSources.sh
-              arguments: $(Build.SourcesDirectory)/NuGet.config $Token
-            condition: ne(variables['Agent.OS'], 'Windows_NT')
-            env:
-              Token: $(dn-bot-dnceng-artifact-feeds-rw)
-        - script: eng/common/cibuild.sh
-            --configuration $(_BuildConfig)
-            --prepareMachine
-          displayName: Unix Build / Publish
-        - task: ComponentGovernanceComponentDetection@0
-          displayName: Component Governance scan
+#      - job: Linux
+#        container: LinuxContainer
+#        pool:
+#          ${{ if or(eq(variables['System.TeamProject'], 'public'), in(variables['Build.Reason'], 'PullRequest')) }}:
+#            name: $(PoolProvider)  # This is a queue-time parameter; Public default is NetCore1ESPool-Public; Internal default is NetCore1ESPool-Internal
+#            demands: ImageOverride -equals Build.Ubuntu.1804.Amd64.Open
+#          ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+#            name: $(PoolProvider)
+#            demands: ImageOverride -equals Build.Ubuntu.1804.Amd64
+#
+#        strategy:
+#          matrix:
+#            Build_Debug:
+#              _BuildConfig: Debug
+#              _SignType: none
+#            Build_Release:
+#              _BuildConfig: Release
+#              _SignType: none
+#        steps:
+#        - checkout: self
+#          clean: true
+#        - ${{ if and(ne(variables['System.TeamProject'], 'public'), notin(variables['Build.Reason'], 'PullRequest')) }}:
+#          - task: Bash@3
+#            displayName: Setup Private Feeds Credentials
+#            inputs:
+#              filePath: $(Build.SourcesDirectory)/eng/common/SetupNugetSources.sh
+#              arguments: $(Build.SourcesDirectory)/NuGet.config $Token
+#            condition: ne(variables['Agent.OS'], 'Windows_NT')
+#            env:
+#              Token: $(dn-bot-dnceng-artifact-feeds-rw)
+#        - script: eng/common/cibuild.sh
+#            --configuration $(_BuildConfig)
+#            --prepareMachine
+#          displayName: Unix Build / Publish
+#        - task: ComponentGovernanceComponentDetection@0
+#          displayName: Component Governance scan
 
 #      - job: Validate_Helix
 #        pool:
