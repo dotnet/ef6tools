@@ -2,7 +2,7 @@
   "tools": {
     "dotnet": "7.0.100-preview.2.22153.17",
     "vs": {
-      "version": "17.0"
+      "version": "17.1"
     }
   },
   "msbuild-sdks": {
