@@ -53,6 +53,23 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!--
+      Download one additional version needed by the installer. Other versions listed in other projects.
+      Workaround for https://github.com/NuGet/Home/issues/11798.
+    -->
+    <PackageDownload Include="EntityFramework" Version="[6.2.0]" />
+    <PackageDownload Include="EntityFramework.de" Version="[6.2.0]" />
+    <PackageDownload Include="EntityFramework.es" Version="[6.2.0]" />
+    <PackageDownload Include="EntityFramework.fr" Version="[6.2.0]" />
+    <PackageDownload Include="EntityFramework.it" Version="[6.2.0]" />
+    <PackageDownload Include="EntityFramework.ja" Version="[6.2.0]" />
+    <PackageDownload Include="EntityFramework.ko" Version="[6.2.0]" />
+    <PackageDownload Include="EntityFramework.ru" Version="[6.2.0]" />
+    <PackageDownload Include="EntityFramework.zh-Hans" Version="[6.2.0]" />
+    <PackageDownload Include="EntityFramework.zh-Hant" Version="[6.2.0]" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\DesignXmlCore\DesignXmlCore.csproj" />
     <ProjectReference Include="..\XmlCore\XmlCore.csproj" />
     <ProjectReference Include="..\EntityDesignEntityDesigner\EntityDesigner.csproj" />
