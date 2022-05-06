@@ -19,6 +19,7 @@
     <!-- Libs from prior to arcade conversion -->
     <MicrosoftDataConnectionUIVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftDataConnectionUIVersion>
     <MicrosoftInternalVisualStudioInteropVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftInternalVisualStudioInteropVersion>
+    <MicrosoftPowerShell2ReferenceAssembliesVersion>1.0.0</MicrosoftPowerShell2ReferenceAssembliesVersion>
     <MicrosoftSqlServerCompactVersion>4.0.8876.1</MicrosoftSqlServerCompactVersion>
     <MicrosoftVisualStudioComponentModelHostVersion>17.0.439-preview</MicrosoftVisualStudioComponentModelHostVersion>
     <MicrosoftVisualStudioDataCoreVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioDataCoreVersion>
