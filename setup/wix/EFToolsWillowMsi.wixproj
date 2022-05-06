@@ -22,7 +22,7 @@
     <SingletonMsiName Condition="'$(SingletonMsiName)' == ''">EF6Tools</SingletonMsiName>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(ContinuousIntegrationBuild)' != 'true' AND '$(Sign)' != 'true'">
+  <PropertyGroup Condition="'$(ContinuousIntegrationBuild)' != 'true' OR '$(_SIGNTYPE)' == 'test'">
     <SuppressValidation>true</SuppressValidation>
     <SignOutput>false</SignOutput>
   </PropertyGroup>
