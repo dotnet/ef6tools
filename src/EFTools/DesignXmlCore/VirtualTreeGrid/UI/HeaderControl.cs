@@ -1030,7 +1030,9 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.VirtualTreeGrid
                     case NativeMethods.WM_REFLECT + NativeMethods.WM_NOTIFY:
                         if (myAssociatedControl != null)
                         {
-                            var code = Marshal.ReadIntPtr(m.LParam, 8).ToInt32();
+                            IntPtr ptr = Marshal.ReadIntPtr(m.LParam, IntPtr.Size * 2);
+                            // OR operation to convert 0xFFFFFEBA to 0xFFFFFFFFFFFFFEBA
+                            long code = unchecked((Environment.Is64BitProcess ? ptr.ToInt64() : ptr.ToInt32()) | (long)0xFFFFFFFF00000000);
                             switch (code)
                             {
                                 case NativeMethods.HDN_BEGINTRACKW:

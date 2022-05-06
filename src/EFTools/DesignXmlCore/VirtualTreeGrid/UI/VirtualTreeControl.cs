@@ -1950,7 +1950,8 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.VirtualTreeGrid
 
                 case NativeMethods.WM_WINDOWPOSCHANGING:
                     {
-                        var flags = (NativeMethods.SetWindowPosFlags)Marshal.ReadInt32(m.LParam, NativeMethods.WINDOWPOS.flagsOffset);
+                        int offset = Environment.Is64BitProcess ? NativeMethods.WINDOWPOS.flagsOffset64Bit : NativeMethods.WINDOWPOS.flagsOffset;
+                        NativeMethods.SetWindowPosFlags flags = (NativeMethods.SetWindowPosFlags)Marshal.ReadInt32(m.LParam, offset);
                         if (((NativeMethods.SetWindowPosFlags.SWP_NOSIZE | NativeMethods.SetWindowPosFlags.SWP_NOMOVE)
                              != (flags & (NativeMethods.SetWindowPosFlags.SWP_NOSIZE | NativeMethods.SetWindowPosFlags.SWP_NOMOVE)))
                             || (0 != (flags & NativeMethods.SetWindowPosFlags.SWP_FRAMECHANGED)))
@@ -1969,7 +1970,8 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.VirtualTreeGrid
                         var oldWidth = ClientSize.Width;
                         base.WndProc(ref m);
                         SetStateFlag(VTCStateFlags.WindowPositionChanging, false);
-                        var flags = (NativeMethods.SetWindowPosFlags)Marshal.ReadInt32(m.LParam, NativeMethods.WINDOWPOS.flagsOffset);
+                        int offset = Environment.Is64BitProcess ? NativeMethods.WINDOWPOS.flagsOffset64Bit : NativeMethods.WINDOWPOS.flagsOffset;
+                        NativeMethods.SetWindowPosFlags flags = (NativeMethods.SetWindowPosFlags)Marshal.ReadInt32(m.LParam, offset);
                         var sizeChanged = 0 == (flags & NativeMethods.SetWindowPosFlags.SWP_NOSIZE)
                                           && (oldWidth != ClientSize.Width && Width > 0);
                         if (HeaderVisible && myHeaderContainer != null)
@@ -2416,7 +2418,7 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.VirtualTreeGrid
         private void OnWmGetObject(ref Message message)
         {
             // Get the corresponding accessible object
-            var accessibleObjectId = (int)message.LParam;
+            long accessibleObjectId = Environment.Is64BitProcess ? message.LParam.ToInt64() : message.LParam.ToInt32();
             var accessibleObject = VirtualTreeAccEvents.GetObject(accessibleObjectId);
 
             // If an AccessibleObject was retrieved, pass it back.
@@ -9556,7 +9558,7 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.VirtualTreeGrid
                     {
                         case NativeMethods.WM_CONTEXTMENU:
                             var hWnd = myParent.Handle;
-                            NativeMethods.SendMessage(hWnd, m.Msg, (int)hWnd, (int)m.LParam);
+                            NativeMethods.SendMessage(hWnd, m.Msg, hWnd, m.LParam);
                             return;
                         case NativeMethods.WM_MOUSEACTIVATE:
                             m.Result = (IntPtr)NativeMethods.MA_NOACTIVATE;
