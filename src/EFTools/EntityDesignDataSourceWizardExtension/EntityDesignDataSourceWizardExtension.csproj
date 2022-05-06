@@ -36,7 +36,6 @@
     <PackageReference Include="Microsoft.VisualStudio.Interop" Version="$(MicrosoftVisualStudioInteropVersion)" />
     <PackageReference Include="Microsoft.VSDesigner" Version="$(MicrosoftVSDesignerVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.DataDesign.Interfaces" Version="$(MicrosoftVisualStudioDataDesignInterfacesVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.ExtensibilityHosting" Version="$(MicrosoftVisualStudioExtensibilityHostingVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" Version="$(MicrosoftVisualStudioTemplateWizardInterfaceVersion)" />
     <PackageReference Include="Microsoft.WizardFramework" Version="$(MicrosoftWizardFrameworkVersion)" />
   </ItemGroup>
