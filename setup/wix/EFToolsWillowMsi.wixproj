@@ -115,4 +115,10 @@
     <Message Importance="High" Text="EFToolsWillowMsi DefineConstants=$(DefineConstants)" />
   </Target>
 
+  <!-- This project has no test actions -->
+  <Target Name="Test" />
+
+  <!-- This project has no pack actions -->
+  <Target Name="Pack" />
+
 </Project>
