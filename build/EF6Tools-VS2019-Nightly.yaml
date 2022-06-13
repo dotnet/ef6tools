@@ -285,16 +285,10 @@ steps:
 
 
 - task: CopyFiles@2
-
-  displayName: 'On Error Copy BinDirContents'
-
+  displayName: 'Copy BinDirContents'
   inputs:
-
     Contents: '$(Build.SourcesDirectory)\bin\**'
-
     TargetFolder: '$(Build.ArtifactStagingDirectory)\BinDirContents'
-
-  condition: failed()
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish BinDirContents'
