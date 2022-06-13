@@ -233,25 +233,13 @@ steps:
 
     TargetFolder: '$(Build.ArtifactStagingDirectory)\SetupResults'
 
-
-
 - task: PublishBuildArtifacts@1
-
-  displayName: 'Publish VSIX, MSI and CAB to Drop'
+  displayName: 'Publish VSIX, MSI and CAB to VSTS'
   # Don't publish PR builds
   condition: eq(variables['Build.SourceBranchName'], 'main')
   inputs:
-
     PathtoPublish: '$(Build.ArtifactStagingDirectory)\SetupResults'
-
     ArtifactName: SetupResults
-
-    publishLocation: FilePath
-
-    TargetPath: '$(DropFileShare)\$(Build.SourceBranchName)\$(Build.BuildId)\VS2019'
-
-
-
 - task: CopyFiles@2
 
   displayName: 'Copy PDB and XML Files'
@@ -269,22 +257,13 @@ steps:
 
     TargetFolder: '$(Build.ArtifactStagingDirectory)\PdbsAndXmls'
 
-
-
 - task: PublishBuildArtifacts@1
-
-  displayName: 'Publish PDB and XML Files To Drop'
+  displayName: 'Publish PDB and XML Files To VSTS'
   # Don't publish PR builds
   condition: eq(variables['Build.SourceBranchName'], 'main')
   inputs:
-
     PathtoPublish: '$(Build.ArtifactStagingDirectory)\PdbsAndXmls'
-
     ArtifactName: PdbsAndXmls
-
-    publishLocation: FilePath
-
-    TargetPath: '$(DropFileShare)\$(Build.SourceBranchName)\$(Build.BuildId)\VS2019'
 
 
 
@@ -317,21 +296,11 @@ steps:
 
   condition: failed()
 
-
-
 - task: PublishBuildArtifacts@1
-
-  displayName: 'On Error Publish BinDirContents'
-
+  displayName: 'Publish BinDirContents'
   inputs:
-
     PathtoPublish: '$(Build.ArtifactStagingDirectory)\BinDirContents'
-
     ArtifactName: BinDirContents
-
-  condition: failed()
-
-
 
 - task: CopyFiles@2
 
