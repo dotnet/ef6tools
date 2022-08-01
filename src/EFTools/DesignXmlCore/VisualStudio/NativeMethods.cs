@@ -278,6 +278,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
             TTN_SHOW = ((0 - 520) - 1),
             TTS_NOPREFIX = 0x02,
             WA_INACTIVE = 0,
+            WAIT_FAILED = -1,
             WH_MOUSE = 7,
             WM_ACTIVATE = 0x0006,
             WM_KILLFOCUS = 0x0008,
@@ -901,9 +902,8 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
         [DllImport("user32", ExactSpelling = true, CharSet = CharSet.Unicode)]
         public static extern short GetKeyState(int keyCode);
 
-        [SuppressMessage("Microsoft.Portability", "CA1901:PInvokeDeclarationsShouldBePortable")]
         [DllImport("user32", ExactSpelling = true, CharSet = CharSet.Unicode)]
-        public static extern int MsgWaitForMultipleObjects(int nCount, int pHandles, [MarshalAs(UnmanagedType.Bool)] bool fWaitAll, int dwMilliseconds, int dwWakeMask);
+        public static extern int MsgWaitForMultipleObjects(int nCount, IntPtr[] pHandles, [MarshalAs(UnmanagedType.Bool)] bool fWaitAll, int dwMilliseconds, int dwWakeMask);
 
         [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Unicode)]
         public static extern IntPtr GetParent(IntPtr hWnd);
