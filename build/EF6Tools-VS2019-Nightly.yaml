@@ -4,6 +4,12 @@ pool:
   - Cmd
   - msbuild
 
+trigger:
+- main
+
+pr:
+- main
+
 variables:
   SingletonMsiName: 'EF6Tools'
 
