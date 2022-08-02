@@ -2232,7 +2232,8 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.VirtualTreeGrid
             while (Visible)
             {
                 Application.DoEvents();
-                NativeMethods.MsgWaitForMultipleObjects(1, 0, true, 250, NativeMethods.QS_ALLINPUT);
+                int result = NativeMethods.MsgWaitForMultipleObjects(0, Array.Empty<IntPtr>(), true, 250, NativeMethods.QS_ALLINPUT);
+                Debug.Assert(result != NativeMethods.WAIT_FAILED);
             }
         }
 
