@@ -866,18 +866,18 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
         {
             public void SetSize()
             {
-                Debug.Assert(Marshal.SizeOf(typeof(TOOLINFO)) == 40);
-                cbSize = 40;
+                cbSize = Marshal.SizeOf(typeof(TOOLINFO));
             }
 
             public int cbSize; // ndirect.DllLib.sizeOf( this )
             public int uFlags;
             public IntPtr hwnd;
-            public int uId;
+            public IntPtr uId;
             public RECT rect;
             public IntPtr hinst;
             public IntPtr lpszText; // Use custom buffer to avoid extra marshalling
-            //public IntPtr	lParam;
+            public IntPtr lParam;
+            public IntPtr lpReserved;
         }
 
         [DllImport("user32.dll", ExactSpelling = true, CharSet = CharSet.Unicode)]

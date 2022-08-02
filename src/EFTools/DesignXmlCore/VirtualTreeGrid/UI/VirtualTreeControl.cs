@@ -9611,7 +9611,7 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.VirtualTreeGrid
                     ti.SetSize();
                     ti.uFlags = NativeMethods.TTF_IDISHWND | NativeMethods.TTF_TRANSPARENT;
                     ti.hwnd = myParent.Handle;
-                    ti.uId = (int)ti.hwnd;
+                    ti.uId = ti.hwnd;
                     ti.lpszText = NativeMethods.LPSTR_TEXTCALLBACK;
 
                     NativeMethods.SendMessage(base.Handle, NativeMethods.TTM_ADDTOOL, 0, ref ti);
@@ -9828,7 +9828,7 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.VirtualTreeGrid
                 {
                     var ti = new NativeMethods.TOOLINFO();
                     ti.SetSize();
-                    ti.uId = hWnd;
+                    ti.uId = Handle;
                     ti.uFlags = NativeMethods.TTF_IDISHWND;
                     ti.rect = NativeMethods.RECT.FromXYWH(
                         extraInfo.ClippedItemRectangle.X,
