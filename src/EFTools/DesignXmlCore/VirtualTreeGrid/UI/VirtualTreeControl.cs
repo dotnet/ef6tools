@@ -1899,12 +1899,7 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.VirtualTreeGrid
                     {
                         var fContinue = false;
 
-#if DEBUG
-                        // - to not have to compile structs used only in Asserts
-                        Debug.Assert(Marshal.OffsetOf(typeof(NativeMethods.NMHDR), "code").ToInt32() == 8);
-                        Debug.Assert(Marshal.OffsetOf(typeof(NativeMethods.TOOLTIPTEXT), "lpszText").ToInt32() == 12);
-#endif
-                        var code = Marshal.ReadIntPtr(m.LParam, 8).ToInt32();
+                        var code = Marshal.ReadInt32(m.LParam, (int)Marshal.OffsetOf(typeof(NativeMethods.NMHDR), nameof(NativeMethods.NMHDR.code)));
                         switch (code)
                         {
                             case NativeMethods.TTN_NEEDTEXTA:
@@ -1921,7 +1916,7 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.VirtualTreeGrid
                                 // need to support all columns.
                                 Marshal.WriteIntPtr(
                                     m.LParam,
-                                    12,
+                                    (int)Marshal.OffsetOf(typeof(NativeMethods.TOOLTIPTEXT), nameof(NativeMethods.TOOLTIPTEXT.lpszText)),
                                     myTooltip.GetTextPtr(myTree, myMouseOverIndex, myMouseOverColumn, myTipType));
                                 break;
                             case NativeMethods.TTN_SHOW:

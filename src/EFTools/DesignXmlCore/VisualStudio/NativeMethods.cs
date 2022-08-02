@@ -354,9 +354,6 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
         internal static readonly int TTM_NEWTOOLRECT = Marshal.SystemDefaultCharSize == 1 ? TTM_NEWTOOLRECTA : TTM_NEWTOOLRECTW;
         internal static readonly int TTM_ADDTOOL = Marshal.SystemDefaultCharSize == 1 ? TTM_ADDTOOLA : TTM_ADDTOOLW;
 
-#if DEBUG
-        //Types used to assert offsets, nothing else
-
         [ComVisible(false)]
         [StructLayout(LayoutKind.Sequential)]
         internal struct NMHDR
@@ -372,12 +369,13 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
         {
             public NMHDR hdr;
             public IntPtr lpszText;
+
+            // This structure is only being used to compute the offset of lpszText, so the rest doesn't matter
             //			[MarshalAs(UnmanagedType.ByValTStr, SizeConst=80)]
             //			public string szText;
             //			public IntPtr hinst;
             //			public int    uFlags;
         }
-#endif
 
         internal enum ScrollAction : short
         {
