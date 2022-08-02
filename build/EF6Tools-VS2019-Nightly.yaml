@@ -7,9 +7,6 @@ pool:
 trigger:
 - main
 
-pr:
-- main
-
 variables:
   SingletonMsiName: 'EF6Tools'
 
