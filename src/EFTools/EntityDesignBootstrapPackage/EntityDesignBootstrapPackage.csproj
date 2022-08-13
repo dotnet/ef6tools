@@ -1,60 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+<Project Sdk="Microsoft.NET.Sdk">
+
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), BuildEFTools.cmd))\tools\EntityFramework.settings.targets" />
+
   <PropertyGroup>
     <DPSkipAsmMeta>true</DPSkipAsmMeta>
   </PropertyGroup>
+
   <PropertyGroup>
-    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Microsoft.Data.Entity.Design.BootstrapPackage</AssemblyName>
-    <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
     <RootNamespace>Microsoft.Data.Entity.Design.BootstrapPackage</RootNamespace>
-    <TargetFrameworkVersion>$(ToolingDotNetFrameworkVersion)</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFrameworks>$(ToolingDotNetFrameworkSdkVersion)</TargetFrameworks>
     <!-- do we need this ?-->
     <AssemblyAttributeClsCompliant>false</AssemblyAttributeClsCompliant>
     <AssemblyAttributeComVisible>false</AssemblyAttributeComVisible>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <ProjectGuid>{FC48CB33-A0D9-49ED-841D-CC88FD3D761D}</ProjectGuid>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoWarn>1591;1573;1572;1570;1711;1712;1587;1584;1571;1589</NoWarn>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoWarn>1573;1572;1570;1711;1712;1587;1584;1571;1589</NoWarn>
-  </PropertyGroup>
+
   <PropertyGroup>
+    <NoWarn>$(NoWarn);1591;1573;1572;1570;1711;1712;1587;1584;1571;1589</NoWarn>
+    <NoWarn>$(NoWarn);VSSDK006</NoWarn>
+
     <!-- IS_BOOTSTRAP_PACKAGE is defined here to fix up the namespace of any files required by MicrosoftDataEntityDesignBootstrapPackage.
          This is so that other assemblies, such as DataEntityDesign, that own these files do not get loaded when loading the Bootstrap package. -->
-    <NoWarn>$(NoWarn);VSSDK006</NoWarn>
     <DefineConstants>$(DefineConstants);IS_BOOTSTRAP_PACKAGE</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
-  </PropertyGroup>
-  <PropertyGroup>
-    <AssemblyOriginatorKeyFile>$(RepositoryRoot)src\EFTools\EFToolsPublicKey.snk</AssemblyOriginatorKeyFile>
-  </PropertyGroup>
-  <PropertyGroup>
-    <DelaySign>true</DelaySign>
-  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
+    <Reference Condition="'$(VisualStudioVersion)' == '16.0' OR '$(VisualStudioVersion)' == '17.0'" Include="System.Threading" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
     <PackageReference Include="Microsoft.Internal.VisualStudio.Interop" Version="$(MicrosoftVisualStudioPackageCurrent)" />
@@ -63,12 +40,16 @@
     <PackageReference Include="Microsoft.VisualStudio.Threading" Version="$(MicrosoftVisualStudioThreadingPackageVersion)" />
     <!-- Reference just to fix ambiguous warning -->
     <PackageReference Include="Microsoft.VisualStudio.Validation" Version="$(MicrosoftVisualStudioValidationPackageVersion)" />
-
-    <Reference Include="System" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Drawing" />
-    <Reference Condition="'$(VisualStudioVersion)' == '16.0' OR '$(VisualStudioVersion)' == '17.0'" Include="System.Threading" />
   </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+
   <ItemGroup>
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
@@ -81,16 +62,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="PkgDefData\Microsoft.Data.Entity.Design.BootstrapPackage_Dev15.pkgdef" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
   <Target Name="AfterBuild">
     <MakeDir Directories="$(OutputPath)PkgDefData" />
     <RegexReplaceInFile InputFileName="PkgDefData\Microsoft.Data.Entity.Design.BootstrapPackage_Dev15.pkgdef" OutputFileName="$(OutputPath)PkgDefData\Microsoft.Data.Entity.Design.BootstrapPackage.pkgdef" Patterns="EFDESIGNERVERSIONTOKEN" Replacements="$(AssemblyVersion)" />
