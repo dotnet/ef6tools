@@ -69,7 +69,7 @@ steps:
     filename: '$(comspec)'
     arguments: '/c "call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" & msbuild $(Build.Repository.LocalPath)\src\EFTools\setup\GenerateMsiInputs\GenerateMsiInputs.msbuild /p:Configuration=$(BuildConfiguration) /t:ExtractNuspecs"'
 
-- task: ms-vseng.MicroBuildTasks.32f78468-e895-4f47-962c-58a699361df8.MicroBuildSwixPlugin@2
+- task: ms-vseng.MicroBuildTasks.32f78468-e895-4f47-962c-58a699361df8.MicroBuildSwixPlugin@4
   displayName: 'Install Swix Plugin'
 
 - task: MSBuild@1
