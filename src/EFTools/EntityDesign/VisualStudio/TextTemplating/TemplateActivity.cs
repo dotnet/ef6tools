@@ -11,6 +11,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.TextTemplating
     using System.IO;
     using System.Runtime.Remoting.Messaging;
     using System.Text.RegularExpressions;
+
     using EnvDTE;
     using Microsoft.Data.Entity.Design.DatabaseGeneration;
     using Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Engine;
@@ -115,7 +116,10 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.TextTemplating
             Project project = null;
             if (!String.IsNullOrEmpty(_edmxPath))
             {
-                project = VSHelpers.GetProjectForDocument(_edmxPath);
+                ThreadHelper.JoinableTaskFactory.Run(async () => {
+                    await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+                    project = VSHelpers.GetProjectForDocument(_edmxPath);
+                });
             }
 
             // Resolve and validate the template file path
