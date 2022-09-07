@@ -11,7 +11,6 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.TextTemplating
     using System.IO;
     using System.Runtime.Remoting.Messaging;
     using System.Text.RegularExpressions;
-
     using EnvDTE;
     using Microsoft.Data.Entity.Design.DatabaseGeneration;
     using Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Engine;
