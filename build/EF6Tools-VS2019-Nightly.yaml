@@ -127,19 +127,14 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)\SetupResults'
     ArtifactName: SetupResults
 - task: CopyFiles@2
-
   displayName: 'Copy PDB and XML Files'
-
   inputs:
-
     SourceFolder: 'bin\$(BuildConfiguration)'
-
     Contents: |
      Microsoft.Data.*.pdb
      Microsoft.VisualStudio.Data.*.pdb
      Microsoft.Data.*.xml
      Microsoft.VisualStudio.Data.*.xml
-
     TargetFolder: '$(Build.ArtifactStagingDirectory)\PdbsAndXmls'
 
 - task: PublishBuildArtifacts@1
