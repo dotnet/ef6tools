@@ -69,7 +69,7 @@ steps:
     filename: '$(comspec)'
     arguments: '/c "call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" & msbuild $(Build.Repository.LocalPath)\src\EFTools\setup\GenerateMsiInputs\GenerateMsiInputs.msbuild /p:Configuration=$(BuildConfiguration) /t:ExtractNuspecs"'
 
-- task: ms-vseng.MicroBuildTasks.32f78468-e895-4f47-962c-58a699361df8.MicroBuildSwixPlugin@2
+- task: ms-vseng.MicroBuildTasks.32f78468-e895-4f47-962c-58a699361df8.MicroBuildSwixPlugin@4
   displayName: 'Install Swix Plugin'
 
 - task: MSBuild@1
@@ -127,19 +127,14 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)\SetupResults'
     ArtifactName: SetupResults
 - task: CopyFiles@2
-
   displayName: 'Copy PDB and XML Files'
-
   inputs:
-
     SourceFolder: 'bin\$(BuildConfiguration)'
-
     Contents: |
      Microsoft.Data.*.pdb
      Microsoft.VisualStudio.Data.*.pdb
      Microsoft.Data.*.xml
      Microsoft.VisualStudio.Data.*.xml
-
     TargetFolder: '$(Build.ArtifactStagingDirectory)\PdbsAndXmls'
 
 - task: PublishBuildArtifacts@1
