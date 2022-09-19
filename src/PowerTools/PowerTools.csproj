@@ -59,7 +59,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Data.Services" Version="$(MicrosoftVisualStudioPackageCurrent)" />
     <PackageReference Include="Microsoft.VisualStudio.ComponentModelHost" Version="$(MicrosoftVisualStudioComponentModelHostPackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Data.Core" Version="$(MicrosoftVisualStudioDataCorePackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0" Version="$(MicrosoftVisualStudioTextTemplatingInterfaces100PackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.Interfaces" Version="$(MicrosoftVisualStudioTextTemplatingInterfaces100PackageVersion)" />
 
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
