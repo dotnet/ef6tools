@@ -341,17 +341,21 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
             var isDocInProjectInt = 0;
 
             uint foundItemId = 0;
-            var hr = vsProject.IsDocumentInProject(originalPath, out isDocInProjectInt, priority, out foundItemId);
-            if (NativeMethods.Succeeded(hr) && isDocInProjectInt == 1)
-            {
-                projectHierarchy = vsProject as IVsHierarchy;
-                if (projectHierarchy != null)
+            ThreadHelper.JoinableTaskFactory.Run(async () => {
+                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+                var hr = vsProject.IsDocumentInProject(originalPath, out isDocInProjectInt, priority, out foundItemId);
+                if (NativeMethods.Succeeded(hr) && isDocInProjectInt == 1)
                 {
-                    project = GetProject(projectHierarchy);
+                    projectHierarchy = vsProject as IVsHierarchy;
+                    if (projectHierarchy != null)
+                    {
+                        project = GetProject(projectHierarchy);
+                    }
+                    fileItemId = foundItemId;
+                    isDocInProject = true;
                 }
-                fileItemId = foundItemId;
-                isDocInProject = true;
-            }
+            });
+
             return isDocInProject;
         }
 
