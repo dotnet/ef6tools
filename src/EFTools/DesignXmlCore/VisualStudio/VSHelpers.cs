@@ -342,7 +342,6 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
 
             uint foundItemId = 0;
             var hr = vsProject.IsDocumentInProject(originalPath, out isDocInProjectInt, priority, out foundItemId);
-
             if (NativeMethods.Succeeded(hr) && isDocInProjectInt == 1)
             {
                 projectHierarchy = vsProject as IVsHierarchy;
