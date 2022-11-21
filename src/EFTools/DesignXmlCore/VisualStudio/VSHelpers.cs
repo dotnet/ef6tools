@@ -12,7 +12,6 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
     using EnvDTE;
     using Microsoft.VisualStudio;
     using Microsoft.VisualStudio.PlatformUI;
-    using Microsoft.VisualStudio.Shell;
     using Microsoft.VisualStudio.Shell.Interop;
     using Microsoft.VisualStudio.TextManager.Interop;
     using VSErrorHandler = Microsoft.VisualStudio.ErrorHandler;
@@ -340,13 +339,9 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
 
             var priority = new VSDOCUMENTPRIORITY[1];
             var isDocInProjectInt = 0;
-            var hr = 1;
-            
+
             uint foundItemId = 0;
-            ThreadHelper.JoinableTaskFactory.Run(async () => {
-                await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
-                hr = vsProject.IsDocumentInProject(originalPath, out isDocInProjectInt, priority, out foundItemId);
-            });
+            hr = vsProject.IsDocumentInProject(originalPath, out isDocInProjectInt, priority, out foundItemId);
 
             if (NativeMethods.Succeeded(hr) && isDocInProjectInt == 1)
             {
@@ -382,7 +377,6 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
                     project = o as Project;
                 }
             }
-
             return project;
         }
 
