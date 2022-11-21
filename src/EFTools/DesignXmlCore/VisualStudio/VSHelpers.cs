@@ -341,7 +341,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
             var isDocInProjectInt = 0;
 
             uint foundItemId = 0;
-            hr = vsProject.IsDocumentInProject(originalPath, out isDocInProjectInt, priority, out foundItemId);
+            var hr = vsProject.IsDocumentInProject(originalPath, out isDocInProjectInt, priority, out foundItemId);
 
             if (NativeMethods.Succeeded(hr) && isDocInProjectInt == 1)
             {
@@ -353,7 +353,6 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
                 fileItemId = foundItemId;
                 isDocInProject = true;
             }
-
             return isDocInProject;
         }
 
@@ -377,6 +376,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
                     project = o as Project;
                 }
             }
+
             return project;
         }
 
