@@ -676,9 +676,10 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui
 
             // these connection strings & invariant names are coming from the ddex provider, so these are "design-time"
             var invariantName = DataConnectionUtils.GetProviderInvariantName(_dataProviderManager, _dataConnection.Provider);
+            var fixedDecryptedConnectionString = ReplaceMdsKeywords(decryptedConnectionString);
             var fixedAppConfigConnectionString = ReplaceMdsKeywords(appConfigConnectionString);
             Wizard.ModelBuilderSettings.SetInvariantNamesAndConnectionStrings(ServiceProvider,
-                Wizard.Project, invariantName, decryptedConnectionString, fixedAppConfigConnectionString, true);
+                Wizard.Project, invariantName, fixedDecryptedConnectionString, fixedAppConfigConnectionString, true);
 
             string ReplaceMdsKeywords(string connectionString)
             {
