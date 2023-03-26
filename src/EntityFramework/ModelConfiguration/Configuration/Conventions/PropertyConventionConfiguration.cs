@@ -5,10 +5,10 @@ namespace System.Data.Entity.ModelConfiguration.Configuration
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Data.Entity.ModelConfiguration.Conventions;
-    using System.Data.Entity.Utilities;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
     using System.Reflection;
+    using EFUtils = Entity.Utilities;
 
     /// <summary>
     /// Allows configuration to be performed for a lightweight convention based on
@@ -22,15 +22,15 @@ namespace System.Data.Entity.ModelConfiguration.Configuration
         internal PropertyConventionConfiguration(ConventionsConfiguration conventionsConfiguration)
             : this(conventionsConfiguration, Enumerable.Empty<Func<PropertyInfo, bool>>())
         {
-            DebugCheck.NotNull(conventionsConfiguration);
+            EFUtils.DebugCheck.NotNull(conventionsConfiguration);
         }
 
         private PropertyConventionConfiguration(
             ConventionsConfiguration conventionsConfiguration,
             IEnumerable<Func<PropertyInfo, bool>> predicates)
         {
-            DebugCheck.NotNull(conventionsConfiguration);
-            DebugCheck.NotNull(predicates);
+            EFUtils.DebugCheck.NotNull(conventionsConfiguration);
+            EFUtils.DebugCheck.NotNull(predicates);
 
             _conventionsConfiguration = conventionsConfiguration;
             _predicates = predicates;
@@ -55,7 +55,7 @@ namespace System.Data.Entity.ModelConfiguration.Configuration
         /// </returns>
         public PropertyConventionConfiguration Where(Func<PropertyInfo, bool> predicate)
         {
-            Check.NotNull(predicate, "predicate");
+            EFUtils.Check.NotNull(predicate, "predicate");
 
             return new PropertyConventionConfiguration(_conventionsConfiguration, _predicates.Append(predicate));
         }
@@ -76,7 +76,7 @@ namespace System.Data.Entity.ModelConfiguration.Configuration
             Func<PropertyInfo, T> capturingPredicate)
             where T : class
         {
-            Check.NotNull(capturingPredicate, "capturingPredicate");
+            EFUtils.Check.NotNull(capturingPredicate, "capturingPredicate");
 
             return new PropertyConventionWithHavingConfiguration<T>(
                 _conventionsConfiguration,
@@ -95,7 +95,7 @@ namespace System.Data.Entity.ModelConfiguration.Configuration
         /// </param>
         public void Configure(Action<ConventionPrimitivePropertyConfiguration> propertyConfigurationAction)
         {
-            Check.NotNull(propertyConfigurationAction, "propertyConfigurationAction");
+            EFUtils.Check.NotNull(propertyConfigurationAction, "propertyConfigurationAction");
 
             _conventionsConfiguration.Add(
                 new PropertyConvention(

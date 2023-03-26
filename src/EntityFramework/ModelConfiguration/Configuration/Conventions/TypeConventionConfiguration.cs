@@ -5,9 +5,9 @@ namespace System.Data.Entity.ModelConfiguration.Configuration
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Data.Entity.ModelConfiguration.Conventions;
-    using System.Data.Entity.Utilities;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
+    using EFUtils = Entity.Utilities;
 
     /// <summary>
     /// Allows configuration to be performed for a lightweight convention based on
@@ -21,13 +21,13 @@ namespace System.Data.Entity.ModelConfiguration.Configuration
         internal TypeConventionConfiguration(ConventionsConfiguration conventionsConfiguration)
             : this(conventionsConfiguration, Enumerable.Empty<Func<Type, bool>>())
         {
-            DebugCheck.NotNull(conventionsConfiguration);
+            EFUtils.DebugCheck.NotNull(conventionsConfiguration);
         }
 
         private TypeConventionConfiguration(ConventionsConfiguration conventionsConfiguration, IEnumerable<Func<Type, bool>> predicates)
         {
-            DebugCheck.NotNull(conventionsConfiguration);
-            DebugCheck.NotNull(predicates);
+            EFUtils.DebugCheck.NotNull(conventionsConfiguration);
+            EFUtils.DebugCheck.NotNull(predicates);
 
             _conventionsConfiguration = conventionsConfiguration;
             _predicates = predicates;
@@ -53,7 +53,7 @@ namespace System.Data.Entity.ModelConfiguration.Configuration
         /// </returns>
         public TypeConventionConfiguration Where(Func<Type, bool> predicate)
         {
-            Check.NotNull(predicate, "predicate");
+            EFUtils.Check.NotNull(predicate, "predicate");
 
             return new TypeConventionConfiguration(_conventionsConfiguration, _predicates.Append(predicate));
         }
@@ -73,7 +73,7 @@ namespace System.Data.Entity.ModelConfiguration.Configuration
         public TypeConventionWithHavingConfiguration<T> Having<T>(Func<Type, T> capturingPredicate)
             where T : class
         {
-            Check.NotNull(capturingPredicate, "capturingPredicate");
+            EFUtils.Check.NotNull(capturingPredicate, "capturingPredicate");
 
             return new TypeConventionWithHavingConfiguration<T>(
                 _conventionsConfiguration,
@@ -92,7 +92,7 @@ namespace System.Data.Entity.ModelConfiguration.Configuration
         /// </param>
         public void Configure(Action<ConventionTypeConfiguration> entityConfigurationAction)
         {
-            Check.NotNull(entityConfigurationAction, "entityConfigurationAction");
+            EFUtils.Check.NotNull(entityConfigurationAction, "entityConfigurationAction");
 
             _conventionsConfiguration.Add(new TypeConvention(_predicates, entityConfigurationAction));
         }

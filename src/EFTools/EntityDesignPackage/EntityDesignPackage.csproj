@@ -55,42 +55,42 @@
     <VsSDKToolsPath Condition=" '$(VsSDKToolsPath)' == '' ">$(VsSDKInstall)\VisualStudioIntegration\Tools\bin</VsSDKToolsPath>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.Internal.VisualStudio.Interop" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Package.LanguageService.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Interop" Version="$(MicrosoftVisualStudioInteropPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Shell.Design" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VSDesigner" Version="$(MicrosoftVSDesignerPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.ComponentModelHost" Version="$(MicrosoftVisualStudioComponentModelHostPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.GraphObject.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.VSHost" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="VsWebSite.Interop" Version="$(VsWebSiteInteropPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.DataDesign.Interfaces" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" Version="$(MicrosoftVisualStudioTemplateWizardInterfacePackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Utilities" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.Interfaces" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.Internal.VisualStudio.Interop" />
+    <PackageReference Include="Microsoft.VisualStudio.ComponentModelHost" />
+    <PackageReference Include="Microsoft.VisualStudio.DataDesign.Interfaces" />
+    <PackageReference Include="Microsoft.VisualStudio.Interop" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.15.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.15.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.GraphObject.15.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell.15.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Package.LanguageService.15.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.Design" />
+    <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" />
+    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.Interfaces" />
+    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.VSHost" />
+    <PackageReference Include="Microsoft.VisualStudio.Utilities" />
+    <PackageReference Include="Microsoft.VSDesigner" />
+    <PackageReference Include="VsWebSite.Interop" />
 
     <Reference Include="Accessibility" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="ReachFramework" />
     <Reference Include="System" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Data" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Printing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="UIAutomationProvider" />
     <Reference Include="UIAutomationTypes" />
-    <Reference Include="ReachFramework" />
+    <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>

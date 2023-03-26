@@ -42,19 +42,19 @@
     <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Interop" Version="$(MicrosoftVisualStudioInteropPackageVersion)" />
-    <PackageReference Include="Microsoft.Internal.VisualStudio.Interop" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.Internal.VisualStudio.Interop" />
+    <PackageReference Include="Microsoft.VisualStudio.Interop" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" />
 
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EFDesigner\EFArtifactExtensions.cs" />

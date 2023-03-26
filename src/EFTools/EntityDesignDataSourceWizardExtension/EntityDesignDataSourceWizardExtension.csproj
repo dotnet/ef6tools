@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), BuildEFTools.cmd))\tools\EntityFramework.settings.targets"/>
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), BuildEFTools.cmd))\tools\EntityFramework.settings.targets" />
   <PropertyGroup>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -40,13 +40,13 @@
     <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Interop" Version="$(MicrosoftVisualStudioInteropPackageVersion)" />
-    <PackageReference Include="Microsoft.VSDesigner" Version="$(MicrosoftVSDesignerPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.DataDesign.Interfaces" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.ExtensibilityHosting" Version="$(MicrosoftVisualStudioExtensibilityHostingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" Version="$(MicrosoftVisualStudioTemplateWizardInterfacePackageVersion)" />
-
+    <PackageReference Include="Microsoft.VisualStudio.DataDesign.Interfaces" />
+    <PackageReference Include="Microsoft.VisualStudio.ExtensibilityHosting" />
+    <PackageReference Include="Microsoft.VisualStudio.Interop" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" />
+    <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" />
+    <PackageReference Include="Microsoft.VSDesigner" />
+    <PackageReference Include="Microsoft.WizardFrameworkVS" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Drawing" />

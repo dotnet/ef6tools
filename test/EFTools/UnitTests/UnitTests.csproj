@@ -45,31 +45,31 @@
     <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Interop" Version="$(MicrosoftVisualStudioInteropPackageVersion)" />
-    <PackageReference Include="Microsoft.VSDesigner" Version="$(MicrosoftVSDesignerPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Shell.Design" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="VsWebSite.Interop" Version="$(VsWebSiteInteropPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Data.Core" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.DataTools.Interop" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.TextTemplating" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.Interfaces" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Utilities" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.WizardFramework" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" Version="$(MicrosoftVisualStudioTemplateWizardInterfacePackageVersion)" />
-    <PackageReference Include="Moq" Version="$(MoqPackageVersion)" />
-    <PackageReference Include="xunit" Version="$(XunitPackageVersion)" />
-    <PackageReference Include="xunit.extensions" Version="$(XunitPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Data.Core"  />
+    <PackageReference Include="Microsoft.VisualStudio.DataTools.Interop"  />
+    <PackageReference Include="Microsoft.VisualStudio.Interop"  />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.15.0"  />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.15.0"  />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell.15.0"  />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0"  />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.Design"  />
+    <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface"  />
+    <PackageReference Include="Microsoft.VisualStudio.TextTemplating"  />
+    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.Interfaces"  />
+    <PackageReference Include="Microsoft.VisualStudio.Utilities"  />
+    <PackageReference Include="Microsoft.VSDesigner"  />
+    <PackageReference Include="Microsoft.WizardFramework"  />
+    <PackageReference Include="Moq"  />
+    <PackageReference Include="VsWebSite.Interop"  />
+    <PackageReference Include="xunit"  />
+    <PackageReference Include="xunit.extensions"  />
 
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
-    <Reference Include="System.XML" />
+    <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>

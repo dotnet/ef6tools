@@ -52,15 +52,15 @@
     <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Interop" Version="$(MicrosoftVisualStudioInteropPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.XmlEditor" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.GraphObject.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" Version="$(MicrosoftVisualStudioTemplateWizardInterfacePackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.Interop" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.15.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.15.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.GraphObject.15.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell.15.0" />
+    <PackageReference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" />
+    <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" />
+    <PackageReference Include="Microsoft.VisualStudio.XmlEditor" />
 
     <Reference Include="System" />
     <Reference Include="System.Activities" />
@@ -68,7 +68,7 @@
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.XML" />
+    <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UIAutomationClient" />
     <Reference Include="UIAutomationTypes" />
