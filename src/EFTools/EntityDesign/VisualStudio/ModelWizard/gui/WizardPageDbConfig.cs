@@ -641,6 +641,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui
         // </summary>
         private void UpdateSettingsFromGui()
         {
+            System.Diagnostics.Debugger.Launch();
             // don't bother saving anything if there isn't a connection; the user isn't allowed to proceed forward in the wizard anyways
             if (_dataConnection == null)
             {
