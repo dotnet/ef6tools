@@ -69,13 +69,11 @@
               LogStandardErrorAsError="true" />
     </Target>
 
-    <Import Project="tools\SkipStrongNames.targets" />
-
     <Target Name="BuildFrameworkPackages">
       <MSBuild Projects="$(RepositoryRoot)EF.msbuild" Targets="Package" Properties="Configuration=$(Configuration)" />
     </Target>
 
-    <Target Name="BuildDesigner" DependsOnTargets="CreateDirectories;CheckSkipStrongNames">
+    <Target Name="BuildDesigner" DependsOnTargets="RestorePackages;CreateDirectories;CheckSkipStrongNames">
         <MSBuild Targets="$(BuildTargets)"
                    Projects="@(Projects)"
                    Properties="Configuration=$(Configuration);$(BuildProperties);BuildPackages=false" />
@@ -104,10 +102,10 @@
         <MSBuild Projects="$(MSBuildProjectFile)" Properties="BuildTargets=Rebuild;Configuration=$(Configuration)" Targets="Clean;Build" />
     </Target>
 
-    <Target Name="Test" DependsOnTargets="Install;InstallTestHost;ReRunXUnitTests;ReRunInProcTests" />
+    <Target Name="Test" DependsOnTargets="ReRunXUnitTests;ReRunInProcTests" />
 
     <UsingTask TaskName="Xunit.Runner.MSBuild.xunit"
-               AssemblyFile="packages\xunit.1.9.2\lib\net20\xunit.runner.msbuild.dll" />
+               AssemblyFile="$(PkgXunit)\lib\net20\xunit.runner.msbuild.dll" />
 
     <Target Name="ReRunXUnitTests">
         <xunit Assemblies="@(XunitAssembly)" Xml="$(OutputPath)TestResults.xml" />

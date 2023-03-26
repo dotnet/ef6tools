@@ -37,11 +37,18 @@ steps:
   displayName: 'Install Localization Plugin'
 
 - task: MSBuild@1
+  displayName: 'Restore Localize Project'
+  inputs:
+    solution: 'build\loc.proj'
+    configuration: '$(BuildConfiguration)'
+    msbuildArguments: '/t:Restore'
+
+- task: MSBuild@1
   displayName: 'Localize Assemblies'
   inputs:
     solution: 'build\loc.proj'
     configuration: '$(BuildConfiguration)'
-    msbuildArguments: '/t:AfterBuild'
+    msbuildArguments: '/t:PostBuild -binaryLogger:logfile=$(Build.SourcesDirectory)\bin\$(BuildConfiguration)\Localize.binlog'
 
 - task: NuGetCommand@2
   displayName: 'NuGet Restore Setup Inputs Packages'
@@ -61,11 +68,18 @@ steps:
   displayName: 'Install Swix Plugin'
 
 - task: MSBuild@1
+  displayName: 'Restore VSIX project'
+  inputs:
+    solution: 'setup\swix\vs_eftools.swixproj'
+    configuration: '$(BuildConfiguration)'
+    msbuildArguments: '/t:Restore'
+
+- task: MSBuild@1
   displayName: 'Build VSIX'
   inputs:
     solution: 'setup\swix\vs_eftools.swixproj'
     configuration: '$(BuildConfiguration)'
-    msbuildArguments: '/t:Build'
+    msbuildArguments: '/t:Build -binaryLogger:logfile=$(Build.SourcesDirectory)\bin\$(BuildConfiguration)\BuildVsix.binlog'
 
 - task: CopyFiles@2
   displayName: 'Copy VSIX'
@@ -90,16 +104,27 @@ steps:
     TargetFolder: '$(Build.ArtifactStagingDirectory)\PdbsAndXmls'
 
 - task: CopyFiles@2
+  displayName: 'Copy Binlogs'
+  inputs:
+    SourceFolder: 'bin\$(BuildConfiguration)'
+    Contents: |
+     '*.binlog'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\BinLogs'
+  condition: succeededOrFailed()
+
+- task: CopyFiles@2
   displayName: 'Copy BinDirContents'
   inputs:
     Contents: '$(Build.SourcesDirectory)\bin\**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)\BinDirContents'
+  condition: succeededOrFailed()
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish BinDirContents'
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)\BinDirContents'
     ArtifactName: BinDirContents
+  condition: succeededOrFailed()
 
 - task: CopyFiles@2
   displayName: 'Copy Obj Files'

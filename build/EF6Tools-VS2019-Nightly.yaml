@@ -78,18 +78,18 @@ extends:
             arguments: '/c "call "$(ProgramFiles)\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" & msbuild $(Build.Repository.LocalPath)\EFTools.msbuild /p:RunCodeAnalysis=false /p:Configuration=$(BuildConfiguration) /t:EnableSkipStrongNames;Clean;BuildDesigner -flp3:verbosity=diagnostic;logfile=$(Build.SourcesDirectory)\bin\$(BuildConfiguration)\BuildDesigner.log -binaryLogger:logfile=$(Build.SourcesDirectory)\bin\$(BuildConfiguration)\BuildDesigner.binlog"'
 
         - task: MSBuild@1
+          displayName: 'Restore Localize Project'
+          inputs:
+            solution: 'build\loc.proj'
+            configuration: '$(BuildConfiguration)'
+            msbuildArguments: '/t:Restore'
+
+        - task: MSBuild@1
           displayName: 'Localize Assemblies'
           inputs:
             solution: 'build\loc.proj'
             configuration: '$(BuildConfiguration)'
-            msbuildArguments: '/t:AfterBuild'
-
-        - task: MSBuild@1
-          displayName: 'Sign Unlocalized and Localized Assemblies'
-          inputs:
-            solution: 'build\sign.proj'
-            configuration: '$(BuildConfiguration)'
-            msbuildArguments: '/t:AfterBuild'
+            msbuildArguments: '/t:PostBuild'
 
         - task: NuGetCommand@2
           displayName: 'NuGet Restore Setup Inputs Packages'
@@ -99,11 +99,25 @@ extends:
             externalFeedCredentials: 'OSSCG Feed - Microsoft approved OSS packages'
             arguments: 'restore $(Build.Repository.LocalPath)\src\EFTools\setup\GenerateMsiInputs\packages.config -SolutionDirectory $(MsiRuntimeInputsPath) -Verbosity Detailed -NonInteractive'
 
+        - task: MSBuild@1
+          displayName: 'Sign Unlocalized and Localized Assemblies'
+          inputs:
+            solution: 'build\sign.proj'
+            configuration: '$(BuildConfiguration)'
+            msbuildArguments: '/t:AfterBuild'
+
         - task: BatchScript@1
           displayName: 'Extract Setup Inputs Nuspecs'
           inputs:
             filename: '$(comspec)'
             arguments: '/c "call "$(ProgramFiles)\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" & msbuild $(Build.Repository.LocalPath)\src\EFTools\setup\GenerateMsiInputs\GenerateMsiInputs.msbuild /p:Configuration=$(BuildConfiguration) /t:ExtractNuspecs"'
+
+        - task: MSBuild@1
+          displayName: 'Restore VSIX project'
+          inputs:
+            solution: 'setup\swix\vs_eftools.swixproj'
+            configuration: '$(BuildConfiguration)'
+            msbuildArguments: '/t:Restore'
 
         - task: MSBuild@1
           displayName: 'Build VSIX'
@@ -119,7 +133,7 @@ extends:
             feedsToUse: config
             nugetConfigPath: '.nuget\NuGet.config'
             externalFeedCredentials: 'OSSCG Feed - Microsoft approved OSS packages'
-            arguments: 'restore $(Build.Repository.LocalPath)\setup\wix\packages.config -SolutionDirectory $(Build.Repository.LocalPath)\setup\wix -Verbosity Detailed -NonInteractive -ConfigFile $(Build.Repository.LocalPath)\.nuget\NuGet.config'
+            arguments: 'restore $(Build.Repository.LocalPath)\setup\wix\packages.config -SolutionDirectory $(Build.Repository.LocalPath)\setup\wix -Verbosity Detailed -NonInteractive'
 
         - task: MSBuild@1
           displayName: 'Build Singleton MSI'

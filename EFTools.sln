@@ -27,7 +27,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestInfrastructure", "test\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D6CDC93D-082A-4644-8452-8558ED57FC2B}"
 	ProjectSection(SolutionItems) = preProject
+		Directory.Packages.Props = Directory.Packages.Props
 		test\EFTools\InProcTests\EFDesignerInProcTests.testsettings = test\EFTools\InProcTests\EFDesignerInProcTests.testsettings
+		nuget.config = nuget.config
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityDesignerVersioningFacade", "src\EFTools\EntityDesignerVersioningFacade\EntityDesignerVersioningFacade.csproj", "{0518E682-510D-48F8-BB14-7151C50A1850}"

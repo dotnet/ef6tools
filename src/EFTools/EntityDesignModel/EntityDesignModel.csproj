@@ -47,7 +47,6 @@
     <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="EntityFramework" Version="6.5.1"/>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Design" />
@@ -56,6 +55,8 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
+
+    <PackageReference Include="EntityFramework" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(RepositoryRoot)src\EntityFramework\Core\Mapping\MappingErrorCode.cs">
