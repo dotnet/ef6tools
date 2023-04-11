@@ -683,8 +683,11 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui
 
             string ReplaceMdsKeywords(string connectionString)
             {
-                connectionString = connectionString.Replace("Multiple Active Result Sets=", "MultipleActiveResultSets=");
-                connectionString = connectionString.Replace("Trust Server Certificate=", "TrustServerCertificate=");
+                connectionString = connectionString.Replace("Multiple Active Result Sets=", "MultipleActiveResultSets=")
+                    .Replace("Trust Server Certificate=", "TrustServerCertificate=")
+                    .Replace("Authentication=ActiveDirectoryIntegrated", "Authentication=Active Directory Integrated")
+                    .Replace("Authentication=ActiveDirectoryPassword", "Authentication=Active Directory Password")
+                    .Replace("Authentication=ActiveDirectoryInteractive", "Authentication=Active Directory Interactive");
                 return connectionString;
             }
         }
