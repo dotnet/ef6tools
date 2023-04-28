@@ -59,10 +59,10 @@
     <PackageReference Include="Microsoft.VisualStudio.ComponentModelHost" />
     <PackageReference Include="Microsoft.VisualStudio.DataDesign.Interfaces" />
     <PackageReference Include="Microsoft.VisualStudio.Interop" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.17.5.33626.307" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.17.5.33626.307" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.GraphObject.17.5.33626.307" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell.17.5.33626.307" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk" Version="17.5.33626.307" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams" Version="17.5.33626.307" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.GraphObject" Version="17.5.33626.307" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell" Version="17.5.33626.307" />
     <PackageReference Include="Microsoft.VisualStudio.Package.LanguageService.15.0" />
     <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" />
     <PackageReference Include="Microsoft.VisualStudio.Shell.Design" />
