@@ -1784,7 +1784,7 @@ Public Class DynamicTextTransformation
         Dim type As Type = _instance.GetType()
         _write = type.GetMethod("Write", New Type() {GetType(String)})
         _writeLine = type.GetMethod("WriteLine", New Type() {GetType(String)})
-        _generationEnvironment = type.GetProperty("GenerationEnvironment", BindingFlags.Instance Or BindingFlags.NonPublic)
+        _generationEnvironment = type.GetProperty("GenerationEnvironment")
         _host = type.GetProperty("Host")
         _errors = type.GetProperty("Errors")
     End Sub
