@@ -48,9 +48,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Data.Core"  />
     <PackageReference Include="Microsoft.VisualStudio.DataTools.Interop"  />
     <PackageReference Include="Microsoft.VisualStudio.Interop"  />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.15.0"  />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.15.0"  />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell.15.0"  />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.17.5.33626.307"  />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.17.5.33626.307"  />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell.17.5.33626.307"  />
     <PackageReference Include="Microsoft.VisualStudio.Shell.15.0"  />
     <PackageReference Include="Microsoft.VisualStudio.Shell.Design"  />
     <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface"  />

@@ -47,10 +47,10 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Interop" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.15.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.15.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.GraphObject.15.0" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell.15.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.17.5.33626.307" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.17.5.33626.307" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.GraphObject.17.5.33626.307" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell.17.5.33626.307" />
     <PackageReference Include="Microsoft.VisualStudio.Shell.15.0"/>
     <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" />
     <PackageReference Include="Microsoft.VisualStudio.XmlEditor" />
