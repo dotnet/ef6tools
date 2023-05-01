@@ -18,7 +18,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
         [Fact]
         public void RetargetFilesInProject_retargets_Edmx_files_in_project()
         {
-            var mockDte = new MockDTE(".NETFramework, Version=v4.5", references: new Reference[0]);
+            var mockDte = new MockDTE(".NETFramework, Version=v4.7.2", references: new Reference[0]);
 
             var projectItems =
                 new[]
@@ -72,7 +72,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
         [Fact]
         public void RetargetFilesInProject_wont_retarget_data_services_Edmx_files_in_project()
         {
-            var mockDte = new MockDTE(".NETFramework, Version=v4.5", references: new Reference[0]);
+            var mockDte = new MockDTE(".NETFramework, Version=v4.7.2", references: new Reference[0]);
 
             var projectItems =
                 new[]

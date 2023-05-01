@@ -13,6 +13,7 @@
         <LogsDir>$(SolutionDir)logs\</LogsDir>
         <SkipStrongNamesXml>tools\EFToolsSkipStrongNames.xml</SkipStrongNamesXml>
         <IsDev14OrLower Condition="'$(VisualStudioVersion)' == '11.0' OR '$(VisualStudioVersion)' == '12.0' OR '$(VisualStudioVersion)' == '14.0'">True</IsDev14OrLower>
+        <BuildDir>bin</BuildDir>
     </PropertyGroup>
 
     <ItemGroup>
@@ -54,16 +55,7 @@
     <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
 
     <Target Name="Clean">
-        <MSBuild Targets="Clean"
-                 Projects="@(Projects)" />
-        <MSBuild Condition="'$(IsDev14OrLower)' == 'True'"
-                 Targets="Clean"
-                 Projects="@(TestHostProjects)" />
-        <MSBuild Targets="Clean"
-                 Projects="$(SolutionDir)\src\EFTools\Setup\GenerateMsiInputs\GenerateMsiInputs.msbuild" />
-        <MSBuild Condition="'$(IsDev14OrLower)' == 'True'"
-                 Targets="Clean"
-                 Projects="$(SolutionDir)\src\EFTools\Setup\EFToolsMsi\EFToolsMsi.wixproj" />
+        <RemoveDir Directories="$(BuildDir)" />
     </Target>
 
     <Target Name="CreateDirectories">
@@ -75,17 +67,15 @@
             <RequireRestoreConsent>false</RequireRestoreConsent>
         </PropertyGroup>
         <Message Text="Restoring NuGet packages..." Importance="High" />
-        <Exec Command="$(NuGetCommand) restore EFTools.sln"
+        <Exec Command="dotnet restore EFTools.sln"
               LogStandardErrorAsError="true" />
     </Target>
-
-    <Import Project="tools\SkipStrongNames.targets" />
 
     <Target Name="BuildFrameworkPackages">
       <MSBuild Projects="$(RepositoryRoot)EF.msbuild" Targets="Package" Properties="Configuration=$(Configuration)" />
     </Target>
 
-    <Target Name="BuildDesigner" DependsOnTargets="CreateDirectories;CheckSkipStrongNames">
+    <Target Name="BuildDesigner" DependsOnTargets="CreateDirectories">
         <MSBuild Targets="$(BuildTargets)"
                    Projects="@(Projects)"
                    Properties="Configuration=$(Configuration);$(BuildProperties);BuildPackages=false" />

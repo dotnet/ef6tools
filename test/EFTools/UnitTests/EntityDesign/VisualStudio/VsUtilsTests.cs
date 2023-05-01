@@ -204,7 +204,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
                     {
                         ".NETFramework,Version=v4.0",
                         ".NETFramework,Version=v3.5",
-                        ".NETFramework,Version=v4.5",
+                        ".NETFramework,Version=v4.7.2",
                     };
 
             foreach (var target in targets)
@@ -248,7 +248,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
                     {
                         ".NETFramework,Version=v3.0",
                         ".NETFramework,Version=v2.0",
-                        ".XBox,Version=v4.5",
+                        ".XBox,Version=v4.7.2",
                         string.Empty,
                         null
                     };
@@ -368,7 +368,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
             SchemaVersionSupportedInProject_returns_true_for_v3_and_NetFramework_4_5_if_EF_not_referenced_otherwise_false()
         {
             var mockDte =
-                new MockDTE(".NETFramework, Version=v4.5", references: new Reference[0]);
+                new MockDTE(".NETFramework, Version=v4.7.2", references: new Reference[0]);
 
             Assert.False(
                 VsUtils.SchemaVersionSupportedInProject(
@@ -440,7 +440,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
         {
             var mockDte =
                 new MockDTE(
-                    ".NETFramework, Version=v4.5",
+                    ".NETFramework, Version=v4.7.2",
                     references: new[] { MockDTE.CreateReference("System.Data.Entity", "4.0.0.0") });
 
             Assert.False(
@@ -460,7 +460,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
         public void SchemaVersionSupportedInProject_returns_true_for_v3_and_EF6_otherwise_false()
         {
             var targetNetFrameworkVersions =
-                new[] { ".NETFramework, Version=v4.0", ".NETFramework, Version=v4.5" };
+                new[] { ".NETFramework, Version=v4.0", ".NETFramework, Version=v4.7.2" };
 
             foreach (var targetNetFrameworkVersion in targetNetFrameworkVersions)
             {
@@ -616,7 +616,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
         [Fact]
         public void GetTypeFromProject_uses_dynamic_type_service()
         {
-            var dte = new MockDTE(".NETFramework,Version=v4.5");
+            var dte = new MockDTE(".NETFramework,Version=v4.7.2");
 
             var typeResolutionService = new Mock<ITypeResolutionService>();
             var dynamicTypeService = new Mock<DynamicTypeService>(MockBehavior.Strict);

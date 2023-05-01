@@ -51,7 +51,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui
         {
             var guid = new Guid("42424242-4242-4242-4242-424242424242");
 
-            var mockDte = new MockDTE(".NETFramework, Version=v4.5", references: new Reference[0]);
+            var mockDte = new MockDTE(".NETFramework, Version=v4.7.2", references: new Reference[0]);
             mockDte.SetProjectProperties(new Dictionary<string, object> { { "FullPath", @"C:\Project" } });
             var mockParentProjectItem = new Mock<ProjectItem>();
             mockParentProjectItem.Setup(p => p.Collection).Returns(Mock.Of<ProjectItems>());
@@ -80,7 +80,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui
         {
             var guid = new Guid("42424242-4242-4242-4242-424242424242");
 
-            var mockDte = new MockDTE(".NETFramework, Version=v4.5", references: new Reference[0]);
+            var mockDte = new MockDTE(".NETFramework, Version=v4.7.2", references: new Reference[0]);
             mockDte.SetProjectProperties(new Dictionary<string, object> { { "FullPath", @"C:\Project" } });
             var mockParentProjectItem = new Mock<ProjectItem>();
             mockParentProjectItem.Setup(p => p.Collection).Returns(Mock.Of<ProjectItems>());

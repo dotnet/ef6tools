@@ -20,7 +20,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Model
         [Fact]
         public void TryGetBufferViaExtensions_returns_false_when_converter_is_present_but_transformer_is_absent_for_non_edmx_file()
         {
-            var mockDte = new MockDTE(".NETFramework, Version=v4.5", references: new Reference[0]);
+            var mockDte = new MockDTE(".NETFramework, Version=v4.7.2", references: new Reference[0]);
             var mockProjectItem = new Mock<ProjectItem>();
             mockProjectItem.SetupGet(i => i.ContainingProject).Returns(mockDte.Project);
             mockProjectItem.Setup(i => i.get_FileNames(It.IsAny<short>())).Returns("non-edmx-file.xmde");
@@ -63,7 +63,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Model
         // note that this may not be the desired behavior see: https://entityframework.codeplex.com/workitem/1371
         public void TryGetBufferViaExtensions_throws_when_converter_is_absent_for_non_edmx_file()
         {
-            var mockDte = new MockDTE(".NETFramework, Version=v4.5", references: new Reference[0]);
+            var mockDte = new MockDTE(".NETFramework, Version=v4.7.2", references: new Reference[0]);
             var mockProjectItem = new Mock<ProjectItem>();
             mockProjectItem.SetupGet(i => i.ContainingProject).Returns(mockDte.Project);
             mockProjectItem.Setup(i => i.get_FileNames(It.IsAny<short>())).Returns("non-edmx-file.xmde");
@@ -88,7 +88,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Model
         [Fact]
         public void TryGetBufferViaExtensions_returns_false_when_transformer_does_not_modify_original_document()
         {
-            var mockDte = new MockDTE(".NETFramework, Version=v4.5", references: new Reference[0]);
+            var mockDte = new MockDTE(".NETFramework, Version=v4.7.2", references: new Reference[0]);
             var mockProjectItem = new Mock<ProjectItem>();
             mockProjectItem.SetupGet(i => i.ContainingProject).Returns(mockDte.Project);
             mockProjectItem.Setup(i => i.get_FileNames(It.IsAny<short>())).Returns("model.edmx");
@@ -127,7 +127,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Model
         [Fact]
         public void TryGetBufferViaExtensions_returns_true_when_transformer_is_present_but_converter_is_absent_for_edmx_file()
         {
-            var mockDte = new MockDTE(".NETFramework, Version=v4.5", references: new Reference[0]);
+            var mockDte = new MockDTE(".NETFramework, Version=v4.7.2", references: new Reference[0]);
             var mockProjectItem = new Mock<ProjectItem>();
             mockProjectItem.SetupGet(i => i.ContainingProject).Returns(mockDte.Project);
             mockProjectItem.Setup(i => i.get_FileNames(It.IsAny<short>())).Returns("model.edmx");
@@ -170,7 +170,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Model
         // [Fact] https://entityframework.codeplex.com/workitem/1371
         public void TryGetBufferViaExtensions_passes_content_from_converter_to_transformer_and_returns_true()
         {
-            var mockDte = new MockDTE(".NETFramework, Version=v4.5", references: new Reference[0]);
+            var mockDte = new MockDTE(".NETFramework, Version=v4.7.2", references: new Reference[0]);
             var mockProjectItem = new Mock<ProjectItem>();
             mockProjectItem.SetupGet(i => i.ContainingProject).Returns(mockDte.Project);
             mockProjectItem.Setup(i => i.get_FileNames(It.IsAny<short>())).Returns("non-edmx-file.xmde");

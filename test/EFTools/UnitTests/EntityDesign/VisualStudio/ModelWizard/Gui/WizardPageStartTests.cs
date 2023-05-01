@@ -68,7 +68,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui
         {
             var mockDte =
                 new MockDTE(
-                    ".NETFramework, Version=v4.5",
+                    ".NETFramework, Version=v4.7.2",
                     isWebSite
                         ? MockDTE.CreateWebSite(
                             properties: new Dictionary<string, object>
@@ -107,7 +107,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui
         [Fact]
         public void OnDeactivate_does_not_update_settings_if_model_file_already_exists()
         {
-            var mockDte = new MockDTE(".NETFramework, Version=v4.5", references: new Reference[0]);
+            var mockDte = new MockDTE(".NETFramework, Version=v4.7.2", references: new Reference[0]);
 
             var modelBuilderSettings = new ModelBuilderSettings
             {
@@ -235,7 +235,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui
 
         private static ModelBuilderWizardForm CreateModelBuilderWizardForm(ModelGenerationOption modelGenerationOption)
         {
-            var mockDte = new MockDTE(".NETFramework, Version=v4.5", references: new Reference[0]);
+            var mockDte = new MockDTE(".NETFramework, Version=v4.7.2", references: new Reference[0]);
 
             var modelBuilderSettings = new ModelBuilderSettings
             {
@@ -255,7 +255,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui
         [Fact]
         public void OnActivate_result_depends_on_FileAlreadyExistsError()
         {
-            var mockDte = new MockDTE(".NETFramework, Version=v4.5", references: new Reference[0]);
+            var mockDte = new MockDTE(".NETFramework, Version=v4.7.2", references: new Reference[0]);
 
             var wizard = 
                 ModelBuilderWizardFormHelper.CreateWizard(project : mockDte.Project, serviceProvider: mockDte.ServiceProvider);
@@ -272,7 +272,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui
         public void listViewModelContents_DoubleClick_calls_OnFinish_if_EmptyModel_selected()
         {
             var mockDte = new MockDTE(
-                ".NETFramework, Version=v4.5", 
+                ".NETFramework, Version=v4.7.2", 
                 references: new[] { MockDTE.CreateReference("EntityFramework", "5.0.0.0") });
 
             var mockWizard =
@@ -297,8 +297,8 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui
         {
             var mockDtes = new[]
             {
-                new MockDTE(".NETFramework, Version=v4.5", references: new Reference[0]),
-                new MockDTE(".NETFramework, Version=v4.5",
+                new MockDTE(".NETFramework, Version=v4.7.2", references: new Reference[0]),
+                new MockDTE(".NETFramework, Version=v4.7.2",
                     references: new[] { MockDTE.CreateReference("EntityFramework", "6.0.0.0") })
             };
 
@@ -327,7 +327,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui
         {
             var mockDte =
                 new MockDTE(
-                    ".NETFramework, Version=v4.5",
+                    ".NETFramework, Version=v4.7.2",
                     references: new[] { MockDTE.CreateReference("EntityFramework", "5.0.0.0") });
 
             var mockWizard = 

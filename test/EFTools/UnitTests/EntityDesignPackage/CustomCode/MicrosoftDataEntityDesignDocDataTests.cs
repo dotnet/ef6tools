@@ -39,7 +39,7 @@ namespace UnitTests.EntityDesignPackage.CustomCode
             var inputDocument = XDocument.Parse("<model />");
             var updatedDocument = XDocument.Parse("<model x=\"1\" />");
 
-            var mockDte = new MockDTE(".NETFramework, Version=v4.5", references: new Reference[0]);
+            var mockDte = new MockDTE(".NETFramework, Version=v4.7.2", references: new Reference[0]);
             var mockProjectItem = new Mock<ProjectItem>();
             mockProjectItem.SetupGet(i => i.ContainingProject).Returns(mockDte.Project);
 
@@ -74,7 +74,7 @@ namespace UnitTests.EntityDesignPackage.CustomCode
         [Fact]
         public void DispatchSaveToExtensions_invokes_converter_for_non_edmx_files_if_present()
         {
-            var mockDte = new MockDTE(".NETFramework, Version=v4.5", references: new Reference[0]);
+            var mockDte = new MockDTE(".NETFramework, Version=v4.7.2", references: new Reference[0]);
             var mockProjectItem = new Mock<ProjectItem>();
             mockProjectItem.SetupGet(i => i.ContainingProject).Returns(mockDte.Project);
 
@@ -115,7 +115,7 @@ namespace UnitTests.EntityDesignPackage.CustomCode
         [Fact]
         public void DispatchSaveToExtensions_throws_for_non_edmx_if_converter_is_missing()
         {
-            var mockDte = new MockDTE(".NETFramework, Version=v4.5", references: new Reference[0]);
+            var mockDte = new MockDTE(".NETFramework, Version=v4.7.2", references: new Reference[0]);
             var mockProjectItem = new Mock<ProjectItem>();
             mockProjectItem.SetupGet(i => i.ContainingProject).Returns(mockDte.Project);
 
