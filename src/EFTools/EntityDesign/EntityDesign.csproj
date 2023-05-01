@@ -55,7 +55,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Package.LanguageService.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
     <PackageReference Include="Microsoft.Internal.VisualStudio.Interop" Version="$(MicrosoftVisualStudioPackageCurrent)" />
     <PackageReference Include="Microsoft.VisualStudio.Shell.Design" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.XmlEditor" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.XmlEditor" Version="$(MicrosoftVisualStudioXmlEditorPackageVersion)" />
     <PackageReference Include="Microsoft.VSDesigner" Version="$(MicrosoftVSDesignerPackageVersion)" />
     <PackageReference Include="VsWebSite.Interop" Version="$(VsWebSiteInteropPackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />

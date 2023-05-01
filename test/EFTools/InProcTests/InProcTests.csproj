@@ -54,7 +54,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
     <PackageReference Include="Microsoft.VisualStudio.Interop" Version="$(MicrosoftVisualStudioInteropPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.XmlEditor" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.XmlEditor" Version="$(MicrosoftVisualStudioXmlEditorPackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
