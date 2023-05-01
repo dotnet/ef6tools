@@ -11,7 +11,7 @@
     <MicrosoftVisualStudioTemplateWizardInterfacePackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioTemplateWizardInterfacePackageVersion>
     <MicrosoftVisualStudioTextTemplatingInterfaces100PackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioTextTemplatingInterfaces100PackageVersion>
     <MicrosoftVisualStudioValidationPackageVersion>17.0.1-alpha</MicrosoftVisualStudioValidationPackageVersion>
-    <MicrosoftVisualStudioThreadingPackageVersion>17.0.17-alpha</MicrosoftVisualStudioThreadingPackageVersion>
+    <MicrosoftVisualStudioThreadingPackageVersion>17.6.0.0</MicrosoftVisualStudioThreadingPackageVersion>
     <MicrosoftVSDesignerPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVSDesignerPackageVersion>
     <MicrosoftXmlEditorPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftXmlEditorPackageVersion>
     <MicrosoftVisualStudioXmlEditorPackageVersion>17.6.33626.348</MicrosoftVisualStudioXmlEditorPackageVersion>
