@@ -60,7 +60,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.GraphObject" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" Version="$(MicrosoftVisualStudioTemplateWizardInterfacePackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" Version="$(MicrosoftVisualStudioQualityToolsUnitTestFrameworkPackageVersion)" />
 
     <Reference Include="System" />
     <Reference Include="System.Activities" />

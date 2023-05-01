@@ -15,6 +15,7 @@
     <MicrosoftVSDesignerPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVSDesignerPackageVersion>
     <MicrosoftXmlEditorPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftXmlEditorPackageVersion>
     <MicrosoftVisualStudioXmlEditorPackageVersion>17.6.33626.348</MicrosoftVisualStudioXmlEditorPackageVersion>
+    <MicrosoftVisualStudioQualityToolsUnitTestFrameworkPackageVersion>17.6.33625.640</MicrosoftVisualStudioQualityToolsUnitTestFrameworkPackageVersion>
     <MoqPackageVersion>4.0.10827</MoqPackageVersion>
     <MySqlDataEntityPackageVersion>6.7.2-beta-ef6</MySqlDataEntityPackageVersion>
     <SystemDataSqlServerCePackageVersion>4.0.8876.1</SystemDataSqlServerCePackageVersion>
