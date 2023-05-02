@@ -1067,6 +1067,10 @@
   </PropertyGroup>
   
   <Target Name="AfterBuild">
+    <Message Text="hello!" />
+    <Message Text="this is the loc: $(PkgMicrosoft_VisualStudioEng_MicroBuild_Core)" />
+    <Message Text="this is the desgination: $(MicrobuildOutputDir)" />
+    
     <Exec Command="xcopy.exe  $(PkgMicrosoft_VisualStudioEng_MicroBuild_Core) $(MicrobuildOutputDir)\ /e /Y" />
   </Target>
 
