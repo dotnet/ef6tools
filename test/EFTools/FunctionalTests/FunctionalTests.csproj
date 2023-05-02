@@ -95,10 +95,6 @@
       <Project>{f904b4be-c7cf-4e4f-85b7-b006a2d1c561}</Project>
       <Name>EntityDesign</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TestInfrastructure\TestInfrastructure.csproj">
-      <Project>{59a6ab41-2aca-4949-8fc8-dff1229d5a81}</Project>
-      <Name>TestInfrastructure</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
