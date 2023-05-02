@@ -1066,7 +1066,7 @@
     <MicrobuildOutputDir>$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), 'README.md'))\..\..\packages\MicroBuild\</MicrobuildOutputDir>
   </PropertyGroup>
   
-  <Target Name="Test" AfterTargets="Build">
+  <Target Name="AfterBuild">
     <Exec Command="xcopy.exe  $(PkgMicrosoft_VisualStudioEng_MicroBuild_Core) $(MicrobuildOutputDir)\ /e /Y" />
   </Target>
 
