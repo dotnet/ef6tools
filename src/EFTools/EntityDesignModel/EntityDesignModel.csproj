@@ -10,7 +10,7 @@
     <RootNamespace>Microsoft.Data.Entity.Design.Model</RootNamespace>
     <AssemblyName>Microsoft.Data.Entity.Design.Model</AssemblyName>
     <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
-    <TargetFrameworkVersion>$(ToolingDotNetFrameworkVersion)</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <!-- do we need this ?-->
     <AssemblyAttributeClsCompliant>false</AssemblyAttributeClsCompliant>

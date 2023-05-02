@@ -12,7 +12,7 @@
     <AssemblyName>Microsoft.VisualStudio.Data.Tools.Design.XmlCore</AssemblyName>
     <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
     <RootNamespace>Microsoft.VisualStudio.Data.Tools.Design.XmlCore</RootNamespace>
-    <TargetFrameworkVersion>$(ToolingDotNetFrameworkVersion)</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <AssemblyAttributeClsCompliant>false</AssemblyAttributeClsCompliant>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

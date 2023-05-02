@@ -12,7 +12,7 @@
     <RootNamespace>Microsoft.Data.Tools.XmlDesignerBase</RootNamespace>
     <AssemblyName>Microsoft.Data.Tools.Design.XmlCore</AssemblyName>
     <DocumentationFile>$(OutputPath)$(RootNamespace).xml</DocumentationFile>
-    <TargetFrameworkVersion>$(ToolingDotNetFrameworkVersion)</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <!-- do we need this ?-->
     <AssemblyAttributeClsCompliant>false</AssemblyAttributeClsCompliant>
