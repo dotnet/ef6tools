@@ -5,6 +5,7 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <RuntimeIdentifier>win</RuntimeIdentifier>
         <BuildProperties>Platform=$(Platform)</BuildProperties>
         <VSTest>$(VSINSTALLDIR)\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe</VSTest>
         <BuildTargets>Build</BuildTargets>
@@ -75,7 +76,7 @@
             <RequireRestoreConsent>false</RequireRestoreConsent>
         </PropertyGroup>
         <Message Text="Restoring NuGet packages..." Importance="High" />
-        <Exec Command="$(NuGetCommand) restore EFTools.sln"
+        <Exec Command="dotnet restore EFTools.sln"
               LogStandardErrorAsError="true" />
     </Target>
 
