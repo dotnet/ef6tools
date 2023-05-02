@@ -14,8 +14,8 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard
                 new[]
                     {
                         ".NETFramework,Version=v4.0",
-                        ".NETFramework,Version=v4.7.2",
-                        ".NETFramework,Version=v4.7.2.1"
+                        ".NETFramework,Version=v4.5",
+                        ".NETFramework,Version=v4.5.1"
                     };
 
             foreach (var target in targets)

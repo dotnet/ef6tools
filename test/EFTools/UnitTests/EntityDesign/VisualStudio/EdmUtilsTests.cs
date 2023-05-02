@@ -205,7 +205,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
         public void GetEntityFrameworkVersion_returns_version_when_ef_installed()
         {
             var helper = new MockDTE(
-                ".NETFramework,Version=v4.7.2", references: new[] { MockDTE.CreateReference("EntityFramework", "6.0.0.0") });
+                ".NETFramework,Version=v4.5", references: new[] { MockDTE.CreateReference("EntityFramework", "6.0.0.0") });
 
             var schemaVersion = EdmUtils.GetEntityFrameworkVersion(helper.Project, helper.ServiceProvider);
 
@@ -218,7 +218,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
             var netFxToSchemaVersionMapping =
                 new[]
                     {
-                        new KeyValuePair<string, Version>(".NETFramework,Version=v4.7.2", new Version(3, 0, 0, 0)),
+                        new KeyValuePair<string, Version>(".NETFramework,Version=v4.5", new Version(3, 0, 0, 0)),
                         new KeyValuePair<string, Version>(".NETFramework,Version=v4.0", new Version(3, 0, 0, 0)),
                         new KeyValuePair<string, Version>(".NETFramework,Version=v3.5", new Version(1, 0, 0, 0))
                     };
@@ -239,7 +239,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
             var netFxToSchemaVersionMapping =
                 new[]
                     {
-                        new KeyValuePair<string, Version>(".NETFramework,Version=v4.7.2", new Version(3, 0, 0, 0)),
+                        new KeyValuePair<string, Version>(".NETFramework,Version=v4.5", new Version(3, 0, 0, 0)),
                         new KeyValuePair<string, Version>(".NETFramework,Version=v4.0", new Version(2, 0, 0, 0)),
                         new KeyValuePair<string, Version>(".NETFramework,Version=v3.5", new Version(1, 0, 0, 0))
                     };

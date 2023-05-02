@@ -115,7 +115,7 @@ namespace Microsoft.Data.Entity.Design.CodeGeneration
                 mockChildProjectItem = mockProjectItem;
             }
 
-            var mockDte = new MockDTE(".NETFramework, Version=v4.7.2", references: new Reference[0]);
+            var mockDte = new MockDTE(".NETFramework, Version=v4.5", references: new Reference[0]);
 
             mockChildProjectItem
                 .SetupGet(i => i.ContainingProject)

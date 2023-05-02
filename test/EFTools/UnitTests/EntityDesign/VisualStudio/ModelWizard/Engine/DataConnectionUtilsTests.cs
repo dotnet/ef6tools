@@ -22,7 +22,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Engine
             var providers = new Dictionary<Guid, IVsDataProvider> { { providerGuid, provider.Object } };
             var dataProviderManager = new Mock<IVsDataProviderManager>();
             dataProviderManager.SetupGet(m => m.Providers).Returns(providers);
-            var dte = new MockDTE(".NETFramework,Version=v4.7.2");
+            var dte = new MockDTE(".NETFramework,Version=v4.5");
 
             Assert.True(
                 DataConnectionUtils.HasEntityFrameworkProvider(
@@ -41,7 +41,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Engine
             var providers = new Dictionary<Guid, IVsDataProvider> { { providerGuid, provider.Object } };
             var dataProviderManager = new Mock<IVsDataProviderManager>();
             dataProviderManager.SetupGet(m => m.Providers).Returns(providers);
-            var dte = new MockDTE(".NETFramework,Version=v4.7.2", references: Enumerable.Empty<Reference>());
+            var dte = new MockDTE(".NETFramework,Version=v4.5", references: Enumerable.Empty<Reference>());
 
             Assert.False(
                 DataConnectionUtils.HasEntityFrameworkProvider(
@@ -60,7 +60,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Engine
             var providers = new Dictionary<Guid, IVsDataProvider> { { providerGuid, provider.Object } };
             var dataProviderManager = new Mock<IVsDataProviderManager>();
             dataProviderManager.SetupGet(m => m.Providers).Returns(providers);
-            var dte = new MockDTE(".NETFramework,Version=v4.7.2", references: Enumerable.Empty<Reference>());
+            var dte = new MockDTE(".NETFramework,Version=v4.5", references: Enumerable.Empty<Reference>());
 
             Assert.False(
                 DataConnectionUtils.HasEntityFrameworkProvider(

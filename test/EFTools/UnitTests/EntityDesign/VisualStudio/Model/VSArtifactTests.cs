@@ -44,7 +44,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Model
             DetermineIfArtifactIsVersionSafe_sets_IsVersionSafe_to_true_if_schema_is_the_latest_version_supported_by_referenced_runtime()
         {
             var mockDte = new MockDTE(
-                ".NETFramework, Version=v4.7.2.1",
+                ".NETFramework, Version=v4.5.1",
                 references: new[] { MockDTE.CreateReference("EntityFramework", "6.0.0.0") });
 
             var modelManager = new Mock<ModelManager>(null, null).Object;
@@ -70,7 +70,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Model
         public void DetermineIfArtifactIsVersionSafe_sets_IsVersionSafe_to_true_for_Misc_project()
         {
             var mockDte = new MockDTE(
-                ".NETFramework, Version=v4.7.2.1",
+                ".NETFramework, Version=v4.5.1",
                 Constants.vsMiscFilesProjectUniqueName);
 
             var modelManager = new Mock<ModelManager>(null, null).Object;
@@ -123,7 +123,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Model
             ()
         {
             var mockDte = new MockDTE(
-                ".NETFramework, Version=v4.7.2.1",
+                ".NETFramework, Version=v4.5.1",
                 references: new[] { MockDTE.CreateReference("EntityFramework", "6.0.0.0") });
 
             var modelManager = new Mock<ModelManager>(null, null).Object;
@@ -149,7 +149,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Model
         public void DetermineIfArtifactIsVersionSafe_sets_IsVersionSafe_to_false_if_versions_dont_match()
         {
             var mockDte = new MockDTE(
-                ".NETFramework, Version=v4.7.2.1",
+                ".NETFramework, Version=v4.5.1",
                 Constants.vsMiscFilesProjectUniqueName);
 
             var modelManager = new Mock<ModelManager>(null, null).Object;

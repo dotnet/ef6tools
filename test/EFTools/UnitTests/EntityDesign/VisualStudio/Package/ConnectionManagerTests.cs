@@ -69,7 +69,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Package
         [Fact]
         public void GetMetadataFileNamesFromArtifactFileName_creates_metadata_file_names_for_non_null_edmx_ProjectItem()
         {
-            var mockDte = new MockDTE(".NETFramework, Version=v4.7.2", references: new Reference[0]);
+            var mockDte = new MockDTE(".NETFramework, Version=v4.5", references: new Reference[0]);
             mockDte.SetProjectProperties(new Dictionary<string, object> { { "FullPath", @"D:\Projects\Project\Folder" } });
             var mockParentProjectItem = new Mock<ProjectItem>();
             mockParentProjectItem.Setup(p => p.Collection).Returns(Mock.Of<ProjectItems>());
@@ -92,7 +92,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Package
         [Fact]
         public void GetMetadataFileNamesFromArtifactFileName_creates_metadata_file_names_for_null_edmx_ProjectItem()
         {
-            var mockDte = new MockDTE(".NETFramework, Version=v4.7.2", references: new Reference[0]);
+            var mockDte = new MockDTE(".NETFramework, Version=v4.5", references: new Reference[0]);
             mockDte.SetProjectProperties(new Dictionary<string, object> { { "FullPath", @"C:\Projects\Project\Folder" } });
             
             var metadataFileNames =
