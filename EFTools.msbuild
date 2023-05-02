@@ -84,7 +84,7 @@
       <MSBuild Projects="$(RepositoryRoot)EF.msbuild" Targets="Package" Properties="Configuration=$(Configuration)" />
     </Target>
 
-    <Target Name="BuildDesigner" DependsOnTargets="CreateDirectories;CheckSkipStrongNames">
+    <Target Name="BuildDesigner" DependsOnTargets="CreateDirectories">
         <MSBuild Targets="$(BuildTargets)"
                    Projects="@(Projects)"
                    Properties="Configuration=$(Configuration);$(BuildProperties);BuildPackages=false" />

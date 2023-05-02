@@ -88,11 +88,11 @@
   <UsingTask TaskName="Xunit.Runner.MSBuild.xunit"
              AssemblyFile="packages\xunit.1.9.2\lib\net20\xunit.runner.msbuild.dll" />
 
-  <Target Name="Test" DependsOnTargets="CheckSkipStrongNames;Build">
+  <Target Name="Test" DependsOnTargets="Build">
     <xunit Assemblies="@(XunitAssembly)" Xml="$(OutputPath)TestResults.xml" />
   </Target>
 
-  <Target Name="ProviderAgnosticTests" DependsOnTargets="CheckSkipStrongNames;Build">
+  <Target Name="ProviderAgnosticTests" DependsOnTargets="Build">
     <xunit Assemblies="@(ProviderAgnosticXunitAssembly)" />
   </Target>
 
