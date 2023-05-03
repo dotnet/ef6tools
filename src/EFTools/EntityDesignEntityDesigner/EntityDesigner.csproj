@@ -5,6 +5,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <RuntimeIdentifier>win</RuntimeIdentifier>
     <ProjectGuid>{488B84C2-9358-4B90-BC2D-ED688939E6BB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -58,11 +59,11 @@
     <PackageReference Include="Microsoft.VisualStudio.Shell.Framework" Version="$(MicrosoftVisualStudioPackageCurrent)" />
     <PackageReference Include="Microsoft.VisualStudio.Package.LanguageService.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
     <PackageReference Include="Microsoft.VisualStudio.XmlEditor" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.GraphObject.15.0" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.VSHost.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.GraphObject" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.VSHost" Version="$(MicrosoftVisualStudioPackageCurrent)" />
     <PackageReference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
     <PackageReference Include="Microsoft.XmlEditor" Version="$(MicrosoftXmlEditorPackageVersion)" />
     <PackageReference Include="VsWebSite.Interop" Version="$(VsWebSiteInteropPackageVersion)" />
@@ -374,7 +375,7 @@
       <Name>XmlCore</Name>
     </ProjectReference>
     <ProjectReference Include="..\EntityDesignModel\EntityDesignModel.csproj">
-      <Project>{b44e942f-0ad1-4fb4-9146-dd1f8e17d4d8}</Project>
+      <Project>{b44e942f-0ad1-4fb4-9146-dd1f8e17d4d8}</Project> 
       <Name>EntityDesignModel</Name>
     </ProjectReference>
     <ProjectReference Include="..\EntityDesign\EntityDesign.csproj">
