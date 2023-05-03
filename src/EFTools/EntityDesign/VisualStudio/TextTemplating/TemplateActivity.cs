@@ -115,7 +115,10 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.TextTemplating
             Project project = null;
             if (!String.IsNullOrEmpty(_edmxPath))
             {
-                project = VSHelpers.GetProjectForDocument(_edmxPath);
+                ThreadHelper.JoinableTaskFactory.Run(async () => {
+                    await ThreadHelper.JoinableTaskFactory.SwitchToMainThreadAsync();
+                    project = VSHelpers.GetProjectForDocument(_edmxPath);
+                });
             }
 
             // Resolve and validate the template file path

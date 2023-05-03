@@ -676,8 +676,20 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui
 
             // these connection strings & invariant names are coming from the ddex provider, so these are "design-time"
             var invariantName = DataConnectionUtils.GetProviderInvariantName(_dataProviderManager, _dataConnection.Provider);
+            var fixedDecryptedConnectionString = ReplaceMdsKeywords(decryptedConnectionString);
+            var fixedAppConfigConnectionString = ReplaceMdsKeywords(appConfigConnectionString);
             Wizard.ModelBuilderSettings.SetInvariantNamesAndConnectionStrings(ServiceProvider,
-                Wizard.Project, invariantName, decryptedConnectionString, appConfigConnectionString, true);
+                Wizard.Project, invariantName, fixedDecryptedConnectionString, fixedAppConfigConnectionString, true);
+
+            string ReplaceMdsKeywords(string connectionString)
+            {
+                connectionString = connectionString.Replace("Multiple Active Result Sets=", "MultipleActiveResultSets=")
+                    .Replace("Trust Server Certificate=", "TrustServerCertificate=")
+                    .Replace("Authentication=ActiveDirectoryIntegrated", "Authentication=Active Directory Integrated")
+                    .Replace("Authentication=ActiveDirectoryPassword", "Authentication=Active Directory Password")
+                    .Replace("Authentication=ActiveDirectoryInteractive", "Authentication=Active Directory Interactive");
+                return connectionString;
+            }
         }
 
         // internal for testing

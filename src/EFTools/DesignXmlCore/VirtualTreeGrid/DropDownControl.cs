@@ -2223,7 +2223,6 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.VirtualTreeGrid
             base.DestroyHandle();
         }
 
-        [SuppressMessage("Microsoft.Usage", "CA1806:DoNotIgnoreMethodResults", MessageId = "Microsoft.Data.Entity.Design.VisualStudio.NativeMethods.MsgWaitForMultipleObjects(System.Int32,System.Int32,System.Boolean,System.Int32,System.Int32)")]
         public void DoModalLoop()
         {
             // Push a modal loop.  This kind of stinks, but I think it is a
@@ -2232,7 +2231,8 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.VirtualTreeGrid
             while (Visible)
             {
                 Application.DoEvents();
-                NativeMethods.MsgWaitForMultipleObjects(1, 0, true, 250, NativeMethods.QS_ALLINPUT);
+                int result = NativeMethods.MsgWaitForMultipleObjects(0, Array.Empty<IntPtr>(), true, 250, NativeMethods.QS_ALLINPUT);
+                Debug.Assert(result != NativeMethods.WAIT_FAILED);
             }
         }
 

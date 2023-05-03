@@ -126,8 +126,9 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
                         Resources_VersioningFacade.ProviderFactoryReturnedNullFactory,
                         providerInvariantName));
             }
-            providerConnection.ConnectionString = connectionString;
-
+            
+            providerConnection.ConnectionString = ReplaceMdsKeywords(connectionString);
+            
             return new EntityConnection(
                 GetProviderSchemaMetadataWorkspace(
                     resolver,
@@ -135,6 +136,16 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
                     providerConnection,
                     targetSchemaVersion),
                 providerConnection);
+        }
+        
+        private static string ReplaceMdsKeywords(string connectionString)
+        {
+            connectionString = connectionString.Replace("Multiple Active Result Sets=", "MultipleActiveResultSets=")
+                .Replace("Trust Server Certificate=", "TrustServerCertificate=")
+                .Replace("Authentication=ActiveDirectoryIntegrated", "Authentication=Active Directory Integrated")
+                .Replace("Authentication=ActiveDirectoryPassword", "Authentication=Active Directory Password")
+                .Replace("Authentication=ActiveDirectoryInteractive", "Authentication=Active Directory Interactive");
+            return connectionString;
         }
 
         private static MetadataWorkspace GetProviderSchemaMetadataWorkspace(

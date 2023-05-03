@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), 'README.md'))\build\common.props" />
-  <Import Project="$(MicroBuildDirectory)MicroBuild.Core.props"/>
+  <Import Project="$(MicroBuildDirectory)Microsoft.VisualStudioEng.MicroBuild.Core.props"/>
   <Import Project="$(MSBuildThisFileDirectory)packages\Microsoft.Wix3.Tools.3.10.1.2213\build\Microsoft.Wix3.Tools.props" />
   <!-- Import Project="$(RepositoryRootDirectory)\tools\EntityFramework.settings.targets" / -->
   
@@ -107,5 +107,5 @@
   <Import Project="$(MSBuildThisFileDirectory)packages\Microsoft.Wix3.Tools.3.10.1.2213\build\Microsoft.Wix3.Tools.targets" />
   <Import Project="$(MSBuildThisFileDirectory)packages\Microsoft.Wix3.DependencyExtension.3.10.1.2213\build\Microsoft.Wix3.DependencyExtension.targets" /> <!-- adds WixDependencyExtension.dll to Wix3 extensions -->
   <Import Project="$(MSBuildThisFileDirectory)packages\Microsoft.Wix3.UIExtension.3.10.1.2213\build\Microsoft.Wix3.UIExtension.targets" /> <!-- adds WixUIExtension.dll to Wix3 extensions -->
-  <Import Project="$(MicroBuildDirectory)MicroBuild.Core.targets" />
+  <Import Project="$(MicroBuildDirectory)Microsoft.VisualStudioEng.MicroBuild.Core.targets" />
 </Project>
