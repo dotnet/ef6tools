@@ -76,7 +76,7 @@
             <RequireRestoreConsent>false</RequireRestoreConsent>
         </PropertyGroup>
         <Message Text="Restoring NuGet packages..." Importance="High" />
-        <Exec Command="dotnet restore EFTools.sln"
+        <Exec Command="msbuild -r restore EFTools.sln"
               LogStandardErrorAsError="true" />
     </Target>
 

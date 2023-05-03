@@ -63,7 +63,7 @@
       <RequireRestoreConsent>false</RequireRestoreConsent>
     </PropertyGroup>
     <Message Text="Restoring NuGet packages..." Importance="High" />
-    <Exec Command="dotnet restore EntityFramework.sln"
+    <Exec Command="msbuild -r EntityFramework.sln"
           LogStandardErrorAsError="true" />
   </Target>
 
