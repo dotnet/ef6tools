@@ -1,21 +1,23 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Vsix Version="1.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2010">
-  <Identifier Id="a3f44f1e-1863-4e1b-97b7-2f4c4a59ba59">
-    <Name>Microsoft.Data.Entity.Design.Package</Name>
-    <Author>Microsoft Corp.</Author>
-    <Version>1.0</Version>
+﻿<!-- Licensed to the .NET Foundation under one or more agreements. The .NET Foundation licenses this file to you under the MIT license. See the LICENSE.md file in the project root for more information. -->
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+  <Metadata>
+    <!-- The version number is supplied via GetVsixVersion in Directory.Build.targets. -->
+    <Identity Id="a3f44f1e-1863-4e1b-97b7-2f4c4a59ba59" Version="1.0" Language="en-US" Publisher="Microsoft Corp." />
+    <DisplayName>Microsoft Data Entity Design Package</DisplayName>
     <Description xml:space="preserve">Microsoft Data Entity Design Package</Description>
-    <Locale>1033</Locale>
-    <InstalledByMsi>false</InstalledByMsi>
-    <SupportedProducts>
-      <VisualStudio Version="10.0">
-        <Edition>Pro</Edition>
-      </VisualStudio>
-    </SupportedProducts>
-    <SupportedFrameworkRuntimeEdition MinVersion="4.0" MaxVersion="4.0" />
-  </Identifier>
-  <References>
-  </References>
-  <Content>
-  </Content>
-</Vsix>
+    <PackageId>Microsoft.Data.Entity.Design.Package</PackageId>
+    <AllowClientRole>true</AllowClientRole>
+  </Metadata>
+  <Installation SystemComponent="true" Experimental="true">
+    <InstallationTarget Version="[15.0,]" Id="Microsoft.VisualStudio.Pro" />
+    <InstallationTarget Version="[15.0,]" Id="Microsoft.VisualStudio.VSWinDesktopExpress" />
+    <InstallationTarget Version="[15.0,]" Id="Microsoft.VisualStudio.VWDExpress" />
+    <InstallationTarget Version="[15.0,]" Id="Microsoft.VisualStudio.VSWinExpress" />
+  </Installation>
+  <Prerequisites>
+    <Prerequisite Id="Microsoft.VisualStudio.Component.CoreEditor" Version="[15.0,]" DisplayName="Visual Studio core editor" />
+  </Prerequisites>
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.VsPackage" d:Source="Project" d:ProjectName="%CurrentProject%" Path="|%CurrentProject%;PkgdefProjectOutputGroup|" />
+  </Assets>
+</PackageManifest>

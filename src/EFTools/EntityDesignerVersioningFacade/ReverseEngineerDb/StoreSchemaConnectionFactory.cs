@@ -143,7 +143,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
             connectionString = connectionString.Replace("Multiple Active Result Sets=", "MultipleActiveResultSets=")
                 .Replace("Trust Server Certificate=", "TrustServerCertificate=")
                 .Replace("Authentication=ActiveDirectoryIntegrated", "Authentication=Active Directory Integrated")
-                .Replace("Authentication=ActiveDirectoryPassword", "Authentication=Active Directory Password")
+                .Replace("Authentication=ActiveDirectoryPassword", "Authentication=Active Directory Password")                          
                 .Replace("Authentication=ActiveDirectoryInteractive", "Authentication=Active Directory Interactive");
             return connectionString;
         }

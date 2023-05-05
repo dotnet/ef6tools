@@ -7,7 +7,7 @@
     <MicrosoftVisualStudioDataCorePackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioDataCorePackageVersion>
     <MicrosoftVisualStudioDataDesignCommonPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioDataDesignCommonPackageVersion>
     <MicrosoftVisualStudioModelingPackageVersion>17.6.36308</MicrosoftVisualStudioModelingPackageVersion>
-    <MicrosoftVisualStudioInteropPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioInteropPackageVersion>
+    <MicrosoftVisualStudioInteropPackageVersion>17.0.0-previews-2-31512-422</MicrosoftVisualStudioInteropPackageVersion>
     <MicrosoftVisualStudioTemplateWizardInterfacePackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioTemplateWizardInterfacePackageVersion>
     <MicrosoftVisualStudioTextTemplatingInterfaces100PackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioTextTemplatingInterfaces100PackageVersion>
     <MicrosoftVisualStudioValidationPackageVersion>17.0.1-alpha</MicrosoftVisualStudioValidationPackageVersion>

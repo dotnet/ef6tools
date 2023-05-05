@@ -1,5 +1,5 @@
 pool:
-  name: VSEngSS-MicroBuild2019-1ES
+  name: VSEngSS-MicroBuild2022-1ES
   demands:
   - Cmd
   - msbuild
@@ -31,7 +31,7 @@ steps:
   displayName: 'Run EFBuild'
   inputs:
     filename: '$(comspec)'
-    arguments: '/c "call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\Tools\VsDevCmd.bat" & msbuild $(Build.Repository.LocalPath)\EFTools.msbuild /p:RunCodeAnalysis=false /p:Configuration=$(BuildConfiguration) /t:EnableSkipStrongNames;Clean;BuildDesigner -flp3:verbosity=diagnostic;logfile=$(Build.SourcesDirectory)\bin\$(BuildConfiguration)\BuildDesigner.log -binaryLogger:logfile=$(Build.SourcesDirectory)\bin\$(BuildConfiguration)\BuildDesigner.binlog"'
+    arguments: '/c "call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" & msbuild $(Build.Repository.LocalPath)\EFTools.msbuild /p:RunCodeAnalysis=false /p:Configuration=$(BuildConfiguration) /t:EnableSkipStrongNames;Clean;BuildDesigner -flp3:verbosity=diagnostic;logfile=$(Build.SourcesDirectory)\bin\$(BuildConfiguration)\BuildDesigner.log -binaryLogger:logfile=$(Build.SourcesDirectory)\bin\$(BuildConfiguration)\BuildDesigner.binlog"'
 
 - task: ms-vseng.MicroBuildTasks.a0262b21-fb8f-46f8-bb9a-60ed560d4a87.MicroBuildLocalizationPlugin@3
   displayName: 'Install Localization Plugin'
