@@ -1917,7 +1917,7 @@ public class DynamicTextTransformation
         Type type = _instance.GetType();
         _write = type.GetMethod("Write", new Type[] { typeof(string) });
         _writeLine = type.GetMethod("WriteLine", new Type[] { typeof(string) });
-        _generationEnvironment = type.GetProperty("GenerationEnvironment", BindingFlags.Instance | BindingFlags.NonPublic);
+        _generationEnvironment = type.GetProperty("GenerationEnvironment");
         _host = type.GetProperty("Host");
         _errors = type.GetProperty("Errors");
     }
