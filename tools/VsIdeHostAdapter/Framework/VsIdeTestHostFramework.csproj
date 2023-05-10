@@ -6,6 +6,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <RuntimeIdentifier>win</RuntimeIdentifier>
     <ProjectGuid>{614AC98E-A68E-4EB4-AF27-1CEDBA7CA3B4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>

@@ -140,7 +140,7 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish PDB and XML Files To VSTS'
   # Don't publish PR builds
-  condition: eq(variables['Build.SourceBranchName'], 'main')
+  #condition: eq(variables['Build.SourceBranchName'], 'main')
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)\PdbsAndXmls'
     ArtifactName: PdbsAndXmls
@@ -149,7 +149,7 @@ steps:
 
   displayName: 'Enable Source Server'
   # Don't publish PR builds
-  condition: eq(variables['Build.SourceBranchName'], 'main')
+  #condition: eq(variables['Build.SourceBranchName'], 'main')
   inputs:
     SymbolsFolder: '$(Build.ArtifactStagingDirectory)\PdbsAndXmls'
     SearchPattern: '*.pdb'

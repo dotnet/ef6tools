@@ -5,6 +5,7 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <RuntimeIdentifier>win</RuntimeIdentifier>
     <ProjectGuid>{D3E74B27-C87A-4E1C-B885-16760AD7119C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -46,6 +47,9 @@
     <PackageReference Include="Microsoft.VisualStudio.DataDesign.Interfaces" Version="$(MicrosoftVisualStudioPackageCurrent)" />
     <PackageReference Include="Microsoft.VisualStudio.ExtensibilityHosting" Version="$(MicrosoftVisualStudioExtensibilityHostingPackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" Version="$(MicrosoftVisualStudioTemplateWizardInterfacePackageVersion)" />
+    <Reference Include="Microsoft.VisualStudio.WizardFramework">
+      <HintPath>$(VSINSTALLDIR)\Common7\IDE\Microsoft.VisualStudio.WizardFramework.dll</HintPath>
+    </Reference>
 
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />

@@ -5,6 +5,7 @@
     <PropertyGroup>
         <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
         <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <RuntimeIdentifier>win</RuntimeIdentifier>
         <BuildProperties>Platform=$(Platform)</BuildProperties>
         <VSTest>$(VSINSTALLDIR)\Common7\IDE\CommonExtensions\Microsoft\TestWindow\vstest.console.exe</VSTest>
         <BuildTargets>Build</BuildTargets>

@@ -6,14 +6,14 @@
     <MicrosoftVisualStudioPackageCurrent>17.0.0-previews-2-31405-002</MicrosoftVisualStudioPackageCurrent>
     <MicrosoftVisualStudioDataCorePackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioDataCorePackageVersion>
     <MicrosoftVisualStudioDataDesignCommonPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioDataDesignCommonPackageVersion>
-    <MicrosoftVisualStudioModelingPackageVersion>17.0.0-previews-2-31415-505</MicrosoftVisualStudioModelingPackageVersion>
-    <MicrosoftVisualStudioInteropPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioInteropPackageVersion>
+    <MicrosoftVisualStudioModelingPackageVersion>17.6.36308</MicrosoftVisualStudioModelingPackageVersion>
+    <MicrosoftVisualStudioInteropPackageVersion>17.0.0-previews-2-31512-422</MicrosoftVisualStudioInteropPackageVersion>
     <MicrosoftVisualStudioTemplateWizardInterfacePackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioTemplateWizardInterfacePackageVersion>
     <MicrosoftVisualStudioTextTemplatingInterfaces100PackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioTextTemplatingInterfaces100PackageVersion>
     <MicrosoftVisualStudioValidationPackageVersion>17.0.1-alpha</MicrosoftVisualStudioValidationPackageVersion>
     <MicrosoftVisualStudioThreadingPackageVersion>17.0.17-alpha</MicrosoftVisualStudioThreadingPackageVersion>
     <MicrosoftVSDesignerPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVSDesignerPackageVersion>
-    <MicrosoftXmlEditorPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftXmlEditorPackageVersion>
+    <MicrosoftXmlEditorPackageVersion>17.6.33626.348</MicrosoftXmlEditorPackageVersion>
     <MoqPackageVersion>4.0.10827</MoqPackageVersion>
     <MySqlDataEntityPackageVersion>6.7.2-beta-ef6</MySqlDataEntityPackageVersion>
     <SystemDataSqlServerCePackageVersion>4.0.8876.1</SystemDataSqlServerCePackageVersion>

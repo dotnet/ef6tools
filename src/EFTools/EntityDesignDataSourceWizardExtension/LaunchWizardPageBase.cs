@@ -12,8 +12,8 @@ namespace Microsoft.Data.Entity.Design.DataSourceWizardExtension
     using System.Windows.Forms;
     using Microsoft.Data.Entity.Design.VisualStudio;
     using Microsoft.VSDesigner.Data.DataSourceWizard.Interface;
-    using Microsoft.VSWizards;
     using Microsoft.VisualStudio.TemplateWizard;
+    using Microsoft.VSWizards;
 
     [Export(typeof(DataSourceWizardPageBase))]
     internal abstract class LaunchWizardPageBase : DataSourceWizardPageBase
