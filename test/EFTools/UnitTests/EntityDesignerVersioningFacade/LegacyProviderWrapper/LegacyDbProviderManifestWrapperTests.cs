@@ -30,13 +30,15 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.LegacyProviderWrapper
 
         static LegacyDbProviderManifestWrapperTests()
         {
-            LegacyProviderManifest =
+#pragma warning disable VSSDK006 // Check services exist
+      LegacyProviderManifest =
                 ((Legacy.DbProviderServices)
                  ((IServiceProvider)Legacy.DbProviderFactories.GetFactory("System.Data.SqlClient"))
                      .GetService(typeof(Legacy.DbProviderServices)))
                     .GetProviderManifest("2008");
+#pragma warning restore VSSDK006 // Check services exist
 
-            ProviderManifestWrapper = new LegacyDbProviderManifestWrapper(LegacyProviderManifest);
+      ProviderManifestWrapper = new LegacyDbProviderManifestWrapper(LegacyProviderManifest);
 
             const string emptyCsdl =
                 @"<Schema xmlns=""http://schemas.microsoft.com/ado/2009/11/edm"" Namespace=""dummy"" />";

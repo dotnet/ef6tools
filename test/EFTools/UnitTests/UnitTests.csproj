@@ -57,7 +57,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Data.Core" Version="$(MicrosoftVisualStudioPackageCurrent)" />
     <PackageReference Include="Microsoft.VisualStudio.DataTools.Interop" Version="$(MicrosoftVisualStudioPackageCurrent)" />
     <PackageReference Include="Microsoft.VisualStudio.TextTemplating" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0" Version="$(MicrosoftVisualStudioTextTemplatingInterfaces100PackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Utilities" Version="$(MicrosoftVisualStudioPackageCurrent)" />
     <PackageReference Include="Microsoft.WizardFramework" Version="$(MicrosoftVisualStudioPackageCurrent)" />
     <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" Version="$(MicrosoftVisualStudioTemplateWizardInterfacePackageVersion)" />

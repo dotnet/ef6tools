@@ -121,7 +121,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Package
             {
                 _selectionChangePending = true;
                 var d = Dispatcher.CurrentDispatcher;
-                d.BeginInvoke(DispatcherPriority.Background, new Callback(OnRaiseSelectionChange));
+                _ = d.BeginInvoke(DispatcherPriority.Background, new Callback(OnRaiseSelectionChange));
             }
         }
 
@@ -166,7 +166,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Package
             {
                 _schemaChangePending = true;
                 var d = Dispatcher.CurrentDispatcher;
-                d.BeginInvoke(DispatcherPriority.Background, new Callback(OnRaiseSchemaChange));
+                _ = d.BeginInvoke(DispatcherPriority.Background, new Callback(OnRaiseSchemaChange));
             }
         }
 
@@ -200,14 +200,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Package
                 ||
                 (dwFlags & NativeMethods.SELECTED) == NativeMethods.SELECTED)
             {
-                if (_currentSelection == null)
-                {
-                    pc = 0;
-                }
-                else
-                {
-                    pc = (uint)_currentSelection.Count;
-                }
+                pc = _currentSelection == null ? 0 : (uint)_currentSelection.Count;
             }
             else
             {

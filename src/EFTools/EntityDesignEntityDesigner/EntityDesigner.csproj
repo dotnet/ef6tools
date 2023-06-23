@@ -64,7 +64,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.GraphObject" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.TextTemplating.VSHost" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0" Version="$(MicrosoftVisualStudioTextTemplatingInterfaces100PackageVersion)" />
     <PackageReference Include="Microsoft.XmlEditor" Version="$(MicrosoftXmlEditorPackageVersion)" />
     <PackageReference Include="VsWebSite.Interop" Version="$(VsWebSiteInteropPackageVersion)" />
 

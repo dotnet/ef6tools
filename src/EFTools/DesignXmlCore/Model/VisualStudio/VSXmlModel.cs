@@ -23,7 +23,6 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.Model.VisualStudio
         /// </summary>
         public event EventHandler BufferReload;
 
-        private Microsoft.VisualStudio.XmlEditor.XmlModel _xmlModel;
         private Dispatcher _dispatcher;
         private readonly IServiceProvider _serviceProvider;
 
@@ -32,8 +31,8 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.Model.VisualStudio
         /// </summary>
         internal VSXmlModel(IServiceProvider serviceProvider, Microsoft.VisualStudio.XmlEditor.XmlModel model)
         {
-            _xmlModel = model;
-            _xmlModel.BufferReloaded += OnBufferReload;
+            XmlModel = model;
+            XmlModel.BufferReloaded += OnBufferReload;
 
             _dispatcher = Dispatcher.CurrentDispatcher;
             _serviceProvider = serviceProvider;
@@ -49,15 +48,15 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.Model.VisualStudio
             {
                 if (disposing)
                 {
-                    if (_xmlModel != null)
+                    if (XmlModel != null)
                     {
                         try
                         {
-                            _xmlModel.Dispose();
+                            XmlModel.Dispose();
                         }
                         finally
                         {
-                            _xmlModel = null;
+                            XmlModel = null;
                         }
                     }
                 }
@@ -69,16 +68,13 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.Model.VisualStudio
             }
         }
 
-        internal Microsoft.VisualStudio.XmlEditor.XmlModel XmlModel
-        {
-            get { return _xmlModel; }
-        }
+    internal Microsoft.VisualStudio.XmlEditor.XmlModel XmlModel { get; private set; }
 
-        /// <summary>
-        ///     This API supports the Entity Framework infrastructure and is not intended to be used directly from your code.
-        /// </summary>
-        /// <returns>This API supports the Entity Framework infrastructure and is not intended to be used directly from your code.</returns>
-        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+    /// <summary>
+    ///     This API supports the Entity Framework infrastructure and is not intended to be used directly from your code.
+    /// </summary>
+    /// <returns>This API supports the Entity Framework infrastructure and is not intended to be used directly from your code.</returns>
+    [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         public override bool CanEditXmlModel()
         {
             string moniker = null;
@@ -98,20 +94,17 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.Model.VisualStudio
                 return false;
             }
 
-            if (!String.IsNullOrWhiteSpace(moniker))
-            {
-                return VSHelpers.CheckOutFilesIfEditable(_serviceProvider, new[] { moniker });
-            }
+            return !String.IsNullOrWhiteSpace(moniker)
+                   ? VSHelpers.CheckOutFilesIfEditable(_serviceProvider, new[] { moniker })
+                   : false;
+    }
 
-            return false;
-        }
-
-        /// <summary>
-        ///     This API supports the Entity Framework infrastructure and is not intended to be used directly from your code.
-        /// </summary>
-        public override XDocument Document
+    /// <summary>
+    ///     This API supports the Entity Framework infrastructure and is not intended to be used directly from your code.
+    /// </summary>
+    public override XDocument Document
         {
-            get { return _xmlModel.Document; }
+            get { return XmlModel.Document; }
         }
 
         /// <summary>
@@ -119,7 +112,7 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.Model.VisualStudio
         /// </summary>
         public override string Name
         {
-            get { return _xmlModel.Name; }
+            get { return XmlModel.Name; }
         }
 
         private void OnBufferReload(object sender, EventArgs e)
@@ -127,7 +120,7 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.Model.VisualStudio
             if (Dispatcher.CurrentDispatcher != _dispatcher)
             {
                 // make sure the event is handled in the appropriate thread for the VsXmlModel
-                _dispatcher.BeginInvoke(
+                _ = _dispatcher.BeginInvoke(
                     DispatcherPriority.Normal,
                     new EventHandler<EventArgs>(OnBufferReload), sender, e);
                 return;
@@ -145,7 +138,7 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.Model.VisualStudio
         /// <returns>This API supports the Entity Framework infrastructure and is not intended to be used directly from your code.</returns>
         public override XmlDesignerBaseTextSpan GetTextSpan(XObject xobject)
         {
-            return ConvertFromVSTextSpan(_xmlModel.GetTextSpan(xobject));
+            return ConvertFromVSTextSpan(XmlModel.GetTextSpan(xobject));
         }
 
         /// <summary>

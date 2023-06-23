@@ -22,8 +22,10 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.LegacyProviderWrapper
         private static readonly SystemDataCommon.DbProviderManifest
             LegacyProviderManifest =
                 ((SystemDataCommon.DbProviderServices)
+#pragma warning disable VSSDK006 // Check services exist
                  ((IServiceProvider)SystemDataCommon.DbProviderFactories.GetFactory("System.Data.SqlClient"))
                      .GetService(typeof(SystemDataCommon.DbProviderServices)))
+#pragma warning restore VSSDK006 // Check services exist
                     .GetProviderManifest("2008");
 
         [Fact]
