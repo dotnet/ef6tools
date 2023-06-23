@@ -3,17 +3,17 @@
     <MicrosoftSqlServerCompactPackageVersion>4.08876.1</MicrosoftSqlServerCompactPackageVersion>
     <MicrosoftVisualStudioComponentModelHostPackageVersion>17.6.268</MicrosoftVisualStudioComponentModelHostPackageVersion>
     <MicrosoftVisualStudioExtensibilityHostingPackageVersion>18.0.25-preview-gf9aa8d48c5</MicrosoftVisualStudioExtensibilityHostingPackageVersion>
-    <MicrosoftVisualStudioPackageCurrent>17.6.36389</MicrosoftVisualStudioPackageCurrent>
+    <MicrosoftVisualStudioPackageCurrent>17.6.36391</MicrosoftVisualStudioPackageCurrent>
     <MicrosoftVisualStudioDataCorePackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioDataCorePackageVersion>
     <MicrosoftVisualStudioDataDesignCommonPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioDataDesignCommonPackageVersion>
     <MicrosoftVisualStudioModelingPackageVersion>17.6.36308</MicrosoftVisualStudioModelingPackageVersion>
-    <MicrosoftVisualStudioInteropPackageVersion>17.6.36389</MicrosoftVisualStudioInteropPackageVersion>
+    <MicrosoftVisualStudioInteropPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioInteropPackageVersion>
     <MicrosoftVisualStudioTemplateWizardInterfacePackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioTemplateWizardInterfacePackageVersion>
-    <MicrosoftVisualStudioTextTemplatingInterfaces100PackageVersion>17.0.32112.339</MicrosoftVisualStudioTextTemplatingInterfaces100PackageVersion>
+    <MicrosoftVisualStudioTextTemplatingInterfacesPackageVersion>17.0.32112.339</MicrosoftVisualStudioTextTemplatingInterfacesPackageVersion>
     <MicrosoftVisualStudioValidationPackageVersion>17.6.11</MicrosoftVisualStudioValidationPackageVersion>
     <MicrosoftVisualStudioThreadingPackageVersion>17.6.40</MicrosoftVisualStudioThreadingPackageVersion>
     <MicrosoftVSDesignerPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVSDesignerPackageVersion>
-    <MicrosoftXmlEditorPackageVersion>17.6.33626.348</MicrosoftXmlEditorPackageVersion>
+    <MicrosoftXmlEditorPackageVersion>17.6.36308</MicrosoftXmlEditorPackageVersion>
     <MoqPackageVersion>4.0.10827</MoqPackageVersion>
     <MySqlDataEntityPackageVersion>6.7.2-beta-ef6</MySqlDataEntityPackageVersion>
     <SystemDataSqlServerCePackageVersion>4.0.8876.1</SystemDataSqlServerCePackageVersion>

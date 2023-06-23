@@ -26,11 +26,8 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
     internal abstract class ExplorerFrame : DockPanel, INotifyPropertyChanged, IDisposable
     {
         private bool _isDisposed;
-
-        private EditingContext _context;
         private ExplorerContent _frameContent;
         private TreeView _frameTreeView;
-        private ExplorerViewModelHelper _viewModelHelper;
         private bool _changingSelection;
         private ExplorerEFElement _selectedExplorerEFElement;
 
@@ -50,13 +47,8 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
         private ScrollBar _vScrollBar;
 
         private ScrollViewer _scrollViewer;
-
-        private readonly ICommand _searchCommand;
-        private readonly ICommand _resetSearchCommand;
-        private readonly ICommand _selectNextSearchResult;
-        private readonly ICommand _selectPreviousSearchResult;
-
         private bool _searchIsActive;
+
         // _searchExpansionInProgress indicates that an expansion from an initial search is
         //  in progress so that the TreeViewItem expand event will not attempt to fix up adorners all
         //  over again ...
@@ -83,42 +75,30 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
             EditingContext = context;
 
             // search text commands
-            _searchCommand = new DelegateCommand(OnSearchCommand);
-            _resetSearchCommand = new DelegateCommand(OnResetSearchCommand);
+            SearchCommand = new DelegateCommand(OnSearchCommand);
+            ResetSearchCommand = new DelegateCommand(OnResetSearchCommand);
 
             // navigate search commands
-            _selectPreviousSearchResult = new DelegateCommand(OnSelectPreviousSearchResult);
-            _selectNextSearchResult = new DelegateCommand(OnSelectNextSearchResult);
+            SelectPreviousSearchResult = new DelegateCommand(OnSelectPreviousSearchResult);
+            SelectNextSearchResult = new DelegateCommand(OnSelectNextSearchResult);
 
             _deferredExpansionAndCalculateAdorners = new DeferredRequest(OnExpanded);
             _deferredUpdateNextAndPreviousSearchResults = new DeferredRequest(OnUpdateNextAndPreviousResults);
         }
 
-        public ICommand SearchCommand
-        {
-            get { return _searchCommand; }
-        }
+    public ICommand SearchCommand { get; }
 
-        public ICommand ResetSearchCommand
-        {
-            get { return _resetSearchCommand; }
-        }
+    public ICommand ResetSearchCommand { get; }
 
-        public ICommand SelectNextSearchResult
-        {
-            get { return _selectNextSearchResult; }
-        }
+    public ICommand SelectNextSearchResult { get; }
 
-        public ICommand SelectPreviousSearchResult
-        {
-            get { return _selectPreviousSearchResult; }
-        }
+    public ICommand SelectPreviousSearchResult { get; }
 
-        public bool CanGoToNextSearchResult
+    public bool CanGoToNextSearchResult
         {
             get
             {
-                var context = _context;
+                var context = Context;
                 if (context != null)
                 {
                     var explorerSearchResults = ExplorerSearchResults.GetExplorerSearchResults(context);
@@ -132,7 +112,7 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
         {
             get
             {
-                var context = _context;
+                var context = Context;
                 if (context != null)
                 {
                     var explorerSearchResults = ExplorerSearchResults.GetExplorerSearchResults(context);
@@ -142,23 +122,17 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
             }
         }
 
-        #region Properties
+    #region Properties
 
-        public EditingContext Context
-        {
-            get { return _context; }
-        }
+    public EditingContext Context { get; private set; }
 
-        internal ExplorerViewModelHelper ExplorerViewModelHelper
-        {
-            get { return _viewModelHelper; }
-        }
+    internal ExplorerViewModelHelper ExplorerViewModelHelper { get; private set; }
 
-        // _searchIsActive indicates that there is an active search that many have zero
-        //  or more search results.  The TreeViewItem Expand and Collapse events use this
-        //  indicator to know that adorners need to be fixed up when an expand or collapse
-        //  is done on a TreeViewItem.
-        public bool SearchIsActive
+    // _searchIsActive indicates that there is an active search that many have zero
+    //  or more search results.  The TreeViewItem Expand and Collapse events use this
+    //  indicator to know that adorners need to be fixed up when an expand or collapse
+    //  is done on a TreeViewItem.
+    public bool SearchIsActive
         {
             get { return _searchIsActive; }
             set
@@ -261,18 +235,18 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
 
         private void ReloadViewModel()
         {
-            Debug.Assert(_context != null, "ExplorerFrame was disposed");
+            Debug.Assert(Context != null, "ExplorerFrame was disposed");
             // if _viewModelHelper doesn't exist then create and subscribe to ViewModelChanged event
-            if (_viewModelHelper == null)
+            if (ExplorerViewModelHelper == null)
             {
-                _viewModelHelper = GetNewExplorerViewModelHelper();
-                _viewModelHelper.ExplorerViewModelChanged += OnViewModelChange;
+                ExplorerViewModelHelper = GetNewExplorerViewModelHelper();
+                ExplorerViewModelHelper.ExplorerViewModelChanged += OnViewModelChange;
             }
 
             // create a new ViewModel and assign it to the ViewModelHelper - this
             // will cause ViewModelChanged event to be fired and we will update
             // the DataContext in OnViewModelChange() below
-            _viewModelHelper.CreateViewModel(_context);
+            ExplorerViewModelHelper.CreateViewModel(Context);
         }
 
         // refresh the DataContext of the tree view if the underlying view model changes
@@ -286,46 +260,39 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
 
         protected EditingContext EditingContext
         {
-            get { return _context; }
+            get { return Context; }
             set
             {
                 // unregister from old context
-                if (_context != value)
+                if (Context != value)
                 {
-                    if (_context != null)
+                    if (Context != null)
                     {
-                        _context.Items.Unsubscribe<ExplorerSelection>(OnSelectionChanged);
-                        _context = null;
+                        Context.Items.Unsubscribe<ExplorerSelection>(OnSelectionChanged);
+                        Context = null;
                     }
 
                     // register to new context
-                    _context = value;
+                    Context = value;
                 }
             }
         }
 
         internal void UpdateSelection()
         {
-            Debug.Assert(_context != null, "ExplorerFrame was disposed");
+            Debug.Assert(Context != null, "ExplorerFrame was disposed");
             if (ExplorerTreeView.SelectedItem == null)
             {
-                Selection.Clear<ExplorerSelection>(_context);
+                Selection.Clear<ExplorerSelection>(Context);
                 _selectedExplorerEFElement = null;
             }
             else
             {
                 ExplorerEFElement brItem;
                 var selectedItem = ExplorerTreeView.SelectedItem;
-                if (selectedItem == ExplorerTreeRoot)
-                {
-                    brItem = ExplorerTreeRoot.DataContext as ExplorerEFElement;
-                }
-                else
-                {
-                    brItem = selectedItem as ExplorerEFElement;
-                }
+                brItem = selectedItem == ExplorerTreeRoot ? ExplorerTreeRoot.DataContext as ExplorerEFElement : selectedItem as ExplorerEFElement;
 
-                _selectedExplorerEFElement = brItem;
+        _selectedExplorerEFElement = brItem;
 
                 if (brItem != null)
                 {
@@ -334,7 +301,7 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
                     {
                         newSelection.Add(brItem.ModelItem);
                     }
-                    _context.Items.SetValue(new ExplorerSelection(newSelection));
+                    Context.Items.SetValue(new ExplorerSelection(newSelection));
                 }
             }
         }
@@ -402,9 +369,9 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
         /// </summary>
         internal void OnModelChangesCommitted(object sender, EfiChangedEventArgs e)
         {
-            Debug.Assert(_viewModelHelper != null, "Null _viewModelHelper in ExplorerFrame.OnModelChangesCommitted()");
-            Debug.Assert(_context != null, "ExplorerFrame was disposed");
-            _viewModelHelper.ProcessModelChangesCommitted(_context, e);
+            Debug.Assert(ExplorerViewModelHelper != null, "Null _viewModelHelper in ExplorerFrame.OnModelChangesCommitted()");
+            Debug.Assert(Context != null, "ExplorerFrame was disposed");
+            ExplorerViewModelHelper.ProcessModelChangesCommitted(Context, e);
 
             // search results may have had elements removed/renamed
             // this updates adorners and Next & Previous in background    
@@ -582,28 +549,28 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
 
         internal ExplorerTreeViewItem ExplorerTreeRoot
         {
-            get { return (_frameContent == null ? null : _frameContent.ExplorerTreeRoot); }
+            get { return _frameContent == null ? null : _frameContent.ExplorerTreeRoot; }
         }
 
         // Property that returns the Search Text Box control
         private ComboBox SearchComboBox
         {
-            get { return (_frameContent == null ? null : _frameContent.SearchBox); }
+            get { return _frameContent == null ? null : _frameContent.SearchBox; }
         }
 
         private Border SearchBar
         {
-            get { return (_frameContent == null ? null : _frameContent.SearchBar); }
+            get { return _frameContent == null ? null : _frameContent.SearchBar; }
         }
 
         private FrameworkElement SearchTicksTrack
         {
-            get { return (_frameContent == null ? null : _frameContent.SearchTicksTrack); }
+            get { return _frameContent == null ? null : _frameContent.SearchTicksTrack; }
         }
 
         private SearchAdornerDecorator SearchAdornerDecorator
         {
-            get { return (_frameContent == null ? null : _frameContent.SearchAdornerDecorator); }
+            get { return _frameContent == null ? null : _frameContent.SearchAdornerDecorator; }
         }
 
         private AdornerLayer TreeViewAdornerLayer
@@ -686,7 +653,7 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
         private ExplorerSearchResults ExpandViewModelAndTreeViewItems(ModelSearchResults modelSearchResults)
         {
             _searchExpansionInProgress = true;
-            return _viewModelHelper.ExpandViewModelToDisplaySearchResults(modelSearchResults);
+            return ExplorerViewModelHelper.ExpandViewModelToDisplaySearchResults(modelSearchResults);
         }
 
         private void ResetAdorners()
@@ -814,7 +781,7 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
         {
             get
             {
-                var context = _context;
+                var context = Context;
                 if (context != null)
                 {
                     var explorerSearchResults = ExplorerSearchResults.GetExplorerSearchResults(context);
@@ -828,7 +795,7 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
         {
             get
             {
-                var context = _context;
+                var context = Context;
                 if (context != null)
                 {
                     var explorerSearchResults = ExplorerSearchResults.GetExplorerSearchResults(context);
@@ -851,7 +818,7 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
         {
             if (SearchIsActive)
             {
-                Debug.Assert(_context != null, "ExplorerFrame was disposed");
+                Debug.Assert(Context != null, "ExplorerFrame was disposed");
                 // only recalculate Next & Previous if the user selected a different tree
                 // item (if they just hit Next or Previous Search Result then this will
                 // be calculated automatically)
@@ -870,7 +837,7 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
                         relativeToItem = ExplorerViewModelHelper.ViewModel.RootNode;
                     }
 
-                    var explorerSearchResults = ExplorerSearchResults.GetExplorerSearchResults(_context);
+                    var explorerSearchResults = ExplorerSearchResults.GetExplorerSearchResults(Context);
                     explorerSearchResults.RecalculateNextAndPrevious(relativeToItem);
                 }
 
@@ -882,12 +849,12 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
 
         private void OnSelectNextSearchResult()
         {
-            Debug.Assert(_context != null, "ExplorerFrame was disposed");
+            Debug.Assert(Context != null, "ExplorerFrame was disposed");
             try
             {
                 _nextOrPreviousInProgress = true;
 
-                var explorerSearchResults = ExplorerSearchResults.GetExplorerSearchResults(_context);
+                var explorerSearchResults = ExplorerSearchResults.GetExplorerSearchResults(Context);
                 var nextSearchResultItem = explorerSearchResults.SelectNextSearchResult();
                 if (nextSearchResultItem != null)
                 {
@@ -904,12 +871,12 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
 
         private void OnSelectPreviousSearchResult()
         {
-            Debug.Assert(_context != null, "ExplorerFrame was disposed");
+            Debug.Assert(Context != null, "ExplorerFrame was disposed");
             try
             {
                 _nextOrPreviousInProgress = true;
 
-                var explorerSearchResults = ExplorerSearchResults.GetExplorerSearchResults(_context);
+                var explorerSearchResults = ExplorerSearchResults.GetExplorerSearchResults(Context);
                 var previousSearchResultItem = explorerSearchResults.SelectPreviousSearchResult();
                 if (previousSearchResultItem != null)
                 {
@@ -972,7 +939,7 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
 
         private void ResetPreviousSearchResults(bool clearTextSearch)
         {
-            Debug.Assert(_context != null, "ExplorerFrame was disposed");
+            Debug.Assert(Context != null, "ExplorerFrame was disposed");
             if (clearTextSearch)
             {
                 SearchComboBox.Text = string.Empty;
@@ -980,7 +947,7 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
 
             // now reset the ExplorerSearchResults which will clear all the 
             // IsInSearchResults settings in the tree
-            var explorerSearchResults = ExplorerSearchResults.GetExplorerSearchResults(_context);
+            var explorerSearchResults = ExplorerSearchResults.GetExplorerSearchResults(Context);
             explorerSearchResults.Reset();
         }
 
@@ -1030,24 +997,18 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
             {
                 uiElement = VisualTreeHelper.GetParent(uiElement) as UIElement;
             }
-            if (uiElement == null)
-            {
-                return 0;
-            }
-            else
-            {
-                return uiElement.TranslatePoint(new Point(0, 0), _frameContent.ExplorerTreeRoot).Y;
-            }
-        }
+
+            return uiElement == null ? 0 : uiElement.TranslatePoint(new Point(0, 0), _frameContent.ExplorerTreeRoot).Y;
+    }
 
         private void ProcessTreeViewItemsInSearchResults()
         {
-            Debug.Assert(_context != null, "ExplorerFrame was disposed");
+            Debug.Assert(Context != null, "ExplorerFrame was disposed");
 
             var scrollBar = GetVerticalScrollBar();
 
             var addAdorners = scrollBar != null && scrollBar.IsVisible;
-            var explorerSearchResults = ExplorerSearchResults.GetExplorerSearchResults(_context);
+            var explorerSearchResults = ExplorerSearchResults.GetExplorerSearchResults(Context);
 
             if (addAdorners)
             {
@@ -1096,7 +1057,7 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
         {
             // wire up events for the scrollbar
             var explorerTreeView = ExplorerTreeView;
-            var scrollBar = (explorerTreeView == null ? null : ExplorerUtility.FindFirstVerticalScrollBar(explorerTreeView));
+            var scrollBar = explorerTreeView == null ? null : ExplorerUtility.FindFirstVerticalScrollBar(explorerTreeView);
 
             // Is cached scrollbar the same as the one in the visual tree?
             if (!ReferenceEquals(_vScrollBar, scrollBar))
@@ -1163,7 +1124,7 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
         /// </summary>
         private void VScrollBar_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            if (_context == null)
+            if (Context == null)
             {
                 return;
             }
@@ -1190,7 +1151,7 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
                 ExplorerTreeView.UpdateLayout();
                 var tvi = FocusExplorerEFElement(explorerElement, false);
                 Debug.Assert(null != tvi, "Could not find TreeViewItem for ExplorerEFElement " + explorerElement.Name);
-                return (null != tvi);
+                return null != tvi;
             }
 
             return false;
@@ -1251,10 +1212,10 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
             {
                 var y = GetY(treeViewItem);
                 var viewPortHeight = ScrollViewer.ViewportHeight;
-                if (Math.Abs(ScrollViewer.VerticalOffset + viewPortHeight / 2 - y) > viewPortHeight / 2)
+                if (Math.Abs(ScrollViewer.VerticalOffset + (viewPortHeight / 2) - y) > viewPortHeight / 2)
                 {
                     // bring to view and center vertically
-                    ScrollViewer.ScrollToVerticalOffset(y - viewPortHeight / 2);
+                    ScrollViewer.ScrollToVerticalOffset(y - (viewPortHeight / 2));
                 }
 
                 var partHeader = ExplorerUtility.GetTreeViewItemPartHeader(treeViewItem);
@@ -1277,7 +1238,7 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
         private static void WaitUIUpdate()
         {
             var frame = new DispatcherFrame();
-            Dispatcher.CurrentDispatcher.BeginInvoke(
+            _ = Dispatcher.CurrentDispatcher.BeginInvoke(
                 DispatcherPriority.Background, new DispatcherOperationCallback(o => frame.Continue = false), null);
             Dispatcher.PushFrame(frame);
         }

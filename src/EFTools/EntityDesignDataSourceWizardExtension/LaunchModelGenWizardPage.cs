@@ -35,6 +35,8 @@ namespace Microsoft.Data.Entity.Design.DataSourceWizardExtension
 
         protected override bool LaunchEntityDesignerWizard(EdmDataSourceWizardData wizardData)
         {
+            Microsoft.VisualStudio.Shell.ThreadHelper.ThrowIfNotOnUIThread();
+
             var containingProject = wizardData.ContainingProject;
             var itemTemplatePath = GetEdmxItemTemplatePath(containingProject);
             var edmxFileName = GetUniqueEdmxFileNameInProject(containingProject, Resources.EdmDesignerFileNameFormat);
@@ -57,8 +59,8 @@ namespace Microsoft.Data.Entity.Design.DataSourceWizardExtension
             }
 
             wizardData.EDMProjectItem = VsUtils.GetProjectItemForDocument(edmxFileName, WizardForm.ServiceProvider);
-            // Dismiss Data Source Wizard if a new edmx file is successfuly created.
-            return (wizardData.EDMProjectItem != null);
+            // Dismiss Data Source Wizard if a new edmx file is successfully created.
+            return wizardData.EDMProjectItem != null;
         }
 
         #region Helper methods
@@ -90,6 +92,8 @@ namespace Microsoft.Data.Entity.Design.DataSourceWizardExtension
         /// </summary>
         private static string GetEdmxItemTemplatePath(Project project)
         {
+            Microsoft.VisualStudio.Shell.ThreadHelper.ThrowIfNotOnUIThread();
+
             var solution2 = project.DTE.Solution as Solution2;
             var templateName = GetItemTemplateName(project);
             return solution2.GetProjectItemTemplate(templateName, project.Kind);

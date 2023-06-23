@@ -73,7 +73,6 @@ namespace Microsoft.Data.Entity.Design.Test.Unit.InProc
 
             TestProjectMultiTargeting(
                 "MT40Project",
-                "TestMultiTargeting40Project",
                 new Dictionary<FrameworkVersion, ArtifactStatus>
                     {
                         { FrameworkVersion.V40, new ArtifactStatus(isDesignerSafe: true, isStructurallySafe: true, isVersionSafe: true) },
@@ -94,7 +93,6 @@ namespace Microsoft.Data.Entity.Design.Test.Unit.InProc
 
             TestProjectMultiTargeting(
                 "MT35Project",
-                "TestMultiTargeting35Project",
                 new Dictionary<FrameworkVersion, ArtifactStatus>
                     {
                         { FrameworkVersion.V40, new ArtifactStatus(isDesignerSafe: false, isStructurallySafe: true, isVersionSafe: false) },
@@ -116,7 +114,6 @@ namespace Microsoft.Data.Entity.Design.Test.Unit.InProc
 
             TestProjectMultiTargeting(
                 "MT30Project",
-                "TestMultiTargeting30Project",
                 new Dictionary<FrameworkVersion, ArtifactStatus>
                     {
                         { FrameworkVersion.V40, new ArtifactStatus(isDesignerSafe: false, isStructurallySafe: true, isVersionSafe: false) },
@@ -125,7 +122,7 @@ namespace Microsoft.Data.Entity.Design.Test.Unit.InProc
         }
 
         private void TestProjectMultiTargeting(
-            string projectName, string testName, IDictionary<FrameworkVersion, ArtifactStatus> expectedResults)
+            string projectName, IDictionary<FrameworkVersion, ArtifactStatus> expectedResults)
         {
             var projectDir = Path.Combine(TestContext.DeploymentDirectory, @"TestData\InProc\MultiTargeting", projectName);
             var solnFilePath = Path.Combine(projectDir, projectName + ".sln");
@@ -204,8 +201,10 @@ namespace Microsoft.Data.Entity.Design.Test.Unit.InProc
         private void ProcessEvents()
         {
             var frame = new DispatcherFrame();
-            Dispatcher.CurrentDispatcher.BeginInvoke(
-                DispatcherPriority.Background, new DispatcherOperationCallback(o => frame.Continue = false), null);
+            #pragma warning disable VSTHRD001 // Avoid legacy thread switching APIs
+            _ = Dispatcher.CurrentDispatcher.BeginInvoke(
+                      DispatcherPriority.Background, new DispatcherOperationCallback(o => frame.Continue = false), null);
+            #pragma warning restore VSTHRD001 // Avoid legacy thread switching APIs
             Dispatcher.PushFrame(frame);
         }
     }
