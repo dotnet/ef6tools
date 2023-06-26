@@ -77,7 +77,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.GraphObject" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-	<PackageReference Include="Microsoft.VisualStudio.Threading" Version="$(MicrosoftVisualStudioThreadingPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Threading" Version="$(MicrosoftVisualStudioThreadingPackageVersion)" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources.resx">
