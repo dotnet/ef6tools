@@ -54,7 +54,7 @@ namespace Microsoft.Data.Entity.Design.Package
         private bool? _isBuildingFromCommandLine;
         private uint _trackProjectRetargetingEventsCookie;
 
-    public IEntityDesignCommandSet CommandSet { get; set; }
+        public IEntityDesignCommandSet CommandSet { get; set; }
 
         #region Initialize/Dispose
 
@@ -494,25 +494,25 @@ namespace Microsoft.Data.Entity.Design.Package
             }
         }
 
-    public EntityDesignModelManager ModelManager { get; } = new EntityDesignModelManager(new VSArtifactFactory(), new VSArtifactSetFactory());
+        public EntityDesignModelManager ModelManager { get; } = new EntityDesignModelManager(new VSArtifactFactory(), new VSArtifactSetFactory());
 
-    public ConnectionManager ConnectionManager { get; private set; }
+        public ConnectionManager ConnectionManager { get; private set; }
 
-    public DocumentFrameMgr DocumentFrameMgr { get; private set; }
+        public DocumentFrameMgr DocumentFrameMgr { get; private set; }
 
-    public ModelChangeEventListener ModelChangeEventListener { get; private set; }
+        public ModelChangeEventListener ModelChangeEventListener { get; private set; }
 
-    public AggregateProjectTypeGuidCache AggregateProjectTypeGuidCache { get; private set; }
+        public AggregateProjectTypeGuidCache AggregateProjectTypeGuidCache { get; private set; }
 
-    public ModelGenErrorCache ModelGenErrorCache { get; private set; }
+        public ModelGenErrorCache ModelGenErrorCache { get; private set; }
 
-    /// <summary>
-    ///     This method is called by the docdata whenever the inherent filename changes. Clients should not call this
-    ///     method directly; they should subscribe to MicrosoftDataEntityDesignPackage.FileNameChanged event.
-    /// </summary>
-    /// <param name="oldFileName"></param>
-    /// <param name="newFileName"></param>
-    public void OnFileNameChanged(string oldFileName, string newFileName)
+        /// <summary>
+        ///     This method is called by the docdata whenever the inherent filename changes. Clients should not call this
+        ///     method directly; they should subscribe to MicrosoftDataEntityDesignPackage.FileNameChanged event.
+        /// </summary>
+        /// <param name="oldFileName"></param>
+        /// <param name="newFileName"></param>
+        public void OnFileNameChanged(string oldFileName, string newFileName)
         {
             var args = new ModelChangeEventArgs();
             args.OldFileName = oldFileName;

@@ -105,14 +105,14 @@ namespace Microsoft.Data.Entity.Design.DataSourceWizardExtension
             return targetItem != null
                 && !String.IsNullOrEmpty(targetItem.Name)
                 && targetItem.Name.EndsWith(EdmxFileExtension, StringComparison.OrdinalIgnoreCase);
-    }
+        }
 
-    /// <summary>
-    ///     Return true if the engine could generate a new item based on a specified item.
-    /// </summary>
-    /// <param name="referencedItem"></param>
-    /// <returns></returns>
-    bool IDataSourceWizardEngine.CanConfigureNew(ProjectItem referencedItem)
+        /// <summary>
+        ///     Return true if the engine could generate a new item based on a specified item.
+        /// </summary>
+        /// <param name="referencedItem"></param>
+        /// <returns></returns>
+        bool IDataSourceWizardEngine.CanConfigureNew(ProjectItem referencedItem)
         {
             ThreadHelper.ThrowIfNotOnUIThread();
 

@@ -86,15 +86,15 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
             _deferredUpdateNextAndPreviousSearchResults = new DeferredRequest(OnUpdateNextAndPreviousResults);
         }
 
-    public ICommand SearchCommand { get; }
+        public ICommand SearchCommand { get; }
 
-    public ICommand ResetSearchCommand { get; }
+        public ICommand ResetSearchCommand { get; }
 
-    public ICommand SelectNextSearchResult { get; }
+        public ICommand SelectNextSearchResult { get; }
 
-    public ICommand SelectPreviousSearchResult { get; }
+        public ICommand SelectPreviousSearchResult { get; }
 
-    public bool CanGoToNextSearchResult
+        public bool CanGoToNextSearchResult
         {
             get
             {
@@ -122,17 +122,17 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
             }
         }
 
-    #region Properties
+        #region Properties
 
-    public EditingContext Context { get; private set; }
+        public EditingContext Context { get; private set; }
 
-    internal ExplorerViewModelHelper ExplorerViewModelHelper { get; private set; }
+        internal ExplorerViewModelHelper ExplorerViewModelHelper { get; private set; }
 
-    // _searchIsActive indicates that there is an active search that many have zero
-    //  or more search results.  The TreeViewItem Expand and Collapse events use this
-    //  indicator to know that adorners need to be fixed up when an expand or collapse
-    //  is done on a TreeViewItem.
-    public bool SearchIsActive
+        // _searchIsActive indicates that there is an active search that many have zero
+        //  or more search results.  The TreeViewItem Expand and Collapse events use this
+        //  indicator to know that adorners need to be fixed up when an expand or collapse
+        //  is done on a TreeViewItem.
+        public bool SearchIsActive
         {
             get { return _searchIsActive; }
             set
@@ -292,7 +292,7 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
                 var selectedItem = ExplorerTreeView.SelectedItem;
                 brItem = selectedItem == ExplorerTreeRoot ? ExplorerTreeRoot.DataContext as ExplorerEFElement : selectedItem as ExplorerEFElement;
 
-        _selectedExplorerEFElement = brItem;
+                _selectedExplorerEFElement = brItem;
 
                 if (brItem != null)
                 {
@@ -999,7 +999,7 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
             }
 
             return uiElement == null ? 0 : uiElement.TranslatePoint(new Point(0, 0), _frameContent.ExplorerTreeRoot).Y;
-    }
+        }
 
         private void ProcessTreeViewItemsInSearchResults()
         {

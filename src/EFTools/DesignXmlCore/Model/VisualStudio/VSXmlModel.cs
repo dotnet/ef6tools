@@ -68,13 +68,13 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.Model.VisualStudio
             }
         }
 
-    internal Microsoft.VisualStudio.XmlEditor.XmlModel XmlModel { get; private set; }
+        internal Microsoft.VisualStudio.XmlEditor.XmlModel XmlModel { get; private set; }
 
-    /// <summary>
-    ///     This API supports the Entity Framework infrastructure and is not intended to be used directly from your code.
-    /// </summary>
-    /// <returns>This API supports the Entity Framework infrastructure and is not intended to be used directly from your code.</returns>
-    [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+        /// <summary>
+        ///     This API supports the Entity Framework infrastructure and is not intended to be used directly from your code.
+        /// </summary>
+        /// <returns>This API supports the Entity Framework infrastructure and is not intended to be used directly from your code.</returns>
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
         public override bool CanEditXmlModel()
         {
             string moniker = null;
@@ -97,12 +97,12 @@ namespace Microsoft.Data.Tools.VSXmlDesignerBase.Model.VisualStudio
             return !String.IsNullOrWhiteSpace(moniker)
                    ? VSHelpers.CheckOutFilesIfEditable(_serviceProvider, new[] { moniker })
                    : false;
-    }
+        }
 
-    /// <summary>
-    ///     This API supports the Entity Framework infrastructure and is not intended to be used directly from your code.
-    /// </summary>
-    public override XDocument Document
+        /// <summary>
+        ///     This API supports the Entity Framework infrastructure and is not intended to be used directly from your code.
+        /// </summary>
+        public override XDocument Document
         {
             get { return XmlModel.Document; }
         }

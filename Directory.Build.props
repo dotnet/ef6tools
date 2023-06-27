@@ -10,8 +10,8 @@
     <MicrosoftVisualStudioInteropPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioInteropPackageVersion>
     <MicrosoftVisualStudioQualityToolsUnitTestFrameworkPackageVersion>17.7.33809.334</MicrosoftVisualStudioQualityToolsUnitTestFrameworkPackageVersion>
     <MicrosoftVisualStudioTemplateWizardInterfacePackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioTemplateWizardInterfacePackageVersion>
-    <MicrosoftVisualStudioThreadingPackageVersion>17.7.22-preview</MicrosoftVisualStudioThreadingPackageVersion>
     <MicrosoftVisualStudioTextTemplatingInterfacesPackageVersion>17.0.32112.339</MicrosoftVisualStudioTextTemplatingInterfacesPackageVersion>
+    <MicrosoftVisualStudioThreadingPackageVersion>17.7.22-preview</MicrosoftVisualStudioThreadingPackageVersion>
     <MicrosoftVisualStudioValidationPackageVersion>17.6.11</MicrosoftVisualStudioValidationPackageVersion>
     <MicrosoftVisualStudioXmlEditorPackageVersion>17.7.33809.334</MicrosoftVisualStudioXmlEditorPackageVersion>
     <MicrosoftVSDesignerPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVSDesignerPackageVersion>
