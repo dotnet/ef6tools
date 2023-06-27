@@ -32,9 +32,9 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.LegacyProviderWrapper
         {
 #pragma warning disable VSSDK006 // Check services exist
             LegacyProviderManifest =
-                      ((Legacy.DbProviderServices)
-                       ((IServiceProvider)Legacy.DbProviderFactories.GetFactory("System.Data.SqlClient"))
-                           .GetService(typeof(Legacy.DbProviderServices)))
+                ((Legacy.DbProviderServices)
+                  ((IServiceProvider)Legacy.DbProviderFactories.GetFactory("System.Data.SqlClient"))
+                      .GetService(typeof(Legacy.DbProviderServices)))
                     .GetProviderManifest("2008");
 #pragma warning restore VSSDK006 // Check services exist
 
