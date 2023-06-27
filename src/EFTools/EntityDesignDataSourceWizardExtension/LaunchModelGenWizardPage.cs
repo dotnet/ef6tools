@@ -5,7 +5,6 @@ namespace Microsoft.Data.Entity.Design.DataSourceWizardExtension
     using System;
     using System.ComponentModel.Composition;
     using System.Diagnostics;
-    using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
     using System.IO;
     using System.Runtime.InteropServices;

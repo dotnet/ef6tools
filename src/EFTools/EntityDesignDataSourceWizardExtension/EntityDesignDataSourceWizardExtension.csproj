@@ -52,6 +52,7 @@
     <PackageReference Include="Microsoft.VisualStudio.ExtensibilityHosting" Version="$(MicrosoftVisualStudioExtensibilityHostingPackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" Version="$(MicrosoftVisualStudioTemplateWizardInterfacePackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Threading" Version="$(MicrosoftVisualStudioThreadingPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.XmlEditor" Version="$(MicrosoftVisualStudioXmlEditorPackageVersion)" />
     <Reference Include="Microsoft.VisualStudio.WizardFramework">
       <HintPath>$(VSINSTALLDIR)\Common7\IDE\Microsoft.VisualStudio.WizardFramework.dll</HintPath>
     </Reference>

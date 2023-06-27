@@ -1,19 +1,21 @@
 <Project>
   <PropertyGroup>
     <MicrosoftSqlServerCompactPackageVersion>4.08876.1</MicrosoftSqlServerCompactPackageVersion>
-    <MicrosoftVisualStudioComponentModelHostPackageVersion>17.6.268</MicrosoftVisualStudioComponentModelHostPackageVersion>
+    <MicrosoftVisualStudioComponentModelHostPackageVersion>17.7.100-preview</MicrosoftVisualStudioComponentModelHostPackageVersion>
     <MicrosoftVisualStudioExtensibilityHostingPackageVersion>18.0.25-preview-gf9aa8d48c5</MicrosoftVisualStudioExtensibilityHostingPackageVersion>
     <MicrosoftVisualStudioPackageCurrent>17.6.36391</MicrosoftVisualStudioPackageCurrent>
     <MicrosoftVisualStudioDataCorePackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioDataCorePackageVersion>
     <MicrosoftVisualStudioDataDesignCommonPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioDataDesignCommonPackageVersion>
     <MicrosoftVisualStudioModelingPackageVersion>17.7.36673</MicrosoftVisualStudioModelingPackageVersion>
     <MicrosoftVisualStudioInteropPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioInteropPackageVersion>
+    <MicrosoftVisualStudioQualityToolsUnitTestFrameworkPackageVersion>17.7.33809.334</MicrosoftVisualStudioQualityToolsUnitTestFrameworkPackageVersion>
     <MicrosoftVisualStudioTemplateWizardInterfacePackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioTemplateWizardInterfacePackageVersion>
+    <MicrosoftVisualStudioThreadingPackageVersion>17.7.22-preview</MicrosoftVisualStudioThreadingPackageVersion>
     <MicrosoftVisualStudioTextTemplatingInterfacesPackageVersion>17.0.32112.339</MicrosoftVisualStudioTextTemplatingInterfacesPackageVersion>
     <MicrosoftVisualStudioValidationPackageVersion>17.6.11</MicrosoftVisualStudioValidationPackageVersion>
-    <MicrosoftVisualStudioThreadingPackageVersion>17.7.4-preview</MicrosoftVisualStudioThreadingPackageVersion>
+    <MicrosoftVisualStudioXmlEditorPackageVersion>17.7.33809.334</MicrosoftVisualStudioXmlEditorPackageVersion>
     <MicrosoftVSDesignerPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVSDesignerPackageVersion>
-    <MicrosoftXmlEditorPackageVersion>17.7.33809.334</MicrosoftXmlEditorPackageVersion>
+    <MicrosoftXmlEditorPackageVersion>17.7.36673</MicrosoftXmlEditorPackageVersion>
     <MoqPackageVersion>4.0.10827</MoqPackageVersion>
     <MySqlDataEntityPackageVersion>6.7.2-beta-ef6</MySqlDataEntityPackageVersion>
     <SystemDataSqlServerCePackageVersion>4.0.8876.1</SystemDataSqlServerCePackageVersion>
