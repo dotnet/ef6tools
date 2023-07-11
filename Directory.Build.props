@@ -4,6 +4,7 @@
     <MicrosoftVisualStudioComponentModelHostPackageVersion>17.7.100-preview</MicrosoftVisualStudioComponentModelHostPackageVersion>
     <MicrosoftVisualStudioExtensibilityHostingPackageVersion>18.0.25-preview-gf9aa8d48c5</MicrosoftVisualStudioExtensibilityHostingPackageVersion>
     <MicrosoftVisualStudioPackageCurrent>17.6.36391</MicrosoftVisualStudioPackageCurrent>
+    <MicrosoftVisualStudioCompositionConfigurationVersion>17.0.12-alpha</MicrosoftVisualStudioCompositionConfigurationVersion>
     <MicrosoftVisualStudioDataCorePackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioDataCorePackageVersion>
     <MicrosoftVisualStudioDataDesignCommonPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioDataDesignCommonPackageVersion>
     <MicrosoftVisualStudioModelingPackageVersion>17.7.36673</MicrosoftVisualStudioModelingPackageVersion>
