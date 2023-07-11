@@ -19,6 +19,7 @@
     <MicrosoftXmlEditorPackageVersion>17.7.36673</MicrosoftXmlEditorPackageVersion>
     <MoqPackageVersion>4.0.10827</MoqPackageVersion>
     <MySqlDataEntityPackageVersion>6.7.2-beta-ef6</MySqlDataEntityPackageVersion>
+    <NerdbankStreamsVersion>2.9.116</NerdbankStreamsVersion>
     <SystemDataSqlServerCePackageVersion>4.0.8876.1</SystemDataSqlServerCePackageVersion>
     <VsWebSiteInteropPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</VsWebSiteInteropPackageVersion>
     <XunitPackageVersion>1.9.2</XunitPackageVersion>
