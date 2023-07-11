@@ -65,7 +65,6 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.SqlServer.Compact" Version="4.0.8876.1" />
-    <PackageReference Include="System.Data.SqlServerCe" Version="$(SystemDataSqlServerCePackageVersion)" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
