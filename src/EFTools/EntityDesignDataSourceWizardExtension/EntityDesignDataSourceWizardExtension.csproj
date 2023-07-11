@@ -44,6 +44,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
     <PackageReference Include="Microsoft.VisualStudio.Interop" Version="$(MicrosoftVisualStudioInteropPackageVersion)" />
     <PackageReference Include="Microsoft.VSDesigner" Version="$(MicrosoftVSDesignerPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Composition.Configuration" Version="$(MicrosoftVisualStudioCompositionConfigurationVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.DataDesign.Interfaces" Version="$(MicrosoftVisualStudioPackageCurrent)" />
     <PackageReference Include="Microsoft.VisualStudio.ExtensibilityHosting" Version="$(MicrosoftVisualStudioExtensibilityHostingPackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" Version="$(MicrosoftVisualStudioTemplateWizardInterfacePackageVersion)" />
