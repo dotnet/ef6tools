@@ -49,12 +49,8 @@ namespace EFDesigner.FunctionalTests
 
         private static T GetPropertyValue<T>(object target, string propertyName)
         {
-            var propInfo = target.GetType().GetProperty(propertyName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
-            if (propInfo == null)
-            {
-                throw new InvalidOperationException(propertyName + "property not found.");
-            }
-
+            var propInfo = target.GetType().GetProperty(propertyName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+              ?? throw new InvalidOperationException(propertyName + "property not found.");
             return (T)propInfo.GetValue(target);
         }
     }

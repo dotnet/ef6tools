@@ -25,7 +25,9 @@ namespace Microsoft.Data.Entity.Design.DataSourceWizardExtension
 
         protected override bool LaunchEntityDesignerWizard(EdmDataSourceWizardData wizardData)
         {
+            Microsoft.VisualStudio.Shell.ThreadHelper.ThrowIfNotOnUIThread();
             Debug.Assert(wizardData.EDMProjectItem != null, "EDMProjectItem is null");
+
             if (wizardData.EDMProjectItem != null)
             {
                 // We need to ensure that the edmx is opened in the designer.
@@ -45,7 +47,9 @@ namespace Microsoft.Data.Entity.Design.DataSourceWizardExtension
 
         private static void DoLaunchUpdateModelFromDatabaseWizard(ProjectItem projectItem)
         {
+            Microsoft.VisualStudio.Shell.ThreadHelper.ThrowIfNotOnUIThread();
             var uri = Utils.FileName2Uri(projectItem.get_FileNames(1));
+
             ModelManager modelManager = PackageManager.Package.ModelManager;
             var efArtifactSet = modelManager.GetArtifactSet(uri);
 

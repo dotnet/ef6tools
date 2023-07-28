@@ -48,20 +48,11 @@ namespace Microsoft.Data.Entity.Design.Package
         private OleMenuCommand _viewExplorerCmd;
         [SuppressMessage("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields", Justification = "Used by Visual Studio")]
         private OleMenuCommand _viewMappingCmd;
-        private DocumentFrameMgr _documentFrameMgr;
         private ExplorerWindow _explorerWindow;
         private MappingDetailsWindow _mappingDetailsWindow;
-
-        private ModelChangeEventListener _modelChangeEventListener;
-        private ConnectionManager _connectionManager;
         private Dispatcher _dispatcher; // foreground thread
         private bool? _isBuildingFromCommandLine;
         private uint _trackProjectRetargetingEventsCookie;
-        private AggregateProjectTypeGuidCache _guidsCache;
-        private ModelGenErrorCache _modelGenErrorCache;
-
-        private readonly EntityDesignModelManager _modelManager =
-            new EntityDesignModelManager(new VSArtifactFactory(), new VSArtifactSetFactory());
 
         public IEntityDesignCommandSet CommandSet { get; set; }
 
@@ -97,11 +88,11 @@ namespace Microsoft.Data.Entity.Design.Package
                     NativeMethods.ThrowOnFailure(vsShell.LoadPackage(ref editorPackageGuid, out editorPackage));
                 }
 
-                _documentFrameMgr = new EntityDesignDocumentFrameMgr(PackageManager.Package);
-                _modelChangeEventListener = new ModelChangeEventListener();
-                _guidsCache = new AggregateProjectTypeGuidCache();
-                _modelGenErrorCache = new ModelGenErrorCache();
-                _connectionManager = new ConnectionManager();
+                DocumentFrameMgr = new EntityDesignDocumentFrameMgr(PackageManager.Package);
+                ModelChangeEventListener = new ModelChangeEventListener();
+                AggregateProjectTypeGuidCache = new AggregateProjectTypeGuidCache();
+                ModelGenErrorCache = new ModelGenErrorCache();
+                ConnectionManager = new ConnectionManager();
 
                 AddToolWindow(typeof(MappingDetailsWindow));
 
@@ -129,7 +120,7 @@ namespace Microsoft.Data.Entity.Design.Package
 
                 // There is no SQL CE support dev12 onward, so removing the references
 
-#if (VS11)
+#if VS11
                 // Subscribe to the SQL CE and SqlDatabaseFile upgrade services
                 var sqlCeUpgradeService = GetGlobalService(typeof(IVsSqlCeUpgradeService)) as IVsSqlCeUpgradeService;
 #endif
@@ -137,7 +128,7 @@ namespace Microsoft.Data.Entity.Design.Package
                 var sqlDatabaseFileUpgradeService =
                     GetGlobalService(typeof(IVsSqlDatabaseFileUpgradeService)) as IVsSqlDatabaseFileUpgradeService;
 
-#if (VS12ORNEWER)
+#if VS12ORNEWER
                 if (sqlDatabaseFileUpgradeService == null)
 #else
                 if (sqlCeUpgradeService == null
@@ -147,7 +138,7 @@ namespace Microsoft.Data.Entity.Design.Package
                     // attempt to start IVsSqlCeUpgradeService and IVsSqlDatabaseFileUpgradeService
                     BootstrapVSDesigner();
 
-#if (VS11)
+#if VS11
                     if (sqlCeUpgradeService == null)
                     {
                         sqlCeUpgradeService = GetGlobalService(typeof(IVsSqlCeUpgradeService)) as IVsSqlCeUpgradeService;
@@ -161,7 +152,7 @@ namespace Microsoft.Data.Entity.Design.Package
                     }
                 }
 
-#if (VS11)
+#if VS11
                 Debug.Assert(null != sqlCeUpgradeService, "sqlCeUpgradeService service is null");
                 if (sqlCeUpgradeService != null)
                 {
@@ -226,27 +217,27 @@ namespace Microsoft.Data.Entity.Design.Package
                 ErrorListHelper.UnregisterForNotifications();
 
                 // dispose of our classes in reverse order than we created them
-                if (_connectionManager != null)
+                if (ConnectionManager != null)
                 {
-                    _connectionManager.Dispose();
-                    _connectionManager = null;
+                    ConnectionManager.Dispose();
+                    ConnectionManager = null;
                 }
 
-                if (_modelChangeEventListener != null)
+                if (ModelChangeEventListener != null)
                 {
-                    _modelChangeEventListener.Dispose();
-                    _modelChangeEventListener = null;
+                    ModelChangeEventListener.Dispose();
+                    ModelChangeEventListener = null;
                 }
 
-                if (_documentFrameMgr != null)
+                if (DocumentFrameMgr != null)
                 {
-                    _documentFrameMgr.Dispose();
-                    _documentFrameMgr = null;
+                    DocumentFrameMgr.Dispose();
+                    DocumentFrameMgr = null;
                 }
 
-                _modelManager.Dispose();
+                ModelManager.Dispose();
 
-#if (VS11)
+#if VS11
                 // UnSubscribe from the SQL CE upgrade service
                 var sqlCeUpgradeService = GetGlobalService(typeof(IVsSqlCeUpgradeService)) as IVsSqlCeUpgradeService;
                 if (sqlCeUpgradeService != null)
@@ -420,7 +411,7 @@ namespace Microsoft.Data.Entity.Design.Package
             }
             else
             {
-                _dispatcher.BeginInvoke(DispatcherPriority.Normal, operation);
+                _ = _dispatcher.BeginInvoke(DispatcherPriority.Normal, operation);
             }
         }
 
@@ -503,35 +494,17 @@ namespace Microsoft.Data.Entity.Design.Package
             }
         }
 
-        public EntityDesignModelManager ModelManager
-        {
-            get { return _modelManager; }
-        }
+        public EntityDesignModelManager ModelManager { get; } = new EntityDesignModelManager(new VSArtifactFactory(), new VSArtifactSetFactory());
 
-        public ConnectionManager ConnectionManager
-        {
-            get { return _connectionManager; }
-        }
+        public ConnectionManager ConnectionManager { get; private set; }
 
-        public DocumentFrameMgr DocumentFrameMgr
-        {
-            get { return _documentFrameMgr; }
-        }
+        public DocumentFrameMgr DocumentFrameMgr { get; private set; }
 
-        public ModelChangeEventListener ModelChangeEventListener
-        {
-            get { return _modelChangeEventListener; }
-        }
+        public ModelChangeEventListener ModelChangeEventListener { get; private set; }
 
-        public AggregateProjectTypeGuidCache AggregateProjectTypeGuidCache
-        {
-            get { return _guidsCache; }
-        }
+        public AggregateProjectTypeGuidCache AggregateProjectTypeGuidCache { get; private set; }
 
-        public ModelGenErrorCache ModelGenErrorCache
-        {
-            get { return _modelGenErrorCache; }
-        }
+        public ModelGenErrorCache ModelGenErrorCache { get; private set; }
 
         /// <summary>
         ///     This method is called by the docdata whenever the inherent filename changes. Clients should not call this

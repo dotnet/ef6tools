@@ -72,6 +72,8 @@ namespace Microsoft.Data.Entity.Design.DataSourceWizardExtension
         /// </summary>
         bool IDataSourceWizardEngine.CanWorkInProject(Project project)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
             if (project != null)
             {
                 var projectKind = VsUtils.GetProjectKind(project);
@@ -96,15 +98,13 @@ namespace Microsoft.Data.Entity.Design.DataSourceWizardExtension
         /// </summary>
         bool IDataSourceWizardEngine.CanConfigureExisting(ProjectItem targetItem)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
             // this method is called frequently to determine whether wizard item should be displayed or not.
             // So we should not do heavy processing here.
-            if (targetItem != null
+            return targetItem != null
                 && !String.IsNullOrEmpty(targetItem.Name)
-                && targetItem.Name.EndsWith(EdmxFileExtension, StringComparison.OrdinalIgnoreCase))
-            {
-                return true;
-            }
-            return false;
+                && targetItem.Name.EndsWith(EdmxFileExtension, StringComparison.OrdinalIgnoreCase);
         }
 
         /// <summary>
@@ -114,6 +114,8 @@ namespace Microsoft.Data.Entity.Design.DataSourceWizardExtension
         /// <returns></returns>
         bool IDataSourceWizardEngine.CanConfigureNew(ProjectItem referencedItem)
         {
+            ThreadHelper.ThrowIfNotOnUIThread();
+
             // Currently EDM  supports being generated from local database file and service-based database file.
             if (referencedItem == null)
             {
@@ -121,8 +123,7 @@ namespace Microsoft.Data.Entity.Design.DataSourceWizardExtension
             }
             else if (!String.IsNullOrEmpty(referencedItem.Name)
                      && (referencedItem.Name.EndsWith(SqlServerCompactFileExtension, StringComparison.OrdinalIgnoreCase)
-                         || referencedItem.Name.EndsWith(LocalDbFileExtension, StringComparison.OrdinalIgnoreCase))
-                )
+                         || referencedItem.Name.EndsWith(LocalDbFileExtension, StringComparison.OrdinalIgnoreCase)))
             {
                 return true;
             }
@@ -219,7 +220,7 @@ namespace Microsoft.Data.Entity.Design.DataSourceWizardExtension
         {
             var edmWizardData = wizardData as EdmDataSourceWizardData;
             Debug.Assert(edmWizardData != null, "The passed in wizardData parameter is not of EdmDataSourceWizardData type");
-            return (edmWizardData != null && edmWizardData.EDMProjectItem != null && !edmWizardData.IsCancelled);
+            return edmWizardData != null && edmWizardData.EDMProjectItem != null && !edmWizardData.IsCancelled;
         }
 
         ProjectItem[] IDataSourceWizardEngine.PerformWork(IDataSourceWizardData wizardData)

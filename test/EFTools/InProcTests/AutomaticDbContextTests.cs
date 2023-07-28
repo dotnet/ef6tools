@@ -68,8 +68,8 @@ namespace EFDesigner.InProcTests
         [HostType("VS IDE")]
         public void FindDbContextTemplate_returns_null_for_project_targeting_dotNET3_5()
         {
-            UITestRunner.Execute(TestContext.TestName, 
-                () => { Assert.IsNull(new DbContextCodeGenerator().FindDbContextTemplate(CreateProject("Net35", "3.5", "CSharp"))); });
+            UITestRunner.Execute(TestContext.TestName,
+                () => Assert.IsNull(new DbContextCodeGenerator().FindDbContextTemplate(CreateProject("Net35", "3.5", "CSharp"))));
         }
 
         // This test requires the EF 5.x DbContext item templates to be installed.
