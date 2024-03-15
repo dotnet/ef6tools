@@ -46,18 +46,6 @@ steps:
     configuration: '$(BuildConfiguration)'
     msbuildArguments: '/t:AfterBuild'
 
-- task: ms-vseng.MicroBuildTasks.30666190-6959-11e5-9f96-f56098202fef.MicroBuildSigningPlugin@4
-  displayName: 'Install Signing Plugin'
-  inputs:
-    signType: '$(SigningType)'
-
-- task: MSBuild@1
-  displayName: 'Sign Unlocalized and Localized Assemblies'
-  inputs:
-    solution: 'build\sign.proj'
-    configuration: '$(BuildConfiguration)'
-    msbuildArguments: '/t:AfterBuild'
-
 - task: NuGetCommand@2
   displayName: 'NuGet Restore Setup Inputs Packages'
   inputs:
