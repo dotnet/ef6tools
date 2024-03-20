@@ -1,5 +1,7 @@
 trigger:
-- main
+  - main
+  - rel/*
+
 variables:
   SingletonMsiName: 'EF6Tools'
 
@@ -40,7 +42,10 @@ extends:
           outputs:
           - output: pipelineArtifact
             displayName: 'Publish VSIX, MSI and CAB to VSTS'
-            condition: eq(variables['Build.SourceBranchName'], 'main')
+            condition: or(
+                          eq(variables['Build.SourceBranch'], 'refs/heads/main'), 
+                          startsWith(variables['Build.SourceBranch'], 'refs/heads/rel/')
+                         )
             targetPath: '$(Build.ArtifactStagingDirectory)\SetupResults'
             artifactName: SetupResults
           - output: pipelineArtifact
