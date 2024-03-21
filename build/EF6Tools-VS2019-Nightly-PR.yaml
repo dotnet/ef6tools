@@ -4,9 +4,6 @@ pool:
   - Cmd
   - msbuild
 
-trigger:
-- main
-
 pr:
   autoCancel: true
   branches:
@@ -24,7 +21,7 @@ steps:
   displayName: 'Run vswhere'
   enabled: false
 
-- task: NuGetAuthenticate@0
+- task: NuGetAuthenticate@1
   displayName: 'NuGet Authenticate'
 
 - task: NuGetToolInstaller@1
