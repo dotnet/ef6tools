@@ -3,9 +3,9 @@
 namespace System.Data.Entity.Migrations.Resources
 {
     using System.CodeDom.Compiler;
-    using System.Data.Entity.Utilities;
     using System.Globalization;
     using System.Resources;
+    using System.Reflection;
     using System.Threading;
 
     // <summary>
@@ -213,7 +213,12 @@ namespace System.Data.Entity.Migrations.Resources
         private EntityRes()
         {
             resources = new ResourceManager(
-                "System.Data.Entity.Properties.Resources.PowerShell", typeof(System.Data.Entity.DbContext).Assembly);
+                "System.Data.Entity.Properties.Resources.PowerShell",
+#if NET40
+                typeof(System.Data.Entity.DbContext).Assembly);
+#else
+                typeof(System.Data.Entity.DbContext).GetTypeInfo().Assembly);
+#endif
         }
 
         private static EntityRes GetLoader()

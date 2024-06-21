@@ -249,7 +249,7 @@ namespace System.Data.Entity.Core.EntityClient
         /// property.
         /// </summary>
         /// <returns>The number of digits used to represent the value.</returns>
-        public virtual byte Precision
+        public override byte Precision
         {
             get
             {
@@ -270,7 +270,7 @@ namespace System.Data.Entity.Core.EntityClient
         /// is resolved.
         /// </summary>
         /// <returns>The number of decimal places to which value is resolved.</returns>
-        public virtual byte Scale
+        public override byte Scale
         {
             get
             {
