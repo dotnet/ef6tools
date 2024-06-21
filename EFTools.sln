@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityDesignPackage", "src\EFTools\EntityDesignPackage\EntityDesignPackage.csproj", "{C7198BDF-EB70-44D3-BA61-45CC552248E4}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XmlCore", "src\EFTools\XmlCore\XmlCore.csproj", "{79B40A85-CDCC-4AC3-A583-77CA43CB5136}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityDesign", "src\EFTools\EntityDesign\EntityDesign.csproj", "{F904B4BE-C7CF-4E4F-85B7-B006A2D1C561}"
@@ -18,8 +20,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityDesignExtensibility", "src\EFTools\EntityDesignExtensibility\EntityDesignExtensibility.csproj", "{092010FF-C0C3-4564-B8F0-7758E630DE00}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityDesignModel", "src\EFTools\EntityDesignModel\EntityDesignModel.csproj", "{B44E942F-0AD1-4FB4-9146-DD1F8E17D4D8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityDesignPackage", "src\EFTools\EntityDesignPackage\EntityDesignPackage.csproj", "{C7198BDF-EB70-44D3-BA61-45CC552248E4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InProcTests", "test\EFTools\InProcTests\InProcTests.csproj", "{85A3A202-1727-4AC9-88CD-0531F9855895}"
 EndProject
