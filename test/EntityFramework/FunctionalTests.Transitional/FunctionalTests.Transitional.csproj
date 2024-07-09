@@ -16,7 +16,7 @@
     <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -29,7 +29,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -75,10 +75,10 @@
     <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Moq" Version="$(MoqPackageVersion)" />
-    <PackageReference Include="System.Data.SqlServerCe" Version="$(SystemDataSqlServerCePackageVersion)" />
-    <PackageReference Include="xunit" Version="$(XunitPackageVersion)" />
-    <PackageReference Include="xunit.extensions" Version="$(XunitPackageVersion)" />
+    <PackageReference Include="Moq" />
+    <PackageReference Include="System.Data.SqlServerCe" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.extensions" />
 
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PresentationCore" />

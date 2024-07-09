@@ -61,9 +61,8 @@
     <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
 
-    <!-- Reference just to fix ambiguous warning -->
-    <PackageReference Include="Microsoft.VisualStudio.Validation" Version="$(MicrosoftVisualStudioValidationPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
+    <PackageReference Include="Microsoft.VisualStudio.SDK.Analyzers" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources.resx">

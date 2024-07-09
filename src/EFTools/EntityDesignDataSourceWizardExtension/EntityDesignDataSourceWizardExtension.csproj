@@ -41,13 +41,13 @@
     <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Interop" Version="$(MicrosoftVisualStudioInteropPackageVersion)" />
-    <PackageReference Include="Microsoft.VSDesigner" Version="$(MicrosoftVSDesignerPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Composition.Configuration" Version="$(MicrosoftVisualStudioCompositionConfigurationVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.DataDesign.Interfaces" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.ExtensibilityHosting" Version="$(MicrosoftVisualStudioExtensibilityHostingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" Version="$(MicrosoftVisualStudioTemplateWizardInterfacePackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.DataDesign.Interfaces" />
+    <PackageReference Include="Microsoft.VisualStudio.Interop" />
+    <PackageReference Include="Microsoft.VisualStudio.SDK.Analyzers" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" />
+    <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" />
+    <PackageReference Include="Microsoft.VisualStudio.Validation" />
+    <PackageReference Include="Microsoft.VSDesigner" />
     <Reference Include="Microsoft.VisualStudio.WizardFramework">
       <HintPath>$(VSINSTALLDIR)\Common7\IDE\Microsoft.VisualStudio.WizardFramework.dll</HintPath>
     </Reference>

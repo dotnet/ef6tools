@@ -46,25 +46,25 @@
     <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.Interop" Version="$(MicrosoftVisualStudioInteropPackageVersion)" />
-    <PackageReference Include="Microsoft.VSDesigner" Version="$(MicrosoftVSDesignerPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Shell.Design" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="VsWebSite.Interop" Version="$(VsWebSiteInteropPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Data.Core" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.DataTools.Interop" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.TextTemplating" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0" Version="$(MicrosoftVisualStudioTextTemplatingInterfacesPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Utilities" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.WizardFramework" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" Version="$(MicrosoftVisualStudioTemplateWizardInterfacePackageVersion)" />
-    <PackageReference Include="Moq" Version="$(MoqPackageVersion)" />
-    <PackageReference Include="Nerdbank.Streams" Version="$(NerdbankStreamsVersion)" />
-    <PackageReference Include="xunit" Version="$(XunitPackageVersion)" />
-    <PackageReference Include="xunit.extensions" Version="$(XunitPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.Data.Core" />
+    <PackageReference Include="Microsoft.VisualStudio.DataTools.Interop" />
+    <PackageReference Include="Microsoft.VisualStudio.Interop" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell" />
+    <PackageReference Include="Microsoft.VisualStudio.SDK.Analyzers" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.Design" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" />
+    <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" />
+    <PackageReference Include="Microsoft.VisualStudio.TextTemplating" />
+    <PackageReference Include="Microsoft.VisualStudio.Utilities" />
+    <PackageReference Include="Microsoft.VSDesigner" />
+    <PackageReference Include="Microsoft.WizardFramework" />
+    <PackageReference Include="Moq" />
+    <PackageReference Include="VsWebSite.Interop" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.extensions" />
+    <PackageReference Include="xunit.runner.visualstudio" />
 
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -243,7 +243,6 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(RepositoryRoot)src\EntityFramework.SqlServerCompact\EntityFramework.SqlServerCompact.csproj">
@@ -309,7 +308,6 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

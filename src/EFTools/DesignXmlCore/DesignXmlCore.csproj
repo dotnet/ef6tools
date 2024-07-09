@@ -65,19 +65,21 @@
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
 
-    <PackageReference Include="Microsoft.Internal.VisualStudio.Interop" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Package.LanguageService.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Interop" Version="$(MicrosoftVisualStudioInteropPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Shell.Design" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Shell.Framework" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.XmlEditor" Version="$(MicrosoftVisualStudioXmlEditorPackageVersion)" />
-    <PackageReference Include="Microsoft.VSDesigner" Version="$(MicrosoftVSDesignerPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.GraphObject" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Threading" Version="$(MicrosoftVisualStudioThreadingPackageVersion)" />
+    <PackageReference Include="Microsoft.Internal.VisualStudio.Interop" />
+    <PackageReference Include="Microsoft.VisualStudio.Interop" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.GraphObject" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell" />
+    <PackageReference Include="Microsoft.VisualStudio.Package.LanguageService.15.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.Design" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.Framework" />
+    <PackageReference Include="Microsoft.VisualStudio.SDK.Analyzers" />
+    <PackageReference Include="Microsoft.VisualStudio.Threading" />
+    <PackageReference Include="Microsoft.VisualStudio.Validation" />
+    <PackageReference Include="Microsoft.VisualStudio.XmlEditor" />
+    <PackageReference Include="Microsoft.VSDesigner" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources.resx">

@@ -48,36 +48,35 @@
     <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.VisualStudio.DataDesign.Common" Version="$(MicrosoftVisualStudioDataDesignCommonPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.ComponentModelHost" Version="$(MicrosoftVisualStudioComponentModelHostPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Imaging" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Interop" Version="$(MicrosoftVisualStudioInteropPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Package.LanguageService.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.Internal.VisualStudio.Interop" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Shell.Design" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.XmlEditor" Version="$(MicrosoftVisualStudioXmlEditorPackageVersion)" />
-    <PackageReference Include="Microsoft.VSDesigner" Version="$(MicrosoftVSDesignerPackageVersion)" />
-    <PackageReference Include="VsWebSite.Interop" Version="$(VsWebSiteInteropPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.GraphObject" Version="$(MicrosoftVisualStudioModelingPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.DataTools.Interop" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.TextTemplating" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.11.0" Version="$(MicrosoftVisualStudioTextTemplatingInterfacesPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.VSHost" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Utilities" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.WizardFramework" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Data.Core" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Data.Framework" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Data.Services" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="VsWebSite.Interop90" Version="$(VsWebSiteInteropPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" Version="$(MicrosoftVisualStudioTemplateWizardInterfacePackageVersion)" />
-    <PackageReference Include="Microsoft.Data.ConnectionUI" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.ProjectAggregator" Version="$(MicrosoftVisualStudioPackageCurrent)" />
-    <PackageReference Include="Microsoft.VisualStudio.Validation" Version="$(MicrosoftVisualStudioValidationPackageVersion)" />
-
+    <PackageReference Include="Microsoft.Data.ConnectionUI" />
+    <PackageReference Include="Microsoft.Internal.VisualStudio.Interop" />
+    <PackageReference Include="Microsoft.VisualStudio.ComponentModelHost" />
+    <PackageReference Include="Microsoft.VisualStudio.Data.Core" />
+    <PackageReference Include="Microsoft.VisualStudio.Data.Framework" />
+    <PackageReference Include="Microsoft.VisualStudio.Data.Services" />
+    <PackageReference Include="Microsoft.VisualStudio.DataDesign.Common" />
+    <PackageReference Include="Microsoft.VisualStudio.DataTools.Interop" />
+    <PackageReference Include="Microsoft.VisualStudio.Imaging" />
+    <PackageReference Include="Microsoft.VisualStudio.Interop" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Shell" />
+    <PackageReference Include="Microsoft.VisualStudio.Modeling.Sdk.Diagrams.GraphObject" />
+    <PackageReference Include="Microsoft.VisualStudio.Package.LanguageService.15.0" />
+    <PackageReference Include="Microsoft.VisualStudio.ProjectAggregator" />
+    <PackageReference Include="Microsoft.VisualStudio.SDK.Analyzers" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Shell.Design" />
+    <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" />
+    <PackageReference Include="Microsoft.VisualStudio.TextTemplating" />
+    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.VSHost" />
+    <PackageReference Include="Microsoft.VisualStudio.Utilities" />
+    <PackageReference Include="Microsoft.VisualStudio.Validation" />
+    <PackageReference Include="Microsoft.VisualStudio.XmlEditor" />
+    <PackageReference Include="Microsoft.VSDesigner" />
+    <PackageReference Include="Microsoft.WizardFramework" />
+    <PackageReference Include="VsWebSite.Interop" />
+    <PackageReference Include="VsWebSite.Interop90" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />

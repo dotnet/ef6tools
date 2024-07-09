@@ -1,27 +1,5 @@
 <Project>
-  <PropertyGroup>
-    <MicrosoftSqlServerCompactPackageVersion>4.08876.1</MicrosoftSqlServerCompactPackageVersion>
-    <MicrosoftVisualStudioComponentModelHostPackageVersion>17.7.100-preview</MicrosoftVisualStudioComponentModelHostPackageVersion>
-    <MicrosoftVisualStudioExtensibilityHostingPackageVersion>18.0.25-preview-gf9aa8d48c5</MicrosoftVisualStudioExtensibilityHostingPackageVersion>
-    <MicrosoftVisualStudioPackageCurrent>17.6.36391</MicrosoftVisualStudioPackageCurrent>
-    <MicrosoftVisualStudioCompositionConfigurationVersion>17.0.12-alpha</MicrosoftVisualStudioCompositionConfigurationVersion>
-    <MicrosoftVisualStudioDataCorePackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioDataCorePackageVersion>
-    <MicrosoftVisualStudioDataDesignCommonPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioDataDesignCommonPackageVersion>
-    <MicrosoftVisualStudioModelingPackageVersion>17.7.36673</MicrosoftVisualStudioModelingPackageVersion>
-    <MicrosoftVisualStudioInteropPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioInteropPackageVersion>
-    <MicrosoftVisualStudioQualityToolsUnitTestFrameworkPackageVersion>17.7.33809.334</MicrosoftVisualStudioQualityToolsUnitTestFrameworkPackageVersion>
-    <MicrosoftVisualStudioTemplateWizardInterfacePackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVisualStudioTemplateWizardInterfacePackageVersion>
-    <MicrosoftVisualStudioTextTemplatingInterfacesPackageVersion>17.0.32112.339</MicrosoftVisualStudioTextTemplatingInterfacesPackageVersion>
-    <MicrosoftVisualStudioThreadingPackageVersion>17.7.22-preview</MicrosoftVisualStudioThreadingPackageVersion>
-    <MicrosoftVisualStudioValidationPackageVersion>17.6.11</MicrosoftVisualStudioValidationPackageVersion>
-    <MicrosoftVisualStudioXmlEditorPackageVersion>17.7.33809.334</MicrosoftVisualStudioXmlEditorPackageVersion>
-    <MicrosoftVSDesignerPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</MicrosoftVSDesignerPackageVersion>
-    <MicrosoftXmlEditorPackageVersion>17.7.36673</MicrosoftXmlEditorPackageVersion>
-    <MoqPackageVersion>4.0.10827</MoqPackageVersion>
-    <MySqlDataEntityPackageVersion>6.7.2-beta-ef6</MySqlDataEntityPackageVersion>
-    <NerdbankStreamsVersion>2.9.116</NerdbankStreamsVersion>
-    <SystemDataSqlServerCePackageVersion>4.0.8876.1</SystemDataSqlServerCePackageVersion>
-    <VsWebSiteInteropPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</VsWebSiteInteropPackageVersion>
-    <XunitPackageVersion>1.9.2</XunitPackageVersion>
-  </PropertyGroup>
+   <PropertyGroup>
+      <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+   </PropertyGroup>
 </Project>

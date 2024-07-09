@@ -11,7 +11,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.DbContextPackage</RootNamespace>
     <AssemblyName>EFPowerTools.Test</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
@@ -46,10 +46,10 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Microsoft.CSharp" />
     
-    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.Interfaces" Version="$(MicrosoftVisualStudioTextTemplatingInterfacesPackageVersion)" />
-    <PackageReference Include="Microsoft.VisualStudio.ComponentModelHost" Version="$(MicrosoftVisualStudioComponentModelHostPackageVersion)" />
-    <PackageReference Include="Moq" Version="$(MoqPackageVersion)" />
-    <PackageReference Include="xunit" Version="$(XunitPackageVersion)" />
+    <PackageReference Include="Microsoft.VisualStudio.ComponentModelHost" />
+    <PackageReference Include="Microsoft.VisualStudio.TextTemplating.Interfaces" />
+    <PackageReference Include="Moq" />
+    <PackageReference Include="xunit" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\PowerTools\PowerTools.csproj">
