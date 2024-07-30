@@ -60,7 +60,8 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Engine
                 }
 
                 if (reference.Resolved
-                    && !string.IsNullOrEmpty(reference.Path))
+                    && !string.IsNullOrEmpty(reference.Path)
+                    && !_projectReferenceLookup.ContainsKey(reference.Identity))
                 {
                     _projectReferenceLookup.Add(reference.Identity, reference);
                 }
