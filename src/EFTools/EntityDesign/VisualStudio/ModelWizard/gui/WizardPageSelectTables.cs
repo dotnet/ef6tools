@@ -357,7 +357,8 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui
             // Be sure not to manipulate any Windows Forms controls created on the UI thread from this method.
             using (new VsUtils.HourglassHelper())
             {
-                var ssdlAggregator = new DatabaseConnectionSsdlAggregator(Wizard.ModelBuilderSettings);
+                SchemaListingSettings schemaListingSettings = SchemaListingSettings.FromWizard(Wizard);
+                var ssdlAggregator = new DatabaseConnectionSsdlAggregator(schemaListingSettings);
 
                 var result = new ICollection<EntityStoreSchemaFilterEntry>[3];
                 try

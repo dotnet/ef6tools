@@ -12,9 +12,9 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Engine
     // </summary>
     internal class DatabaseConnectionSsdlAggregator
     {
-        private readonly ModelBuilderSettings _settings;
+        private readonly ISchemaListingSettings _settings;
 
-        internal DatabaseConnectionSsdlAggregator(ModelBuilderSettings settings)
+        internal DatabaseConnectionSsdlAggregator(ISchemaListingSettings settings)
         {
             _settings = settings;
         }

@@ -13,6 +13,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui
     using Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Engine;
     using Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui.ViewModels;
     using Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Properties;
+    using Microsoft.Data.Entity.Design.VisualStudio.Package;
     using Microsoft.WizardFramework;
 
     internal partial class WizardPageRuntimeConfig : WizardPageBase
@@ -102,11 +103,14 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui
                     Wizard.Project,
                     ServiceProvider);
 
+                string runtimeConnectionString = ConnectionManager.TranslateConnectionStringFromDesignTime(
+                     ServiceProvider, Wizard.Project, Wizard.ModelBuilderSettings.RuntimeProviderInvariantName, Wizard.ModelBuilderSettings.DesignTimeConnectionString);
+
                 Wizard.ModelBuilderSettings.ProviderManifestToken =
                     VsUtils.GetProviderManifestTokenConnected(
                         DependencyResolver.Instance,
                         Wizard.ModelBuilderSettings.RuntimeProviderInvariantName,
-                        Wizard.ModelBuilderSettings.DesignTimeConnectionString);
+                        runtimeConnectionString);
             }
 
             return base.OnDeactivate();

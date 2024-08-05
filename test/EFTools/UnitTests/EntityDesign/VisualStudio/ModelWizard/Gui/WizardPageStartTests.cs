@@ -184,7 +184,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui
     <add name=""myModel"" connectionString=""Data Source=(localdb)\{0};"" providerName=""System.Data.SqlClient"" />
   </connectionStrings>
 </configuration>",
-#if (VS14 || VS15)
+#if (VS14 || VS15 || VS16 || VS17)
     "MSSQLLocalDB"
 #else
     "v11.0"
@@ -209,7 +209,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui
             Assert.Equal(@"myModel1", modelBuilderSettings.AppConfigConnectionPropertyName);
             Assert.True(modelBuilderSettings.SaveConnectionStringInAppConfig);
             Assert.Equal(
-#if (VS14 || VS15)
+#if (VS14 || VS15 || VS16 || VS17)
                 @"Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=modelNamespace.myModel;Integrated Security=True",
 #else
                 @"Data Source=(LocalDb)\v11.0;Initial Catalog=modelNamespace.myModel;Integrated Security=True",

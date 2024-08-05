@@ -111,26 +111,26 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Package
 
             Assert.Same(
                 connString,
-                ConnectionManager.TranslateConnectionString(
-                    Mock.Of<IServiceProvider>(), Mock.Of<Project>(), "invariantName", connString, true));
+                ConnectionManager.TranslateConnectionStringFromDesignTime(
+                    Mock.Of<IServiceProvider>(), Mock.Of<Project>(), "invariantName", connString));
 
             Assert.Same(
                 connString,
-                ConnectionManager.TranslateConnectionString(
-                    Mock.Of<IServiceProvider>(), Mock.Of<Project>(), "invariantName", connString, false));
+                ConnectionManager.TranslateConnectionStringFromRunTime(
+                    Mock.Of<IServiceProvider>(), Mock.Of<Project>(), "invariantName", connString));
         }
 
         [Fact]
         public void TranslateConnectionString_returns_connection_string_if_connection_string_null_or_empty()
         {
             Assert.Null(
-                ConnectionManager.TranslateConnectionString(
-                    Mock.Of<IServiceProvider>(), Mock.Of<Project>(), "invariantName", null, true));
+                ConnectionManager.TranslateConnectionStringFromDesignTime(
+                    Mock.Of<IServiceProvider>(), Mock.Of<Project>(), "invariantName", null));
 
             Assert.Same(
                 string.Empty,
-                ConnectionManager.TranslateConnectionString(
-                    Mock.Of<IServiceProvider>(), Mock.Of<Project>(), "invariantName", string.Empty, false));
+                ConnectionManager.TranslateConnectionStringFromRunTime(
+                    Mock.Of<IServiceProvider>(), Mock.Of<Project>(), "invariantName", string.Empty));
         }
 
         [Fact]
@@ -150,8 +150,8 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Package
 
             Assert.Same(
                 runtimeConnString,
-                ConnectionManager.TranslateConnectionString(
-                    mockServiceProvider.Object, Mock.Of<Project>(), "My.Db", "designTimeConnString", true));
+                ConnectionManager.TranslateConnectionStringFromDesignTime(
+                    mockServiceProvider.Object, Mock.Of<Project>(), "My.Db", "designTimeConnString"));
         }
 
         [Fact]
@@ -171,8 +171,8 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Package
 
             Assert.Same(
                 designTimeConnString,
-                ConnectionManager.TranslateConnectionString(
-                    mockServiceProvider.Object, Mock.Of<Project>(), "My.Db", "runtimeTimeConnString", false));
+                ConnectionManager.TranslateConnectionStringFromRunTime(
+                    mockServiceProvider.Object, Mock.Of<Project>(), "My.Db", "runtimeTimeConnString"));
         }
 
         [Fact]
@@ -213,14 +213,14 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Package
             Assert.Equal(
                 string.Format(Resources.CannotTranslateRuntimeConnectionString, string.Empty, "connectionString"),
                 Assert.Throws<ArgumentException>(
-                    () => ConnectionManager.TranslateConnectionString(mockServiceProvider.Object,
-                        Mock.Of<Project>(), "My.Db", "connectionString", false)).Message);
+                    () => ConnectionManager.TranslateConnectionStringFromRunTime(mockServiceProvider.Object,
+                        Mock.Of<Project>(), "My.Db", "connectionString")).Message);
 
             Assert.Equal(
                 string.Format(Resources.CannotTranslateDesignTimeConnectionString, string.Empty, "connectionString"),
                 Assert.Throws<ArgumentException>(
-                    () => ConnectionManager.TranslateConnectionString(mockServiceProvider.Object,
-                        Mock.Of<Project>(), "My.Db", "connectionString", true)).Message);
+                    () => ConnectionManager.TranslateConnectionStringFromDesignTime(mockServiceProvider.Object,
+                        Mock.Of<Project>(), "My.Db", "connectionString")).Message);
         }
 
         [Fact]
@@ -268,8 +268,8 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Package
             Assert.Equal(
                 string.Format(Resources.CannotTranslateRuntimeConnectionString, ddexNotInstalledMessage, "connectionString"),
                 Assert.Throws<ArgumentException>(
-                    () => ConnectionManager.TranslateConnectionString(mockServiceProvider.Object,
-                        Mock.Of<Project>(), "My.Db", "connectionString", false)).Message);
+                    () => ConnectionManager.TranslateConnectionStringFromRunTime(mockServiceProvider.Object,
+                        Mock.Of<Project>(), "My.Db", "connectionString")).Message);
 
             mockProviderMapper
                 .Verify(
@@ -279,8 +279,8 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Package
             Assert.Equal(
                 string.Format(Resources.CannotTranslateDesignTimeConnectionString, ddexNotInstalledMessage, "connectionString"),
                 Assert.Throws<ArgumentException>(
-                    () => ConnectionManager.TranslateConnectionString(mockServiceProvider.Object,
-                        Mock.Of<Project>(), "My.Db", "connectionString", true)).Message);
+                    () => ConnectionManager.TranslateConnectionStringFromDesignTime(mockServiceProvider.Object,
+                        Mock.Of<Project>(), "My.Db", "connectionString")).Message);
         }
 
         [Fact]
@@ -316,7 +316,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Package
         public void CreateDefaultLocalDbConnectionString_returns_correct_default_connection_string()
         {
             Assert.Equal(
-#if (VS14 || VS15)
+#if (VS14 || VS15 || VS16 || VS17)
                 @"Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=App.MyContext;Integrated Security=True",
 #else
                 @"Data Source=(LocalDb)\v11.0;Initial Catalog=App.MyContext;Integrated Security=True",
