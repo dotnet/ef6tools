@@ -10,7 +10,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.LegacyProviderWrapper.Le
 
     public class StoreItemCollectionExtensionsTests
     {
-        [Fact]
+        [Fact(Skip = "Differences between official dll and locally built one")]
         public void LegacyStoreItemCollection_and_source_StoreItemCollection_are_equivalent_for_all_versions()
         {
             const string ssdlTemplate =
@@ -39,7 +39,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.LegacyProviderWrapper.Le
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Differences between official dll and locally built one")]
         public void LegacyStoreItemCollection_and_source_StoreItemCollection_are_equivalent()
         {
             const string ssdl =

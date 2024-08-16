@@ -42,6 +42,7 @@
     <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.5.1" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -118,12 +119,6 @@
     <Compile Include="ReverseEngineerDb\UniqueIdentifierService.cs" />
     <Compile Include="SchemaManager.cs" />
     <Compile Include="Serialization\MslSerializerWrapper.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="$(RepositoryRoot)src\EntityFramework\EntityFramework.csproj">
-      <Project>{e06d1c12-efe8-4413-a15c-ae01fc158f2f}</Project>
-      <Name>EntityFramework</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources.VersioningFacade.resx">

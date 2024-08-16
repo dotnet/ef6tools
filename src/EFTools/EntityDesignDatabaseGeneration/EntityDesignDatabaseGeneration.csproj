@@ -45,6 +45,7 @@
     <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.5.1" />
     <Reference Include="System" />
     <Reference Include="System.Activities" />
     <Reference Include="System.Data" />
@@ -55,10 +56,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\EntityFramework\EntityFramework.csproj">
-      <Project>{e06d1c12-efe8-4413-a15c-ae01fc158f2f}</Project>
-      <Name>EntityFramework</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EntityDesignerVersioningFacade\EntityDesignerVersioningFacade.csproj">
       <Project>{0518e682-510d-48f8-bb14-7151c50a1850}</Project>
       <Name>EntityDesignerVersioningFacade</Name>
