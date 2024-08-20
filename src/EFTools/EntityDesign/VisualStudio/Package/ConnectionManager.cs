@@ -2,7 +2,6 @@
 
 namespace Microsoft.Data.Entity.Design.VisualStudio.Package
 {
-    using System.Web.UI.WebControls;
     using EnvDTE;
     using Microsoft.Data.Entity.Design.Model;
     using Microsoft.Data.Entity.Design.Model.Designer;
@@ -139,8 +138,8 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Package
 
             internal string GetDesignTimeProviderConnectionString(Project project)
             {
-                return TranslateConnectionString(
-                    PackageManager.Package, project, _builder.Provider, _builder.ProviderConnectionString, false);
+                return TranslateConnectionStringFromRunTime(
+                    PackageManager.Package, project, _builder.Provider, _builder.ProviderConnectionString);
             }
 
             internal Guid Provider
@@ -1475,9 +1474,25 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Package
         #endregion
 
         // <summary>
+        //     Translate an invariant name from design-time to runtime
+        // </summary>
+        internal static string TranslateInvariantNameFromDesignTime(IServiceProvider serviceProvider, string invariantName, string connectionString)
+        {
+            return TranslateInvariantName(serviceProvider, invariantName, connectionString, fromDesignTime: true);
+        }
+
+        // <summary>
+        //     Translate an invariant name from runtime to design-time
+        // </summary>
+        internal static string TranslateInvariantNameFromRunTime(IServiceProvider serviceProvider, string invariantName, string connectionString)
+        {
+            return TranslateInvariantName(serviceProvider,  invariantName, connectionString, fromDesignTime: false);
+        }
+
+        // <summary>
         //     Translate an invariant name from design-time to runtime or vice versa
         // </summary>
-        internal static string TranslateInvariantName(IServiceProvider serviceProvider, string invariantName, string connectionString, bool isDesignTime)
+        private static string TranslateInvariantName(IServiceProvider serviceProvider, string invariantName, string connectionString, bool fromDesignTime)
         {
             if (connectionString == null)
             {
@@ -1495,7 +1510,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Package
 
             if (providerMapper2 != null)
             {
-                if (isDesignTime)
+                if (fromDesignTime)
                 {
                     translatedInvariantName = providerMapper2.MapInvariantToRuntimeInvariantName(invariantName, connectionString, false);
                 }
@@ -1513,9 +1528,25 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Package
         }
 
         // <summary>
+        //     Translate a connection string from design-time to runtime
+        // </summary>
+        internal static string TranslateConnectionStringFromDesignTime(IServiceProvider serviceProvider, Project project, string runtimeInvariantName, string designTimeConnectionString)
+        {
+            return TranslateConnectionString(serviceProvider, project, runtimeInvariantName, designTimeConnectionString, fromDesignTime: true);
+        }
+
+        // <summary>
+        //     Translate a connection string from runtime to design-time
+        // </summary>
+        internal static string TranslateConnectionStringFromRunTime(IServiceProvider serviceProvider, Project project, string designTimeInvariantName, string runtimeConnectionString)
+        {
+            return TranslateConnectionString(serviceProvider, project, designTimeInvariantName, runtimeConnectionString, fromDesignTime: false);
+        }
+
+        // <summary>
         //     Translate a connection string from design-time to runtime or vice versa.
         // </summary>
-        internal static string TranslateConnectionString(IServiceProvider serviceProvider, Project project, string invariantName, string connectionString, bool isDesignTime)
+        private static string TranslateConnectionString(IServiceProvider serviceProvider, Project project, string invariantName, string connectionString, bool fromDesignTime)
         {
             Debug.Assert(serviceProvider != null, "serviceProvider must not be null");
             Debug.Assert(project != null, "project must not be null");
@@ -1531,13 +1562,28 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Package
             {
                 return connectionString;
             }
-
+#if DEBUG
+            string lowerConnectionString = connectionString.ToLowerInvariant();
+            // Runtime has spaces, designtime does not
+            if (!fromDesignTime)
+            {
+                Debug.Assert(!lowerConnectionString.Contains("activedirectoryintegrated")
+                    && !lowerConnectionString.Contains("activedirectoryinteractive")
+                    && !lowerConnectionString.Contains("activedirectorypassword"), "Passed in a runtime string where a design time string is needed");
+            }
+            else
+            {
+                Debug.Assert(!lowerConnectionString.Contains("active directory integrated")
+                    && !lowerConnectionString.Contains("active directory interactive")
+                    && !lowerConnectionString.Contains("active directory password"), "Passed in a designtime string where a runtime string is needed");
+            }
+#endif
             try
             {
-                return isDesignTime
+                return fromDesignTime
                     ? converter.ToRunTime(project, connectionString, invariantName)
                     : converter.ToDesignTime(
-                        project, connectionString, TranslateInvariantName(serviceProvider, invariantName, connectionString, false));
+                        project, connectionString, TranslateInvariantNameFromRunTime(serviceProvider, invariantName, connectionString));
             }
             catch (ConnectionStringConverterServiceException)
             {
@@ -1547,7 +1593,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.Package
                     string.Empty;
 
                 // ConnectionStringConverterServiceException has no Message - convert to a more descriptive exception
-                var errMsg = isDesignTime
+                var errMsg = fromDesignTime
                                  ? string.Format(
                                      CultureInfo.CurrentCulture,
                                      Resources.CannotTranslateDesignTimeConnectionString,

@@ -259,7 +259,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui
 
                 Wizard.ModelBuilderSettings.SetInvariantNamesAndConnectionStrings(
                     ServiceProvider, Wizard.Project, ConnectionManager.SqlClientProviderName,
-                    defaultConnectionString, defaultConnectionString, isDesignTime: false);
+                    defaultConnectionString, defaultConnectionString, fromDesignTime: false);
             }
         }
 

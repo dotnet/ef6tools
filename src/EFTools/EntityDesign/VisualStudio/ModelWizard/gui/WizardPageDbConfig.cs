@@ -679,15 +679,12 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui
             var fixedDecryptedConnectionString = ReplaceMdsKeywords(decryptedConnectionString);
             var fixedAppConfigConnectionString = ReplaceMdsKeywords(appConfigConnectionString);
             Wizard.ModelBuilderSettings.SetInvariantNamesAndConnectionStrings(ServiceProvider,
-                Wizard.Project, invariantName, fixedDecryptedConnectionString, fixedAppConfigConnectionString, true);
+                Wizard.Project, invariantName, fixedDecryptedConnectionString, fixedAppConfigConnectionString, fromDesignTime:true);
 
             string ReplaceMdsKeywords(string connectionString)
             {
                 connectionString = connectionString.Replace("Multiple Active Result Sets=", "MultipleActiveResultSets=")
-                    .Replace("Trust Server Certificate=", "TrustServerCertificate=")
-                    .Replace("Authentication=ActiveDirectoryIntegrated", "Authentication=Active Directory Integrated")
-                    .Replace("Authentication=ActiveDirectoryPassword", "Authentication=Active Directory Password")
-                    .Replace("Authentication=ActiveDirectoryInteractive", "Authentication=Active Directory Interactive");
+                    .Replace("Trust Server Certificate=", "TrustServerCertificate=");
                 return connectionString;
             }
         }
@@ -697,11 +694,11 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui
         {
             // providerGuid will be the design-time provider guid from DDEX, so we need to translate to the runtime provider invariant name 
             var designTimeProviderInvariantName = DataConnectionUtils.GetProviderInvariantName(dataProviderManager, providerGuid);
-            var runtimeProviderInvariantName = ConnectionManager.TranslateInvariantName(
-                ServiceProvider, designTimeProviderInvariantName, maskedConnectionString, true);
+            var runtimeProviderInvariantName = ConnectionManager.TranslateInvariantNameFromDesignTime(
+                ServiceProvider, designTimeProviderInvariantName, maskedConnectionString);
 
-            var runtimeConnectionString = ConnectionManager.TranslateConnectionString(ServiceProvider,
-                Wizard.Project, designTimeProviderInvariantName, maskedConnectionString, true);
+            var runtimeConnectionString = ConnectionManager.TranslateConnectionStringFromDesignTime(ServiceProvider,
+                Wizard.Project, runtimeProviderInvariantName, maskedConnectionString);
 
             if (Wizard.ModelBuilderSettings.GenerationOption == ModelGenerationOption.GenerateFromDatabase
                 || Wizard.ModelBuilderSettings.GenerationOption == ModelGenerationOption.GenerateDatabaseScript)

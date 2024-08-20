@@ -316,21 +316,24 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui
             // This method will run on a thread other than the UI thread.
             // Be sure not to manipulate any Windows Forms controls created on the UI thread from this method.
             var result = new ICollection<EntityStoreSchemaFilterEntry>[3];
+
+            SchemaListingSettings schemaListingSettings = SchemaListingSettings.FromWizard(Wizard);
+
             try
             {
-                result[0] = DatabaseMetadataQueryTool.GetTablesFilterEntries(Wizard.ModelBuilderSettings, args);
+                result[0] = DatabaseMetadataQueryTool.GetTablesFilterEntries(schemaListingSettings, args);
                 if (args.Cancel)
                 {
                     return;
                 }
 
-                result[1] = DatabaseMetadataQueryTool.GetViewFilterEntries(Wizard.ModelBuilderSettings, args);
+                result[1] = DatabaseMetadataQueryTool.GetViewFilterEntries(schemaListingSettings, args);
                 if (args.Cancel)
                 {
                     return;
                 }
 
-                result[2] = DatabaseMetadataQueryTool.GetFunctionsFilterEntries(Wizard.ModelBuilderSettings, args);
+                result[2] = DatabaseMetadataQueryTool.GetFunctionsFilterEntries(schemaListingSettings, args);
                 if (args.Cancel)
                 {
                     return;

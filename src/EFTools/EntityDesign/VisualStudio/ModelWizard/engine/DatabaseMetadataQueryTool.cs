@@ -17,20 +17,20 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Engine
     internal static class DatabaseMetadataQueryTool
     {
         internal static ICollection<EntityStoreSchemaFilterEntry> GetTablesFilterEntries(
-            ModelBuilderSettings settings, DoWorkEventArgs args)
+            ISchemaListingSettings settings, DoWorkEventArgs args)
         {
             var entries = ExecuteDatabaseMetadataQuery(SelectTablesESqlQuery, EntityStoreSchemaFilterObjectTypes.Table, settings, args);
             return entries;
         }
 
-        internal static ICollection<EntityStoreSchemaFilterEntry> GetViewFilterEntries(ModelBuilderSettings settings, DoWorkEventArgs args)
+        internal static ICollection<EntityStoreSchemaFilterEntry> GetViewFilterEntries(ISchemaListingSettings settings, DoWorkEventArgs args)
         {
             var entries = ExecuteDatabaseMetadataQuery(SelectViewESqlQuery, EntityStoreSchemaFilterObjectTypes.View, settings, args);
             return entries;
         }
 
         internal static ICollection<EntityStoreSchemaFilterEntry> GetFunctionsFilterEntries(
-            ModelBuilderSettings settings, DoWorkEventArgs args)
+            ISchemaListingSettings settings, DoWorkEventArgs args)
         {
             ICollection<EntityStoreSchemaFilterEntry> entries;
 
@@ -53,7 +53,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Engine
         [SuppressMessage("Microsoft.Security", "CA2100:Review SQL queries for security vulnerabilities",
             Justification = "The only SQL passed to this method consists of pre-defined queries over which the user has no control")]
         private static ICollection<EntityStoreSchemaFilterEntry> ExecuteDatabaseMetadataQuery(
-            string esqlQuery, EntityStoreSchemaFilterObjectTypes types, ModelBuilderSettings settings, DoWorkEventArgs args)
+            string esqlQuery, EntityStoreSchemaFilterObjectTypes types, ISchemaListingSettings settings, DoWorkEventArgs args)
         {
             var filterEntries = new List<EntityStoreSchemaFilterEntry>();
 
@@ -61,10 +61,11 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Engine
             try
             {
                 Version actualEntityFrameworkConnectionVersion;
+
                 ec = new StoreSchemaConnectionFactory().Create(
                     DependencyResolver.Instance,
                     settings.RuntimeProviderInvariantName,
-                    settings.DesignTimeConnectionString,
+                    settings.RuntimeConnectionString,
                     settings.TargetSchemaVersion,
                     out actualEntityFrameworkConnectionVersion);
 
