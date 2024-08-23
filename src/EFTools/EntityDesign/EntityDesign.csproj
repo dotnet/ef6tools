@@ -48,6 +48,7 @@
     <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.5.1" />
     <PackageReference Include="Microsoft.VisualStudio.DataDesign.Common" Version="$(MicrosoftVisualStudioDataDesignCommonPackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.ComponentModelHost" Version="$(MicrosoftVisualStudioComponentModelHostPackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Imaging" Version="$(MicrosoftVisualStudioPackageCurrent)" />
@@ -77,7 +78,6 @@
     <PackageReference Include="Microsoft.Data.ConnectionUI" Version="$(MicrosoftVisualStudioPackageCurrent)" />
     <PackageReference Include="Microsoft.VisualStudio.ProjectAggregator" Version="$(MicrosoftVisualStudioPackageCurrent)" />
     <PackageReference Include="Microsoft.VisualStudio.Validation" Version="$(MicrosoftVisualStudioValidationPackageVersion)" />
-
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -106,12 +106,6 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="$(RepositoryRoot)src\EntityFramework\Infrastructure\Design\HandlerBase.cs">
-      <Link>VisualStudio\HandlerBase.cs</Link>
-    </Compile>
-    <Compile Include="$(RepositoryRoot)src\EntityFramework\Infrastructure\Design\IResultHandler.cs">
-      <Link>VisualStudio\IResultHandler.cs</Link>
-    </Compile>
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
@@ -946,14 +940,6 @@
     <CodeAnalysisDictionary Include="..\..\CodeAnalysisDictionary.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="$(RepositoryRoot)src\EntityFramework.SqlServer\EntityFramework.SqlServer.csproj">
-      <Project>{6f4bb80b-5f74-44d3-a77f-0025dfa48c1a}</Project>
-      <Name>EntityFramework.SqlServer</Name>
-    </ProjectReference>
-    <ProjectReference Include="$(RepositoryRoot)src\EntityFramework\EntityFramework.csproj">
-      <Project>{e06d1c12-efe8-4413-a15c-ae01fc158f2f}</Project>
-      <Name>EntityFramework</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DesignXmlCore\DesignXmlCore.csproj">
       <Project>{6c80dbca-16c8-48c9-9019-ab6fded788de}</Project>
       <Name>DesignXmlCore</Name>

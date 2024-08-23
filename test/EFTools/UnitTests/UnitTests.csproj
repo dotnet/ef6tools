@@ -46,6 +46,8 @@
     <DelaySign>true</DelaySign>
   </PropertyGroup>
   <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.5.1" />
+    <PackageReference Include="EntityFramework.SqlServerCompact" Version="6.5.1" />
     <PackageReference Include="Microsoft.VisualStudio.Interop" Version="$(MicrosoftVisualStudioInteropPackageVersion)" />
     <PackageReference Include="Microsoft.VSDesigner" Version="$(MicrosoftVSDesignerPackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Shell.Design" Version="$(MicrosoftVisualStudioPackageCurrent)" />
@@ -65,7 +67,7 @@
     <PackageReference Include="Nerdbank.Streams" Version="$(NerdbankStreamsVersion)" />
     <PackageReference Include="xunit" Version="$(XunitPackageVersion)" />
     <PackageReference Include="xunit.extensions" Version="$(XunitPackageVersion)" />
-
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.0.0" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -246,18 +248,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="$(RepositoryRoot)src\EntityFramework.SqlServerCompact\EntityFramework.SqlServerCompact.csproj">
-      <Project>{1ef9c524-7122-4677-b111-dd14bb2a9ea2}</Project>
-      <Name>EntityFramework.SqlServerCompact</Name>
-    </ProjectReference>
-    <ProjectReference Include="$(RepositoryRoot)src\EntityFramework.SqlServer\EntityFramework.SqlServer.csproj">
-      <Project>{6f4bb80b-5f74-44d3-a77f-0025dfa48c1a}</Project>
-      <Name>EntityFramework.SqlServer</Name>
-    </ProjectReference>
-    <ProjectReference Include="$(RepositoryRoot)src\EntityFramework\EntityFramework.csproj">
-      <Project>{e06d1c12-efe8-4413-a15c-ae01fc158f2f}</Project>
-      <Name>EntityFramework</Name>
-    </ProjectReference>
     <ProjectReference Include="$(RepositoryRoot)src\EFTools\DesignXmlCore\DesignXmlCore.csproj">
       <Project>{6c80dbca-16c8-48c9-9019-ab6fded788de}</Project>
       <Name>DesignXmlCore</Name>

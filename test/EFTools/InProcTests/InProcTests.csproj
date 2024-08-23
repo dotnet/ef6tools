@@ -63,7 +63,6 @@
     <PackageReference Include="Microsoft.VisualStudio.TemplateWizardInterface" Version="$(MicrosoftVisualStudioTemplateWizardInterfacePackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" Version="$(MicrosoftVisualStudioQualityToolsUnitTestFrameworkPackageVersion)" />
     <PackageReference Include="Nerdbank.Streams" Version="$(NerdbankStreamsVersion)" />
-
     <Reference Include="System" />
     <Reference Include="System.Activities" />
     <Reference Include="System.Data" />
@@ -91,10 +90,6 @@
     <Compile Include="WorkflowActivityTestsRemote.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="$(RepositoryRoot)src\EntityFramework\EntityFramework.csproj">
-      <Project>{e06d1c12-efe8-4413-a15c-ae01fc158f2f}</Project>
-      <Name>EntityFramework</Name>
-    </ProjectReference>
     <ProjectReference Include="$(RepositoryRoot)src\EFTools\DesignXmlCore\DesignXmlCore.csproj">
       <Project>{6c80dbca-16c8-48c9-9019-ab6fded788de}</Project>
       <Name>DesignXmlCore</Name>
