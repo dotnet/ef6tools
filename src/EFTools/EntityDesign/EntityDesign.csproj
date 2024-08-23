@@ -260,12 +260,14 @@
     <Compile Include="VisualStudio\ModelWizard\Engine\EdmxHelper.cs" />
     <Compile Include="VisualStudio\ModelWizard\Engine\GatherAndReturnSprocInfo.cs" />
     <Compile Include="VisualStudio\ModelWizard\Engine\IInitialModelContentsFactory.cs" />
+    <Compile Include="VisualStudio\ModelWizard\Engine\ISchemaListingSettings.cs" />
     <Compile Include="VisualStudio\ModelWizard\Engine\LazyInitialModelContentsFactory.cs" />
     <Compile Include="VisualStudio\ModelWizard\Engine\ModelBuilderEngine.cs" />
     <Compile Include="VisualStudio\ModelWizard\Engine\ModelGenerationOption.cs" />
     <Compile Include="VisualStudio\ModelWizard\Engine\ModelGenerator.cs" />
     <Compile Include="VisualStudio\ModelWizard\Engine\InitialModelContentsFactory.cs" />
     <Compile Include="VisualStudio\ModelWizard\Engine\ProgressDialogHelper.cs" />
+    <Compile Include="VisualStudio\ModelWizard\Gui\SchemaListingSettings.cs" />
     <Compile Include="VisualStudio\ModelWizard\OneEFWizard.cs" />
     <Compile Include="VisualStudio\ModelWizard\Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

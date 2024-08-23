@@ -17,9 +17,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Projects Include="$(SolutionDir)src\EntityFramework\EntityFramework.csproj" />
-        <Projects Include="$(SolutionDir)src\EntityFramework.SqlServer\EntityFramework.SqlServer.csproj" />
-        <Projects Include="$(SolutionDir)src\EntityFramework.SqlServerCompact\EntityFramework.SqlServerCompact.csproj" />
         <Projects Include="$(SolutionDir)src\EFTools\XmlCore\XmlCore.csproj" />
         <Projects Include="$(SolutionDir)src\EFTools\DesignXmlCore\DesignXmlCore.csproj" />
         <Projects Include="$(SolutionDir)src\EFTools\EntityDesignModel\EntityDesignModel.csproj" />
