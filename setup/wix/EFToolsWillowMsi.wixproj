@@ -86,6 +86,7 @@
       <DefineConstants>$(DefineConstants);ToolingVersionMajor=$(ToolingVersionMajor);OutputName=$(OutputName);EmbedCab=$(EmbedCab)</DefineConstants>
       <DefineConstants>$(DefineConstants);MsiRuntimeInputsPackagesDir=$(MsiRuntimeInputsPackagesDir);EF6NuGetPackageVersion=$(EF6NuGetPackageVersion)</DefineConstants>
       <DefineConstants>$(DefineConstants);EF6NuGetPackageWixId=$(EF6NuGetPackageWixId);EF5NuGetPackageVersion=$(EF5NuGetPackageVersion)</DefineConstants>
+      <DefineConstants>$(DefineConstants);EF6NuGetLocPackageVersion=$(EF6NuGetLocPackageVersion)</DefineConstants>
       <DefineConstants>$(DefineConstants);IncludeLocalizedArtifacts=true</DefineConstants>
     </PropertyGroup>
     
