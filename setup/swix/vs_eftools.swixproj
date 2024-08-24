@@ -21,7 +21,8 @@
     <IntermediateOutputPath>$(RepositoryRootDirectory)bin\$(Configuration)</IntermediateOutputPath>
     <OutDir>$(RepositoryRootDirectory)bin\$(Configuration)\setup</OutDir>
     <LocOutDir>$(RepositoryRootDirectory)bin\$(Configuration)\localize</LocOutDir>
-    <EF6NuGetPackageVersion>$(RuntimeVersionMajor).$(RuntimeVersionMinor).$(VersionRelease)</EF6NuGetPackageVersion>
+    <EF6NuGetPackageVersion>$(RuntimeVersionMajor).$(RuntimeVersionMinor).$(RuntimeVersionBuild)</EF6NuGetPackageVersion>
+    <EF6NuGetLocPackageVersion>$(RuntimeLocVersionMajor).$(RuntimeLocVersionMinor).$(RuntimeLocVersionBuild)</EF6NuGetLocPackageVersion>
     <IsPackage>true</IsPackage>
   </PropertyGroup>
 
@@ -34,6 +35,7 @@
       <PackagePreprocessorDefinitions>$(PackagePreprocessorDefinitions);ToolingSetupRepositoryRoot=$(RepositoryRootDirectory)</PackagePreprocessorDefinitions>
       <PackagePreprocessorDefinitions>$(PackagePreprocessorDefinitions);IntellisenseLocRootDirectory=$(IntellisenseLocRootDirectory)</PackagePreprocessorDefinitions>
       <PackagePreprocessorDefinitions>$(PackagePreprocessorDefinitions);EF6NuGetPackageVersion=$(EF6NuGetPackageVersion)</PackagePreprocessorDefinitions>
+      <PackagePreprocessorDefinitions>$(PackagePreprocessorDefinitions);EF6NuGetLocPackageVersion=$(EF6NuGetLocPackageVersion)</PackagePreprocessorDefinitions>
     </PropertyGroup>
 
   </Target>
