@@ -4,7 +4,8 @@
   <!-- Version -->
   <PropertyGroup>
     <RuntimeVersionMajor>6</RuntimeVersionMajor>
-    <RuntimeVersionMinor>2</RuntimeVersionMinor>
+    <RuntimeVersionMinor>5</RuntimeVersionMinor>
+    <RuntimeVersionBuild>1</RuntimeVersionBuild>
     <ToolingVersionMajor>17</ToolingVersionMajor>
     <ToolingVersionMinor>0</ToolingVersionMinor>
     <VisualStudioVersion>$(ToolingVersionMajor).$(ToolingVersionMinor)</VisualStudioVersion>
@@ -13,12 +14,16 @@
     <VersionReleasePrefix>0</VersionReleasePrefix>
     <VersionRelease>$(VersionReleasePrefix)</VersionRelease>
     <VersionReleaseName></VersionReleaseName>
+    <RuntimeLocVersionMajor>6</RuntimeLocVersionMajor>
+    <RuntimeLocVersionMinor>2</RuntimeLocVersionMinor>
+    <RuntimeLocVersionBuild>0</RuntimeLocVersionBuild>
   </PropertyGroup>
 
   <PropertyGroup>
     <ProjectUrlFwLinkID Condition="'$(ProjectUrlFwLinkID)' == ''">389132</ProjectUrlFwLinkID>
     <LicenseUrlFwLinkID Condition="'$(LicenseUrlFwLinkID)' == ''">389134</LicenseUrlFwLinkID>
     <EF5NuGetPackageVersion>5.0.0</EF5NuGetPackageVersion>
-    <EF6NuGetPackageVersion>$(RuntimeVersionMajor).$(RuntimeVersionMinor).$(VersionBuild)</EF6NuGetPackageVersion>
+    <EF6NuGetPackageVersion>$(RuntimeVersionMajor).$(RuntimeVersionMinor).$(RuntimeVersionBuild)</EF6NuGetPackageVersion>
+    <EF6NuGetLocPackageVersion>$(RuntimeLocVersionMajor).$(RuntimeLocVersionMinor).$(RuntimeLocVersionBuild)</EF6NuGetLocPackageVersion>
   </PropertyGroup>
 </Project>
