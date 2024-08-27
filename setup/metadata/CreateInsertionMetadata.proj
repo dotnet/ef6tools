@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.Build.NoTargets/1.0.94" DefaultTargets="GenerateInsertionParameters">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <InsertionParamsFile>$(RepoRoot)bin\$(Configuration)\InsertionParameters.txt</InsertionParamsFile>
+  </PropertyGroup>
+
+  <Target Name="GenerateInsertionParameters" DependsOnTargets="GetBuildVersion" AfterTargets="Build">
+    <ItemGroup>
+      <DropManifests Include="$(RepoRoot)\bin\**\*.vsman" />
+    </ItemGroup>
+    <PropertyGroup>
+      <ManifestName>@(DropManifests->'$(ManifestPublishUrl)%(Filename)%(Extension)')</ManifestName>
+    </PropertyGroup>
+
+    <WriteLinesToFile Overwrite="True" File="$(InsertionParamsFile)" Lines="##vso[task.setvariable variable=InsertPayloadName]EF6Tools build $(BuildVersion)" />
+    <WriteLinesToFile File="$(InsertionParamsFile)" Lines="##vso[task.setvariable variable=InsertDescription]Commit: $(GitCommitId)" />
+    <WriteLinesToFile File="$(InsertionParamsFile)" Lines="##vso[task.setvariable variable=BuildVersion]$(BuildVersion)" />
+
+    <Message Text="$(MSBuildThisFile) -> $(InsertionParamsFile)" Importance="High" />
+  </Target>
+</Project>
