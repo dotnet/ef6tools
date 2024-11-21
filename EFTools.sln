@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityDesignBootstrapPackag
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityDesignDatabaseGeneration", "src\EFTools\EntityDesignDatabaseGeneration\EntityDesignDatabaseGeneration.csproj", "{15000B5C-C005-473A-BA65-EAF37E660B2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityDesignDataSourceWizardExtension", "src\EFTools\EntityDesignDataSourceWizardExtension\EntityDesignDataSourceWizardExtension.csproj", "{D3E74B27-C87A-4E1C-B885-16760AD7119C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityDesigner", "src\EFTools\EntityDesignEntityDesigner\EntityDesigner.csproj", "{488B84C2-9358-4B90-BC2D-ED688939E6BB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityDesignExtensibility", "src\EFTools\EntityDesignExtensibility\EntityDesignExtensibility.csproj", "{092010FF-C0C3-4564-B8F0-7758E630DE00}"
@@ -154,30 +152,6 @@ Global
 		{15000B5C-C005-473A-BA65-EAF37E660B2C}.ReleaseNet40|arm64.Build.0 = Release|Any CPU
 		{15000B5C-C005-473A-BA65-EAF37E660B2C}.ReleaseNet40|x86.ActiveCfg = Release|Any CPU
 		{15000B5C-C005-473A-BA65-EAF37E660B2C}.ReleaseNet40|x86.Build.0 = Release|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.Debug|arm64.ActiveCfg = Debug|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.Debug|arm64.Build.0 = Debug|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.Debug|x86.Build.0 = Debug|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.DebugNet40|Any CPU.ActiveCfg = Debug|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.DebugNet40|Any CPU.Build.0 = Debug|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.DebugNet40|arm64.ActiveCfg = Debug|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.DebugNet40|arm64.Build.0 = Debug|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.DebugNet40|x86.ActiveCfg = Debug|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.DebugNet40|x86.Build.0 = Debug|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.Release|arm64.ActiveCfg = Release|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.Release|arm64.Build.0 = Release|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.Release|x86.ActiveCfg = Release|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.Release|x86.Build.0 = Release|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.ReleaseNet40|Any CPU.ActiveCfg = Release|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.ReleaseNet40|Any CPU.Build.0 = Release|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.ReleaseNet40|arm64.ActiveCfg = Release|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.ReleaseNet40|arm64.Build.0 = Release|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.ReleaseNet40|x86.ActiveCfg = Release|Any CPU
-		{D3E74B27-C87A-4E1C-B885-16760AD7119C}.ReleaseNet40|x86.Build.0 = Release|Any CPU
 		{488B84C2-9358-4B90-BC2D-ED688939E6BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{488B84C2-9358-4B90-BC2D-ED688939E6BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{488B84C2-9358-4B90-BC2D-ED688939E6BB}.Debug|arm64.ActiveCfg = Debug|Any CPU

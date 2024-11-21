@@ -55,8 +55,7 @@
     <Reference Include="PresentationCore" />
   </ItemGroup>
   <ItemGroup>
-    <!-- Only use SharedAssemblyInfo for VS12 and up, otherwise use AssemblyInfo -->
-    <Compile Include="..\SharedAssemblyInfo.cs" Condition="'$(VisualStudioVersion)' != '11.0'">
+    <Compile Include="..\SharedAssemblyInfo.cs" >
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="GlobalSuppressions.cs" />
@@ -92,9 +91,5 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="BeforeBuild">
-    <PropertyGroup>
-      <!-- Note: AssemblyVersion must remain fixed for VS11 - see note in AssemblyInfo.cs -->
-      <AssemblyVersion Condition="'$(VisualStudioVersion)' == '11.0'">11.1.0.0</AssemblyVersion>
-    </PropertyGroup>
   </Target>
 </Project>
