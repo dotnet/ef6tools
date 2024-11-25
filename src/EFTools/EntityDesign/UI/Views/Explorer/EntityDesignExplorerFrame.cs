@@ -284,7 +284,7 @@ namespace Microsoft.Data.Entity.Design.UI.Views.Explorer
 
         protected override ExplorerContent InitializeExplorerContent()
         {
-            var content = FileResourceManager.GetElement("Resources/ExplorerContent_15.0.xaml") as ExplorerContent; // TODO still using 15.0 version for now
+            var content = FileResourceManager.GetElement("Resources/ExplorerContent_15.0.xaml") as ExplorerContent;
 
             //
             // DO NOT use a static resourceDictionary below.  For some reason, calling MergedDictionaries.Add()
