@@ -121,13 +121,6 @@ extends:
             externalFeedCredentials: 'OSSCG Feed - Microsoft approved OSS packages'
             arguments: 'restore $(Build.Repository.LocalPath)\setup\wix\packages.config -SolutionDirectory $(Build.Repository.LocalPath)\setup\wix -Verbosity Detailed -NonInteractive -ConfigFile $(Build.Repository.LocalPath)\.nuget\NuGet.config'
 
-        - task: BatchScript@1
-          displayName: 'Run Script to Build Singleton MSI'
-          inputs:
-            filename: '$(comspec)'
-            arguments: '/c "call "$(ProgramFiles)\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" & msbuild $(Build.Repository.LocalPath)\setup\wix\EFToolsWillowMsi.wixproj /t:Build /v:d /p:MSBuildToolsVersion=16.0"'
-          enabled: false
-
         - task: MSBuild@1
           displayName: 'Build Singleton MSI'
           inputs:
