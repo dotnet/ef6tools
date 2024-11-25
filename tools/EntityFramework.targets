@@ -12,27 +12,14 @@ Project global post-settings and targets.
 
   <PropertyGroup>
     <DefineConstants Condition="'$(InternalsInvisible)' == 'true'">$(DefineConstants);INTERNALS_INVISIBLE</DefineConstants>
-    <DefineConstants Condition="'$(VisualStudioVersion)' == '11.0'">$(DefineConstants);VS11</DefineConstants>
-    <DefineConstants Condition="'$(VisualStudioVersion)' == '12.0'">$(DefineConstants);VS12</DefineConstants>
-    <DefineConstants Condition="'$(VisualStudioVersion)' == '14.0'">$(DefineConstants);VS14</DefineConstants>
-    <DefineConstants Condition="'$(VisualStudioVersion)' == '15.0'">$(DefineConstants);VS15</DefineConstants>
-    <DefineConstants Condition="'$(VisualStudioVersion)' == '16.0'">$(DefineConstants);VS16</DefineConstants>
     <DefineConstants Condition="'$(VisualStudioVersion)' == '17.0'">$(DefineConstants);VS17</DefineConstants>
     <DefineConstants
-     Condition="'$(VisualStudioVersion)' == '12.0'
-             OR '$(VisualStudioVersion)' == '14.0'
-             OR '$(VisualStudioVersion)' == '15.0'
-             OR '$(VisualStudioVersion)' == '16.0'
-             OR '$(VisualStudioVersion)' == '17.0'">$(DefineConstants);VS12ORNEWER</DefineConstants>
+     Condition="'$(VisualStudioVersion)' == '17.0'">$(DefineConstants);VS12ORNEWER</DefineConstants>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(BuildingToolingProject)' == 'true'" >
-    <VisualStudioVersion15>15.0</VisualStudioVersion15> <!-- added to see where we are hard-coding 15.0 for now -->
-    <!-- VsSDKDir Condition="'$(VisualStudioVersion)' == '16.0'">$(VSSDK160Install)</VsSDKDir --> <!-- VSSDK160Install is not defined yet -->
-    <VsSDKDir Condition="'$(VisualStudioVersion)' == '15.0' OR '$(VisualStudioVersion)' == '16.0' OR '$(VisualStudioVersion)' == '17.0'">$(VSSDK150Install)</VsSDKDir>
-    <VsSDKDir Condition="'$(VisualStudioVersion)' == '14.0'">$(VSSDK140Install)</VsSDKDir>
-    <VsSDKDir Condition="'$(VisualStudioVersion)' == '12.0'">$(VSSDK120Install)</VsSDKDir>
-    <VsSDKDir Condition="'$(VisualStudioVersion)' == '11.0'">$(VSSDK110Install)</VsSDKDir>
+    <VisualStudioVersion15>15.0</VisualStudioVersion15>
+    <VsSDKDir>$(VSSDK150Install)</VsSDKDir>
     <VSPackageVersion>17.0.0-preview-1-30928-1112</VSPackageVersion>
     <AssemblySearchPaths>
       $(RepositoryRoot)packages\**;
@@ -62,13 +49,7 @@ Project global post-settings and targets.
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(BuildingToolingProject)' == 'true'">
-    <WixFullProductName_Dev11>Entity Framework $(RuntimeVersionMajor).$(RuntimeVersionMinor).$(VersionReleasePrefix) Tools $(VersionReleaseName) for Visual Studio 2012</WixFullProductName_Dev11>
-    <WixFullProductName_Dev12>Entity Framework $(RuntimeVersionMajor).$(RuntimeVersionMinor).$(VersionReleasePrefix) Tools $(VersionReleaseName) for Visual Studio 2013</WixFullProductName_Dev12>
-    <WixFullProductName_Dev14>Entity Framework $(RuntimeVersionMajor).$(RuntimeVersionMinor).$(VersionReleasePrefix) Tools $(VersionReleaseName) for Visual Studio 2015</WixFullProductName_Dev14>
-    <WixFullProductName_Dev15>Entity Framework $(RuntimeVersionMajor).$(RuntimeVersionMinor).$(VersionReleasePrefix) Tools $(VersionReleaseName) for Visual Studio 2017</WixFullProductName_Dev15>
-    <WixProductDescription_Dev11>$(WixFullProductName_Dev11)</WixProductDescription_Dev11>
-    <WixProductDescription_Dev12>$(WixFullProductName_Dev12)</WixProductDescription_Dev12>
-    <WixProductDescription_Dev14>$(WixFullProductName_Dev14)</WixProductDescription_Dev14>
+    <WixFullProductName_Dev15>Entity Framework $(RuntimeVersionMajor).$(RuntimeVersionMinor).$(VersionReleasePrefix) Tools $(VersionReleaseName) for Visual Studio 2022</WixFullProductName_Dev15>
     <WixProductDescription_Dev15>$(WixFullProductName_Dev15)</WixProductDescription_Dev15>
   </PropertyGroup>
 
@@ -76,13 +57,7 @@ Project global post-settings and targets.
 
   <Target Name="ValidateVisualStudioVersion">
     <PropertyGroup>
-      <VisualStudioVersionError Condition="'$(VisualStudioVersion)' == '' OR
-          ('$(VisualStudioVersion)' != '11.0'
-           AND '$(VisualStudioVersion)' != '12.0'
-           AND '$(VisualStudioVersion)' != '14.0'
-           AND '$(VisualStudioVersion)' != '15.0'
-           AND '$(VisualStudioVersion)' != '16.0'
-           AND '$(VisualStudioVersion)' != '17.0')">true</VisualStudioVersionError>
+      <VisualStudioVersionError Condition="'$(VisualStudioVersion)' == '' OR '$(VisualStudioVersion)' != '17.0'">true</VisualStudioVersionError>
     </PropertyGroup>
     <Error Condition="'$(VisualStudioVersionError)' == 'true'" Text="VisualStudioVersion property value is invalid or not supported: '$(VisualStudioVersion)'" />
   </Target>
