@@ -149,6 +149,7 @@ extends:
               BuildDesigner.log
               BuildDesigner.binlog
               BuildSingletonMSI.binlog
+              EFTools15.nuspec
               InsertionParameters.txt
             TargetFolder: '$(Build.ArtifactStagingDirectory)\SetupResults'
 
