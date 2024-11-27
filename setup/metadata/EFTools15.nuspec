@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>VS.Redist.Common.WPT.EFTools15</id>
+    <version>__PACKAGE_VERSION__</version>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <readme>docs\README.md</readme>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <description>Entity Framework Tools</description>
+    <releaseNotes></releaseNotes>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+  </metadata>
+  <files>
+    <file src="EFTools15.cab" target="" />
+    <file src="EFTools15.msi" target="" />
+    <file src="vs_eftools.vsix" target="" />
+    <file src="..\..\Readme.md" target="docs\README.md" />
+  </files>
+</package>
