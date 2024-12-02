@@ -5,7 +5,6 @@
     <version>__PACKAGE_VERSION__</version>
     <authors>Microsoft</authors>
     <owners>Microsoft</owners>
-    <readme>docs\README.md</readme>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <description>Entity Framework Tools</description>
@@ -16,6 +15,5 @@
     <file src="EF6Tools.cab" target="" />
     <file src="EF6Tools.msi" target="" />
     <file src="vs_eftools.vsix" target="" />
-    <file src="..\..\Readme.md" target="docs\README.md" />
   </files>
 </package>
