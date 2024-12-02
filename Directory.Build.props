@@ -24,4 +24,12 @@
     <VsWebSiteInteropPackageVersion>$(MicrosoftVisualStudioPackageCurrent)</VsWebSiteInteropPackageVersion>
     <XunitPackageVersion>1.9.2</XunitPackageVersion>
   </PropertyGroup>
+
+  <PropertyGroup>
+    <RepoRoot>$(MSBuildThisFileDirectory)</RepoRoot>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NerdBank.GitVersioning" PrivateAssets="All" Condition="!Exists('packages.config')" Version="3.6.133" />
+  </ItemGroup>
 </Project>

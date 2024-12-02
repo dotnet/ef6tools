@@ -60,7 +60,6 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
-
     <!-- Reference just to fix ambiguous warning -->
     <PackageReference Include="Microsoft.VisualStudio.Validation" Version="$(MicrosoftVisualStudioValidationPackageVersion)" />
     <PackageReference Include="Microsoft.VisualStudio.Shell.15.0" Version="$(MicrosoftVisualStudioPackageCurrent)" />
@@ -119,9 +118,6 @@
     <Compile Include="Core\Controls\FixedListConverter.cs" />
     <Compile Include="Core\Controls\LoadingUI.xaml.cs">
       <DependentUpon>LoadingUI.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Controls\StyledHyperlink.cs">
-      <SubType>Code</SubType>
     </Compile>
     <Compile Include="Core\Controls\SwitchConverter.cs">
       <SubType>Code</SubType>
@@ -282,10 +278,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Core\Controls\LoadingUI.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Core\Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
