@@ -13,8 +13,8 @@
     <copyright>© Microsoft Corporation. All rights reserved.</copyright>
   </metadata>
   <files>
-    <file src="EFTools15.cab" target="" />
-    <file src="EFTools15.msi" target="" />
+    <file src="EF6Tools.cab" target="" />
+    <file src="EF6Tools.msi" target="" />
     <file src="vs_eftools.vsix" target="" />
     <file src="..\..\Readme.md" target="docs\README.md" />
   </files>
