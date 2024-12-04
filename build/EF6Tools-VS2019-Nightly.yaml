@@ -130,6 +130,12 @@ extends:
             msbuildArguments: '/t:Build /v:d /bl:$(Build.SourcesDirectory)\bin\$(BuildConfiguration)\BuildSingletonMSI.binlog'
           timeoutInMinutes: 30
 
+        - task: MSBuild@1
+          displayName: Generate parameters for VS Insertion
+          inputs:
+            solution: $(Build.SourcesDirectory)\Setup\Metadata\CreateInsertionMetadata.proj
+            msbuildArguments: /r /p:Configuration=$(BuildConfiguration)
+
         - task: CopyFiles@2
           displayName: 'Copy VSIX, MSI and CAB'
           inputs:
@@ -143,6 +149,8 @@ extends:
               BuildDesigner.log
               BuildDesigner.binlog
               BuildSingletonMSI.binlog
+              EFTools15.nuspec
+              InsertionParameters.txt
             TargetFolder: '$(Build.ArtifactStagingDirectory)\SetupResults'
 
         - task: CopyFiles@2

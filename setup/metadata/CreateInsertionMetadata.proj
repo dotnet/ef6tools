@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.Build.NoTargets/1.0.94" DefaultTargets="GenerateAll">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <InsertionParamsFile>$(RepoRoot)bin\$(Configuration)\InsertionParameters.txt</InsertionParamsFile>
+    <NuspecName>EFTools15.nuspec</NuspecName>
+    <NuspecSourcePath>$(RepoRoot)\setup\metadata\$(NuspecName)</NuspecSourcePath>
+    <NuspecSourceContents></NuspecSourceContents>
+    <NuspecDestPath>$(RepoRoot)bin\$(Configuration)\$(NuspecName)</NuspecDestPath>
+  </PropertyGroup>
+
+  <Target Name="GenerateInsertionParameters" DependsOnTargets="GetBuildVersion" AfterTargets="Build">
+    <ItemGroup>
+      <DropManifests Include="$(RepoRoot)\bin\**\*.vsman" />
+    </ItemGroup>
+    <PropertyGroup>
+      <ManifestName>@(DropManifests->'$(ManifestPublishUrl)%(Filename)%(Extension)')</ManifestName>
+    </PropertyGroup>
+
+    <WriteLinesToFile Overwrite="True" File="$(InsertionParamsFile)" Lines="##vso[task.setvariable variable=InsertPayloadName]EF6Tools build $(BuildVersion)" />
+    <WriteLinesToFile File="$(InsertionParamsFile)" Lines="##vso[task.setvariable variable=InsertDescription]Commit: $(GitCommitId)" />
+    <WriteLinesToFile File="$(InsertionParamsFile)" Lines="##vso[task.setvariable variable=BuildVersion]$(BuildVersion)" />
+
+    <Message Text="$(MSBuildThisFile) -> $(InsertionParamsFile)" Importance="High" />
+  </Target>
+
+  <Target Name="GenerateNuspecFile" DependsOnTargets="GetBuildVersion" AfterTargets="Build">
+      <WriteLinesToFile 
+             File="$(NuspecDestPath)" 
+             Lines="$([System.Text.RegularExpressions.Regex]::Replace($([System.IO.File]::ReadAllText('$(NuspecSourcePath)')), '__PACKAGE_VERSION__', '$(BuildVersion)'))"
+             Overwrite="true" /> 
+
+    <Message Text="$(MSBuildThisFile) -> $(NuspecDestPath)" Importance="High" />
+  </Target>
+
+  <Target Name="GenerateAll" DependsOnTargets="GenerateNuspecFile;GenerateInsertionParameters" AfterTargets="Build" />
+
+  <Target Name="CleanGeneratedFiles"  BeforeTargets="Clean">
+    <Delete Files="$(NuspecDestPath)" />
+    <Delete Files="$(InsertionParamsFile)" />
+  </Target>
+  
+  <Target Name="Rebuild" DependsOnTargets="Clean;GenerateAll" />
+</Project>
