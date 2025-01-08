@@ -35,7 +35,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
             string dataType = null,
             int? maximumLength = null, int? precision = null,
             int? dateTimePrecision = null,
-            int? scale = null, bool? isIdentiy = null,
+            int? scale = null, bool? isIdentity = null,
             bool? isServerGenerated = null, bool isPrimaryKey = false)
         {
             var tableDetailsRow = (TableDetailsRow)new TableDetailsCollection().NewRow();
@@ -60,7 +60,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
             setColumnValue(tableDetailsRow, "Precision", precision);
             setColumnValue(tableDetailsRow, "DateTimePrecision", dateTimePrecision);
             setColumnValue(tableDetailsRow, "Scale", scale);
-            setColumnValue(tableDetailsRow, "IsIdentity", isIdentiy);
+            setColumnValue(tableDetailsRow, "IsIdentity", isIdentity);
             setColumnValue(tableDetailsRow, "IsServerGenerated", isServerGenerated);
             setColumnValue(tableDetailsRow, "IsPrimaryKey", isPrimaryKey);
 
@@ -698,7 +698,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
                 var property =
                     CreateStoreModelBuilder()
                         .CreateProperty(
-                            CreateRow(columnName: "IntColumn", dataType: "int", isIdentiy: true),
+                            CreateRow(columnName: "IntColumn", dataType: "int", isIdentity: true),
                             errors);
 
                 Assert.NotNull(property);
@@ -785,11 +785,11 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
             Assert.Equal("GeographyKey", invalidKeyTypeColumns[0]);
         }
 
-        [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+        [Fact(Skip = "Different API Visibility between official dll and locally built")]
         public void Build_creates_EdmModel_containing_converted_objects()
         {
-            //var tableDetails = new[] { CreateRow(null, "dbo", "table", "Id", 0, false, "int", isIdentiy: true) };
-            //var viewDetails = new[] { CreateRow(null, "dbo", "view", "Id", 0, false, "int", isIdentiy: true) };
+            //var tableDetails = new[] { CreateRow(null, "dbo", "table", "Id", 0, false, "int", isIdentity: true) };
+            //var viewDetails = new[] { CreateRow(null, "dbo", "view", "Id", 0, false, "int", isIdentity: true) };
             //var relationshipDetails = new[]
             //    { CreateRelationshipDetailsRow("id", "name", 0, false, null, "dbo", "table", "Id", null, "dbo", "view", "Id") };
             //var functionDetails = new[] { CreateFunctionDetailsRow(functionName: "function", isTvf: true) };
@@ -924,7 +924,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
 
         public class CreateEntityTypeTests
         {
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
             public void CreateEntityType_creates_entity_for_valid_properties()
             {
                 //var columns =
@@ -948,7 +948,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
                 //Assert.False(MetadataItemHelper.IsInvalid(entity));
             }
 
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
             public void CreateEntityType_defining_query_not_needed_for_tables_where_all_columns_are_key_columns()
             {
                 //var columns =
@@ -991,7 +991,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
                 //Assert.Equal(EdmSchemaErrorSeverity.Warning, edmSchemaErrors[1].Severity);
             }
 
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
             public void CreateEntityType_creates_readonly_entity_if_some_column_keys_are_excluded()
             {
                 //var columns =
@@ -1044,7 +1044,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
                 //    edmSchemaErrors[1].Message);
             }
 
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
             public void CreateEntityType_creates_invalid_entity_if_all_column_keys_are_excluded()
             {
             //    var columns =
@@ -1094,7 +1094,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
             //        edmSchemaErrors[1].Message);
             }
 
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
             public void
                 CreateEntityType_creates_readonly_entity_if_after_excluding_invalid_key_columns_only_valid_key_columns_of_invalid_types_exist
                 ()
@@ -1152,7 +1152,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
             //    Assert.Equal(EdmSchemaErrorSeverity.Warning, edmSchemaErrors[1].Severity);
             }
 
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
             public void
                 CreateEntityType_creates_invalid_entity_if_after_excluding_invalid_key_columns_only_key_columns_of_invalid_types_exist()
             {
@@ -1215,8 +1215,8 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
                 //Assert.Equal(EdmSchemaErrorSeverity.Warning, edmSchemaErrors[2].Severity);
             }
 
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
-            public void CreateEntityType_creates_readonly_entity_if_no_keys_defined_but_keys_can_be_infered()
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
+            public void CreateEntityType_creates_readonly_entity_if_no_keys_defined_but_keys_can_be_inferred()
             {
             //    var columns =
             //        new List<TableDetailsRow>
@@ -1253,8 +1253,8 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
             //        edmSchemaErrors[0].Message);
             }
 
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
-            public void CreateEntityType_creates_invalid_entity_if_no_keys_defined_and_keys_cannot_be_infered()
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
+            public void CreateEntityType_creates_invalid_entity_if_no_keys_defined_and_keys_cannot_be_inferred()
             {
             //    var columns =
             //        new List<TableDetailsRow>
@@ -1289,9 +1289,9 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
             //        edmSchemaErrors[0].Message);
           }
 
-        [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+        [Fact(Skip = "Different API Visibility between official dll and locally built")]
         public void
-                CreateEntityType_creates_readonly_entity_if_defined_keys_have_invalid_key_type_but_keys_can_be_infered()
+                CreateEntityType_creates_readonly_entity_if_defined_keys_have_invalid_key_type_but_keys_can_be_inferred()
             {
                 //var columns =
                 //    new List<TableDetailsRow>
@@ -1340,9 +1340,9 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
                 //    edmSchemaErrors[1].Message);
             }
 
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
             public void
-                CreateEntityType_creates_invalid_entity_if_defined_keys_have_invalid_key_type_and_keys_cannot_be_infered()
+                CreateEntityType_creates_invalid_entity_if_defined_keys_have_invalid_key_type_and_keys_cannot_be_inferred()
             {
                 //var columns =
                 //    new List<TableDetailsRow>
@@ -2355,23 +2355,23 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
 
         public class CreateAssociationSetsTests
         {
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
             public static void CreateAssociationSets_creates_expected_association_types_and_sets()
             {
                 //var tableDetails = new[]
                 //    {
                 //        CreateRow(
-                //            "catalog", "schema", "source1", "Id", 0, isNullable: false, dataType: "int", isIdentiy: true, isPrimaryKey: true)
+                //            "catalog", "schema", "source1", "Id", 0, isNullable: false, dataType: "int", isIdentity: true, isPrimaryKey: true)
                 //        ,
                 //        CreateRow(
-                //            "catalog", "schema", "source1", "Other", 1, isNullable: false, dataType: "int", isIdentiy: false,
+                //            "catalog", "schema", "source1", "Other", 1, isNullable: false, dataType: "int", isIdentity: false,
                 //            isPrimaryKey: true),
-                //        CreateRow("catalog", "schema", "target1", "Id", 0, isNullable: false, dataType: "int", isIdentiy: true),
-                //        CreateRow("catalog", "schema", "target1", "Other", 1, isNullable: false, dataType: "int", isIdentiy: false),
+                //        CreateRow("catalog", "schema", "target1", "Id", 0, isNullable: false, dataType: "int", isIdentity: true),
+                //        CreateRow("catalog", "schema", "target1", "Other", 1, isNullable: false, dataType: "int", isIdentity: false),
                 //        CreateRow(
-                //            "catalog", "schema", "source2", "Id", 0, isNullable: false, dataType: "int", isIdentiy: true, isPrimaryKey: true)
+                //            "catalog", "schema", "source2", "Id", 0, isNullable: false, dataType: "int", isIdentity: true, isPrimaryKey: true)
                 //        ,
-                //        CreateRow("catalog", "schema", "target2", "Id", 0, isNullable: false, dataType: "int", isIdentiy: true)
+                //        CreateRow("catalog", "schema", "target2", "Id", 0, isNullable: false, dataType: "int", isIdentity: true)
                 //    };
 
                 //var relationshipDetails = new List<RelationshipDetailsRow>
@@ -2409,14 +2409,14 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
                 //Assert.False(MetadataItemHelper.IsInvalid(associationType2));
             }
 
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
             public static void CreateAssociationSets_does_not_create_set_for_shared_foreign_key()
             {
                 //var tableDetails = new[]
                 //    {
-                //        CreateRow("catalog", "schema", "source1", "Id", 0, false, "int", isIdentiy: true, isPrimaryKey: true),
-                //        CreateRow("catalog", "schema", "source2", "Id", 0, false, "int", isIdentiy: true, isPrimaryKey: true),
-                //        CreateRow("catalog", "schema", "target", "Id", 0, false, "int", isIdentiy: true)
+                //        CreateRow("catalog", "schema", "source1", "Id", 0, false, "int", isIdentity: true, isPrimaryKey: true),
+                //        CreateRow("catalog", "schema", "source2", "Id", 0, false, "int", isIdentity: true, isPrimaryKey: true),
+                //        CreateRow("catalog", "schema", "target", "Id", 0, false, "int", isIdentity: true)
                 //    };
 
                 //var relationshipDetails = new List<RelationshipDetailsRow>
@@ -2461,13 +2461,13 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
                 //Assert.Equal((int)ModelBuilderErrorCode.SharedForeignKey, error.ErrorCode);
             }
 
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
             public static void TryCreateAssociationSet_creates_valid_association_type_and_set()
             {
                 //var tableDetails = new[]
                 //    {
-                //        CreateRow("catalog", "schema", "source", "Id", 0, false, "int", isIdentiy: true, isPrimaryKey: true),
-                //        CreateRow("catalog", "schema", "target", "Id", 0, false, "int", isIdentiy: true)
+                //        CreateRow("catalog", "schema", "source", "Id", 0, false, "int", isIdentity: true, isPrimaryKey: true),
+                //        CreateRow("catalog", "schema", "target", "Id", 0, false, "int", isIdentity: true)
                 //    };
 
                 //var relationshipDetails = new List<RelationshipDetailsRow>
@@ -2510,7 +2510,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
                 //Assert.Equal(entitySets[1], targetEndSet.EntitySet);
             }
 
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
             public static void TryCreateAssociationSet_does_not_create_set_if_end_entity_is_missing()
             {
                 Check_does_not_create_set_if_end_entity_is_missing(sourceMissing: true, targetMissing: false);
@@ -2518,13 +2518,13 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
                 Check_does_not_create_set_if_end_entity_is_missing(sourceMissing: true, targetMissing: true);
             }
 
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
             private static void Check_does_not_create_set_if_end_entity_is_missing(bool sourceMissing, bool targetMissing)
             {
                 //var tableDetails = new[]
                 //    {
-                //        CreateRow("catalog", "schema", "source", "Id", 0, false, "int", isIdentiy: true, isPrimaryKey: true),
-                //        CreateRow("catalog", "schema", "target", "Id", 0, false, "int", isIdentiy: true)
+                //        CreateRow("catalog", "schema", "source", "Id", 0, false, "int", isIdentity: true, isPrimaryKey: true),
+                //        CreateRow("catalog", "schema", "target", "Id", 0, false, "int", isIdentity: true)
                 //    };
 
                 //var sourceColumn = sourceMissing ? "missing" : "source";
@@ -2572,14 +2572,14 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
                 //}
             }
 
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
             public static void TryCreateAssociationSet_does_not_create_set_if_relationship_column_count_does_not_match()
             {
                 //var tableDetails = new[]
                 //    {
-                //        CreateRow("catalog", "schema", "source", "Id", 0, false, "int", isIdentiy: true, isPrimaryKey: true),
-                //        CreateRow("catalog", "schema", "source", "Other", 1, false, "int", isIdentiy: false, isPrimaryKey: true),
-                //        CreateRow("catalog", "schema", "target", "Id", 0, false, "int", isIdentiy: true)
+                //        CreateRow("catalog", "schema", "source", "Id", 0, false, "int", isIdentity: true, isPrimaryKey: true),
+                //        CreateRow("catalog", "schema", "source", "Other", 1, false, "int", isIdentity: false, isPrimaryKey: true),
+                //        CreateRow("catalog", "schema", "target", "Id", 0, false, "int", isIdentity: true)
                 //    };
 
                 //var relationshipDetails = new List<RelationshipDetailsRow>
@@ -2621,13 +2621,13 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
                 //Assert.Equal((int)ModelBuilderErrorCode.UnsupportedDbRelationship, error.ErrorCode);
             }
 
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
             public static void TryCreateAssociationSet_does_not_create_set_if_relationship_column_name_does_not_match()
             {
                 //var tableDetails = new[]
                 //    {
-                //        CreateRow("catalog", "schema", "source", "Id", 0, false, "int", isIdentiy: true, isPrimaryKey: true),
-                //        CreateRow("catalog", "schema", "target", "Id", 0, false, "int", isIdentiy: true)
+                //        CreateRow("catalog", "schema", "source", "Id", 0, false, "int", isIdentity: true, isPrimaryKey: true),
+                //        CreateRow("catalog", "schema", "target", "Id", 0, false, "int", isIdentity: true)
                 //    };
 
                 //var relationshipDetails = new List<RelationshipDetailsRow>
@@ -2670,15 +2670,15 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
                 //Assert.Equal((int)ModelBuilderErrorCode.UnsupportedDbRelationship, error.ErrorCode);
             }
 
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
             public static void TryCreateAssociationSet_does_not_create_set_if_fk_is_partially_contained_in_pk()
             {
                 //var tableDetails = new[]
                 //    {
-                //        CreateRow("catalog", "schema", "source", "Id", 0, false, "int", isIdentiy: true, isPrimaryKey: true),
-                //        CreateRow("catalog", "schema", "source", "Other", 1, false, "int", isIdentiy: false, isPrimaryKey: true),
-                //        CreateRow("catalog", "schema", "target", "Id", 0, false, "int", isIdentiy: true, isPrimaryKey: true),
-                //        CreateRow("catalog", "schema", "target", "Other", 1, false, "int", isIdentiy: false, isPrimaryKey: false)
+                //        CreateRow("catalog", "schema", "source", "Id", 0, false, "int", isIdentity: true, isPrimaryKey: true),
+                //        CreateRow("catalog", "schema", "source", "Other", 1, false, "int", isIdentity: false, isPrimaryKey: true),
+                //        CreateRow("catalog", "schema", "target", "Id", 0, false, "int", isIdentity: true, isPrimaryKey: true),
+                //        CreateRow("catalog", "schema", "target", "Other", 1, false, "int", isIdentity: false, isPrimaryKey: false)
                 //    };
 
                 //var relationshipDetails = new List<RelationshipDetailsRow>
@@ -2720,17 +2720,17 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
                 //var error = errors[0];
 
                 //Assert.Equal(EdmSchemaErrorSeverity.Warning, error.Severity);
-                //Assert.Equal((int)ModelBuilderErrorCode.UnsupportedForeinKeyPattern, error.ErrorCode);
+                //Assert.Equal((int)ModelBuilderErrorCode.UnsupportedForeignKeyPattern, error.ErrorCode);
             }
 
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
             public static void TryCreateAssociationSet_does_not_create_set_if_association_is_missing_key_column()
             {
                 //var tableDetails = new[]
                 //    {
-                //        CreateRow("catalog", "schema", "source", "Id", 0, false, "int", isIdentiy: true, isPrimaryKey: true),
-                //        CreateRow("catalog", "schema", "source", "Other", 1, false, "int", isIdentiy: false, isPrimaryKey: true),
-                //        CreateRow("catalog", "schema", "target", "Id", 0, false, "int", isIdentiy: true)
+                //        CreateRow("catalog", "schema", "source", "Id", 0, false, "int", isIdentity: true, isPrimaryKey: true),
+                //        CreateRow("catalog", "schema", "source", "Other", 1, false, "int", isIdentity: false, isPrimaryKey: true),
+                //        CreateRow("catalog", "schema", "target", "Id", 0, false, "int", isIdentity: true)
                 //    };
 
                 //var relationshipDetails = new List<RelationshipDetailsRow>
@@ -2775,7 +2775,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
                 //Assert.Equal((int)ModelBuilderErrorCode.AssociationMissingKeyColumn, error.ErrorCode);
             }
 
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
             public static void TryCreateAssociationSet_expected_association_end_multiplicity_pk_to_pk()
             {
                 Check_two_column_relationship_expected_association_end_multiplicity_pk_to_pk(
@@ -2785,23 +2785,23 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
                     EntityFrameworkVersion.Version3);
             }
 
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
             private static void Check_two_column_relationship_expected_association_end_multiplicity_pk_to_pk(
                 Version targetEntityFrameworkVersion)
             {
                 //var tableDetails = new[]
                 //    {
                 //        CreateRow(
-                //            "catalog", "schema", "source", "Id", 0, isNullable: false, dataType: "int", isIdentiy: true,
+                //            "catalog", "schema", "source", "Id", 0, isNullable: false, dataType: "int", isIdentity: true,
                 //            isPrimaryKey: true),
                 //        CreateRow(
-                //            "catalog", "schema", "source", "Other", 1, isNullable: false, dataType: "int", isIdentiy: false,
+                //            "catalog", "schema", "source", "Other", 1, isNullable: false, dataType: "int", isIdentity: false,
                 //            isPrimaryKey: true),
                 //        CreateRow(
-                //            "catalog", "schema", "target", "Id", 0, isNullable: false, dataType: "int", isIdentiy: true,
+                //            "catalog", "schema", "target", "Id", 0, isNullable: false, dataType: "int", isIdentity: true,
                 //            isPrimaryKey: true),
                 //        CreateRow(
-                //            "catalog", "schema", "target", "Other", 1, isNullable: false, dataType: "int", isIdentiy: false,
+                //            "catalog", "schema", "target", "Other", 1, isNullable: false, dataType: "int", isIdentity: false,
                 //            isPrimaryKey: true)
                 //    };
 
@@ -2837,7 +2837,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
                 //Assert.Equal(RelationshipMultiplicity.ZeroOrOne, targetEnd.RelationshipMultiplicity);
             }
 
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
             public static void TryCreateAssociationSet_expected_association_end_multiplicity_pk_to_fk()
             {
                 Check_two_column_relationship_expected_association_end_multiplicity_pk_to_fk(
@@ -2869,7 +2869,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
                     expectedTargetEndMultiplicity: RelationshipMultiplicity.Many);
             }
 
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
             private static void Check_two_column_relationship_expected_association_end_multiplicity_pk_to_fk(
                 Version targetEntityFrameworkVersion,
                 bool column1Nullable,
@@ -2880,19 +2880,19 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
                 //var tableDetails = new[]
                 //    {
                 //        CreateRow(
-                //            "catalog", "schema", "source", "Id", 0, isNullable: false, dataType: "int", isIdentiy: true,
+                //            "catalog", "schema", "source", "Id", 0, isNullable: false, dataType: "int", isIdentity: true,
                 //            isPrimaryKey: true),
                 //        CreateRow(
-                //            "catalog", "schema", "source", "Other", 1, isNullable: false, dataType: "int", isIdentiy: false,
+                //            "catalog", "schema", "source", "Other", 1, isNullable: false, dataType: "int", isIdentity: false,
                 //            isPrimaryKey: true),
                 //        CreateRow(
-                //            "catalog", "schema", "target", "TargetId", 0, isNullable: false, dataType: "int", isIdentiy: true,
+                //            "catalog", "schema", "target", "TargetId", 0, isNullable: false, dataType: "int", isIdentity: true,
                 //            isPrimaryKey: true),
                 //        CreateRow(
-                //            "catalog", "schema", "target", "Id", 0, isNullable: column1Nullable, dataType: "int", isIdentiy: true,
+                //            "catalog", "schema", "target", "Id", 0, isNullable: column1Nullable, dataType: "int", isIdentity: true,
                 //            isPrimaryKey: false),
                 //        CreateRow(
-                //            "catalog", "schema", "target", "Other", 1, isNullable: column2Nullable, dataType: "int", isIdentiy: false,
+                //            "catalog", "schema", "target", "Other", 1, isNullable: column2Nullable, dataType: "int", isIdentity: false,
                 //            isPrimaryKey: false)
                 //    };
 
@@ -2928,7 +2928,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
                 //Assert.Equal(expectedTargetEndMultiplicity, targetEnd.RelationshipMultiplicity);
             }
 
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
             public static void TryCreateAssociationSet_cascade_delete_flag_is_reflected_by_delete_behavior()
             {
                 Check_cascade_delete_flag_is_reflected_by_delete_behavior(
@@ -2937,14 +2937,14 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb
                     isCascadeDelete: true, expectedDeleteBehavior: OperationAction.Cascade);
             }
 
-            [Fact(Skip = "Different API Visiblity between official dll and locally built")]
+            [Fact(Skip = "Different API Visibility between official dll and locally built")]
             private static void Check_cascade_delete_flag_is_reflected_by_delete_behavior(
                 bool isCascadeDelete, OperationAction expectedDeleteBehavior)
             {
                 //var tableDetails = new[]
                 //    {
-                //        CreateRow("catalog", "schema", "source", "Id", 0, false, "int", isIdentiy: true, isPrimaryKey: true),
-                //        CreateRow("catalog", "schema", "target", "Id", 0, false, "int", isIdentiy: true)
+                //        CreateRow("catalog", "schema", "source", "Id", 0, false, "int", isIdentity: true, isPrimaryKey: true),
+                //        CreateRow("catalog", "schema", "target", "Id", 0, false, "int", isIdentity: true)
                 //    };
 
                 //var relationshipDetails = new List<RelationshipDetailsRow>
