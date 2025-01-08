@@ -12,7 +12,6 @@
         <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">$(MSBuildThisFileDirectory)</SolutionDir>
         <SkipEnvSetup></SkipEnvSetup>
         <LogsDir>$(SolutionDir)logs\</LogsDir>
-        <SkipStrongNamesXml>tools\EFToolsSkipStrongNames.xml</SkipStrongNamesXml>
     </PropertyGroup>
 
     <ItemGroup>
@@ -73,7 +72,7 @@
       <MSBuild Projects="$(RepositoryRoot)EF.msbuild" Targets="Package" Properties="Configuration=$(Configuration)" />
     </Target>
 
-    <Target Name="BuildDesigner" DependsOnTargets="RestorePackages;CreateDirectories;CheckSkipStrongNames">
+    <Target Name="BuildDesigner" DependsOnTargets="RestorePackages;CreateDirectories">
         <MSBuild Targets="$(BuildTargets)"
                    Projects="@(Projects)"
                    Properties="Configuration=$(Configuration);$(BuildProperties);BuildPackages=false" />

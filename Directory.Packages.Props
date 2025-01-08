@@ -38,7 +38,6 @@
 	</PropertyGroup>
 	<PropertyGroup>
 		<MicrosoftVisualStudioEngMicroBuildCorePackageVersion>1.0.0</MicrosoftVisualStudioEngMicroBuildCorePackageVersion>
-		<MicrosoftWebSkipStrongNamesPackageVersion>1.0.0</MicrosoftWebSkipStrongNamesPackageVersion>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageVersion Include="EntityFramework" Version="$(EntityFrameworkPackageVersion)" />
