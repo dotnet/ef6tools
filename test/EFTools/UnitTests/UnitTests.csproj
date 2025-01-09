@@ -101,6 +101,7 @@
     <Compile Include="EntityDesignerVersioningFacade\Metadata\StoreItemCollectionExtensionsTests.cs" />
     <Compile Include="EntityDesignerVersioningFacade\ReverseEngineerDb\AssociationSetEndDetailsTests.cs" />
     <Compile Include="EntityDesignerVersioningFacade\ReverseEngineerDb\OneToOneMappingBuilderTests.cs" />
+    <Compile Include="EntityDesignerVersioningFacade\ReverseEngineerDb\OneToOneMappingBuilderTests.GenerateEdmFunctionsTests.cs" />
     <Compile Include="EntityDesignerVersioningFacade\ReverseEngineerDb\EntityStoreSchemaFilterEntryTests.cs" />
     <Compile Include="EntityDesignerVersioningFacade\ReverseEngineerDb\StoreSchemaConnectionFactoryTests.cs" />
     <Compile Include="EntityDesignerVersioningFacade\ReverseEngineerDb\ModelGeneratorUtilsTests.cs" />
@@ -121,7 +122,7 @@
     <Compile Include="EntityDesignerVersioningFacade\ReverseEngineerDb\StoreModelBuilderTests.cs" />
     <Compile Include="EntityDesignerVersioningFacade\ReverseEngineerDb\EntitySetDefiningQueryConverterTests.cs" />
     <Compile Include="EntityDesignerVersioningFacade\ReverseEngineerDb\UniqueIdentifierServiceTests.cs" />
-    <Compile Include="EntityDesignerVersioningFacade\SchemaManagerTests.cs" />
+     <Compile Include="EntityDesignerVersioningFacade\SchemaManagerTests.cs" />
     <Compile Include="EntityDesigner\CustomCode\Diagram\EntityDesignerDiagramTests.cs" />
     <Compile Include="EntityDesignModel\Commands\CreatePropertyCommandTests.cs" />
     <Compile Include="EntityDesignModel\Commands\RetargetXmlNamespaceCommandTests.cs" />
