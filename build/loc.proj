@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" DefaultTargets="AfterBuild" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project Sdk="Microsoft.Build.NoTargets/2.0.1" DefaultTargets="PostBuild">
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), 'README.md'))\build\common.props" />
-  <Import Project="$(MicroBuildDirectory)Microsoft.VisualStudioEng.MicroBuild.Core.props"/>
 
   <!-- Configuration/global properties -->
   <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
     <CommonMSBuildProperties>
       Configuration=$(Configuration);
       ReleaseLabel=$(ReleaseLabel);
@@ -14,7 +14,7 @@
     <OutDir>$(RepositoryRootDirectory)bin\$(Configuration)</OutDir> <!-- needed for Localization plugin -->
   </PropertyGroup>
 
-  <Target Name="LocalizeDLLs">
+  <Target Name="LocalizeDLLs" BeforeTargets="AfterBuild">
     <ItemGroup>
       <EFToolsDLLs Include="$(RepositoryRootDirectory)bin\$(Configuration)\Microsoft.Data.Entity.*.dll" />
       <EFToolsDLLs Include="$(RepositoryRootDirectory)bin\$(Configuration)\Microsoft.Data.Tools.Design.XmlCore.dll" />
@@ -37,6 +37,9 @@
     <Message Text="BuildRTM : $(BuildRTM)" Importance="High"/>
   </Target>
 
-  <Target Name="AfterBuild" DependsOnTargets="LocalizeDLLs"/>
-  <Import Project="$(MicroBuildDirectory)Microsoft.VisualStudioEng.MicroBuild.Core.targets" />
+  <ItemGroup>
+      <PackageReference Include="Microsoft.VisualStudioEng.MicroBuild.Core" GeneratePathProperty="true" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" DependsOnTargets="LocalizeDLLs;AfterBuild"/>
 </Project>

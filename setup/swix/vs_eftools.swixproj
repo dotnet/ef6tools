@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory), 'README.md'))\build\common.props" />
-  <Import Project="$(MicroBuildDirectory)Microsoft.VisualStudioEng.MicroBuild.Core.props"/>
-
+  <Import Project="$(MicroBuildDirectory)\Microsoft.VisualStudioEng.MicroBuild.Core.props"/>
+	
   <!-- Configuration/global properties -->
   <PropertyGroup>
     <CommonMSBuildProperties>
@@ -11,6 +11,8 @@
       BuildNumber=$(BuildNumber);
       BuildRTM=$(BuildRTM);
     </CommonMSBuildProperties>
+    <TargetFramework>net472</TargetFramework>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -45,8 +47,11 @@
     <Package Include="registry.swr" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudioEng.MicroBuild.Core" PrivateAssets="All" GeneratePathProperty="true" />
+  </ItemGroup>
+
   <!-- MicroBuild plugin fails if GetNativeManifest is not found for some reason -->
   <Target Name="GetNativeManifest" />
-  <Import Project="$(MicroBuildDirectory)Microsoft.VisualStudioEng.MicroBuild.Core.targets" />
-
+  <Import Project="$(MicroBuildDirectory)\Microsoft.VisualStudioEng.MicroBuild.Core.targets"/>
 </Project>

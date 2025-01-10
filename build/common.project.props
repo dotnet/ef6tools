@@ -11,6 +11,6 @@
     <LclRootDirectory>$(LocalizationRootDirectory)\lcl</LclRootDirectory>
     <IntellisenseLocRootDirectory>$(LocalizationRootDirectory)\intellisense</IntellisenseLocRootDirectory>
     <LocalizationFilesDirectory>$(RepositoryRootDirectory)LocalizedFiles</LocalizationFilesDirectory>
-    <MicroBuildDirectory>$(SolutionPackagesFolder)Microsoft.VisualStudioEng.MicroBuild.Core.1.0.0\build\</MicroBuildDirectory>
+    <MicroBuildDirectory>$(RepositoryRootDirectory)\bin\$(Configuration)\MsiRuntimeInputs\packages\Microsoft.VisualStudioEng.MicroBuild.Core.1.0.0\build\</MicroBuildDirectory>
   </PropertyGroup>
 </Project>
