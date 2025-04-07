@@ -1,0 +1,15 @@
+﻿{
+    "codebaseName": "EntityFramework6-Tooling-GitHub",
+    "notificationAliases": [
+        "EF6Tools@microsoft.com"
+    ],
+    "codebaseAdmins": [
+        "REDMOND\\manishj",
+        "REDMOND\\phillipa"
+    ],
+    "instanceUrl": "https://devdiv.visualstudio.com",
+    "projectName": "DevDiv",
+    "areaPath": "DevDiv\\NET Developer Experience\\Designers\\Entity Framework",
+    "iterationPath": "DevDiv",
+    "allTools": true
+}
