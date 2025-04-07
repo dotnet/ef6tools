@@ -18,7 +18,6 @@ extends:
     sdl:
       sourceAnalysisPool:
         name: VSEngSS-MicroBuild2022-1ES
-        image: windows.vs2022.amd64
         os: windows
       policheck:
         enabled: true
