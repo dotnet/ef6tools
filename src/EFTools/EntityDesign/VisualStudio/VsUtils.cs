@@ -163,6 +163,32 @@ namespace Microsoft.Data.Entity.Design.VisualStudio
             return path;
         }
 
+        internal static Func<string, object> GetLocalApplicationSettingImplementation(Project project)
+        {
+            AppSettingsSection loadedAppSettings = null;
+            return appSettingName =>
+            {
+                try
+                {
+                    if (loadedAppSettings is null)
+                    {
+                        var configurationFile = GetProjectConfigurationFile(project, Services.ServiceProvider);
+                        var configuration = ConfigurationManager.OpenMappedExeConfiguration(
+                            new ExeConfigurationFileMap { ExeConfigFilename = configurationFile },
+                            ConfigurationUserLevel.None);
+
+                        loadedAppSettings = (AppSettingsSection)configuration.GetSection("appSettings");
+                    }
+
+                    return loadedAppSettings?.Settings[appSettingName]?.Value;
+                }
+                catch (NullReferenceException)
+                {
+                    return null;
+                }
+            };
+        }
+
         // <summary>
         //     Used to resolve a single macro, such as "DevEnvDir", "ProjectDir", or "TargetDir". A dictionary of custom macros can also be passed in
         //     as a 'backup'.

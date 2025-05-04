@@ -41,6 +41,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Engine
         private string _designTimeProviderInvariantName;
         private string _runtimeProviderInvariantName;
         private string _modelNamespace;
+        private Func<string, object> _fnGetLocalAppSetting;
         private VisualStudioProjectSystem _applicationType;
         private EFArtifact _preexistingEFArtifact;
         private readonly Dictionary<string, Object> _extensionData = new Dictionary<string, Object>();
@@ -116,6 +117,11 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Engine
             }
         }
 
+        internal Func<string, object> FnGetLocalAppSetting()
+        {
+            return _fnGetLocalAppSetting;
+        }
+
         internal string DdlFileName { get; set; }
 
         internal StringReader SsdlStringReader { get; set; }
@@ -157,9 +163,15 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Engine
         // </summary>
         // <param name="fromDesignTime">Indicates if invariant name &amp; connection strings are from design-time (if false, ,from runtime)</param>
         [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1614:ElementParameterDocumentationMustHaveText")]
-        internal void SetInvariantNamesAndConnectionStrings(IServiceProvider serviceProvider,
-            Project project, string invariantName, string connectionString, string appConfigConnectionString, bool fromDesignTime)
+        internal void SetInvariantNamesAndConnectionStrings(
+            IServiceProvider serviceProvider,
+            Project project,
+            string invariantName,
+            string connectionString,
+            string appConfigConnectionString,
+            bool fromDesignTime)
         {
+            _fnGetLocalAppSetting = VsUtils.GetLocalApplicationSettingImplementation(project); ;
             if (fromDesignTime)
             {
                 _designTimeConnectionString = connectionString;

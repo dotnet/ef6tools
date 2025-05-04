@@ -555,7 +555,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Gui
             // these connection strings & invariant names are coming from the ddex provider, so these are "design-time"
             Wizard.ModelBuilderSettings.SetInvariantNamesAndConnectionStrings(ServiceProvider,
                 Wizard.Project, Wizard.ModelBuilderSettings.DesignTimeProviderInvariantName, newConnectionString,
-                newAppConfigConnectionString, true);
+                newAppConfigConnectionString, fromDesignTime:true);
             return true;
         }
 

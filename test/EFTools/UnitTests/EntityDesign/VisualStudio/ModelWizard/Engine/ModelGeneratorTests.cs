@@ -270,7 +270,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Engine
 
             mockModelGenerator
                 .Setup(g => g.CreateDbSchemaLoader(It.IsAny<EntityConnection>(), It.IsAny<Version>()))
-                .Returns(new Mock<EntityStoreSchemaGeneratorDatabaseSchemaLoader>(mockEntityConnectionObject, version).Object);
+                .Returns(new Mock<EntityStoreSchemaGeneratorDatabaseSchemaLoader>(mockEntityConnectionObject, version,  /* get app setting func*/ null).Object);
 
             mockModelGenerator.Object.GetStoreSchemaDetails(mockConnectionFactory.Object);
 

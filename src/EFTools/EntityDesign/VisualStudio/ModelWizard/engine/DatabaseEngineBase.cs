@@ -150,7 +150,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Engine
                         runtimeProviderName,
                         runtimeProviderConnectionString,
                         runtimeProviderConnectionString,
-                        false);
+                        fromDesignTime: false);
                     settings.InitialCatalog = initialCatalog;
                     settings.AppConfigConnectionPropertyName = entityContainerName;
                     settings.SaveConnectionStringInAppConfig = false;
