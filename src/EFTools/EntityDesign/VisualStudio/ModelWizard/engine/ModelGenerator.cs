@@ -96,7 +96,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Engine
         {
             Debug.Assert(storeModel != null, "storeModel != null");
 
-            return 
+            return
                 new OneToOneMappingBuilder(
                     _settings.ModelNamespace,
                     _settings.ModelEntityContainerName,

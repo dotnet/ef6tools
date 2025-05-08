@@ -16,14 +16,14 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb.Schema
     {
         private readonly EntityClientMockFactory mockDataReaderFactory = new EntityClientMockFactory();
 
-           [Fact(Skip = "Type lacks parameterless constructor in locally built")]
+        [Fact(Skip = "Type lacks parameterless constructor in locally built")]
         public void CreateFilteredCommand_creates_command_and_sets_parameters()
         {
             var command =
                 new EntityStoreSchemaGeneratorDatabaseSchemaLoader(
                     GetMockEntityConnection(false).Object,
                     EntityFrameworkVersion.Version3,
-                    lookupValueFromAppSettings:null)
+                    lookupValueFromAppSettings: null)
                     .CreateFilteredCommand(
                         "baseQuery",
                         "orderbyClause",
@@ -113,7 +113,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb.Schema
                         }));
         }
 
-         [Fact(Skip = "Type lacks parameterless constructor in locally built")]
+        [Fact(Skip = "Type lacks parameterless constructor in locally built")]
         public void LoadRelationships_returns_sorted_relationships_details()
         {
             var input =
@@ -153,7 +153,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb.Schema
                 );
         }
 
-          [Fact(Skip = "Type lacks parameterless constructor in locally built")]
+        [Fact(Skip = "Type lacks parameterless constructor in locally built")]
         public void LoadFunctionDetails_returns_function_details()
         {
             var input =
@@ -190,7 +190,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb.Schema
             Assert.Equal("f2", results[1].ProcedureName);
         }
 
-             [Fact(Skip = "Type lacks parameterless constructor in locally built")]
+        [Fact(Skip = "Type lacks parameterless constructor in locally built")]
         public void LoadStoreSchema_returns_initialized_StoreSchemaInstance()
         {
             var tableCommand =
@@ -269,9 +269,9 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb.Schema
                 var mockLoader =
                     new Mock<EntityStoreSchemaGeneratorDatabaseSchemaLoader>(
                         mockEntityConnection.Object, version, /*get app setting func*/null)
-                        {
-                            CallBase = true
-                        };
+                    {
+                        CallBase = true
+                    };
 
                 mockLoader.Setup(l => l.LoadTableDetails(It.IsAny<IEnumerable<EntityStoreSchemaFilterEntry>>()))
                     .Returns(Enumerable.Empty<TableDetailsRow>());

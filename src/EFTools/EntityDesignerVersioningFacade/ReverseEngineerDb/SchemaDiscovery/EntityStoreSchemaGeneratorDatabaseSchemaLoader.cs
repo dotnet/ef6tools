@@ -14,11 +14,11 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb.Schema
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
-    
-   /// <summary>
-   ///     Responsible for Loading Database Schema Information
-   /// </summary>
-   internal class EntityStoreSchemaGeneratorDatabaseSchemaLoader
+
+    /// <summary>
+    ///     Responsible for Loading Database Schema Information
+    /// </summary>
+    internal class EntityStoreSchemaGeneratorDatabaseSchemaLoader
     {
         private const string SqlServerInvariantName = "System.Data.SqlClient";
         private const string SwitchOffMetadataMergeJoinsKey =
@@ -33,7 +33,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb.Schema
         public EntityStoreSchemaGeneratorDatabaseSchemaLoader(
             EntityConnection entityConnection,
             Version storeSchemaModelVersion,
-            Func<string,object> lookupValueFromAppSettings)
+            Func<string, object> lookupValueFromAppSettings)
         {
             Debug.Assert(entityConnection != null, "entityConnection != null");
             Debug.Assert(entityConnection.State == ConnectionState.Closed, "expected closed connection");
@@ -284,10 +284,10 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb.Schema
         {
             var command =
                 new EntityCommand(null, _connection, DependencyResolver.Instance)
-                    {
-                        CommandType = CommandType.Text,
-                        CommandTimeout = 0
-                    };
+                {
+                    CommandType = CommandType.Text,
+                    CommandTimeout = 0
+                };
 
             var optimizeParameters =
                 ((StoreItemCollection)_connection
