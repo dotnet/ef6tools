@@ -25,13 +25,15 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb.Schema
             "Switch.Microsoft.Data.Entity.Design.DoNotUseSqlServerMetadataMergeJoins";
         private readonly EntityConnection _connection;
         private readonly Version _storeSchemaModelVersion;
+        private readonly Func<string, object> _lookupValueFromAppSettings;
         private readonly IDbCommandInterceptor _addOptionMergeJoinInterceptor;
 
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes",
             Justification = "For this purpose we want to ignore any exception that is thrown.")]
         public EntityStoreSchemaGeneratorDatabaseSchemaLoader(
             EntityConnection entityConnection,
-            Version storeSchemaModelVersion)
+            Version storeSchemaModelVersion,
+            Func<string, object> lookupValueFromAppSettings)
         {
             Debug.Assert(entityConnection != null, "entityConnection != null");
             Debug.Assert(entityConnection.State == ConnectionState.Closed, "expected closed connection");
@@ -39,6 +41,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb.Schema
 
             _connection = entityConnection;
             _storeSchemaModelVersion = storeSchemaModelVersion;
+            _lookupValueFromAppSettings = lookupValueFromAppSettings;
 
             var isSqlServer = false;
             try
@@ -67,22 +70,52 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb.Schema
 
         // Checks AppSettings for the quirk which can switch off metadata merge joins
         [SuppressMessage("Microsoft.Usage", "CA1806:DoNotIgnoreMethodResults", MessageId = "System.Boolean.TryParse(System.String,System.Boolean@)")]
-        private static bool SwitchOffMetadataMergeJoins()
+        private bool SwitchOffMetadataMergeJoins()
         {
             var switchOffMetadataMergeJoins = false;
-            var metadataMergeJoinsAppSettings =
-                ConfigurationManager.AppSettings.GetValues(SwitchOffMetadataMergeJoinsKey);
-            if (metadataMergeJoinsAppSettings != null)
+
+            // first we check for the quirk in the AppSettings of the customer project
+            if (_lookupValueFromAppSettings != null)
             {
-                var metadataMergeJoinsAppSetting =
-                    metadataMergeJoinsAppSettings.FirstOrDefault();
-                if (metadataMergeJoinsAppSetting != null)
+                var metadataMergeJoinsAppSettingsObj =
+                    _lookupValueFromAppSettings(SwitchOffMetadataMergeJoinsKey);
+
+                // if the appSetting key has a value, it is conclusive
+                if (metadataMergeJoinsAppSettingsObj != null)
                 {
-                    bool.TryParse(
-                        metadataMergeJoinsAppSetting, out switchOffMetadataMergeJoins);
+                    if (metadataMergeJoinsAppSettingsObj is string metadataMergeJoinsAppSettingsStr)
+                    {
+                        var metadataMergeJoinsAppSetting = metadataMergeJoinsAppSettingsStr;
+                        if (!string.IsNullOrEmpty(metadataMergeJoinsAppSetting))
+                        {
+                            bool.TryParse(
+                                metadataMergeJoinsAppSetting, out switchOffMetadataMergeJoins);
+                        }
+                    }
+                    else if (metadataMergeJoinsAppSettingsObj is bool metadataMergeJoinsAppSettingsBool)
+                    {
+                        switchOffMetadataMergeJoins = metadataMergeJoinsAppSettingsBool;
+                    }
+
+                    return switchOffMetadataMergeJoins;
                 }
             }
-
+            else
+            {
+                // then we check for the quirk in the AppSettings of the devenv.exe.config
+                var metadataMergeJoinsAppSettings =
+                    ConfigurationManager.AppSettings.GetValues(SwitchOffMetadataMergeJoinsKey);
+                if (metadataMergeJoinsAppSettings != null)
+                {
+                    var metadataMergeJoinsAppSetting =
+                        metadataMergeJoinsAppSettings.FirstOrDefault();
+                    if (metadataMergeJoinsAppSetting != null)
+                    {
+                        bool.TryParse(
+                            metadataMergeJoinsAppSetting, out switchOffMetadataMergeJoins);
+                    }
+                }
+            }
             return switchOffMetadataMergeJoins;
         }
 
@@ -251,10 +284,10 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb.Schema
         {
             var command =
                 new EntityCommand(null, _connection, DependencyResolver.Instance)
-                    {
-                        CommandType = CommandType.Text,
-                        CommandTimeout = 0
-                    };
+                {
+                    CommandType = CommandType.Text,
+                    CommandTimeout = 0
+                };
 
             var optimizeParameters =
                 ((StoreItemCollection)_connection

@@ -22,7 +22,8 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb.Schema
             var command =
                 new EntityStoreSchemaGeneratorDatabaseSchemaLoader(
                     GetMockEntityConnection(false).Object,
-                    EntityFrameworkVersion.Version3)
+                    EntityFrameworkVersion.Version3,
+                    lookupValueFromAppSettings: null)
                     .CreateFilteredCommand(
                         "baseQuery",
                         "orderbyClause",
@@ -55,7 +56,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb.Schema
 
             Func<Version, string> getCommandText = (version) =>
                                                    new EntityStoreSchemaGeneratorDatabaseSchemaLoader(
-                                                       GetMockEntityConnection(true).Object, version)
+                                                       GetMockEntityConnection(true).Object, version, lookupValueFromAppSettings: null)
                                                        .CreateFunctionDetailsCommand(Enumerable.Empty<EntityStoreSchemaFilterEntry>())
                                                        .CommandText;
 
@@ -267,10 +268,10 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb.Schema
             {
                 var mockLoader =
                     new Mock<EntityStoreSchemaGeneratorDatabaseSchemaLoader>(
-                        mockEntityConnection.Object, version)
-                        {
-                            CallBase = true
-                        };
+                        mockEntityConnection.Object, version, /*get app setting func*/null)
+                    {
+                        CallBase = true
+                    };
 
                 mockLoader.Setup(l => l.LoadTableDetails(It.IsAny<IEnumerable<EntityStoreSchemaFilterEntry>>()))
                     .Returns(Enumerable.Empty<TableDetailsRow>());
@@ -355,7 +356,11 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb.Schema
             mockProviderManifest
                 .Setup<bool>(pm => pm.SupportsParameterOptimizationInSchemaQueries())
                 .Returns(supportsParameterOptimizationInSchemaQueries);
-            var mockStoreItemCollection = new Mock<StoreItemCollection>();
+
+            var mockEntityContainer = new Mock<EntityContainer>("edm", DataSpace.CSpace);
+            var mockEdmModel = new Mock<EdmModel>(mockEntityContainer.Object, 3.0);
+
+            var mockStoreItemCollection = new Mock<StoreItemCollection>(mockEdmModel.Object);
             mockStoreItemCollection
                 .SetupGet<DbProviderManifest>(p => p.ProviderManifest)
                 .Returns(mockProviderManifest.Object);
@@ -382,7 +387,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb.Schema
             }
 
             public EntityStoreSchemaGeneratorDatabaseSchemaLoaderFake(EntityCommand[] entityCommands)
-                : base(new Mock<EntityConnection>().Object, EntityFrameworkVersion.Version3)
+                : base(new Mock<EntityConnection>().Object, EntityFrameworkVersion.Version3, lookupValueFromAppSettings: null)
             {
                 _entityCommands = entityCommands;
             }

@@ -78,7 +78,7 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Engine
 
             return
                 CreateDbSchemaLoader(connection, storeSchemaModelVersion)
-                    .LoadStoreSchemaDetails(facadeFilters.ToList());
+                       .LoadStoreSchemaDetails(facadeFilters.ToList());
         }
 
         internal virtual EntityStoreSchemaGeneratorDatabaseSchemaLoader CreateDbSchemaLoader(
@@ -87,7 +87,8 @@ namespace Microsoft.Data.Entity.Design.VisualStudio.ModelWizard.Engine
             return
                 new EntityStoreSchemaGeneratorDatabaseSchemaLoader(
                     connection,
-                    storeSchemaModelVersion);
+                    storeSchemaModelVersion,
+                    _settings.FnGetLocalAppSetting());
         }
 
         // internal virtual for testing
