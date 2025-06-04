@@ -21,6 +21,7 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb.Schema
     internal class EntityStoreSchemaGeneratorDatabaseSchemaLoader
     {
         private const string SqlServerInvariantName = "System.Data.SqlClient";
+        private const string MicrosoftSqlServerInvariantName = "Microsoft.Data.SqlClient";
         private const string SwitchOffMetadataMergeJoinsKey =
             "Switch.Microsoft.Data.Entity.Design.DoNotUseSqlServerMetadataMergeJoins";
         private readonly EntityConnection _connection;
@@ -48,10 +49,17 @@ namespace Microsoft.Data.Entity.Design.VersioningFacade.ReverseEngineerDb.Schema
             {
                 if (_connection != null
                     && _connection.StoreConnection != null
-                    && string.Equals(
-                        _connection.StoreConnection.GetProviderInvariantName(),
-                        SqlServerInvariantName,
-                        StringComparison.Ordinal))
+                    && 
+                    (string.Equals(
+                       _connection.StoreConnection.GetProviderInvariantName(),
+                       SqlServerInvariantName,
+                       StringComparison.Ordinal)
+                       || 
+                     string.Equals(
+                       _connection.StoreConnection.GetProviderInvariantName(),
+                       MicrosoftSqlServerInvariantName,
+                       StringComparison.Ordinal))
+                    )
                 {
                     isSqlServer = true;
                 }
