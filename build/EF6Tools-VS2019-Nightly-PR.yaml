@@ -1,7 +1,3 @@
-trigger:
-  - main
-  - rel/*
-
 pool:
   name: VSEngSS-MicroBuild2022-1ES
   demands:
