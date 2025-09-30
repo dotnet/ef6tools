@@ -42,6 +42,7 @@ extends:
             signing:
               enabled: true
               signType: '$(SigningType)'
+              signWithProd: true
             swix:
               enabled: true
           outputs:
