@@ -100,8 +100,6 @@ extends:
               Write-Host "VstsDropNames: $env:VstsDropNames"
               Write-Host "Build_Reason: $env:Build_Reason"
               Write-Host "BuildVersion: $env:BuildVersion"
-        - task: NuGetAuthenticate@1
-          displayName: 'Authenticate to internal NuGet feed'
         - task: NuGetCommand@2
           displayName: NuGet pack
           inputs:
