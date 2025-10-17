@@ -31,7 +31,7 @@ resources:
   - pipeline: '_dotnetef6tools-VS2019'
     project: 'DevDiv'
     source: 'EntityFramework\dotnet.ef6tools-VS2019'
-repositories:
+  repositories:
   - repository: 1ESPipelineTemplates
     type: git
     name: 1ESPipelineTemplates/1ESPipelineTemplates
