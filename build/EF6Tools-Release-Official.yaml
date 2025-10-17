@@ -65,7 +65,7 @@ extends:
             artifactName: 'BinDirContents'
             targetPath: '$(Pipeline.Workspace)/BinDirContents'
         steps:
-        - checkout:none
+        - checkout: none
         - task: PowerShell@2
           displayName: Load Insertion Variables
           inputs:
