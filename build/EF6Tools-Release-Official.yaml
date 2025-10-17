@@ -100,6 +100,8 @@ extends:
               Write-Host "VstsDropNames: $env:VstsDropNames"
               Write-Host "Build_Reason: $env:Build_Reason"
               Write-Host "BuildVersion: $env:BuildVersion"
+        - task: NuGetAuthenticate@1
+          displayName: 'Authenticate to internal NuGet feed'
         - task: NuGetCommand@2
           displayName: NuGet pack
           inputs:
@@ -110,12 +112,14 @@ extends:
           displayName: 'NuGet push (VS-CoreXtFeeds)'
           inputs:
             packageParentPath: '$(Build.ArtifactStagingDirectory)'
+            packagesToPush: $(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg
             feedPublish: 37a181e8-5ec9-4e8d-a499-07b754f9b4f8
             allowPackageConflicts: true
         - task: 1ES.PublishNuGet@1
           displayName: 'NuGet push (VS-TestCoreXtFeeds)'
           inputs:
             packageParentPath: '$(Build.ArtifactStagingDirectory)'
+            packagesToPush: $(Build.ArtifactStagingDirectory)/**/*.nupkg;!$(Build.ArtifactStagingDirectory)/**/*.symbols.nupkg
             feedRestore: 5a41f7e2-6ea1-44eb-b994-f77d0ac0aefb
             feedPublish: 5a41f7e2-6ea1-44eb-b994-f77d0ac0aefb
             allowPackageConflicts: true
