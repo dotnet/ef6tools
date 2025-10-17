@@ -135,6 +135,7 @@ extends:
           displayName: Retain Azure DevOps Drops
           inputs:
             DropRetentionDays: 1825
+            AccessToken: '$(System.AccessToken)'
         - task: MicroBuildInsertVsPayload@5
           displayName: Insert VS Payload
           inputs:
