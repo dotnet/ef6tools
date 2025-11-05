@@ -31,7 +31,7 @@
 		<MicrosoftWizardFrameworkPackageVersion>17.10.40054</MicrosoftWizardFrameworkPackageVersion>
 		<MicrosoftXmlEditorPackageVersion>17.10.34810.168</MicrosoftXmlEditorPackageVersion>
 		<MoqPackageVersion>4.0.10827</MoqPackageVersion>
-		<NerdbankGitVersioningVersion>3.6.133</NerdbankGitVersioningVersion>
+		<NerdbankGitVersioningVersion>3.7.115</NerdbankGitVersioningVersion>
 		<SystemDataSqlServerCePackageVersion>4.0.8876.1</SystemDataSqlServerCePackageVersion>
 		<VsWebSiteInteropPackageVersion>17.10.40086</VsWebSiteInteropPackageVersion>
 		<XunitPackageVersion>1.9.2</XunitPackageVersion>
