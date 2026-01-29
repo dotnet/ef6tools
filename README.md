@@ -8,8 +8,8 @@ Entity Framework 6 is developed by the Entity Framework team in collaboration wi
 
 The latest version of EF6Tools is still supported by Microsoft, however the EF6Tools are no longer being actively developed. This means that:
 
-- Security issues _will_ be fixed, as for any supported product.
-- High-impact bugs, typically those impacting a very large number of users, _may_ be fixed.
+- Security fixes will continue to be provided, consistent with Microsoft’s support lifecycle.
+- High‑impact bugs: may be addressed at Microsoft’s discretion, typically if they affect a large portion of the user base.
 - Other bugs will _not_ be fixed.
 - New features will _not_ be implemented
 
@@ -17,7 +17,7 @@ The latest version of EF6Tools is still supported by Microsoft, however the EF6T
 
 ## EF6 here, EF Core elsewhere
 
-This repository is for the Entity Framework 6 runtime and Visual Studio tools. Entity Framework Core is a lightweight and extensible version of Entity Framework and is maintained at https://github.com/aspnet/EntityFrameworkCore.
+This repository is for the Entity Framework 6 Visual Studio tools. Entity Framework Core is a lightweight and extensible version of Entity Framework and is maintained at https://github.com/dotnet/efcore.
 
 ## EF6 PowerTools development has moved
 
