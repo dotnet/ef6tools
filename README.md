@@ -4,9 +4,20 @@ Entity Framework 6 (EF6) is an object-relational mapper that enables .NET develo
 
 Entity Framework 6 is developed by the Entity Framework team in collaboration with a community of open source developers.
 
+## Status and Support
+
+The latest version of EF6Tools is still supported by Microsoft, however the EF6Tools are no longer being actively developed. This means that:
+
+- Security fixes will continue to be provided, consistent with Microsoft’s support lifecycle.
+- High‑impact bugs: may be addressed at Microsoft’s discretion, typically if they affect a large portion of the user base.
+- Other bugs will _not_ be fixed.
+- New features will _not_ be implemented
+
+ This is consistent with the [EF6 support policy](https://github.com/dotnet/ef6?tab=readme-ov-file#status-and-support). 
+
 ## EF6 here, EF Core elsewhere
 
-This repository is for the Entity Framework 6 runtime and Visual Studio tools. Entity Framework Core is a lightweight and extensible version of Entity Framework and is maintained at https://github.com/aspnet/EntityFrameworkCore.
+This repository is for the Entity Framework 6 Visual Studio tools. Entity Framework Core is a lightweight and extensible version of Entity Framework and is maintained at https://github.com/dotnet/efcore.
 
 ## EF6 PowerTools development has moved
 
