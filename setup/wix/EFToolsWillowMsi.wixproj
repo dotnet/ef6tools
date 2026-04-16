@@ -48,7 +48,6 @@
     <Compile Include="Folders.wxs" />
     <Compile Include="EFToolsWillowMsi.wxs" />
     <Compile Include="Licenses.wxs" />
-    <Compile Include="NuGetPackages.wxs" />
     <Compile Include="ReferenceCounting.wxs" />
   </ItemGroup>
 

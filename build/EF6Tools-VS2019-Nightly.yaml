@@ -97,26 +97,12 @@ extends:
             configuration: '$(BuildConfiguration)'
             msbuildArguments: '/t:PostBuild'
 
-        - task: NuGetCommand@2
-          displayName: 'NuGet Restore Setup Inputs Packages'
-          inputs:
-            command: custom
-            feedsToUse: config
-            externalFeedCredentials: 'OSSCG Feed - Microsoft approved OSS packages'
-            arguments: 'restore $(Build.Repository.LocalPath)\src\EFTools\setup\GenerateMsiInputs\packages.config -SolutionDirectory $(MsiRuntimeInputsPath) -Verbosity Detailed -NonInteractive'
-
         - task: MSBuild@1
           displayName: 'Sign Unlocalized and Localized Assemblies'
           inputs:
             solution: 'build\sign.proj'
             configuration: '$(BuildConfiguration)'
             msbuildArguments: '/t:AfterBuild'
-
-        - task: BatchScript@1
-          displayName: 'Extract Setup Inputs Nuspecs'
-          inputs:
-            filename: '$(comspec)'
-            arguments: '/c "call "$(ProgramFiles)\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" & msbuild $(Build.Repository.LocalPath)\src\EFTools\setup\GenerateMsiInputs\GenerateMsiInputs.msbuild /p:Configuration=$(BuildConfiguration) /t:ExtractNuspecs"'
 
         - task: MSBuild@1
           displayName: 'Restore VSIX project'

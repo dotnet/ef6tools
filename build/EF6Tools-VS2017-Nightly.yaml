@@ -11,9 +11,9 @@ queue:
   - msbuild
 
 
-#Your build pipeline references an undefined variable named ‘comspec’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
-#Your build pipeline references an undefined variable named ‘comspec’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
-#Your build pipeline references an undefined variable named ‘comspec’. Create or edit the build pipeline for this YAML file, define the 
+#Your build pipeline references an undefined variable named â€˜comspecâ€™. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+#Your build pipeline references an undefined variable named â€˜comspecâ€™. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
+#Your build pipeline references an undefined variable named â€˜comspecâ€™. Create or edit the build pipeline for this YAML file, define the 
 
 ##LAJvariables:
 ##LAJ  SingletonMsiName: 'EF6Tools'
@@ -57,12 +57,6 @@ steps:
     solution: 'build\sign.proj'
     configuration: '$(BuildConfiguration)'
     msbuildArguments: '/t:AfterBuild'
-
-- task: BatchScript@1
-  displayName: Generate Setup Inputs
-  inputs:
-    filename: '$(comspec)'
-    arguments: '/c "call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\Tools\VsDevCmd.bat" & msbuild $(Build.Repository.LocalPath)\src\EFTools\setup\GenerateMsiInputs\GenerateMsiInputs.msbuild /p:Configuration=$(BuildConfiguration) /t:GenerateMSIInputs"'
 
 - task: ms-vseng.MicroBuildTasks.32f78468-e895-4f47-962c-58a699361df8.MicroBuildSwixPlugin@1
   displayName: Install Swix Plugin
