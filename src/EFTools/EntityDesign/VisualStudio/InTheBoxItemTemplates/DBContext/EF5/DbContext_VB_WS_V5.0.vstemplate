@@ -45,7 +45,7 @@
   </WizardExtension>
 
   <WizardData>
-    <packages repository="registry" keyName="NUGETEFTOOLSPACKAGESREGKEYNAMETOKEN" isPreunzipped="true">
+    <packages>
       <package id="EntityFramework" version="5.0.0" />
     </packages>
   </WizardData>
