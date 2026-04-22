@@ -50,6 +50,20 @@ steps:
     configuration: '$(BuildConfiguration)'
     msbuildArguments: '/t:PostBuild -binaryLogger:logfile=$(Build.SourcesDirectory)\bin\$(BuildConfiguration)\Localize.binlog'
 
+- task: NuGetCommand@2
+  displayName: 'NuGet Restore Setup Inputs Packages'
+  inputs:
+    command: custom
+    feedsToUse: config
+    externalFeedCredentials: 'OSSCG Feed - Microsoft approved OSS packages'
+    arguments: 'restore $(Build.Repository.LocalPath)\src\EFTools\setup\GenerateMsiInputs\packages.config -SolutionDirectory $(MsiRuntimeInputsPath) -Verbosity Detailed -NonInteractive'
+
+- task: BatchScript@1
+  displayName: 'Extract Setup Inputs Nuspecs'
+  inputs:
+    filename: '$(comspec)'
+    arguments: '/c "call "$(ProgramFiles)\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\VsDevCmd.bat" & msbuild $(Build.Repository.LocalPath)\src\EFTools\setup\GenerateMsiInputs\GenerateMsiInputs.msbuild /p:Configuration=$(BuildConfiguration) /t:ExtractNuspecs"'
+
 - task: ms-vseng.MicroBuildTasks.32f78468-e895-4f47-962c-58a699361df8.MicroBuildSwixPlugin@4
   displayName: 'Install Swix Plugin'
 
