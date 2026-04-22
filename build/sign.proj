@@ -23,31 +23,11 @@
       <LocalizedEFToolsDLLs Include="$(RepositoryRootDirectory)bin\$(Configuration)\Microsoft.Data.Tools.Design.XmlCore.dll" />
       <LocalizedEFToolsDLLs Include="$(RepositoryRootDirectory)bin\$(Configuration)\Microsoft.VisualStudio.Data.Tools.Design.XmlCore.dll" />
       <LocalizedEFToolsDLLs Include="$(LocOutDir)\**\*.resources.dll" />
-
-      <!-- EntityFramework NuGet package contents shipped in the VSIX.
-           These packages contain DLLs with SHA1-only Microsoft Authenticode
-           signatures. Re-sign with SHA256 (Microsoft400) before the VSIX
-           build packages them. -->
-      <MsiInputDlls Include="$(RepositoryRootDirectory)bin\$(Configuration)\MsiRuntimeInputs\packages\**\*.dll" />
-      <MsiInputExes Include="$(RepositoryRootDirectory)bin\$(Configuration)\MsiRuntimeInputs\packages\**\*.exe" />
-      <MsiInputPs1s Include="$(RepositoryRootDirectory)bin\$(Configuration)\MsiRuntimeInputs\packages\**\*.ps1" />
     </ItemGroup>
     <ItemGroup>
       <FilesToSign Include="@(LocalizedEFToolsDLLs)">
         <Authenticode>Microsoft400</Authenticode>
         <StrongName>67</StrongName>
-      </FilesToSign>
-      <!-- Authenticode-only re-sign for NuGet package contents.
-           These assemblies already have valid strong names; only the
-           Authenticode signature needs upgrading from SHA1 to SHA256. -->
-      <FilesToSign Include="@(MsiInputDlls)">
-        <Authenticode>Microsoft400</Authenticode>
-      </FilesToSign>
-      <FilesToSign Include="@(MsiInputExes)">
-        <Authenticode>Microsoft400</Authenticode>
-      </FilesToSign>
-      <FilesToSign Include="@(MsiInputPs1s)">
-        <Authenticode>Microsoft400</Authenticode>
       </FilesToSign>
     </ItemGroup>
 
