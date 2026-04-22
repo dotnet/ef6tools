@@ -1,4 +1,4 @@
-<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Item">
+﻿<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Item">
 
   <TemplateData>
     <Name>EF 5.x-DbContext-Generator</Name>
@@ -45,7 +45,7 @@
   </WizardExtension>
 
   <WizardData>
-    <packages>
+    <packages repository="registry" keyName="NUGETEFTOOLSPACKAGESREGKEYNAMETOKEN" isPreunzipped="true">
       <package id="EntityFramework" version="5.0.0" />
       <package id="EntityFramework.de" version="5.0.0" />
     </packages>

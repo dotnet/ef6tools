@@ -1,4 +1,4 @@
-<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Item">
+﻿<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Item">
 
   <TemplateData>
     <Name>OneEF CodeFirst</Name>
@@ -34,7 +34,7 @@
   </WizardExtension>
   
   <WizardData>
-    <packages>
+    <packages repository="registry" keyName="NUGETEFTOOLSPACKAGESREGKEYNAMETOKEN" isPreunzipped="true">
       <package id="EntityFramework" version="EFPACKAGEVERSION" />
       <package id="EntityFramework.ja" version="EFPACKAGEVERSION" />
     </packages>
