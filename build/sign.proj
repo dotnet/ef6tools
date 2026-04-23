@@ -23,11 +23,32 @@
       <LocalizedEFToolsDLLs Include="$(RepositoryRootDirectory)bin\$(Configuration)\Microsoft.Data.Tools.Design.XmlCore.dll" />
       <LocalizedEFToolsDLLs Include="$(RepositoryRootDirectory)bin\$(Configuration)\Microsoft.VisualStudio.Data.Tools.Design.XmlCore.dll" />
       <LocalizedEFToolsDLLs Include="$(LocOutDir)\**\*.resources.dll" />
+
+      <!-- EntityFramework NuGet package contents shipped in the VSIX and MSI.
+           Packages restored from nuget.org (EF 5.0.0, EF 6.2.0 locales) carry
+           SHA1-only Authenticode signatures. Re-sign with SHA256 (Microsoft400)
+           to meet VS signing compliance requirements. MicroBuild dual-signs,
+           preserving the original SHA1 signature and strong name. -->
+      <NuGetPackageDlls Include="$(RepositoryRootDirectory)bin\$(Configuration)\MsiRuntimeInputs\packages\**\*.dll" />
+      <NuGetPackageExes Include="$(RepositoryRootDirectory)bin\$(Configuration)\MsiRuntimeInputs\packages\**\*.exe" />
+      <NuGetPackagePs1s Include="$(RepositoryRootDirectory)bin\$(Configuration)\MsiRuntimeInputs\packages\**\*.ps1" />
     </ItemGroup>
     <ItemGroup>
       <FilesToSign Include="@(LocalizedEFToolsDLLs)">
         <Authenticode>Microsoft400</Authenticode>
         <StrongName>67</StrongName>
+      </FilesToSign>
+      <!-- Authenticode-only re-sign for NuGet package contents.
+           These assemblies already have valid strong names; only the
+           Authenticode signature needs upgrading from SHA1 to SHA256. -->
+      <FilesToSign Include="@(NuGetPackageDlls)">
+        <Authenticode>Microsoft400</Authenticode>
+      </FilesToSign>
+      <FilesToSign Include="@(NuGetPackageExes)">
+        <Authenticode>Microsoft400</Authenticode>
+      </FilesToSign>
+      <FilesToSign Include="@(NuGetPackagePs1s)">
+        <Authenticode>Microsoft400</Authenticode>
       </FilesToSign>
     </ItemGroup>
 
