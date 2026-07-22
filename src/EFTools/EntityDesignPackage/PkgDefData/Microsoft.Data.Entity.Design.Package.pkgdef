@@ -9,6 +9,7 @@
 "EditorTrustLevel"=dword:00000001
 "Package"="{8889e051-b7f9-4781-bb33-2a36a9bdb3a5}"
 "CommonPhysicalViewAttributes"=dword:00000002
+"DeferUntilIntellisenseIsReady"=dword:00000000
 
 [$RootKey$\Editors\{c99aea30-8e36-4515-b76f-496f5a48a6aa}\Extensions]
 "edmx"=dword:0000003d
